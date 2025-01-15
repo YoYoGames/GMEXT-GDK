@@ -27,7 +27,7 @@
 #endif
 
 //#define XBOX_USER	XUserHandle
-#define XBOX_USER_GAMERTAG_MAX_LENGTH	64
+#define XBOX_USER_GAMERTAG_MAX_LENGTH	(XUserGamertagComponentUniqueModernMaxBytes + 1)
 
 struct RefCountedGameSaveProvider
 {
