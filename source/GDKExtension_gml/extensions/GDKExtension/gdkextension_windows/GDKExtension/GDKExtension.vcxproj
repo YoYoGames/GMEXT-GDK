@@ -223,7 +223,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>json-c-static.lib;libxml2_a.lib;xgameruntime.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>json-c-static.lib;libxml2_a.lib;bcrypt.lib;xgameruntime.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y "$(TargetPath)" $(SolutionDir)..\</Command>
