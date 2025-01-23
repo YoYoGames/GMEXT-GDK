@@ -169,7 +169,7 @@
         "1",
         "2",
       ],"name":"logLevel","optType":6,"resourceType":"GMExtensionOption","resourceVersion":"2.0",},
-    {"$GMExtensionOption":"","%Name":"gdkVersion","defaultValue":"230600","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"d511320c-d95c-4c05-a722-b9b327700a7c","hidden":true,"listItems":[],"name":"gdkVersion","optType":2,"resourceType":"GMExtensionOption","resourceVersion":"2.0",},
+    {"$GMExtensionOption":"","%Name":"gdkVersion","defaultValue":"240602","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"d511320c-d95c-4c05-a722-b9b327700a7c","hidden":true,"listItems":[],"name":"gdkVersion","optType":2,"resourceType":"GMExtensionOption","resourceVersion":"2.0",},
   ],
   "optionsFile":"options.json",
   "packageId":"",

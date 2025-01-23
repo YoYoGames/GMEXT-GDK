@@ -47,6 +47,7 @@ if exist Runner.exe move Runner.exe "%FILENAME%.exe" >nul 2>&1
 call %Utils% itemCopyTo "%GDK_PATH%\PlayFab.Party.Cpp\Redist\CommonConfiguration\neutral\Party.dll" "Party.dll"
 call %Utils% itemCopyTo "%GDK_PATH%\PlayFab.PartyXboxLive.Cpp\Redist\CommonConfiguration\neutral\PartyXboxLive.dll" "PartyXboxLive.dll"
 call %Utils% itemCopyTo "%GDK_PATH%\Xbox.XCurl.API\Redist\CommonConfiguration\neutral\XCurl.dll" "XCurl.dll"
+call %Utils% itemCopyTo "%GDK_PATH%\Xbox.LibHttpClient\Redist\CommonConfiguration\neutral\libHttpClient.GDK.dll" "libHttpClient.GDK.dll"
 
 :: Get path to the game (*.win) under YYC the output game isn't named correctly
 for %%f in (*.win) do (

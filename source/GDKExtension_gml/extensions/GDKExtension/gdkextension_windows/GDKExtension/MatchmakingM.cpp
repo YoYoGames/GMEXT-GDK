@@ -570,7 +570,7 @@ void StopMultiplayerForUser(XUMuser* user)
 		std::vector<XSMsession*>* sessions = XSM::GetSessions();
 
 		size_t numsessions = sessions->size();
-		sessionIDs = (int*)YYAlloc(sizeof(int) * numsessions);
+		sessionIDs = (int*)YYAlloc(sizeof(int) * static_cast<int>(numsessions));
 		for (size_t i = numsessions - 1; i >= 0; i--) //start at end and iterate backwards (avoids indices changing when sessions are deleted)
 		{
 			XSMsession* session = sessions->at(i);

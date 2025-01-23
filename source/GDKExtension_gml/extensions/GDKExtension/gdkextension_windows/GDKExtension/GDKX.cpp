@@ -278,7 +278,7 @@ void YYExtensionInitialise(const struct YYRunnerInterface* _pFunctions, size_t _
 	memcpy(&gs_runnerInterface, _pFunctions, sizeof(YYRunnerInterface));
 	g_pYYRunnerInterface = &gs_runnerInterface;
 
-	int autoInit = extOptGetReal("GDKExtension", "autoInit");
+	int autoInit = static_cast<int>(extOptGetReal("GDKExtension", "autoInit"));
 	if (autoInit > 0) {
 		DebugConsoleOutput("Initialising the extension, flag autoInit = 1\n");
 		GDKInit(nullptr); // We pass nullptr (we will use the MicrosoftGame.Config file)

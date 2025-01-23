@@ -1,16 +1,14 @@
-//
-// Copyright (C) 2020 Opera Norway AS. All rights reserved.
-//
+// Copyright © Opera Norway AS. All rights reserved.
 // This file is an original work developed by Opera.
-//
-
 #ifndef __REF_H__
 #define __REF_H__
 
 #include "YYStd.h"
 #include <string.h>
 
+
 #define YYC_DELETE(a) delete a
+
 
 class YYObjectBase;
 template <typename T> struct _RefFactory
@@ -23,9 +21,19 @@ template <typename T> struct _RefFactory
 template <> struct _RefFactory< const char* >
 {
 	static const char* Alloc( const char* _thing, int _size )	{ return (const char*)YYAlloc( _size+1 ); }
-	static const char* Create( const char* _thing, int& _size )	{ _size=_thing?(int)strlen(_thing):0; return YYStrDup( _thing ); }
+	static const char* Create(const char* _thing, int& _size) { _size = _thing ? (int)strlen(_thing) : 0; return YYStrDup(_thing); }
 	static const char* Destroy( const char* _thing ) { YYFree( (void*)_thing ); return NULL; }
 };
+
+// NOTE: constant strings have negative size
+typedef const unsigned char* YYCONSTSTRING;
+template <> struct _RefFactory< YYCONSTSTRING >
+{
+	static YYCONSTSTRING Alloc(YYCONSTSTRING _thing, int _size) { return (YYCONSTSTRING)_thing; }
+	static YYCONSTSTRING Create(YYCONSTSTRING _thing, int& _size) { _size = _thing ? (int)(0x80000000L | (int)strlen((const char*)_thing)) : 0; return _thing; }
+	static YYCONSTSTRING Destroy(YYCONSTSTRING _thing) { return NULL; }
+};
+
 
 template <> struct _RefFactory< YYObjectBase* >
 {
@@ -80,8 +88,8 @@ template <typename T > struct _RefThing
 		LOCK_RVALUE_MUTEX();
 		--m_refCount;
 		if (m_refCount == 0) {
-			// use the factory to clean it up and give us a default thing to use
-			m_thing = _RefFactory<T>::Destroy(m_thing);
+			// use the factory to clean it up and give us a default thing to use			
+			m_thing = (m_size >= 0) ? _RefFactory<T>::Destroy(m_thing) : NULL;
 			m_size = 0;
 			
 			YYC_DELETE(this);
@@ -90,12 +98,11 @@ template <typename T > struct _RefThing
 	} // end Dec
 
 	T get( void ) const { return m_thing; }
-	int size( void ) const { return m_size; }
+	int size( void ) const { return m_size&0x7fffffff; } // should only ever be positive
 
 	static _RefThing<T>* assign( _RefThing<T>* _other ) { if (_other != NULL) { _other->inc(); } return _other; }
 	static _RefThing<T>* remove( _RefThing<T>* _other ) { if (_other != NULL) { _other->dec(); } return NULL; }
 };
-
 
 template <typename T> struct RefThing
 {
@@ -134,11 +141,18 @@ template <typename T> struct RefThing
 };
 
 typedef _RefThing<const char*> RefString;
+typedef _RefThing<YYCONSTSTRING> RefConstString;
 typedef _RefThing<YYObjectBase*> RefInstance;
 typedef _RefThing<void*> RefKeep;
 
 class CInstance;
 typedef RValue& (*PFUNC_YYGMLScript_Internal)( CInstance* pSelf, CInstance* pOther, RValue& _result, int _count,  RValue** _args  );
+
+YYCEXTERN void YYCreateString( RValue* _pVal, RefString* _pS );
+YYCEXTERN void YYSetInstance( RValue* _pVal );
+YYCEXTERN void YYSetScriptRef( RValue* _pVal );
+YYCEXTERN void YYSetScriptRef( RValue* _pVal, PFUNC_YYGMLScript_Internal _pScript, YYObjectBase* _pSelf);
+YYCEXTERN void YYSetString( RValue* _pVal, RefString* _pS );
 
 #endif
 

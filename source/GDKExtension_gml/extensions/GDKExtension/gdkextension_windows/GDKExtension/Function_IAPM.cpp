@@ -1241,7 +1241,7 @@ void EnumeratePackagesContext::completion_callback(void* context, bool canceled)
 		for (size_t i = 0; i < ctx->packages.size(); ++i)
 		{
 			RValue package = _MS_IAP_PackageDetails_to_Struct(&(ctx->packages[i]));
-			SET_RValue(&results, &package, NULL, i);
+			SET_RValue(&results, &package, NULL, static_cast<int>(i));
 			FREE_RValue(&package);
 		}
 
@@ -1445,7 +1445,7 @@ YYEXPORT void F_MS_IAP_QueryAddOnLicenses(RValue& Result, CInstance* selfinst, C
 		{
 			results_buf.resize(result_count);
 
-			hr = XStoreQueryAddOnLicensesResult(async, results_buf.size(), results_buf.data());
+			hr = XStoreQueryAddOnLicensesResult(async, static_cast<uint32_t>(results_buf.size()), results_buf.data());
 			if (FAILED(hr))
 			{
 				DebugConsoleOutput("ms_iap_QueryAddOnLicenses - query failed (XStoreQueryAddOnLicensesResult returned HRESULT 0x%08X)\n", (unsigned)(hr));
@@ -2544,7 +2544,7 @@ static RValue _MS_IAP_StorePrice_to_Struct(const XStorePrice* price)
 	_MS_IAP_AddStringOrUndefined(&price_rv, "formattedPrice", price->formattedPrice);
 	_MS_IAP_AddStringOrUndefined(&price_rv, "formattedRecurrencePrice", price->formattedRecurrencePrice);
 	YYStructAddBool(&price_rv, "isOnSale", price->isOnSale);
-	YYStructAddDouble(&price_rv, "saleEndDate", price->saleEndDate);
+	YYStructAddInt64(&price_rv, "saleEndDate", price->saleEndDate);
 
 	return price_rv;
 }
@@ -2557,7 +2557,7 @@ static RValue _MS_IAP_AddonLicense_to_Struct(const XStoreAddonLicense* license)
 	_MS_IAP_AddStringOrUndefined(&license_rv, "skuStoreId", license->skuStoreId);
 	_MS_IAP_AddStringOrUndefined(&license_rv, "inAppOfferToken", license->inAppOfferToken);
 	YYStructAddBool(&license_rv, "isActive", license->isActive);
-	YYStructAddDouble(&license_rv, "expirationDate", license->expirationDate);
+	YYStructAddInt64(&license_rv, "expirationDate", license->expirationDate);
 
 	return license_rv;
 }

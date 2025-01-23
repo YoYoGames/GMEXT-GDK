@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"uuid_generate_v4",
   "isCompatibility":false,
   "isDnD":false,

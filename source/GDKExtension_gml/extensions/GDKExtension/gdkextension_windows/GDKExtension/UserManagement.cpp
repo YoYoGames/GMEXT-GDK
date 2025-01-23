@@ -987,7 +987,7 @@ void XUM::UpdateUserProfiles(bool _onlyLoadFailed)
 {
 	XUM_LOCK_MUTEX
 
-		int numCachedUsers = cachedUsers.size();
+		int numCachedUsers = static_cast<int>(cachedUsers.size());
 		for (int i = 0; i < numCachedUsers; i++)
 		{
 			if (cachedUsers[i] != NULL)

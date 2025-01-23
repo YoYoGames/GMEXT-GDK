@@ -95,5 +95,14 @@
     <ClInclude Include="Stats.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="YYGML.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YYSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YYStd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

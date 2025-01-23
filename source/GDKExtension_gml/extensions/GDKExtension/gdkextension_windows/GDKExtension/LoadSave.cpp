@@ -490,9 +490,9 @@ void gdk_load_buffer(RValue& Result, CInstance* selfinst, CInstance* otherinst, 
 				/* TODO: Are these case sensitive? */
 				if (strcmp(info->name, blob_name.c_str()) == 0)
 				{
-					blobs_size = sizeof(XGameSaveBlob) /* Structure size */
-						+ strlen(info->name) + 1     /* Name + terminator */
-						+ info->size;                /* Payload size */
+					blobs_size = sizeof(XGameSaveBlob)					/* Structure size */
+						+ static_cast<int>(strlen(info->name) + 1)		/* Name + terminator */
+						+ info->size;									/* Payload size */
 
 					blob_found = true;
 

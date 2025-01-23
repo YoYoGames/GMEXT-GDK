@@ -1214,7 +1214,7 @@ void F_XboxOneSetSaveDataUser(RValue& Result, CInstance* selfinst, CInstance* ot
 	if (!g_gdk_initialised) YYError("xboxone_set_savedata_user :: GDK Extension was not initialized!");
 
 	Result.kind = VALUE_REAL;
-	Result.val = -1;	
+	Result.val = 0;	
 
 	XUM_LOCK_MUTEX
 	if (arg[0].kind == VALUE_PTR && arg[0].ptr == NULL)
@@ -1232,10 +1232,12 @@ void F_XboxOneSetSaveDataUser(RValue& Result, CInstance* selfinst, CInstance* ot
 		if (xuser != NULL)
 		{
 			XUM::SetSaveDataUser(xuser->LocalId);
-		}		
-	}
+			return;
+		}
 
-	// No valid user found
+		// No valid user found
+		Result.val = -1;
+	}
 }
 
 YYEXPORT
@@ -1321,7 +1323,7 @@ void F_XboxGetTokenAndSignature(RValue& Result, CInstance* selfinst, CInstance* 
 			if (KIND_RValue(&(arg[4])) == VALUE_STRING)
 			{
 				payload->body = (void*)YYStrDup(YYGetString(arg, 4));
-				payload->bodysize = strlen((char*)payload->body) + 1;
+				payload->bodysize = static_cast<int>(strlen((char*)payload->body) + 1);
 			}
 			else if (KIND_RValue(&(arg[4])) == VALUE_REAL)
 			{
