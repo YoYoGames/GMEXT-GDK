@@ -1,11 +1,11 @@
 ## IMPORTANT
 
-- Requires new GDK version [June 2023](https://github.com/microsoft/GDK/releases/tag/June_2023_Update_2) to be installed.
+- Requires new GDK version [June 2024](https://github.com/microsoft/GDK/releases/tag/June_2024_Update_3) to be installed.
 - GameMaker Studio project cannot be using virtual drives and temp folder should not contain spaces.
 
 ## CHANGES SINCE ${releaseOldVersion}
 
-https://github.com/YoYoGames/GMEXT-Steamworks/compare/${releaseOldVersion}...${releaseNewVersion}
+https://github.com/YoYoGames/GMEXT-GDK/compare/${releaseOldVersion}...${releaseNewVersion}
 
 ## DESCRIPTION
 
