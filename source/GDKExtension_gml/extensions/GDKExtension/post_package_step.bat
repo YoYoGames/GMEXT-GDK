@@ -14,14 +14,14 @@ if not "%YYPLATFORM_option_windows_copy_exe_to_dest%" == "True" (
 
 :: Check if GDK is installed
 if not exist "C:\Program Files (x86)\Microsoft GDK\Command Prompts\GamingDesktopVars.cmd" (
-	call %Utils% logError "Goto https://github.com/microsoft/GDK/releases/tag/June_2023_Update_2 to install the GDK"
+	call %Utils% logError "Goto https://github.com/microsoft/GDK/releases/tag/June_2024_Update_3 to install the GDK"
 )
 
 :: Check if GDK version is correct
 call %Utils% optionGetValue "gdkVersion" GDK_VERSION
 set GDK_PATH=%GameDK%%GDK_VERSION%\GRDK\ExtensionLibraries
 if not exist "%GDK_PATH%" (
-	call %Utils% logError "Wrong GDK version, goto https://github.com/microsoft/GDK/releases/tag/June_2023_Update_2"
+	call %Utils% logError "Wrong GDK version, goto https://github.com/microsoft/GDK/releases/tag/June_2024_Update_3"
 )
 
 :: Setup the GDK Environment (force version Update Jun 2023)
