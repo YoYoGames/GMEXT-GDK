@@ -41,7 +41,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.400.0.516",
+    "IDEVersion":"2024.11.0.180",
   },
   "name":"GDKExtension",
   "resources":[
@@ -90,12 +90,12 @@
     {"id":{"name":"objUserCount","path":"objects/objUserCount/objUserCount.yy",},},
     {"id":{"name":"objXBoxButton","path":"objects/objXBoxButton/objXBoxButton.yy",},},
     {"id":{"name":"objXBoxInput","path":"objects/objXBoxInput/objXBoxInput.yy",},},
+    {"id":{"name":"rm_gm_base","path":"rooms/rm_gm_base/rm_gm_base.yy",},},
     {"id":{"name":"rmIAP","path":"rooms/rmIAP/rmIAP.yy",},},
     {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
     {"id":{"name":"rmSaveLoad","path":"rooms/rmSaveLoad/rmSaveLoad.yy",},},
     {"id":{"name":"rmStatsTitle","path":"rooms/rmStatsTitle/rmStatsTitle.yy",},},
     {"id":{"name":"rmUser","path":"rooms/rmUser/rmUser.yy",},},
-    {"id":{"name":"rm_gm_base","path":"rooms/rm_gm_base/rm_gm_base.yy",},},
     {"id":{"name":"uuid_generate_v4","path":"scripts/uuid_generate_v4/uuid_generate_v4.yy",},},
     {"id":{"name":"spr_gm_background","path":"sprites/spr_gm_background/spr_gm_background.yy",},},
     {"id":{"name":"spr_gm_button","path":"sprites/spr_gm_button/spr_gm_button.yy",},},

@@ -122,8 +122,8 @@ call %Utils% itemDelete "%tempList%"
 
 :: launch the application
 if not "%APPNAME%" == "" (
-  :: Delete older output files
-  type nul > "%YYtempFolderUnmapped%\game.out"
+    :: Delete older output files
+    type nul > "%YYtempFolderUnmapped%\game.out"
 	wdapp launch %APPNAME% -outputdebugstring -game "%outputPath%" -debugoutput %YYtempFolderUnmapped%\game.out -output %YYtempFolderUnmapped%\game.out
 	powershell "Get-Content '%YYtempFolderUnmapped%\game.out' -Wait -Encoding utf8 -Tail 30 | ForEach-Object { $_; if($_ -match '###game_end###') { break } }"
 
