@@ -23,14 +23,14 @@ onClick = function() {
 			// On Windows GDK the function used to save buffers asynchronously
 			// is 'gdk_save_buffer' it will return a requestID that can be checked
 			// during the Async Save/Load event.
-			requestId = gdk_save_buffer(b1, "single/b1", 0, buffer_tell(b1));
+			requestId = gdk_save_buffer(b1, "single/b1", 0, buffer_get_size(b1));
 			break;
 			
 		case os_xboxseriesxs:
 			// On Xbox Series X/S the function used to save buffers asynchronously
 			// is 'buffer_save_async' it will return a requestID that can be checked
 			// during the Async Save/Load event.
-			requestId = buffer_save_async(b1, "single/b1", 0, buffer_tell(b1));
+			requestId = buffer_save_async(b1, "single/b1", 0, buffer_get_size(b1));
 			break;
 			
 		default: throw "[ERROR] objSaveSingle, unsupported platform";

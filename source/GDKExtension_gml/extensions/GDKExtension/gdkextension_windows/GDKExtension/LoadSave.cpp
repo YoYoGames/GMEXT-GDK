@@ -226,7 +226,11 @@ void gdk_save_buffer(RValue& Result, CInstance* selfinst, CInstance* otherinst, 
 		return;
 	}
 
-	if (offset < 0 || offset >= buffer_size || size < 1 || (offset + size) > buffer_size)
+	if ((offset + size) > buffer_size) {
+		size = buffer_size - offset;
+	}
+
+	if (offset < 0 || offset >= buffer_size || size < 1)
 	{
 		DebugConsoleOutput("gdk_save_buffer() - error: offset and/or size argument out of range\n");
 		Result.val = -1;
