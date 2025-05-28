@@ -1,6 +1,6 @@
 ## IMPORTANT
 
-- Requires new GDK version [June 2024](https://github.com/microsoft/GDK/releases/tag/June_2024_Update_3) to be installed.
+- Requires new GDK version [April 2025](https://github.com/microsoft/GDK/releases/tag/April-2025-v2504.0.4020) to be installed.
 - GameMaker Studio project cannot be using virtual drives and temp folder should not contain spaces.
 
 ## CHANGES SINCE ${releaseOldVersion}
