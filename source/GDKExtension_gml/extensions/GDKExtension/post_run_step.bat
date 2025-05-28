@@ -14,7 +14,7 @@ if not "%YYPLATFORM_option_windows_copy_exe_to_dest%" == "True" (
 
 :: Check if GDK is installed
 if not exist "C:\Program Files (x86)\Microsoft GDK\Command Prompts\GamingDesktopVars.cmd" (
-	call %Utils% logError "Goto https://github.com/microsoft/GDK/releases/tag/June_2024_Update_2 to install the GDK"
+	call %Utils% logError "Goto https://github.com/microsoft/GDK/releases/tag/April-2025-v2504.0.4020 to install the GDK"
 )
 
 :: Check if GDK version is correct
@@ -28,7 +28,7 @@ if ERRORLEVEL 1 (
 
 set GDK_LIB_PATH=%GamingGRDKBuild%\ExtensionLibraries
 if not exist "%GDK_LIB_PATH%" (
-	call %Utils% logError "Wrong GDK version, goto https://github.com/microsoft/GDK/releases/tag/June_2024_Update_2"
+	call %Utils% logError "Wrong GDK version, goto https://github.com/microsoft/GDK/releases/tag/April-2025-v2504.0.4020"
 )
 
 :: Ensure the runner is called the correct thing
@@ -45,10 +45,10 @@ if not defined FILENAME (
 if exist Runner.exe move Runner.exe "%FILENAME%.exe" >nul 2>&1
 
 :: Copy the required dll libraries from the user's GDK installation folder
-call %Utils% itemCopyTo "%GDK_LIB_PATH%\PlayFab.Party.Cpp\Redist\CommonConfiguration\neutral\Party.dll" "Party.dll"
-call %Utils% itemCopyTo "%GDK_LIB_PATH%\PlayFab.PartyXboxLive.Cpp\Redist\CommonConfiguration\neutral\PartyXboxLive.dll" "PartyXboxLive.dll"
-call %Utils% itemCopyTo "%GDK_LIB_PATH%\Xbox.XCurl.API\Redist\CommonConfiguration\neutral\XCurl.dll" "XCurl.dll"
-call %Utils% itemCopyTo "%GDK_LIB_PATH%\Xbox.LibHttpClient\Redist\CommonConfiguration\neutral\libHttpClient.GDK.dll" "libHttpClient.GDK.dll"
+call %Utils% itemCopyTo "%GDK_LIB_PATH%\PlayFab.Party.Cpp\Redist\x64\Party.dll" "Party.dll"
+call %Utils% itemCopyTo "%GDK_LIB_PATH%\PlayFab.PartyXboxLive.Cpp\Redist\x64\PartyXboxLive.dll" "PartyXboxLive.dll"
+call %Utils% itemCopyTo "%GDK_LIB_PATH%\Xbox.XCurl.API\Redist\x64\XCurl.dll" "XCurl.dll"
+call %Utils% itemCopyTo "%GDK_LIB_PATH%\Xbox.LibHttpClient\Redist\x64\libHttpClient.GDK.dll" "libHttpClient.GDK.dll"
 
 :: Get path to the game (*.win) under YYC the output game isn't named correctly
 for %%f in (*.win) do (

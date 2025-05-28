@@ -1,5 +1,5 @@
 {
-  "$GMProject":"",
+  "$GMProject":"v1",
   "%Name":"GDKExtension",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
@@ -27,6 +27,7 @@
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/GM Extensions Asset/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/GM Extensions Asset/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
+  "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"default480x480.png","CopyToMask":64,"filePath":"datafiles","name":"default480x480.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"GDK_Extension_Documentation.pdf","CopyToMask":0,"filePath":"datafiles","name":"GDK_Extension_Documentation.pdf","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
