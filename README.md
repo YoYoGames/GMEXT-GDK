@@ -19,7 +19,7 @@ This repository contains the source code for the DLL that implements the GDK fun
 
 
 1. Install [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/) 
-2. Install [GDK Jun24](https://github.com/microsoft/GDK/releases/tag/April-2025-v2504.0.4020))
+2. Install [GDK Apr25](https://github.com/microsoft/GDK/releases/tag/April-2025-v2504.0.4020))
 3. Install [CMAKE](https://cmake.org/download/)
 4. Clone this repository or download the package
 
@@ -47,6 +47,6 @@ This repository contains the source code for the DLL that implements the GDK fun
 
 The online documentation is regularly updated to ensure it contains the most current information. For those who prefer a different format, we also offer a PDF version. This HTML is directly converted from the GitHub Wiki content, ensuring consistency, although it may follow slightly behind in updates.
 
-We encourage users to refer primarily to the GitHub Wiki for the latest information and updates. The PDF version, included with the extension and within the demo project's data files, serves as a secondary, static reference.
+We encourage users to refer primarily to the GitHub Wiki for the latest information and updates. The PDF version, included with the extension and within the demo project's data files, was removed due to it being outdated (refer to the wiki instead).
 
 ---
