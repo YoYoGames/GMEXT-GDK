@@ -231,7 +231,7 @@
  * The async completion message will only be raised when the package is actually installed (not just registered).
  * 
  * @param {pointer} user_id The user ID to use in the store context.
- * @param {string} package_ids ]|An array of strings that uniquely identify the store packages.
+ * @param {array[string]} package_ids An array of strings that uniquely identify the store packages.
  * 
  * @returns {real} (In-App Purchase Request ID)
  * 
@@ -240,7 +240,7 @@
  * @member {string} type The string value `"ms_iap_DownloadAndInstallPackages_result"`.
  * @member {real} id The asynchronous request ID.
  * @member {bool} status Whether or not the asynchronous request succeeded.
- * @member {string} package_ids ]|An array of strings that uniquely identify the store packages.
+ * @member {array[string]} package_ids An array of strings that uniquely identify the store packages.
  * @event_end
  * 
  * @example
@@ -265,7 +265,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console an array will all the installed packages IDs.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console an array with all the installed package IDs.
  * @function_end
  */
 
@@ -273,8 +273,8 @@
  * @function ms_iap_EnumeratePackages
  * @desc This function enumerates the results of a package query.
  * 
- * @param {constant.PackageKind} package_kind The value that indicates whether to enumerate app packages or content packages (see [Package Kinds](#Package-Kinds)).|
- * @param {constant.PackageScope} scope The scope of the installation packages (see **[Package Scopes](#Package-Scope)** ).|
+ * @param {constant.PackageKind} package_kind The value that indicates whether to enumerate app packages or content packages
+ * @param {constant.PackageScope} scope The scope of the installation packages
  * 
  * @returns {real} (In-App Purchase Request ID)
  * 
@@ -283,14 +283,14 @@
  * @member {string} type The string value `"ms_iap_EnumeratePackages_result"`.
  * @member {real} id The asynchronous request ID.
  * @member {bool} status Whether or not the asynchronous request succeeded.
- * @member {array} results An array of [Package Details](#Package-Details) structs.
+ * @member {array[struct.PackageDetails]} results An array of Package Details structs.
  * @event_end
  * 
  * @example
  * ```gml
  * requestId = ms_iap_EnumeratePackages(e_ms_iap_PackageKind_Content, e_ms_iap_PackageEnumerationScope_ThisOnly);
  * ```
- * In the code above first we request an enumeration all the packages of type content (`e_ms_iap_PackageKind_Content`) and whose scope is limited to the current game (`e_ms_iap_PackageEnumerationScope_ThisOnly`). The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
+ * In the code above first we request an enumeration of all the packages of type content (`e_ms_iap_PackageKind_Content`) and whose scope is limited to the current game (`e_ms_iap_PackageEnumerationScope_ThisOnly`). The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
  * ```gml
  * if (async_load[? "type"] == "ms_iap_EnumeratePackages_result")
  * {
@@ -303,7 +303,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console an array will all the [Package Details](#Package-Details) structs.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console an array with all the ${struct.PackageDetails} structs.
  * @function_end
  */
 
@@ -312,7 +312,7 @@
  * @function ms_iap_MountPackage
  * @desc This function mounts the installation of specified content.
  * 
- * @param {string} package_id A string that uniquely identifies the installed package on the disk. Pass in the **packageIdentifier** field from the [Package Details](#Package-Details) struct returned from the ${function.ms_iap_EnumeratePackages} async callback.
+ * @param {string} package_id A string that uniquely identifies the installed package on the disk. Pass in the **packageIdentifier** field from the ${struct.PackageDetails} struct returned from the ${function.ms_iap_EnumeratePackages} async callback.
  * 
  * @returns {real} (In-App Purchase Request ID)
  * 
@@ -320,7 +320,7 @@
  * @desc 
  * @member {string} type The string value `"ms_iap_MountPackage_result"`.
  * @member {real} id The asynchronous request ID.
- * @member {string} package_id A string that uniquely identifies the installed package on the disk.
+ * @member {string} package_id A string that uniquely identifies the installed package on disk.
  * @member {string} mount_path The path to the mounted installation.
  * @event_end
  * 
@@ -341,15 +341,14 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console the current packages ID and its mount path on disk.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console the current package's ID and its mount path on disk.
  * @function_end
  */
 
 /**
  * @function ms_iap_QueryAddOnLicenses
- * @desc Retrieves the licenses the user was granted for Add-ons (also known as a durable without bits) of the currently running game. It is generally recommended to use dlc, rather than add-ons, but this API exists for the few that choose to use add-ons anyways.
+ * @desc Retrieves the licenses the user was granted for Add-ons (also known as a durable without bits) of the currently running game. It is generally recommended to use DLC, rather than add-ons, but this API exists for the few that choose to use add-ons anyways.
  * Add-ons are typically content or features that require a purchase to unlock but don't require a download because they are built into the game. They do not work for games that have discs, or may ever have discs.
- * 
  * 
  * @param {pointer} user_id The user ID to use in the store context.
  * 
@@ -359,7 +358,7 @@
  * @member {string} type The constant `"ms_iap_QueryAddOnLicenses_result"`
  * @member {real} id The asynchronous request ID.
  * @member {bool} status Whether or not the asynchronous request succeeded.
- * @member {array} result An array of ${struct.AddonLicenseDetails} structs.
+ * @member {array[struct.AddonLicenseDetails]} result An array of ${struct.AddonLicenseDetails} structs.
  * @event_end
  * 
  * @example
@@ -381,7 +380,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console if the result of the query; an array of ${struct.AddonLicenseDetails} structs.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console if the result of the query; an array of ${struct.AddonLicenseDetails} structs.
  * @function_end
  */
 
@@ -391,7 +390,7 @@
  * @desc Gets store listing information for the products that can be purchased from within the current game. This API will only return products that can be browsed within the store including any Add-on products that do not have a store page as long as they are not expired. Any product that is hidden, expired, or taken down from the store will not be returned in the results from this API. If you need store info from a hidden, expired, or taken down product use the ${function.ms_iap_QueryProducts} passing in the product's StoreID.
  * 
  * @param {pointer} user_id The user ID to use in the store context.
- * @param {constant.ProductKind} product_kinds The type of products to return. For more information read the [Product Kinds](#Product-Kinds) section.
+ * @param {constant.ProductKind} product_kinds The types of product to return. For more information read the ${constant.ProductKind} section.
  * 
  * @returns {real} (In-App Purchase Request ID)
  * 
@@ -400,7 +399,7 @@
  * @member {string} type The constant `"ms_iap_AcquireLicenseForDurables_result"`
  * @member {real} id The asynchronous request ID.
  * @member {bool} status Whether or not the asynchronous request succeeded.
- * @member {array} results An array of [Product Details](#Product-Details) structs.
+ * @member {array[struct.ProductDetails]} results An array of ProductDetails structs.
  * @event_end
  * 
  * @example
@@ -466,16 +465,16 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , providing a success message with the current available quantity given that the **status** value is true.
+ * The code above matches the response against the correct event **type** and **id**, providing a success message with the current available quantity given that the **status** value is true.
  * @function_end
  */
 
 /**
  * @function ms_iap_QueryEntitledProducts
- * @desc This function provides the store product information for all add-ons, dlc, and consumables related to the current game that the user has an entitlement to.
+ * @desc This function provides the store product information for all add-ons, DLC, and consumables related to the current game that the user has an entitlement to.
  * 
  * @param {pointer} user_id The user ID to use in the store context.
- * @param {constant.ProductKind} product_kinds The types of products to return. For more information read the [Product Kinds](#Product-Kinds) section.
+ * @param {constant.ProductKind} product_kinds The types of product to return.
  * 
  * @returns {real} (In-App Purchase Request ID)
  * 
@@ -484,7 +483,7 @@
  * @member {string} type The constant `"ms_iap_QueryEntitledProducts_result"`
  * @member {pointer} id The asynchronous request ID.
  * @member {bool} status Whether or not the asynchronous request succeeded.
- * @member {array} results An array of [Product Details](#Product-Details) structs.
+ * @member {array[struct.ProductDetails]} results An array of ProductDetails structs.
  * @event_end
  * 
  * @example
@@ -507,7 +506,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console the result of the query; an array of [Product Details](#Product-Details) structs.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console the result of the query; an array of ${struct.ProductDetails} structs.
  * @function_end
  */
 
@@ -540,7 +539,7 @@
  * 
  * requestId = ms_iap_QueryGameLicense(_userId);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user and we call the function with it. The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
+ * In the code above we first get the user ID (`_userId`) of the activating user and we call the function with it. The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
  * ```gml
  * if (async_load[? "type"] == "ms_iap_QueryGameLicense_result")
  * {
@@ -553,7 +552,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console the **skuStoreId** of the current game license.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console the **skuStoreId** of the current game license.
  * @function_end
  */
 
@@ -570,7 +569,7 @@
  * @member {string} type The constant `"ms_iap_QueryProductForCurrentGame_result"`
  * @member {real} id The asynchronous request ID.
  * @member {bool} status Whether or not the asynchronous request succeeded.
- * @member {array} results An array of [Product Details](#Product-Details) structs.
+ * @member {array[struct.ProductDetails]} results An array of ProductDetails structs.
  * @event_end
  * 
  * @example
@@ -592,7 +591,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console the result of the query; an array of [Product Details](#Product-Details) structs.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console the result of the query; an array of ${struct.ProductDetails} structs.
  * @function_end
  */
 
@@ -602,7 +601,7 @@
  * 
  * @param {pointer} user_id The user ID to use in the store context.
  * @param {string} store_id A string that uniquely identifies a store package.
- * @param {constant.ProductKind} product_kinds The type of products to find. For more information read the [Product Kinds](#Product-Kinds) section.
+ * @param {constant.ProductKind} product_kinds The types of product to find.
  * 
  * @returns {real} (In-App Purchase Request ID)
  * 
@@ -611,7 +610,7 @@
  * @member {string} type The constant `"ms_iap_QueryProductForPackage_result"`
  * @member {real} id The asynchronous request ID.
  * @member {bool} status Whether or not the asynchronous request succeeded.
- * @member {array} results An array of [Product Details](#Product-Details) structs.
+ * @member {array[struct.ProductDetails]} results An array of ProductDetails structs.
  * @event_end
  * 
  * @example
@@ -635,7 +634,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console the result of the query; an array of [Product Details](#Product-Details) structs.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console the result of the query; an array of ${struct.ProductDetails} structs.
  * @function_end
  */
 
@@ -644,9 +643,9 @@
  * @desc Returns listing information for the specified products that are associated with the current game, regardless of whether the products are currently available for purchase within the current game.
  * 
  * @param {pointer} user_id The user ID to use in the store context.
- * @param {constant.ProductKind} product_kinds The types of products to return. For more information read the [Product Kinds](#Product-Kinds) section.
- * @param {string} store_ids ]|Restricts the results to the given product IDs.
- * @param {string} action_filters ]|Restricts the results by some action stored in the product document. By default, this API returns all products, even if they are not purchasable, but you can restrict this to *"Purchase"* if you only want purchasable, or *"License"* if you only want licensable. Other action filters include *"Fulfill"* , *"Browse"* , *"Curate"* , *"Details"* , and *"Redeem"* .
+ * @param {constant.ProductKind} product_kinds The types of product to return.
+ * @param {array[string]} store_ids Restricts the results to the given product IDs.
+ * @param {array[string]} action_filters Restricts the results by some action stored in the product document. By default, this API returns all products, even if they are not purchasable, but you can restrict this to *"Purchase"* if you only want purchasable, or *"License"* if you only want licensable. Other action filters include *"Fulfill"* , *"Browse"* , *"Curate"* , *"Details"* , and *"Redeem"*.
  * 
  * @returns {real} (In-App Purchase Request ID)
  * 
@@ -655,7 +654,7 @@
  * @member {string} type The constant `"ms_iap_QueryProducts_result"`
  * @member {real} id The asynchronous request ID.
  * @member {bool} status Whether or not the asynchronous request succeeded.
- * @member {array} results An array of [Product Details](#Product-Details) structs.
+ * @member {array[struct.ProductDetails]} results An array of ProductDetails structs.
  * @event_end
  * 
  * @example
@@ -664,9 +663,9 @@
  * var _product_kinds = e_ms_iap_ProductKind_Consumable;
  * var _action_filter = ["Purchase"];
  * 
- * requestId = ms_iap_QueryProducts(_userId, _product_kinds, 0, _action_filter );
+ * requestId = ms_iap_QueryProducts(_userId, _product_kinds, 0, _action_filter);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user, afterwards we create a filter for consumable products (`_product_kinds`) and finally we call the function with all those arguments providing no store ID filter but selecting only products that are available for purchase. The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
+ * In the code above we first get the user ID (`_userId`) of the activating user, afterwards we create a filter for consumable products (`_product_kinds`) and finally we call the function with all those arguments, providing no store ID filter but selecting only products that are available for purchase. The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
  * ```gml
  * if (async_load[? "type"] == "ms_iap_QueryProducts_result")
  * {
@@ -679,13 +678,13 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console the result of the query; an array of [Product Details](#Product-Details) structs.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console the result of the query; an array of ${struct.ProductDetails} structs.
  * @function_end
  */
 
 /**
  * @function ms_iap_ReleaseLicenseForDurables
- * @desc This function will release a package license assigned to this console and it is intended to be be used with products of type **Durable** . For  **Durable <strong>with package** </strong> type, use ${function.ms_iap_ReleaseLicenseForPackage} instead.
+ * @desc This function will release a package license assigned to this console and it is intended to be be used with products of type **Durable**. For  **Durable with package** type, use ${function.ms_iap_ReleaseLicenseForPackage} instead.
  * 
  * @param {string} store_id The store ID of the product.
  * 
@@ -725,13 +724,13 @@
  *     show_debug_message("There was an error trying to release the license for the package!");
  * }
  * ```
- * In the code above first we get the package ID (`_packageId`) conveniently stored inside a global array and call the function with this value. The returned value (`_error`) is then checked to see if the function was successful or not.
+ * In the code above we first get the package ID (`_packageId`) conveniently stored inside a global array and call the function with this value. The returned value (`_error`) is then checked to see if the function was successful or not.
  * @function_end
  */
 
 /**
  * @function ms_iap_ReportConsumableFulfillment
- * @desc Consumes the specified quantity of a consumable. See [Consumable based ecosystems](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/commerce/fundamentals/xstore-consumable-based-ecosystems) for more information on implementing and using consumable products.
+ * @desc Consumes the specified quantity of a consumable. See [Consumable-based ecosystems](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/commerce/fundamentals/xstore-consumable-based-ecosystems) for more information on implementing and using consumable products.
  * 
  * @param {pointer} user_id The user ID to use in the store context.
  * @param {string} store_id The Store ID of the consumable add-on that you want to report as fulfilled.
@@ -758,7 +757,7 @@
  * 
  * requestId = ms_iap_ReportConsumableFulfillment(_userId, _storeId, 10, _trackingId);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user and we get the store ID (`_storeId`) of the product we want to report as consumed (note that for convenience we keep the products stored in a global variable) and finally we generate a tracking ID (`_trackingId`) required to perform the request. The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
+ * In the code above we first get the user ID (`_userId`) of the activating user and we get the store ID (`_storeId`) of the product we want to report as consumed (note that for convenience we keep the products stored in a global variable) and finally we generate a tracking ID (`_trackingId`) required to perform the request. The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
  * ```gml
  * if (async_load[? "type"] == "ms_iap_ReportConsumableFulfillment_result")
  * {
@@ -772,7 +771,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **async_id** , printing to the debug console the current consumed and available quantities; upon a successful task.
+ * The code above matches the response against the correct event **type** and **async_id** , printing to the debug console the current consumed and available quantities upon a successful task.
  * @function_end
  */
 
@@ -780,9 +779,9 @@
  * @function ms_iap_ShowAssociatedProductsUI
  * @desc This function will open up the Microsoft Store App and show the set of available add-ons associated with the game. This can be further filtered by product type.
  * 
- * {pointer} user_id The user ID to use in the store context.
- * {string} store_id The store ID of the product.
- * {constant.ProductKind} product_kinds The type of products to show. For more information read the [Product Kinds](#Product-Kinds) section.
+ * @param {pointer} user_id The user ID to use in the store context.
+ * @param {string} store_id The store ID of the product.
+ * @param {constant.ProductKind} product_kinds The types of product to show.
  * 
  * @example
  * ```gml
@@ -792,7 +791,7 @@
  * 
  * ms_iap_ShowAssociatedProductsUI(_userId, _storeId, _product_kinds);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user, we reference the store ID (`_storeId`) of current game (stored inside a global variable) and afterwards we create a filter for consumable products (`_product_kinds`) finally we call the function with all those arguments. The function call will show up the Microsoft Store App overlay with the associated consumable products.
+ * In the code above we first get the user ID (`_userId`) of the activating user, we reference the store ID (`_storeId`) of current game (stored inside a global variable) and afterwards we create a filter for consumable products (`_product_kinds`) finally we call the function with all those arguments. The function call will bring up the Microsoft Store App overlay with the associated consumable products.
  * @function_end
  */
 
@@ -810,7 +809,7 @@
  * 
  * ms_iap_ShowProductPageUI(_userId, _storeId);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user, we reference the store ID (`_storeId`) of product we want to check and finally we call the function with both arguments. The function call will show up the Microsoft Store App overlay directly on the **Product Details Page** (PDP) of the provided Product ID. 
+ * In the code above we first get the user ID (`_userId`) of the activating user, we reference the store ID (`_storeId`) of product we want to check and finally we call the function with both arguments. The function call will bring up the Microsoft Store App overlay directly on the **Product Details Page** (PDP) of the provided Product ID.
  * @function_end
  */
 
@@ -821,7 +820,7 @@
  * @param {pointer} user_id The user ID to use in the store context.
  * @param {string} store_id The store ID of the product.
  * @param {string} name Name of the product to purchase.
- * @param {string} json A JSON blob (JSON formatted string) that is handed to the purchase flow. Allows for insertion of custom campaign IDs, so you can track how the purchase started.
+ * @param {string} json A JSON blob (JSON-formatted string) that is handed to the purchase flow. Allows for insertion of custom campaign IDs, so you can track how the purchase started.
  * 
  * @example
  * ```gml
@@ -830,7 +829,7 @@
  * 
  * ms_iap_ShowPurchaseUI(_userId, _storeId, undefined, undefined);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user, we reference the store ID (`_storeId`) of product we want to purchase and finally we call the function with both arguments (providing no name/json, they are not demanding). The function call will show up the purchase UI overlay for the specified product.
+ * In the code above we first get the user ID (`_userId`) of the activating user, we reference the store ID (`_storeId`) of the product we want to purchase and finally we call the function with both arguments (providing no name/json, they are not demanding). The function call will bring up the purchase UI overlay for the specified product.
  * @function_end
  */
 
@@ -848,7 +847,7 @@
  * 
  * ms_iap_ShowRateAndReviewUI(_userId);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user and finally we call the function with it's value. The function call will show a system dialog pop up to allow the user to provide a review for the current game.
+ * In the code above we first get the user ID (`_userId`) of the activating user and finally we call the function with it's value. The function call will show a system dialog pop up to allow the user to provide a review for the current game.
  * @function_end
  */
 
@@ -857,9 +856,9 @@
  * @desc This function triggers a token redemption for a given user and specified token.
  * 
  * @param {pointer} user_id The user ID to use in the store context.
- * @param {string} token The token to redeem. This value cannot be undefined, if you want to bring up the UI without providing a code to pre-populate in the UI pass in a **single space** .
- * @param {string} allowed_store_ids ]|An array of product store IDs. This allows you to restrict the 5x5 codes to only work with specific products.
- * @param {bool} disallow_cvs_redemption Prevents CSV (giftcard/money style 5x5s) from being redeemed.
+ * @param {string} token The token to redeem. This value cannot be undefined, if you want to bring up the UI without providing a code to pre-populate in the UI pass in a **single space**.
+ * @param {array[string]} allowed_store_ids An array of product store IDs. This allows you to restrict the 5x5 codes to only work with specific products.
+ * @param {bool} disallow_cvs_redemption Prevents CVS (giftcard/money style 5x5s) from being redeemed.
  * 
  * @example
  * ```gml
@@ -868,7 +867,7 @@
  * 
  * ms_iap_ShowRateAndReviewUI(_userId, _token, undefined, false);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user and reference a token to be redeemed (`_token`), finally we call the function with those values, applying no restrictions whatsoever. The function call will triggers a token redemption for a given user and specified token.
+ * In the code above we first get the user ID (`_userId`) of the activating user and reference a token to be redeemed (`_token`), finally we call the function with those values, applying no restrictions whatsoever. The function call will trigger a token redemption for a given user and specified token.
  * @function_end
  */
 
@@ -876,7 +875,7 @@
  * @function ms_iap_UnmountPackage
  * @desc This function unmounts the installation of specified content.
  * 
- * @param {string} package_id A string that uniquely identifies the installed package on the disk. Pass in the **packageIdentifier** field from the [Package Details](#Package-Details) struct returned from the ${function.ms_iap_EnumeratePackages} async callback.|
+ * @param {string} package_id A string that uniquely identifies the installed package on the disk. Pass in the **packageIdentifier** field from the ${struct.PackageDetails} struct returned from the ${function.ms_iap_EnumeratePackages} async callback.
  * 
  * @returns {real} (In-App Purchase Request ID)
  * 
@@ -894,7 +893,7 @@
  * 
  * requestId = ms_iap_UnmountPackage(_package);
  * ```
- * In the code above first we get the user ID (`_userId`) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
+ * In the code above we first get the user ID (`_userId`) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (`requestId`) that can be used inside an ${event.iap}.
  * ```gml
  * if (async_load[? "type"] == "ms_iap_UnmountPackage_result")
  * {
@@ -905,15 +904,15 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console the current packages ID and a success message.
+ * The code above matches the response against the correct event **type** and **id**, printing to the debug console the current package ID and a success message.
  * @function_end
  */
 
 /**
  * @struct AddonLicenseDetails
- * @desc This struct is returned as an async result of the call to ${function.ms_iap_QueryAddOnLicenses} and it contains details about an add-on license.
+ * @desc This struct contains details about an add-on license.
  * 
- * The entity described above is a **struct** meaning it's properties can be accessed using the **dot** operator much like when accessing instance variables, for example:
+ * The entity described above is a **struct** meaning its properties can be accessed using the **dot** operator much like when accessing instance variables, for example:
  * ```gml
  * var _addonLicenseDetails = global.addonLicenses[0];
  * 
@@ -925,16 +924,16 @@
  * @member {string} skuStoreId The SKU ID for the license.
  * @member {bool} isActive Indicates if the license is active.
  * @member {real} expirationDate Expiration date of the license ( **-1** , if the license doesn't expire)
- * @member {string} inAppOfferToken The title defined offer token that you can use to map items internally. For example: *"com.company.product.itemname"*.
+ * @member {string} inAppOfferToken The title-defined offer token that you can use to map items internally. For example: *"com.company.product.itemname"*.
  * 
  * @struct_end
  */
 
 /**
  * @struct PackageDetails
- * @desc This struct is returned as an async result of the call to ${function.ms_iap_EnumeratePackages} and it contains details about an installation.
+ * @desc This struct contains details about an installation.
  * 
- * The entity described above is a **struct** meaning it's properties can be accessed using the **dot** operator much like when accessing instance variables, for example:
+ * The entity described above is a **struct** meaning its properties can be accessed using the **dot** operator much like when accessing instance variables, for example:
  * ```gml
  * var _packageDetails = global.packageDetails[0];
  * 
@@ -945,7 +944,7 @@
  * 
  * @member {string} packageIdentifier A string that uniquely identifies the installed package on the disk.
  * @member {string} version A store managed consumable product.
- * @member {constant.PackageKind} kind The value that indicates whether the package is an app package or a content package (see [Package Kinds](#Package-Kinds))
+ * @member {constant.PackageKind} kind The value that indicates whether the package is an app package or a content package
  * @member {string} displayName The display name.
  * @member {string} description The description of the package.
  * @member {string} publisher The publisher of the package.
@@ -992,7 +991,7 @@
  * @struct Image
  * @desc Image details inside the product struct use their own array of **structs** with data, following the schema below:
  * 
- * The entity described above is a **struct** meaning it's properties can be accessed using the **dot** operator much like when accessing instance variables, for example:
+ * The entity described above is a **struct** meaning its properties can be accessed using the **dot** operator much like when accessing instance variables, for example:
  * ```gml
  * var _productDetails = global.productDetails[0];
  * 
@@ -1029,20 +1028,20 @@
 
 /**
  * @constant ProductKind
- * @desc Product kinds indicates the product type. They are used as a filter for many IAP queries to acquire information about products of a certain type. It is also a member of the [Product Details](#Product-Details) struct which describes a store product. The product kind is represented as a flagged constant meaning it can be combined using the **bit-wise or operator** to represent multiple types of product at once.
+ * @desc Product kinds indicate the product type. They are used as a filter for many IAP queries to acquire information about products of a certain type. It is also a member of the ${struct.ProductDetails} struct which describes a store product. The product kind is represented as a flagged constant meaning it can be combined using the **bit-wise or operator** to represent multiple types of product at once.
  * 
- * As explained above the product kinds can be combined using the **<strong>bit-wise** or operator</strong> following the example below:
+ * As explained above the product kinds can be combined using the **bit-wise** or operator following the example below:
  * ```gml
  * var _consumableAndDurableType = e_ms_iap_ProductKind_Consumable | e_ms_iap_ProductKind_Durable;
  * ```
  * The code above will make it so the `_consumableAndDurableType` variable will filter both consumables and durables.
  * 
  * @member e_ms_iap_ProductKind_None Not a product type.
- * @member e_ms_iap_ProductKind_Consumable A store managed consumable product.
+ * @member e_ms_iap_ProductKind_Consumable A store-managed consumable product.
  * @member e_ms_iap_ProductKind_Durable Durable product.
  * @member e_ms_iap_ProductKind_Game A game.
  * @member e_ms_iap_ProductKind_Pass A pass.
- * @member e_ms_iap_ProductKind_UnmanagedConsumable A game managed consumable product, also known as an unmanaged consumable.
+ * @member e_ms_iap_ProductKind_UnmanagedConsumable A game-managed consumable product, also known as an unmanaged consumable.
  * 
  * @constant_end
  */

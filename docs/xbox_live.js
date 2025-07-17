@@ -4,18 +4,18 @@
  * @title Xbox Live Module
  * @desc The GDK extension allows your Microsoft Store game to use all features from the Xbox Live services including stats, leaderboards, achievements and rich presence. This module contains all the functions that are available to handle Xbox Live services.
  * 
- * Xbox Live services can either be **Event-Based** or **Title-Managed**  **and this choice is made on the Partner Center** (check the [help article on the Partner Center](https://gamemaker.zendesk.com/hc/en-us/articles/4411044955793-Microsoft-Partner-Center-Guide-for-Windows-Store-Xbox-Developers) for more information). The functions below are grouped according these two systems.
+ * Xbox Live services can either be **Event-Based** or **Title-Managed**  **and this choice is made on the Partner Center** (check the [help article on the Partner Center](https://gamemaker.zendesk.com/hc/en-us/articles/4411044955793-Microsoft-Partner-Center-Guide-for-Windows-Store-Xbox-Developers) for more information). The functions below are grouped according to these two systems.
  * 
- * @section Event-Based Functions
+ * @section_func Event-Based Functions
  * @desc [[Warning: IMPORTANT Using the Event-Based system requires some additional configuration detailed under [Manifest File] guide.
- * The following functions are provided for event based stats/leaderboards/achievements (Microsoft recommends using these for **stats** and **leaderboards** but not **achievements** ):
+ * The following functions are provided for event based stats/leaderboards/achievements (Microsoft recommends using these for **stats** and **leaderboards** but not **achievements**):
  * @ref xboxone_stats_setup
  * @ref xboxone_check_privilege
  * @ref xboxone_fire_event
  * @ref xboxone_read_player_leaderboard
  * @section_end
  * 
- * @section Title-Managed Functions
+ * @section_func Title-Managed Functions
  * @desc The following functions are provided for title-managed stats/leaderboards/achievements (Microsoft recommends using these for **achievements**):
  * @ref xboxone_stats_add_user
  * @ref xboxone_stats_remove_user
@@ -32,7 +32,7 @@
  * @ref xboxone_get_achievement
  * @section_end
  * 
- * @section General Functions
+ * @section_func General Functions
  * @desc The following functions can be used regardless of whether Event-Based or Title-Managed services are used:
  * @ref xboxone_set_rich_presence
  * @ref xboxone_gamertag_for_user
@@ -72,19 +72,18 @@
  * ```gml
  * requestId = xboxone_achievements_set_progress(user_id, "KilledFirstBoss", 100);
  * ```
- * In the code above we setting the `"KilledFirstBoss"` achievement as 100% complete, tshe function call will then return a request ID (`requestId`) that can be used inside an ${event.system} event. 
+ * In the code above we're setting the `"KilledFirstBoss"` achievement as 100% complete, the function call will then return a request ID (`requestId`) that can be used inside an ${event.system} event. 
  * ```gml
  * if (async_load[? "event_type"] == "achievement_result")
- *   {
+ * {
  *     if (async_load[? "requestID"] == requestId)
- *       {
+ *     {
  *         if (async_load[? "error"] >= 0)
  *         {
  *             show_debug_message("Request succeeded");
  *         }
- *       }
+ *     }
  * }
- * 
  * ```
  * The code above matches the response against the correct **event_type** and **requestID** , and prints a debug message if the request was successful.
  * @function_end
@@ -126,16 +125,16 @@
  * In the code above we're setting the `"KilledFirstBoss"` achievement as 100% complete, the function call will then return a request ID (`requestId`) that can be used inside an ${event.system} event. 
  * ```gml
  * if (async_load[? "event_type"] == "achievement info")
- *   {
+ * {
  *     if (async_load[? "requestID"] == requestId)
- *       {
+ *     {
  *         if (async_load[? "error"] >= 0)
  *         {
  *             show_debug_message("Request succeeded");
  *             if (async_load[? "progress_state"] == 3) show_debug_message("We are almost there: " + string(async_load[? "progress"]));
  *             else if (async_load[? "progress_state"] == 1) show_debug_message("We did it!!");
  *         }
- *       }
+ *     }
  * }
  * ```
  * The code above matches the response against the correct **event_type** and **requestID** , and prints a debug message if the request was successful.
@@ -159,7 +158,7 @@
  * @example
  * ```gml
  * var user_one = xboxone_get_activating_user();
- *   xboxone_check_privilege(user_one, xboxone_privilege_multiplayer_sessions, true);
+ * xboxone_check_privilege(user_one, xboxone_privilege_multiplayer_sessions, true);
  * ```
  * In the code above we are getting the ID of the user that launched the game (using the function ${function.xboxone_get_activating_user)) and checking if they have privilege for multiplayer sessions and requesting for attempting resolution.
  * @function_end
@@ -220,15 +219,15 @@
  * We can catch the triggered callback using the ${event.social} event.
  * ```gml
  * if (async_load[? "id"] == achievement_leaderboard_info)
- *   {
+ * {
  *     global.numentries = async_load[? "numentries"];
- *       for (var i = 0; i < numentries; i++)
- *         {
- *             global.playername[i] = async_load[? "Player" + string(i)];
- *               global.playerid[i] = async_load[? "Playerid" + string(i)];
- *                 global.playerrank[i] = async_load[? "Rank" + string(i)];
- *                   global.playerscore[i] = async_load[? "Score" + string(i)];
- *       }
+ *     for (var i = 0; i < numentries; i++)
+ *     {
+ *         global.playername[i] = async_load[? "Player" + string(i)];
+ *         global.playerid[i] = async_load[? "Playerid" + string(i)];
+ *         global.playerrank[i] = async_load[? "Rank" + string(i)];
+ *         global.playerscore[i] = async_load[? "Score" + string(i)];
+ *     }
  * }
  * ```
  * The code above matches the response against the correct **id** and stores the information of the top player names, ids, ranks and scores in global arrays.
@@ -247,7 +246,7 @@
  * @param {pointer} user_id The user ID pointer
  * @param {boolean} is_user_active Flag the user as active or not
  * @param {string} rich_presence_id The rich present ID (defined in the Partner Center)
- * @param {string} scid :eight_pointed_black_star: OPTIONAL The Service Configuration ID string
+ * @param {string} [scid] :eight_pointed_black_star: OPTIONAL The Service Configuration ID string
  * 
  * @example
  * ```gml
@@ -295,7 +294,7 @@
  */
 
 /**
- * @function xbox_stats_add_user
+ * @function xboxone_stats_add_user
  * @desc This function can be used to add the given user to the statistics manager. This must be done before using any of the other stats functions to automatically sync the game with the Xbox Live server and retrieve the latest values. You supply the `user_id` as returned by the function ${function.xboxone_get_user}, and the function will return -1 if there was an error or the `user_id` is invalid, or an async request ID if the function was successfully called.
  * 
  * @param {pointer} user_id The user ID pointer
@@ -313,12 +312,12 @@
  * @example
  * ```gml
  * for(var i = 0; i < xboxone_get_user_count(); i++)
- *   {
- *       user_id[i] = xboxone_get_user(i);
- *         xboxone_stats_add_user(user_id[i]);
- *   }
+ * {
+ *     user_id[i] = xboxone_get_user(i);
+ *     xboxone_stats_add_user(user_id[i]);
+ * }
  * ```
- * In the code above we are looping though all the available users (using the function ${function.xboxone_get_user_count}) getting their user id (using the ${function.xboxone_get_user} function) and adding them to the statistics manager.
+ * In the code above we are looping through all the available users (using the function ${function.xboxone_get_user_count}) getting their user id (using the ${function.xboxone_get_user} function) and adding them to the statistics manager.
  * We can catch the triggered callbacks using the ${event.social} event.
  * 
  * ```gml
@@ -336,7 +335,7 @@
 
 /**
  * @function xboxone_stats_delete_stat
- * @desc This function can be used to delete a stat from the stat manager for the given user ID. You supply the user ID as returned by the function ${function.xboxone_get_user}, then the stat string to delete. This clears the stat value and removed it from the stat manager, meaning it will no longer be returned by the functions ${function.xboxone_stats_get_stat_names} and ${function.xboxone_stats_get_stat}.
+ * @desc This function can be used to delete a stat from the stat manager for the given user ID. You supply the user ID as returned by the function ${function.xboxone_get_user}, then the stat string to delete. This clears the stat value and removes it from the stat manager, meaning it will no longer be returned by the functions ${function.xboxone_stats_get_stat_names} and ${function.xboxone_stats_get_stat}.
  * 
  * @param {pointer} user_id The user ID pointer.
  * @param {string} stat_name The stat to be deleted.
@@ -346,17 +345,17 @@
  * @example
  * ```gml
  * for (var i = 0; i < xboxone_get_user_count(); i++)
- *     {
- *         user_id[i] = xboxone_get_user(i);
- *         xboxone_stats_delete_stat(user_id[i], "highScore");
- *     }
+ * {
+ *     user_id[i] = xboxone_get_user(i);
+ *     xboxone_stats_delete_stat(user_id[i], "highScore");
+ * }
  * ```
  * In the code above we are looping though all the available users (using the function ${function.xboxone_get_user_count}) getting their user id (using the ${function.xboxone_get_user} function) and deleting the stat `highScore` from each one of them.
  * @function_end
  */
 
 /**
- * @function xbox_stats_flush_user
+ * @function xboxone_stats_flush_user
  * @desc This function can be used to flush the stats data for the given user from the statistics manager to the live server, ensuring that the server is up to date with the current values.  To use the function, you supply the `user_id` as returned by the function ${function.xboxone_get_user}, and then give a priority value (0 for low priority and 1 for high priority). The function will will return -1 if there was an error or the user ID was invalid, or an async request ID if the function was successfully called.
  * 
  * [[Warning: IMPORTANT According to Xbox documentation, developers should be careful not to call this too often as the Xbox system will rate-limit the requests, and the GDK Extension will also automatically flush stats approximately every 5 minutes.]]
@@ -377,9 +376,9 @@
  * @example
  * ```gml
  * for(var i = 0; i < array_length(user_ids); i++)
- *   {
- *         xboxone_stats_flush_user(user_ids[i]);
- *   }
+ * {
+ *     xboxone_stats_flush_user(user_ids[i]);
+ * }
  * ```
  * In the code above we are looping though an array of user ids (`user_ids`) and flushing their local data to the live server.
  * We can catch the triggered callbacks using the ${event.social}. 
@@ -408,7 +407,7 @@
  * @param {pointer} user_id The user ID pointer.
  * @param {string} stat The stat to create the global leaderboard from.
  * @param {real} num_entries The number of entries from the leaderboard to retrieve.
- * @param {real} start_rank The rank in the leaderboard to start from (set to `0` if `start_at_user` is set to true.
+ * @param {real} start_rank The rank in the leaderboard to start from (set to `0` if `start_at_user` is set to true).
  * @param {boolean} start_at_user Set to `true` to start at the user ID.
  * @param {boolean} ascending Set to `true` or ascending or `false` for descending order.
  * 
@@ -431,24 +430,24 @@
  * xboxone_stats_get_leaderboard(user_id, "GlobalTime", 20, 1, false, true);
  * ```
  * In the code above we are querying a leaderboard for the stat `"GlobalTime"` with the first 20 entries starting on rank 1 in ascending order.
- * We can catch the triggered callback using the the ${event.social} event. 
+ * We can catch the triggered callback using the ${event.social} event. 
  * ```gml
  * if (async_load[? "id"] == achievement_leaderboard_info)
- *   {
+ * {
  *     if (async_load[? "event"] == "GetLeaderboardComplete")
- *       {
+ *     {
  *         global.numentries = async_load[? "numentries"];
- *           for (var i = 0; i < numentries; i++)
- *             {
- *                 global.playername[i] = async_load[? "Player" + string(i)];
- *                   global.playerid[i] = async_load[? "Playerid" + string(i)];
- *                     global.playerrank[i] = async_load[? "Rank" + string(i)];
- *                       global.playerscore[i] = async_load[? "Score" + string(i)];
- *             }
- *       }
+ *         for (var i = 0; i < numentries; i++)
+ *         {
+ *             global.playername[i] = async_load[? "Player" + string(i)];
+ *             global.playerid[i] = async_load[? "Playerid" + string(i)];
+ *             global.playerrank[i] = async_load[? "Rank" + string(i)];
+ *             global.playerscore[i] = async_load[? "Score" + string(i)];
+ *         }
+ *     }
  * }
  * ```
- * The code above matches the response against the correct **id** and **event** , and stores the information of the top player names, ids, ranks and scores in global arrays.
+ * The code above matches the response against the correct **id** and **event** and stores the information of the top player names, ids, ranks and scores in global arrays.
  * @function_end
  */
 
@@ -458,7 +457,7 @@
  * 
  * Note that you can only retrieve a social leaderboard for int or real stats, but not for string stats, and that if you flag the `favourites_only` argument as `true`, then the results will only contain data for those friends that are marked by the user as "favorites".
  * 
- * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.
+ * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.]]
  * 
  * [[Tip: Stats used in social leaderboards do not need to be registered as "Featured Stats" in the Partner Center.]]
  * 
@@ -489,30 +488,31 @@
  * xboxone_stats_get_social_leaderboard(user_id, "GlobalTime", 20, 1, false, true, true);
  * ```
  * In the code above we are querying a leaderboard for the stat `"GlobalTime"` with the first 20 entries starting on rank 1 in ascending order, selecting only friends marked as favourites.
- * We can catch the triggered callback using the the ${event.social}.
+ * We can catch the triggered callback using the ${event.social}.
  * ```gml
  * if (async_load[? "id"] == achievement_leaderboard_info)
- *   {
+ * {
  *     if (async_load[? "event"] == "GetLeaderboardComplete")
- *       {
+ *     {
  *         global.numentries = async_load[? "numentries"];
- *           for (var i = 0; i < numentries; i++)
- *             {
- *                 global.playername[i] = async_load[? "Player" + string(i)];
- *                   global.playerid[i] = async_load[? "Playerid" + string(i)];
- *                     global.playerrank[i] = async_load[? "Rank" + string(i)];
- *                       global.playerscore[i] = async_load[? "Score" + string(i)];
- *             }
- *       }
+ *         for (var i = 0; i < numentries; i++)
+ *         {
+ *             global.playername[i] = async_load[? "Player" + string(i)];
+ *             global.playerid[i] = async_load[? "Playerid" + string(i)];
+ *             global.playerrank[i] = async_load[? "Rank" + string(i)];
+ *             global.playerscore[i] = async_load[? "Score" + string(i)];
+ *         }
+ *     }
  * }
  * ```
+ * The code above matches the response against the correct id and event and store the information of the top favourite friends player names, ids, ranks and scores in global arrays.
  * @function_end
  */
 
 
 /**
  * @function xboxone_stats_get_stat
- * @desc This function can be used to retrieve a single stat value from the stat manager for the given user. You supply the `user_id` as returned by the function ${function.xboxone_get_user}, and then the `stat_name` as defined when you created it using the one of the `xboxone_stats_set_stat_*` functions. The return value can be either a string or a real (depending on the stat being checked) or the GML constant `undefined` if the stat does not exist or there has been an error.
+ * @desc This function can be used to retrieve a single stat value from the stat manager for the given user. You supply the `user_id` as returned by the function ${function.xboxone_get_user}, and then the `stat_name` as defined when you created it using one of the `xboxone_stats_set_stat_*` functions. The return value can be either a string or a real (depending on the stat being checked) or the GML constant `undefined` if the stat does not exist or there has been an error.
  * 
  * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.
  * 
@@ -524,13 +524,13 @@
  * @example
  * ```gml
  * if (game_over == true)
+ * {
+ *     if (xboxone_stats_get_stat(user_id, "PercentDone") < 100)
  *     {
- *         if (xboxone_stats_get_stat(user_id, "PercentDone") < 100)
- *         {
- *             var _val = (global.LevelsFinished / global.LevelsTotal)*100;
- *             xboxone_stats_set_stat_real(user_id, "PercentDone", _val);
- *         }
+ *         var _val = (global.LevelsFinished / global.LevelsTotal)*100;
+ *         xboxone_stats_set_stat_real(user_id, "PercentDone", _val);
  *     }
+ * }
  * ```
  * In the code above we are checking if the given user complete percentage (`"PercentDone"`) is less then 100 and if so updated it to a new value (using the ${function.xboxone_stats_set_stat_real} function).
  * @function_end
@@ -544,7 +544,7 @@
  * 
  * @param {pointer} user_id The user ID pointer.
  * 
- * @returns {array} (Array with all the stat names, strings)
+ * @returns {array[string]} Array with all the stat names
  * 
  * @example
  * ```gml
@@ -554,7 +554,7 @@
  *     xboxone_stats_delete_stat(user_id, _stats[i]);
  * }
  * ```
- * In the code above we are getting an array of stat names (`_stats`) for a given user and looping though it deleting each stat (using the ${function.xboxone_stats_delete_stat} function).
+ * In the code above we are getting an array of stat names (`_stats`) for a given user and looping through it deleting each stat (using the ${function.xboxone_stats_delete_stat} function).
  * @function_end
  */
 
@@ -562,7 +562,7 @@
  * @function xboxone_stats_remove_user
  * @desc This function can be used to remove (unregister) the given user from the statistics manager, performing a flush of the stat data to the live server. According to the Xbox documentation the game does not have to remove the user from the stats manager, as the GDK Extension will periodically flush the stats anyway.
  * 
- * To use the function, you supply the `user_id` as returned by the function ${function.xboxone_get_user}, and the function will will return -1 if there was an error or the user ID was invalid, or any other value if the function was successfully called.
+ * To use the function, you supply the `user_id` as returned by the function ${function.xboxone_get_user}, and the function will return -1 if there was an error or the user ID was invalid, or any other value if the function was successfully called.
  * 
  * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.
  * 
@@ -589,7 +589,7 @@
  *     xboxone_stats_remove_user(user_ids[i]);
  * }
  * ```
- * In the code above we are looping though an array of user ids (`user_ids`) and removing them from the statistics manager.
+ * In the code above we are looping through an array of user ids (`user_ids`) and removing them from the statistics manager.
  * We can catch the triggered callbacks using the ${event.social}. 
  * ```gml
  * if (async_load[? "event"] == "LocalUserRemoved")
@@ -608,9 +608,9 @@
  * @function xboxone_stats_set_stat_int
  * @desc This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function ${function.xboxone_get_user}, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (an **integer** ) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.
  * 
- * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.
+ * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.]]
  * 
- * [[Tip: When setting a stat value, any previous values will be overwritten, therefore it is up to you to determine if the stat value should be updated or not (ie. check that the high score is actually the highest) by comparing to the current stat value with the new one before setting it.]]
+ * [[Tip: When setting a stat value, any previous values will be overwritten, therefore it is up to you to determine if the stat value should be updated or not (i.e. check that the high score is actually the highest) by comparing to the current stat value with the new one before setting it.]]
  * 
  * @param {pointer} user_id The user ID pointer.
  * @param {string} stat_name The statistic to set.
@@ -629,11 +629,11 @@
 
 /**
  * @function xboxone_stats_set_stat_real
- * @desc This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function ${function.xboxone_get_user}, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a **real** ) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.
+ * @desc This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function ${function.xboxone_get_user}, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a **real**) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.
  * 
  * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.]]
  * 
- * [[Tip: When setting the stat value, any previous values will be overwritten, therefore it is up to you to determine if the stat value should be updated or not (ie. check that the high score is actually the highest) by comparing to the current stat value with the new one before setting it.]]
+ * [[Tip: When setting the stat value, any previous values will be overwritten, therefore it is up to you to determine if the stat value should be updated or not (i.e. check that the high score is actually the highest) by comparing to the current stat value with the new one before setting it.]]
  * 
  * @param {pointer} user_id The user ID pointer.
  * @param {string} stat_name The statistic to set.
@@ -644,7 +644,7 @@
  * @example
  * ```gml
  * var _bestTime = 123.45;
- *   xboxone_stats_set_stat_real(users_ids[0], "BestTime", _bestTime);
+ * xboxone_stats_set_stat_real(users_ids[0], "BestTime", _bestTime);
  * ```
  * In the code above we are setting the stat `"BestTime"` of the selected user (`user_ids[0]`) to a new value, overwriting any previous recorded value.
  * @function_end
@@ -652,11 +652,12 @@
 
 /**
  * @function xboxone_stats_set_stat_string
- * @desc This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function [xboxone_get_user](Base-Module#xboxone_get_user), then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a **string** ) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.
+ * @desc This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function [xboxone_get_user](Base-Module#xboxone_get_user), then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a **string**) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.
  * 
  * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.]]
  * 
  * [[Tip: When setting the stat value, any previous values will be overwritten, therefore it is up to you to determine if the stat value should be updated or not (i.e. check that the high score is actually the highest) by comparing to the current stat value with the new one before setting it.]]
+ * 
  * @param {pointer} user_id The user ID pointer.
  * @param {string} stat_name The statistic to set.
  * @param {string} stat_value The value to set the stat to.
