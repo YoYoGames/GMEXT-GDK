@@ -36,6 +36,11 @@
  * @desc The following functions can be used regardless of whether Event-Based or Title-Managed services are used:
  * @ref xboxone_set_rich_presence
  * @ref xboxone_gamertag_for_user
+ * @ref xboxone_unique_modern_gamertag_for_user
+ * @ref xboxone_modern_gamertag_suffix_for_user
+ * @ref xboxone_modern_gamertag_for_user
+ * @section_end
+ * 
  * @section_const Constants
  * @desc 
  * @ref xboxone_achievement_filter
@@ -273,12 +278,78 @@
  * 
  * @returns {string}
  * 
+ * @version 3.0.1 (-) Function deprecated
+ * 
  * @example
  * ```gml
- * var userId = xboxone_get_activating_user();
- * var gamertag = xboxone_gamertag_for_user(userId);
+ * var _user = xboxone_get_activating_user();
+ * var _tag = xboxone_gamertag_for_user(_user);
+ * show_debug_message(_tag);
  * ```
  * In the code above we are getting the active user (using the function ${function.xboxone_get_activating_user}) and getting its current gamertag.
+ * @function_end
+ */
+
+/**
+ * @function xboxone_unique_modern_gamertag_for_user
+ * @desc This function returns the [modern gamertag](https://learn.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview) (including the suffix) of a locally signed in user or a player in the current game session. If the player does not have a modern gamertag, the classic gamertag is returned instead.
+ * 
+ * [[Note: For more information on gamer tags, please see the Microsoft's [Modern Gamertag](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview) documentation.]]
+ * 
+ * @param {int64} user_id The user unique ID
+ * 
+ * @returns {string}
+ * 
+ * @version 3.0.1 (+) Function added
+ * 
+ * @example
+ * ```gml
+ * var _user = xboxone_get_activating_user();
+ * var _tag = xboxone_unique_modern_gamertag_for_user(_user);
+ * show_debug_message(_tag);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function xboxone_modern_gamertag_suffix_for_user
+ * @desc This function returns the modern gamertag suffix of a locally signed in user or a player in the current game session (e.g. `"#1234"`). If the player does not have a modern gamertag or the modern gamertag does not include a suffix, an empty string is returned.
+ * 
+ * [[Note: For more information on gamer tags, please see the Microsoft's [Modern Gamertag](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview) documentation.]]
+ * 
+ * @param {int64} user_id The user unique ID
+ * 
+ * @returns {string}
+ * 
+ * @version 3.0.1 (+) Function added
+ * 
+ * @example
+ * ```gml
+ * var _user = xboxone_get_activating_user();
+ * var _tag = xboxone_modern_gamertag_suffix_for_user(_user);
+ * show_debug_message(_tag);
+ * ```
+ * @function_end
+ */
+
+/**
+ * @function xboxone_modern_gamertag_for_user
+ * @desc This function returns the modern gamertag (excluding suffix) of a locally signed in user or a player in the current game session.
+ * 
+ * [[Note: For more information on gamer tags, please see the Microsoft's [Modern Gamertag](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview) documentation.]]
+ * 
+ * @param {int64} user_id The user unique ID
+ * 
+ * @returns {string}
+ * 
+ * @version 3.0.1 (+) Function added
+ * 
+ * @example
+ * ```gml
+ * var _user = xboxone_get_activating_user();
+ * var _tag = xboxone_modern_gamertag_for_user(_user);
+ * show_debug_message(_tag);
+ * ```
  * @function_end
  */
 
