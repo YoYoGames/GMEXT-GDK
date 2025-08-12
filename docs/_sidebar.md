@@ -2,7 +2,7 @@
 * ### Guides
   * ${page.building_guide}
   * ${page.gdk_extension_guides}
-  * [Shell Localisation Guide]()
+  * [Shell Localisation Guide](GDK-Extension-Guides#shell-localization-guide)
 * ### ${module.api}
   * ${module.base}
   * ${module.storage}
