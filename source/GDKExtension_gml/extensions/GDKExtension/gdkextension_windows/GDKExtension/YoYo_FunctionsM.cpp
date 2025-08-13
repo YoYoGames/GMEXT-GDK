@@ -847,9 +847,34 @@ void F_XboxOneAppDisplayNameForUser(RValue& Result, CInstance* selfinst, CInstan
 }
 
 YYEXPORT
-void F_XboxOneGamerTagForUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+void F_XboxOneUniqueModernGamerTagForUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
-	if (!g_gdk_initialised) YYError("xboxone_gamertag_for_user :: GDK Extension was not initialized!");
+	if (!g_gdk_initialised) YYError("xboxone_unique_modern_gamertag_for_user :: GDK Extension was not initialized!");
+
+	int numusers = 0;
+	XUMuser** users = XUM::GetUsers(numusers);
+
+	uint64 id = (uint64)YYGetInt64(arg, 0);
+
+	for (int i = 0; i < numusers; i++)
+	{
+		XUMuser* user = users[i];
+
+		if (user->XboxUserIdInt == id)
+		{
+			YYCreateString(&Result, user->UniqueModernGamertag);
+			return;
+		}
+	}
+
+	YYCreateString(&Result, "");
+	DebugConsoleOutput("xboxone_unique_modern_gamertag_for_user() - user not found", false);
+}
+
+YYEXPORT
+void F_XboxOneModernGamerTagForUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+{
+	if (!g_gdk_initialised) YYError("xboxone_modern_gamertag_for_user :: GDK Extension was not initialized!");
 
 	int numusers = 0;
 	XUMuser** users = XUM::GetUsers(numusers);
@@ -868,7 +893,32 @@ void F_XboxOneGamerTagForUser(RValue& Result, CInstance* selfinst, CInstance* ot
 	}
 
 	YYCreateString(&Result, "");
-	DebugConsoleOutput("xboxone_gamertag_for_user() - user not found", false);
+	DebugConsoleOutput("xboxone_modern_gamertag_for_user() - user not found", false);
+}
+
+YYEXPORT
+void F_XboxOneModernGamerTagSuffixForUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+{
+	if (!g_gdk_initialised) YYError("xboxone_modern_gamertag_suffix_for_user :: GDK Extension was not initialized!");
+
+	int numusers = 0;
+	XUMuser** users = XUM::GetUsers(numusers);
+
+	uint64 id = (uint64)YYGetInt64(arg, 0);
+
+	for (int i = 0; i < numusers; i++)
+	{
+		XUMuser* user = users[i];
+
+		if (user->XboxUserIdInt == id)
+		{
+			YYCreateString(&Result, user->GamertagSuffix);
+			return;
+		}
+	}
+
+	YYCreateString(&Result, "");
+	DebugConsoleOutput("xboxone_modern_gamertag_suffix_for_user() - user not found", false);
 }
 
 YYEXPORT
