@@ -28,7 +28,7 @@
  * The `offset` defines the starting position within the buffer for loading (in bytes), and the `size` is the size of the buffer area to be loaded from that offset onwards (also in bytes). You can supply a value of -1 for the `size` argument and the entire buffer will be loaded.
  * Note that the function will load from a "default" folder, which does not need to be included as part of the file path you provide. This folder will be created if it doesn't exist when you save a file using ${function.gdk_save_buffer}.
  * 
- * [[Warning: IMPORTANT Before using this function it's required to set the workspace for storage operations using the function ${function.xboxone_set_savedata_user}.]]
+ * [[Important: Before using this function it's required to set the workspace for storage operations using the function ${function.xboxone_set_savedata_user}.]]
  * 
  * @param {real} buffer_idx The index of the buffer to load data into
  * @param {string} filename The name of the file to load
@@ -42,12 +42,12 @@
  * @member {real} error 0 if successful, some other value if there has been an error (error code)
  * @member {real} status 1 if successful, 0 if failed
  * @member {real} file_size The total size of the file being loaded
- * @member {real} load_size The amount of bytes loaded into the buffer
+ * @member {real} load_size The number of bytes loaded into the buffer
  * @event_end
  * 
  * @example
  * ```gml
- * requestId = gdk_load_buffer(buff, "Player_Save.sav", 0, 16384);
+ * requestId = gdk_load_buffer(buff, "player_save.sav", 0, 16384);
  * ```
  * In the code above we load a file into a buffer (`buff`). The function call will then return a request ID (`requestId`) that can be used inside an ${event.save_load} event.
  * ```gml
@@ -71,7 +71,7 @@
  * @function gdk_save_buffer
  * @desc With this function you can save a buffer (or a part of it) to a file, ready to be read back into memory using the ${function.gdk_load_buffer} function. The `offset` defines the start position within the buffer to start saving from (in bytes), and the `size` is the size of the buffer area to be saved from that offset onwards (also in bytes).
  * 
- * [[Warning: IMPORTANT Before using this function it's required to set the workspace for storage operations using the function ${function.xboxone_set_savedata_user}.
+ * [[Important: Before using this function it's required to set the workspace for storage operations using the function ${function.xboxone_set_savedata_user}.
  * 
  * @param {real} buffer_idx The index of the buffer to save
  * @param {string} filename The place where to save the buffer to (path + filename + extension)
@@ -88,23 +88,23 @@
  * 
  * @example
  * ```gml
- * requestId = gdk_save_buffer(buff, "Player_Save.sav", 0, 16384);
+ * requestId = gdk_save_buffer(buff, "player_save.sav", 0, 16384);
  * ```
  * In the code above we save a buffer (`buff`) into a file. The function call will then return a request ID (`requestId`) that can be used inside an ${event.save_load} event.
  * ```gml
  * if (async_load[? "id"] == requestId)
- *   {
- *       if (async_load[? "status"] == false)
- *       {
- *           show_debug_message("Save failed!");
- *       }
- *       else
- *       {
- *           show_debug_message("Save succeeded!");
- *       }
- *   }
+ * {
+ *     if (async_load[? "status"] == false)
+ *     {
+ *         show_debug_message("Save failed!");
+ *     }
+ *     else
+ *     {
+ *         show_debug_message("Save succeeded!");
+ *     }
+ * }
  * ```
- * The code above matches the response against the correct request **id** , providing a success message if **status** is true.
+ * The code above matches the response against the correct request **id**, providing a success message if **status** is true.
  * @function_end
  */
 
@@ -117,10 +117,10 @@
  * @example
  * ```gml
  * gdk_save_group_begin("SaveGame");
- * save1 = gdk_save_buffer(buff1, "Player_Save1.sav", 0, 16384);
- * save2 = gdk_save_buffer(buff2, "Player_Save2.sav", 0, 16384);
- * save3 = gdk_save_buffer(buff3, "Player_Save3.sav", 0, 16384);
- * save4 = gdk_save_buffer(buff4, "Player_Save4.sav", 0, 16384);
+ * save1 = gdk_save_buffer(buff1, "player_save1.sav", 0, 16384);
+ * save2 = gdk_save_buffer(buff2, "player_save2.sav", 0, 16384);
+ * save3 = gdk_save_buffer(buff3, "player_save3.sav", 0, 16384);
+ * save4 = gdk_save_buffer(buff4, "player_save4.sav", 0, 16384);
  * gdk_save_group_end();
  * ```
  * In the code above we save multiple buffers into different files using a buffer group for them. All the files will be saved inside the same `"SaveGame"` folder.
@@ -142,26 +142,26 @@
  * @example
  * ```gml
  * gdk_save_group_begin("SaveGame");
- * gdk_save_buffer(buff1, "Player_Save1.sav", 0, 16384);
- * gdk_save_buffer(buff2, "Player_Save2.sav", 0, 16384);
- * gdk_save_buffer(buff3, "Player_Save3.sav", 0, 16384);
- * gdk_save_buffer(buff4, "Player_Save4.sav", 0, 16384);
+ * gdk_save_buffer(buff1, "player_save1.sav", 0, 16384);
+ * gdk_save_buffer(buff2, "player_save2.sav", 0, 16384);
+ * gdk_save_buffer(buff3, "player_save3.sav", 0, 16384);
+ * gdk_save_buffer(buff4, "player_save4.sav", 0, 16384);
  * requestId = gdk_save_group_end();
  * ```
  * In the code above we save multiple buffers into different files using a buffer group for them. All the files will be saved inside the same `"SaveGame"` folder. Afterwards we end the group with a `gdk_save_group_end()` call, which will then return a request ID (`requestId`) that can be used inside an ${event.save_load}.
  * 
  * ```gml
  * if (async_load[? "id"] == requestId)
- *   {
- *       if (async_load[? "status"] == false)
- *       {
- *           show_debug_message("Group save failed!");
- *       }
- *       else
- *       {
- *           show_debug_message("Group save succeeded!");
- *       }
- *   }
+ * {
+ *     if (async_load[? "status"] == false)
+ *     {
+ *         show_debug_message("Group save failed!");
+ *     }
+ *     else
+ *     {
+ *         show_debug_message("Group save succeeded!");
+ *     }
+ * }
  * ```
  * The code above matches the response against the correct request **id** , providing a success message if **status** is true.
  * @function_end
