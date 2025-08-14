@@ -28,11 +28,7 @@ This repository contains the source code for the DLL that implements the GDK fun
 
 5. Open the Visual Studio 2022
 6. Open the Solution in `<project_root>/extensions/GDKExtension/gdkextension_windows/GDKExtension.sln`
-7. Go to - **Project Properties → C/C++ → General → Additional Include Directories** - and change the path there to:
-
-   * `C:\ProgramData\GameMakerStudio2\Cache\runtimes\<current-runtime>\yyc\include\`
-
-8. Select solution platform - **Gaming.Desktop.x64**
+7. Select solution platform - **Gaming.Desktop.x64**
 9. Select solution configuration - **Release** or **Debug**
 10. Build
 
