@@ -5,7 +5,7 @@
 This guide will provide you the necessary steps for building the extension from source, if you wish to do so.
 
 1. Install Visual Studio 2022 (see [download site](https://visualstudio.microsoft.com/downloads/)).
-2. Install GDK (Apr 2025) from Microsoft's GitHub repository ([here](https://github.com/microsoft/GDK/releases/tag/October_2021_Republish)).<br>
+2. Install GDK (Apr 2025) from Microsoft's GitHub repository ([here](https://github.com/microsoft/GDK/releases/tag/April-2025-v2504.0.4020)).<br>
 ![](assets/gdk_download.jpg) 
 ![](assets/gdk_install.jpg)
 3. Install CMAKE (see [download site](https://cmake.org/download/)).
