@@ -7,7 +7,7 @@
  * Xbox Live services can either be **Event-Based** or **Title-Managed** and **this choice is made on the Partner Center** (check the [help article on the Partner Center](https://gamemaker.zendesk.com/hc/en-us/articles/4411044955793-Microsoft-Partner-Center-Guide-for-Windows-Store-Xbox-Developers) for more information). The functions below are grouped according to these two systems.
  * 
  * @section_func Event-Based Functions
- * @desc [[Warning: IMPORTANT Using the Event-Based system requires some additional configuration detailed under the [Manifest File](gdk_extension_guides#manifest-file) guide.
+ * @desc [[Warning: IMPORTANT Using the Event-Based system requires some additional configuration detailed under the [Manifest File](gdk_extension_guides#manifest-file) guide.]]
  * The following functions are provided for event-based stats/leaderboards/achievements (Microsoft recommends using these for **stats** and **leaderboards** but not **achievements**):
  * @ref xboxone_stats_setup
  * @ref xboxone_check_privilege

@@ -16,7 +16,7 @@ This guide will provide you the necessary steps for building the extension from 
 7. Select either one of these building targets: `Debug|Gaming.Desktop.x64` or `Release|Gaming.Desktop.x64` (other options won't work).<br>
 ![](assets/visual_studio_target.jpg)
 8. Build the project; the compiled DLL will then be exported to the folder `GDK_Project_GMS2/extensions/GDKExtension/`.
-9. You've now finished the building process and can continue [setting up your project](GDK-Extension-Guides#GDK_Extension_Guides).
+9. You've now finished the building process and can continue [setting up your project](gdk_extension_guides).
 
 
 <br><br>

@@ -42,7 +42,7 @@ After finishing this we'll set up the config file required for the Microsoft Sto
 
 To build and run your project using the GDK Extension, it's necessary to set up and include a `MicrosoftGame.Config` file:
 
-1. This config file can be created using Microsoft's MicrosoftGame Editor tool (for more information refer to its [documentation page](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/system/overviews/microsoft-game-config/microsoftgameconfig-editor)) or can be copied from the [demo project](https://github.com/YoYoGames/GDKExtension/tree/main/GDK_Project_GMS2) and edited manually.<br>
+1. This config file can be created using Microsoft's MicrosoftGame Editor tool (for more information refer to its [documentation page](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/system/overviews/microsoft-game-config/microsoftgameconfig-editor)) or can be copied from the [demo project](https://github.com/YoYoGames/GMEXT-GDK/tree/main/source/GDKExtension_gml) and edited manually.<br>
 
 ![](assets/setup3.jpg)
 
