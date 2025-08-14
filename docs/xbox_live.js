@@ -7,7 +7,7 @@
  * Xbox Live services can either be **Event-Based** or **Title-Managed** and **this choice is made on the Partner Center** (check the [help article on the Partner Center](https://gamemaker.zendesk.com/hc/en-us/articles/4411044955793-Microsoft-Partner-Center-Guide-for-Windows-Store-Xbox-Developers) for more information). The functions below are grouped according to these two systems.
  * 
  * @section_func Event-Based Functions
- * @desc [[Warning: IMPORTANT Using the Event-Based system requires some additional configuration detailed under [Manifest File] guide.
+ * @desc [[Warning: IMPORTANT Using the Event-Based system requires some additional configuration detailed under the [Manifest File](gdk_extension_guides#manifest-file) guide.
  * The following functions are provided for event-based stats/leaderboards/achievements (Microsoft recommends using these for **stats** and **leaderboards** but not **achievements**):
  * @ref xboxone_stats_setup
  * @ref xboxone_check_privilege
@@ -43,8 +43,8 @@
  * 
  * @section_const Constants
  * @desc 
- * @ref xboxone_achievement_filter
- * @ref xboxone_achievement_message_type
+ * @ref xboxlive_achievement_filter
+ * @ref xboxlive_achievement_message_type
  * @ref xboxone_privilege
  * @ref xboxone_privilege_result
  * @section_end
@@ -72,8 +72,8 @@
  * @returns {real} (negative if error, otherwise the System Request ID)
  * 
  * @event system
- * @member {string} event_type The string `"achievement result"
- * @member {real} requestID The id of the request that fired this callback
+ * @member {string} event_type The string `"achievement result"`
+ * @member {real} requestID The ID of the request that fired this callback
  * @member {string} achievement The achievement ID string passed to the function call
  * @member {real} progress The updated progress value
  * @member {real} error This will be: `0` if the progress update was successful; `xboxone_achievement_already_unlocked` if the achievement was unlocked in a previous request; or a negative number with the error code if request fails
@@ -85,7 +85,7 @@
  * ```
  * In the code above we're setting the `"KilledFirstBoss"` achievement as 100% complete, the function call will then return a request ID (`requestId`) that can be used inside an ${event.system} event. 
  * ```gml
- * if (async_load[? "event_type"] == "achievement_result")
+ * if (async_load[? "event_type"] == "achievement result")
  * {
  *     if (async_load[? "requestID"] == requestId)
  *     {
@@ -96,7 +96,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct **event_type** and **requestID** , and prints a debug message if the request was successful.
+ * The code above matches the response against the correct **event_type** and **requestID**, and prints a debug message if the request was successful.
  * @function_end
  */
 
@@ -171,7 +171,7 @@
  * var user_one = xboxone_get_activating_user();
  * xboxone_check_privilege(user_one, xboxone_privilege_multiplayer_sessions, true);
  * ```
- * In the code above we are getting the ID of the user that launched the game (using the function ${function.xboxone_get_activating_user)) and checking if they have privilege for multiplayer sessions and requesting for attempting resolution.
+ * In the code above we are getting the ID of the user that launched the game (using the function ${function.xboxone_get_activating_user}) and checking if they have privilege for multiplayer sessions and requesting for attempting resolution.
  * @function_end
  */
 
@@ -199,23 +199,23 @@
 
 /**
  * @function xboxone_read_player_leaderboard
- * @desc This function allows you to read a leaderboard starting at the specified user, regardless of the user's rank or score, and ordered by percentile rank. You supply the `user_id` as returned by the function ${function.xboxone_get_user} and a `friendfilter` that is one of the ${constant.xboxone_achievement_filter} constants.
+ * @desc This function allows you to read a leaderboard starting at the specified user, regardless of the user's rank or score, and ordered by percentile rank. You supply the `user_id` as returned by the function ${function.xboxone_get_user} and a `friendfilter` that is one of the ${constant.xboxlive_achievement_filter} constants.
  * 
  * [[Warning: IMPORTANT This function requires ${function.xboxone_stats_setup} before it can be used.]]
  * 
- * @param {string} ident The leaderboard id (if filter is `xboxone_achievement_filter_all_players`) or stat to read
+ * @param {string} ident The leaderboard ID (if filter is `xboxlive_achievement_filter_all_players`) or stat to read
  * @param {pointer} user_id The user ID pointer
  * @param {real} numitems The number of items to retrieve
- * @param {constant.xboxone_achievement_filter} friendfilter One of the `xboxone_achievement_filter_*` constants
+ * @param {constant.xboxlive_achievement_filter} friendfilter One of the `xboxlive_achievement_filter_*` constants
  * 
  * @returns {real} (-1 on error, any other value otherwise)
  * 
  * @event social
- * @member {constant.xboxone_achievement_message_type} id The constant `achievement_leaderboard_info`
+ * @member {constant.xboxlive_achievement_message_type} id The constant `xboxlive_achievement_leaderboard_info`
  * @member {string} leaderboardid The unique ID of the leaderboard as defined on the provider dashboard.
  * @member {real} numentries The number of entries in the leaderboard that you have received.
  * @member {string} PlayerN The name of the player, where **N** is position within the received entries list.
- * @member {pointer} PlayeridN The unique user id of the player **N** 
+ * @member {pointer} PlayeridN The unique user ID of the player **N** 
  * @member {real} RankN The rank of the player **N** within the leaderboard.
  * @member {real} ScoreN The score of the player **N** 
  * @event_end
@@ -224,12 +224,12 @@
  * 
  * ```gml
  * var uid = xboxone_get_activating_user();
- * xboxone_read_player_leaderboard("MyLeaderboard", uid, 10, xboxone_achievement_filter_all_players);
+ * xboxone_read_player_leaderboard("MyLeaderboard", uid, 10, xboxlive_achievement_filter_all_players);
  * ```
  * In the code above we are querying the leaderboard with the ID `"MyLeaderboard"` for the first 10 entries including all players.
  * We can catch the triggered callback using the ${event.social} event.
  * ```gml
- * if (async_load[? "id"] == xboxone_achievement_leaderboard_info)
+ * if (async_load[? "id"] == xboxlive_achievement_leaderboard_info)
  * {
  *     global.numentries = async_load[? "numentries"];
  *     for (var i = 0; i < numentries; i++)
@@ -262,7 +262,7 @@
  * @example
  * ```gml
  * var user_one = xboxone_get_activating_user();
- * xboxone_set_rich_presence(userId, true, "Playing_Challenge", global.scid);
+ * xboxone_set_rich_presence(user_one, true, "Playing_Challenge", global.scid);
  * ```
  * In the code above we are getting the active user (using the function ${function.xboxone_get_activating_user}) and setting its current presence string. We are providing a scid (`global.scid`), otherwise we were required to first call the function ${function.xboxone_stats_setup}.
  * @function_end
@@ -379,7 +379,7 @@
  * @returns {real} (-1 on error, otherwise an async request ID)
  * 
  * @event social
- * @member {constant.xboxone_achievement_message_type} id The constant `achievement_stat_event`
+ * @member {constant.xboxlive_achievement_message_type} id The constant `xboxlive_achievement_stat_event`
  * @member {string} event The string `"LocalUserAdded"`.
  * @member {pointer} userid The user ID associated with the request.
  * @member {real} error 0 if successful, some other value on error.
@@ -394,7 +394,7 @@
  *     xboxone_stats_add_user(user_id[i]);
  * }
  * ```
- * In the code above we are looping through all the available users (using the function ${function.xboxone_get_user_count}) getting their user id (using the ${function.xboxone_get_user} function) and adding them to the statistics manager.
+ * In the code above we are looping through all the available users (using the function ${function.xboxone_get_user_count}) getting their user ID (using the ${function.xboxone_get_user} function) and adding them to the statistics manager.
  * We can catch the triggered callbacks using the ${event.social} event.
  * 
  * ```gml
@@ -406,7 +406,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct **event** , providing a failure message if **error** is not 0.
+ * The code above matches the response against the correct **event**, providing a failure message if **error** is not 0.
  * @function_end
  */
 
@@ -427,7 +427,7 @@
  *     xboxone_stats_delete_stat(user_id[i], "highScore");
  * }
  * ```
- * In the code above we are looping though all the available users (using the function ${function.xboxone_get_user_count}) getting their user id (using the ${function.xboxone_get_user} function) and deleting the stat `highScore` from each one of them.
+ * In the code above we are looping though all the available users (using the function ${function.xboxone_get_user_count}) getting their user ID (using the ${function.xboxone_get_user} function) and deleting the stat `highScore` from each one of them.
  * @function_end
  */
 
@@ -443,7 +443,7 @@
  * @returns {real} (-1 on error, otherwise an async request ID)
  * 
  * @event social
- * @member {constant.xboxone_achievement_message_type} id The constant `achievement_stat_event`
+ * @member {constant.xboxlive_achievement_message_type} id The constant `xboxlive_achievement_stat_event`
  * @member {string} event The string `"StatisticUpdateComplete"`.
  * @member {pointer} userid The user ID associated with the request.
  * @member {real} error 0 if successful, some other value on error.
@@ -469,7 +469,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct **event** , providing a failure message if **error** is not 0.
+ * The code above matches the response against the correct **event**, providing a failure message if **error** is not 0.
  * @function_end
  */
 
@@ -489,7 +489,7 @@
  * @param {boolean} ascending Set to `true` or ascending or `false` for descending order.
  * 
  * @event social
- * @member {constant.xboxone_achievement_message_type} id The constant `achievement_leaderboard_info`
+ * @member {constant.xboxlive_achievement_message_type} id The constant `xboxlive_achievement_leaderboard_info`
  * @member {string} event The string `"GetLeaderboardComplete"`.
  * @member {pointer} userid The user ID associated with the request.
  * @member {real} error 0 if successful, some other value on error.
@@ -497,7 +497,7 @@
  * @member {string} displayName The unique ID for the leaderboard as defined on the provider dashboard.
  * @member {real} numentries The number of entries in the leaderboard that you have received.
  * @member {string} PlayerN The name of the player, where **N** is position within the received entries list.
- * @member {pointer} PlayeridN The unique user id of the player **N** 
+ * @member {pointer} PlayeridN The unique user ID of the player **N** 
  * @member {real} RankN The rank of the player **N** within the leaderboard.
  * @member {real} ScoreN The score of the player **N**
  * @event_end
@@ -547,7 +547,7 @@
  * @param {boolean} favourites_only Set to `true` to show only friends that are marked as favourites.
  * 
  * @event social
- * @member {constant.xboxone_achievement_message_type} id The constant `achievement_leaderboard_info`
+ * @member {constant.xboxlive_achievement_message_type} id The constant `xboxlive_achievement_leaderboard_info`
  * @member {string} event The string `"GetLeaderboardComplete"`.
  * @member {pointer} userid The user ID associated with the request.
  * @member {real} error 0 if successful, some other value on error.
@@ -555,7 +555,7 @@
  * @member {string} displayName The unique ID for the leaderboard as defined on the provider dashboard.
  * @member {real} numentries The number of entries in the leaderboard that you have received.
  * @member {string} PlayerN The name of the player, where **N** is position within the received entries list.
- * @member {pointer} PlayeridN The unique user id of the player **N** 
+ * @member {pointer} PlayeridN The unique user ID of the player **N** 
  * @member {real} RankN The rank of the player **N** within the leaderboard.
  * @member {real} ScoreN The score of the player **N**
  * @event_end
@@ -582,7 +582,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct id and event and store the information of the top favourite friends player names, ids, ranks and scores in global arrays.
+ * The code above matches the response against the correct **id** and **event** and store the information of the top favourite friends player names, ids, ranks and scores in global arrays.
  * @function_end
  */
 
@@ -591,7 +591,7 @@
  * @function xboxone_stats_get_stat
  * @desc This function can be used to retrieve a single stat value from the stat manager for the given user. You supply the `user_id` as returned by the function ${function.xboxone_get_user}, and then the `stat_name` as defined when you created it using one of the `xboxone_stats_set_stat_*` functions. The return value can be either a string or a real (depending on the stat being checked) or the GML constant `undefined` if the stat does not exist or there has been an error.
  * 
- * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.
+ * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.]]
  * 
  * @param {pointer} user_id The user ID pointer.
  * @param {string} stat_name The statistic to get.
@@ -641,18 +641,18 @@
  * 
  * To use the function, you supply the `user_id` as returned by the function ${function.xboxone_get_user}, and the function will return -1 if there was an error or the user ID was invalid, or any other value if the function was successfully called.
  * 
- * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.
+ * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.]]
  * 
  * [[Warning: IMPORTANT Removing the user can return an error if the statistics that have been set on the user are invalid (such as the stat names containing non-alphanumeric characters).]]
  * 
- * [[Tip: If you want to flush the stats data to the live server at any time without removing the user, you can use the function ${function.xboxone_stats_flush_user}.
+ * [[Tip: If you want to flush the stats data to the live server at any time without removing the user, you can use the function ${function.xboxone_stats_flush_user}.]]
  * 
  * @param {pointer} user_id The user ID pointer.
  * 
  * @returns {real} (-1 on error, any other value otherwise)
  * 
  * @event social
- * @member {constant.xboxone_achievement_message_type} id The constant `achievement_stat_event`
+ * @member {constant.xboxlive_achievement_message_type} id The constant `xboxlive_achievement_stat_event`
  * @member {string} event The string `"LocalUserRemoved"`.
  * @member {pointer} userid The user ID associated with the request.
  * @member {real} error 0 if successful, some other value on error.
@@ -677,7 +677,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct **event** , providing a failure message if **error** is not 0.
+ * The code above matches the response against the correct **event**, providing a failure message if **error** is not 0.
  * @function_end
  */
 
@@ -729,7 +729,7 @@
 
 /**
  * @function xboxone_stats_set_stat_string
- * @desc This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function [xboxone_get_user](Base-Module#xboxone_get_user), then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a **string**) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.
+ * @desc This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function ${function.xboxone_get_user}, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a **string**) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.
  * 
  * [[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the ${function.xboxone_stats_add_user} function.]]
  * 
@@ -750,33 +750,33 @@
  */
 
 /**
- * @constant xboxone_achievement_filter
+ * @constant xboxlive_achievement_filter
  * @desc 
- * @member xboxone_achievement_filter_all_players 
- * @member xboxone_achievement_filter_friends_only 
- * @member xboxone_achievement_filter_favorites_only 
- * @member xboxone_achievement_filter_friends_alt 
- * @member xboxone_achievement_filter_favorites_alt 
+ * @member xboxlive_achievement_filter_all_players 
+ * @member xboxlive_achievement_filter_friends_only 
+ * @member xboxlive_achievement_filter_favorites_only 
+ * @member xboxlive_achievement_filter_friends_alt 
+ * @member xboxlive_achievement_filter_favorites_alt 
  * @constant_end
  */
 
 /**
- * @constant xboxone_achievement_message_type
+ * @constant xboxlive_achievement_message_type
  * @desc 
- * @member xboxone_achievement_our_info 
- * @member xboxone_achievement_friends_info 
- * @member xboxone_achievement_leaderboard_info 
- * @member xboxone_achievement_achievement_info 
- * @member xboxone_achievement_pic_loaded 
- * @member xboxone_achievement_challenge_completed 
- * @member xboxone_achievement_challenge_completed_by_remote 
- * @member xboxone_achievement_challenge_received 
- * @member xboxone_achievement_challenge_list_received 
- * @member xboxone_achievement_challenge_launched 
- * @member xboxone_achievement_player_info 
- * @member xboxone_achievement_purchase_info 
- * @member xboxone_achievement_msg_result 
- * @member xboxone_achievement_stat_even 
+ * @member xboxlive_achievement_our_info Previously `achievement_our_info`
+ * @member xboxlive_achievement_friends_info  Previously `achievement_friends_info`
+ * @member xboxlive_achievement_leaderboard_info  Previously `achievement_leaderboard_info`
+ * @member xboxlive_achievement_achievement_info  Previously `achievement_achievement_info`
+ * @member xboxlive_achievement_pic_loaded  Previously `achievement_pic_loaded`
+ * @member xboxlive_achievement_challenge_completed  Previously `achievement_challenge_completed`
+ * @member xboxlive_achievement_challenge_completed_by_remote  Previously `achievement_challenge_completed_by_remote`
+ * @member xboxlive_achievement_challenge_received  Previously `achievement_challenge_received`
+ * @member xboxlive_achievement_challenge_list_received  Previously `achievement_challenge_list_received`
+ * @member xboxlive_achievement_challenge_launched  Previously `achievement_challenge_launched`
+ * @member xboxlive_achievement_player_info  Previously `achievement_player_info`
+ * @member xboxlive_achievement_purchase_info  Previously `achievement_purchase_info`
+ * @member xboxlive_achievement_msg_result  Previously `achievement_msg_result`
+ * @member xboxlive_achievement_stat_even  Previously `achievement_stat_even`
  * @constant_end
  */
 
