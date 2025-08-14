@@ -10,20 +10,20 @@ In order to build your project using the extension you need to import it and mak
 
 1. Import the local package ( **.yymps** ) provided with the public release version.
 2. Use the 64-bit Windows runtime. To change this go into **Game Options → Windows → General** and enable " **Use x64 Windows Runtime** ".<br>
-![](assets/Setup1.jpg) 
+![](assets/setup1.jpg) 
 3. Also make sure you enable the **"Copy exe to output folder"** setting: <br>
-![](assets/gdkCopyToDestination.png)
+![](assets/gdk_copy_to_destination.png)
 
 > [!IMPORTANT]
 > These steps are required only for older versions of the GameMaker:
 >
 > * **For GameMaker 2022.3 (or previous)** : Also make sure you disable the subst from within the **Preferences → General Settings → Compiling** menu, otherwise this extension will not work:
 >
-> ![](assets/gdkDisableSubst.png)
+> ![](assets/gdk_disable_subst.png)
 >
 > * **For GameMaker 2022.2 (or previous)** : The extension comes with two **.bat** files: `post_package_step.bat` and `post_run_step.bat` (placed inside the extension's folder). These files need to be moved into your project's root folder, which is the same directory as your project's **.yyp** file:
 > 
-> ![](assets/Setup2.jpg)
+> ![](assets/setup2.jpg)
 
 After finishing this we'll set up the config file required for the Microsoft Store.
 
@@ -44,7 +44,7 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 
 1. This config file can be created using Microsoft's MicrosoftGame Editor tool (for more information refer to its [documentation page](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/system/overviews/microsoft-game-config/microsoftgameconfig-editor)) or can be copied from the [demo project](https://github.com/YoYoGames/GDKExtension/tree/main/GDK_Project_GMS2) and edited manually.<br>
 
-![](assets/Setup3.jpg)
+![](assets/setup3.jpg)
 
 > [!NOTE]
 > The `ExecutableList/Executable/Name` property should be set to the value in `GameOptions → Windows → Executable Name`.
@@ -52,7 +52,7 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 2. Add the `MicrosoftGame.Config` file to the Included Files of your project.
 3. Depending on the image file names specified in the `ShellVisuals` tag you will need to add those to the Included Files as well.<br>
 
-![](assets/Setup4.jpg)
+![](assets/setup4.jpg)
 
   Upon finishing this setup and following the [Project Setup](#project-setup) section above, you should be ready to run and test your project.
 
@@ -63,15 +63,15 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 
 1. Log in to your **Partner Center** account, open your game's configuration page and go into the **Xbox Services → Gameplay Settings** where you can define your stats.<br>
 
-![](assets/Setup5.jpg)
+![](assets/setup5.jpg)
 
 2. From here you will need to select **Player stats → Stat rules** the drop-down menu at the top.<br>
 
-![](assets/Setup6.jpg)
+![](assets/setup6.jpg)
 
 3. On the page that opens, click on the " **Download published events manifest** " button.<br>
 
-![](assets/Setup7.jpg)
+![](assets/setup7.jpg)
 
 4. Add the downloaded file to your project's **Included Files (/datafiles)** folder.
 
