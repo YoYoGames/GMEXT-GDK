@@ -430,7 +430,7 @@ void XUMuser::SetupStorage()
 				{
 					XGameSaveProviderHandle provider = nullptr;
 					HRESULT hr = XGameSaveInitializeProviderResult(async, &provider);
-					if (SUCCEEDED(hr))
+					if (provider != nullptr)	// apparently it's possible for a non-fatal error to be returned so we instead check that the provider is non-null
 					{
 						RefCountedGameSaveProvider* gsp = AllocGameSaveProvider();
 						gsp->provider = provider;
