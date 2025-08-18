@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Gdk extension api - GMEXT-GDK</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Gdk extension api";
+        var mkdocs_page_input_path = "gdk_extension_api.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-GDK
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">GDK Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="building_guide.html">Building Guide (How to build the extension from source)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="gdk_extension_guides.html">Quick Start Guide (Project setup, sandboxes & configuration files)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="api.html">GDK Extension API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="base.html">Base Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage.html">Storage Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="xbox_live.html">Xbox Live Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="iap.html">In-App Purchases Module</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-GDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Gdk extension api</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-GDK/edit/master/docs/gdk_extension_api.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a>
+<a id="top"></a></p>
+<!-- Page HTML do not touch -->
+<p><a /><p align="right"><a href="#top">Back To Top</a></p></p>
+<h1 id="gdk-extension-api">GDK Extension API</h1>
+<p>This is a collection of GameMaker functions for interacting with the GDK Extension API. This API is comprised of modules that will allow you to access multiple Xbox Live features such as profile information, stats, leaderboards, achievements, storage and Microsoft Store add-ons (also known as In-App Purchases).</p>
+<h2 id="management">Management</h2>
+<p>Using the GDK Extension <strong>requires</strong> the developer to manually manage it. The following functions are provided for managing the extension:</p>
+<ul>
+<li><a href="#gdk_init">gdk_init</a></li>
+<li><a href="#gdk_update">gdk_update</a></li>
+<li><a href="#gdk_quit">gdk_quit</a></li>
+</ul>
+<h2 id="modules">Modules</h2>
+<p>Please look at the following sections for information on the different modules present in this library:</p>
+<ul>
+<li><a href="base.html#base-module">Base Module</a> (User)</li>
+<li><a href="storage.html#storage-module">Storage Module</a> (Save &amp; Load)</li>
+<li><a href="xbox_live.html#xbox-live-module">Xbox Live Module</a> (Stats &amp; Achievements)</li>
+<li><a href="iap.html#in-app-purchases-module">IAP Module</a> (In-App Purchases)</li>
+</ul>
+<p><br><br></p>
+<hr />
+<!-- Page HTML do not touch -->
+<p><a /><p align="right"><a href="#top">Back To Top</a></p></p>
+<h1 id="gdk_init">gdk_init</h1>
+<p>This function must be called before any other GDK extension function. It is recommended to use a persistent controller/manager object that is created or placed in the first room and to then call this function in its <a href="https://manual-en.yoyogames.com/The_Asset_Editors/Object_Properties/Object_Events.htm">Create Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<pre class="highlight"><code class="language-gml">gdk_init(scid);</code></pre>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scid</td>
+<td>string</td>
+<td>The service configuration ID (found under <strong>Game setup</strong> on the Partner Center).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<pre class="highlight"><code class="language-gml">N/A</code></pre>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">gdk_init("00000000-0000-0000-0000-000060ddb039");</code></pre>
+  The code above initialises the GDK Extension with the provided <strong>SCID</strong> string. This value can be acquired from your <code>MicrosoftGame.Config</code> file (that needs to be placed in the included files) or from the Partner Center.</p>
+<p><br><br></p>
+<hr />
+<!-- Page HTML do not touch -->
+<p><a /><p align="right"><a href="#top">Back To Top</a></p></p>
+<h1 id="gdk_update">gdk_update</h1>
+<p>This should be called each frame while GDK extension is active, recommend using a Controller persistent object that is created or placed in the first room and this call is in the <a href="https://manual-en.yoyogames.com/The_Asset_Editors/Object_Properties/Object_Events.htm#">Step Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<pre class="highlight"><code class="language-gml">gdk_update();</code></pre>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<pre class="highlight"><code class="language-gml">N/A</code></pre>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">gdk_update();</code></pre>
+  In the code above we are ticking the update logic of the GDK extension, faling to call this function will make the extension stop working.</p>
+<p><br><br></p>
+<hr />
+<!-- Page HTML do not touch -->
+<p><a /><p align="right"><a href="#top">Back To Top</a></p></p>
+<h1 id="gdk_quit">gdk_quit</h1>
+<p>This should be called on close down and no GDK extension functions should be called after it, recommend using a Controller (persistent) object that is created or placed in the first room and this call is in its <a href="https://manual-en.yoyogames.com/The_Asset_Editors/Object_Properties/Object_Events.htm">Destroy Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<pre class="highlight"><code class="language-gml">gdk_quit();</code></pre>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<pre class="highlight"><code class="language-gml">N/A</code></pre>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">gdk_quit();</code></pre>
+  In the code above will terminate the GDK extension and no GDK extension functions should be called after it.</p>
+<p><br><br></p>
+<hr />
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>YoYoGames 2025</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-GDK" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

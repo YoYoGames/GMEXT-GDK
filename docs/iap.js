@@ -422,7 +422,7 @@
  *     }
  * }
  * ```
- * The code above matches the response against the correct event **type** and **id** , printing to the debug console the result of the query; an array of [Product Details](#Product-Details) structs.
+ * The code above matches the response against the correct event **type** and **id** , printing to the debug console the result of the query; an array of [Product Details](#productdetails) structs.
  * @function_end
  */
 
@@ -964,7 +964,7 @@
  * @member {string} language The International Organization of Standards (ISO) identifier representing the language the title and description strings are<br> ([more details](https://msdn.microsoft.com/library/ms693062(v=vs.85).aspx))
  * @member {string} inAppOfferToken Game defined offer token that you can use to map items internally. For example: " *com.company.product.itemname* ".
  * @member {string} linkUri The URI to the product.
- * @member {constant.ProductKind} productKind Indicates the type of store product. For more information read the [Product Kinds](#Product-Kinds) section.
+ * @member {constant.ProductKind} productKind Indicates the type of store product. For more information read the [Product Kinds](#productkind) section.
  * @member {struct.Price} price The price information for the store product (read **Price** below)
  * @member {bool} hasDigitalDownload Indicates whether the store product has a digital download.
  * @member {bool} isInUserCollection Indicates if the product is in the user collection.

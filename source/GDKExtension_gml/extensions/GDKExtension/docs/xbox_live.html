@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Xbox Live Module - GMEXT-GDK</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Xbox Live Module";
+        var mkdocs_page_input_path = "xbox_live.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-GDK
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">GDK Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="building_guide.html">Building Guide (How to build the extension from source)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="gdk_extension_guides.html">Quick Start Guide (Project setup, sandboxes & configuration files)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="api.html">GDK Extension API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="base.html">Base Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage.html">Storage Module</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Xbox Live Module</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#event-based-functions">Event-Based Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#title-managed-functions">Title-Managed Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#general-functions">General Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="iap.html">In-App Purchases Module</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-GDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Xbox Live Module</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-GDK/edit/master/docs/xbox_live.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="xbox-live-module"><strong>Xbox Live Module</strong></h1>
+<p>The GDK extension allows your Microsoft Store game to use all features from the Xbox Live services including stats, leaderboards, achievements and rich presence. This module contains all the functions that are available to handle Xbox Live services.</p>
+<p>Xbox Live services can either be <strong>Event-Based</strong> or <strong>Title-Managed</strong> and <strong>this choice is made on the Partner Center</strong> (check the <a href="https://gamemaker.zendesk.com/hc/en-us/articles/4411044955793-Microsoft-Partner-Center-Guide-for-Windows-Store-Xbox-Developers">help article on the Partner Center</a> for more information). The functions below are grouped according to these two systems.</p>
+<h2 id="event-based-functions">Event-Based Functions</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT Using the Event-Based system requires some additional configuration detailed under the <a href="gdk_extension_guides.html#manifest-file">Manifest File</a> guide.</p>
+</div>
+<p>The following functions are provided for event-based stats/leaderboards/achievements (Microsoft recommends using these for <strong>stats</strong> and <strong>leaderboards</strong> but not <strong>achievements</strong>):</p>
+<ul>
+<li><a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a></li>
+<li><a href="xbox_live.html#xboxone_check_privilege">xboxone_check_privilege</a></li>
+<li><a href="xbox_live.html#xboxone_fire_event">xboxone_fire_event</a></li>
+<li><a href="xbox_live.html#xboxone_read_player_leaderboard">xboxone_read_player_leaderboard</a></li>
+</ul>
+<h2 id="title-managed-functions">Title-Managed Functions</h2>
+<p>The following functions are provided for title-managed stats/leaderboards/achievements (Microsoft recommends using these for <strong>achievements</strong>):</p>
+<ul>
+<li><a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a></li>
+<li><a href="xbox_live.html#xboxone_stats_remove_user">xboxone_stats_remove_user</a></li>
+<li><a href="xbox_live.html#xboxone_stats_flush_user">xboxone_stats_flush_user</a></li>
+<li><a href="xbox_live.html#xboxone_stats_get_stat">xboxone_stats_get_stat</a></li>
+<li><a href="xbox_live.html#xboxone_stats_get_stat_names">xboxone_stats_get_stat_names</a></li>
+<li><a href="xbox_live.html#xboxone_stats_set_stat_int">xboxone_stats_set_stat_int</a></li>
+<li><a href="xbox_live.html#xboxone_stats_set_stat_real">xboxone_stats_set_stat_real</a></li>
+<li><a href="xbox_live.html#xboxone_stats_set_stat_string">xboxone_stats_set_stat_string</a></li>
+<li><a href="xbox_live.html#xboxone_stats_delete_stat">xboxone_stats_delete_stat</a></li>
+<li><a href="xbox_live.html#xboxone_stats_get_leaderboard">xboxone_stats_get_leaderboard</a></li>
+<li><a href="xbox_live.html#xboxone_stats_get_social_leaderboard">xboxone_stats_get_social_leaderboard</a></li>
+<li><a href="xbox_live.html#xboxone_achievements_set_progress">xboxone_achievements_set_progress</a></li>
+<li><a href="xbox_live.html#xboxone_get_achievement">xboxone_get_achievement</a></li>
+</ul>
+<h2 id="general-functions">General Functions</h2>
+<p>The following functions can be used regardless of whether Event-Based or Title-Managed services are used:</p>
+<ul>
+<li><a href="xbox_live.html#xboxone_set_rich_presence">xboxone_set_rich_presence</a></li>
+<li><a href="xbox_live.html#xboxone_gamertag_for_user">~~xboxone_gamertag_for_user~~ <img alt="⛔️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/26d4.png" title=":no_entry:" /></a></li>
+<li><a href="xbox_live.html#xboxone_unique_modern_gamertag_for_user">xboxone_unique_modern_gamertag_for_user</a></li>
+<li><a href="xbox_live.html#xboxone_modern_gamertag_suffix_for_user">xboxone_modern_gamertag_suffix_for_user</a></li>
+<li><a href="xbox_live.html#xboxone_modern_gamertag_for_user">xboxone_modern_gamertag_for_user</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>This module includes a set of predefined constants that can be utilized for various purposes. Browse through the available constants to find values relevant to your needs and enhance the efficiency of your code.</p>
+<ul>
+<li><a href="xbox_live.html#xboxlive_achievement_filter">xboxlive_achievement_filter</a></li>
+<li><a href="xbox_live.html#xboxlive_achievement_message_type">xboxlive_achievement_message_type</a></li>
+<li><a href="xbox_live.html#xboxone_privilege">xboxone_privilege</a></li>
+<li><a href="xbox_live.html#xboxone_privilege_result">xboxone_privilege_result</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_achievements_set_progress">xboxone_achievements_set_progress</h1>
+<p>This function can be used to update the progress of an achievement. You supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, a string containing the <code>achievement</code>'s numeric ID (as assigned in the Partner Center when it was created), and finally the <code>progress</code> value to set (from 0 to 100).</p>
+<p>The function may return one of the following errors:</p>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>Invalid <code>user_id</code> was specified.</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>Xbox Live context could not be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT Note that the achievement system will refuse updates that are lower than the current progress value.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_achievements_set_progress(user_id, achievement, progress)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer</td>
+</tr>
+<tr>
+<td>achievement</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The achievement identification string (obtained from the Partner Center)</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The new progress value of the achievement (is a value between 0 and 100)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(negative if error, otherwise the System Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"achievement result"</code></td>
+</tr>
+<tr>
+<td>requestID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID of the request that fired this callback</td>
+</tr>
+<tr>
+<td>achievement</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The achievement ID string passed to the function call</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The updated progress value</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>This will be: <code>0</code> if the progress update was successful; <code>xboxone_achievement_already_unlocked</code> if the achievement was unlocked in a previous request; or a negative number with the error code if request fails</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">requestId = xboxone_achievements_set_progress(user_id, "KilledFirstBoss", 100);</code></pre>
+In the code above we're setting the <code>"KilledFirstBoss"</code> achievement as 100% complete, the function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a> event.
+<pre class="highlight"><code class="language-gml">if (async_load[? "event_type"] == "achievement result")
+{
+    if (async_load[? "requestID"] == requestId)
+    {
+        if (async_load[? "error"] &gt;= 0)
+        {
+            show_debug_message("Request succeeded");
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct <strong>event_type</strong> and <strong>requestID</strong>, and prints a debug message if the request was successful.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_get_achievement">xboxone_get_achievement</h1>
+<p>This function queries Xbox Live for the details of the given achievement, for the user specified.</p>
+<p>The function may return one of the following errors:</p>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>Invalid <code>user_id</code> was specified.</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>Xbox Live context could not be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT Note that the achievement system will refuse updates that are lower than the current progress value.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_get_achievement(user_id, achievement)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer</td>
+</tr>
+<tr>
+<td>achievement</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The achievement identification string (obtained from the Partner Center)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(negative if error, otherwise the System Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"achievement info"</code></td>
+</tr>
+<tr>
+<td>requestID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID of the request that fired this callback.</td>
+</tr>
+<tr>
+<td>achievement</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The achievement ID string passed to the function call.</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The progress value.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded localized achievement name.</td>
+</tr>
+<tr>
+<td>progress_state</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The state of a user's progress towards the earning of the achievement: <code>0</code> - unknown; <code>1</code> - achieved; <code>2</code> - not started; <code>3</code> - in progress.</td>
+</tr>
+<tr>
+<td>userID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>This will be: <code>0</code> if the progress update was successful; <code>xboxone_achievement_already_unlocked</code> if the achievement was unlocked in a previous request; or a negative number with the error code if the request failed.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">requestId = xboxone_get_achievement(user_id, "KilledFirstBoss");</code></pre>
+In the code above we're setting the <code>"KilledFirstBoss"</code> achievement as 100% complete, the function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a> event.
+<pre class="highlight"><code class="language-gml">if (async_load[? "event_type"] == "achievement info")
+{
+    if (async_load[? "requestID"] == requestId)
+    {
+        if (async_load[? "error"] &gt;= 0)
+        {
+            show_debug_message("Request succeeded");
+            if (async_load[? "progress_state"] == 3) show_debug_message("We are almost there: " + string(async_load[? "progress"]));
+            else if (async_load[? "progress_state"] == 1) show_debug_message("We did it!!");
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct <strong>event_type</strong> and <strong>requestID</strong>, and prints a debug message if the request was successful.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_check_privilege">xboxone_check_privilege</h1>
+<p>With this function you can check whether the given user has a privilege. If you set the <code>attempt_resolution</code> argument to <code>true</code> and the privilege isn't enabled, it will also open a system dialogue (suspending the game) to prompt the user to upgrade their account or to get the privilege in a different way as required. If the user then acquires the required privilege, the function will return <code>true</code>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_check_privilege(user_id, privilege_id, attempt_resolution)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer</td>
+</tr>
+<tr>
+<td>privilege_id</td>
+<td><a href="xbox_live.html#xboxone_privilege">xboxone_privilege</a></td>
+<td>The privilege to check for</td>
+</tr>
+<tr>
+<td>attempt_resolution</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Requests for this privilege</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"check_privilege_result"</code></td>
+</tr>
+<tr>
+<td>result</td>
+<td><a href="xbox_live.html#xboxone_privilege_result">xboxone_privilege_result</a></td>
+<td>One or more (bit-wise combined) of the <code>xboxone_privilege_result_*</code> constants</td>
+</tr>
+<tr>
+<td>privilege</td>
+<td><a href="xbox_live.html#xboxone_privilege">xboxone_privilege</a></td>
+<td>The privilege you have requested</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var user_one = xboxone_get_activating_user();
+xboxone_check_privilege(user_one, xboxone_privilege_multiplayer_sessions, true);</code></pre>
+In the code above we are getting the ID of the user that launched the game (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and checking if they have privilege for multiplayer sessions and requesting for attempting resolution.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_fire_event">xboxone_fire_event</h1>
+<p>This function can be used to fire a stat event. The <code>event_name</code> argument is the name of the event to be fired as defined in the Partner Center console for your game, and the following additional parameters will also depend on what you have a set up for the stat.</p>
+<p>The function will return 0 if the event was sent (and should be received/processed by the server) or -1 if there was an error (e.g. your events manifest file is outdated).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first two parameters for an event usually default to the <code>user_id</code> (obtained from the ${function.xboxone_get_user function) and the game's <code>scid</code> (obtained from the Microsoft Partner Center).</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_fire_event(event_name, params=undefined)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the event to be triggered</td>
+</tr>
+<tr>
+<td>params</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>One or more arguments specifying the parameters to be passed to the event as individual arguments</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, 0 if the function was successful)</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var uid = xboxone_get_activating_user();
+var result = xboxone_fire_event("PlayerSessionStart", uid, global.scid, 0, 42, 42);</code></pre>
+In the code above we are firing the <code>"PlayerSessionStart"</code> event and passing some parameters, including the player's ID and the game's SCID as the first two parameters for the specified event.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_read_player_leaderboard">xboxone_read_player_leaderboard</h1>
+<p>This function allows you to read a leaderboard starting at the specified user, regardless of the user's rank or score, and ordered by percentile rank. You supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a> and a <code>friendfilter</code> that is one of the <a href="xbox_live.html#xboxlive_achievement_filter">xboxlive_achievement_filter</a> constants.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT This function requires <a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a> before it can be used.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_read_player_leaderboard(ident, user_id, numitems, friendfilter)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ident</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The leaderboard ID (if filter is <code>xboxlive_achievement_filter_all_players</code>) or stat to read</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer</td>
+</tr>
+<tr>
+<td>numitems</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of items to retrieve</td>
+</tr>
+<tr>
+<td>friendfilter</td>
+<td><a href="xbox_live.html#xboxlive_achievement_filter">xboxlive_achievement_filter</a></td>
+<td>One of the <code>xboxlive_achievement_filter_*</code> constants</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, any other value otherwise)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="xbox_live.html#xboxlive_achievement_message_type">xboxlive_achievement_message_type</a></td>
+<td>The constant <code>xboxlive_achievement_leaderboard_info</code></td>
+</tr>
+<tr>
+<td>leaderboardid</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The unique ID of the leaderboard as defined on the provider dashboard.</td>
+</tr>
+<tr>
+<td>numentries</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of entries in the leaderboard that you have received.</td>
+</tr>
+<tr>
+<td>PlayerN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the player, where <strong>N</strong> is position within the received entries list.</td>
+</tr>
+<tr>
+<td>PlayeridN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The unique user ID of the player <strong>N</strong></td>
+</tr>
+<tr>
+<td>RankN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The rank of the player <strong>N</strong> within the leaderboard.</td>
+</tr>
+<tr>
+<td>ScoreN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The score of the player <strong>N</strong></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var uid = xboxone_get_activating_user();
+xboxone_read_player_leaderboard("MyLeaderboard", uid, 10, xboxlive_achievement_filter_all_players);</code></pre>
+In the code above we are querying the leaderboard with the ID <code>"MyLeaderboard"</code> for the first 10 entries including all players.
+We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.
+<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == xboxlive_achievement_leaderboard_info)
+{
+    global.numentries = async_load[? "numentries"];
+    for (var i = 0; i &lt; numentries; i++)
+    {
+        global.playername[i] = async_load[? "Player" + string(i)];
+        global.playerid[i] = async_load[? "Playerid" + string(i)];
+        global.playerrank[i] = async_load[? "Rank" + string(i)];
+        global.playerscore[i] = async_load[? "Score" + string(i)];
+    }
+}</code></pre>
+The code above matches the response against the correct <strong>id</strong> and stores the information of the top player names, ids, ranks and scores in global arrays.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_set_rich_presence">xboxone_set_rich_presence</h1>
+<p>This function is used to set the rich presence string for the given user. A Rich Presence string shows the user's in-game activity after the name of the game that the user is playing, separated by a hyphen. This string is displayed under a player's Gamertag in the "Friends &amp; Clubs" list as well as in the player's Xbox Live profile.
+When using this function you need to supply the <code>user_id</code> for the user, and then you can flag the user as currently active in the game or not (using <code>true</code>/<code>false</code>). The next argument is the <code>rich_presence_string</code> ID to show, and then finally you can (optionally) supply a <code>scid</code> string. Note that this is an optional argument -- if you have called <a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a> you don't need to pass the <code>scid</code> here.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For more information on rich presence and how to set up the strings to use in the Partner Center, please see the Microsoft's <a href="https://docs.microsoft.com/en-us/gaming/xbox-live/features/social/presence/config/live-presence-config2">Rich Presence</a> documentation.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT On the Windows platform it is not possible to check your rich presence string during development (when it's a sandboxed project).</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_set_rich_presence(user_id, is_user_active, rich_presence_id, scid=undefined)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer</td>
+</tr>
+<tr>
+<td>is_user_active</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Flag the user as active or not</td>
+</tr>
+<tr>
+<td>rich_presence_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The rich present ID (defined in the Partner Center)</td>
+</tr>
+<tr>
+<td>scid</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td><img alt="✴️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2734.png" title=":eight_pointed_black_star:" /> OPTIONAL The Service Configuration ID string</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var user_one = xboxone_get_activating_user();
+xboxone_set_rich_presence(user_one, true, "Playing_Challenge", global.scid);</code></pre>
+In the code above we are getting the active user (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and setting its current presence string. We are providing a scid (<code>global.scid</code>), otherwise we were required to first call the function <a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a>.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_gamertag_for_user">xboxone_gamertag_for_user</h1>
+<blockquote>
+<p><img alt="⛔️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/26d4.png" title=":no_entry:" /> This function was <strong>deprecated</strong> with version 3.0.1.</p>
+</blockquote>
+<p>This function is used to get the gamer tag for the given user. This tag is displayed in a player's "Friends &amp; Clubs" list as well as in the player's Xbox Live profile.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on gamer tags, please see the Microsoft's <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview">Modern Gamertag</a> documentation.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_gamertag_for_user(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>The user unique ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
+var _tag = xboxone_gamertag_for_user(_user);
+show_debug_message(_tag);</code></pre>
+In the code above we are getting the active user (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and getting its current gamertag.</p>
+<p><br></p>
+<p><strong>Versioning:</strong></p>
+<ul>
+<li><code>3.0.1</code> - Function deprecated</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_unique_modern_gamertag_for_user">xboxone_unique_modern_gamertag_for_user</h1>
+<p>This function returns the <a href="https://learn.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview">modern gamertag</a> (including the suffix) of a locally signed in user or a player in the current game session. If the player does not have a modern gamertag, the classic gamertag is returned instead.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on gamer tags, please see the Microsoft's <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview">Modern Gamertag</a> documentation.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_unique_modern_gamertag_for_user(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>The user unique ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
+var _tag = xboxone_unique_modern_gamertag_for_user(_user);
+show_debug_message(_tag);</code></pre>
+<p><br></p>
+<p><strong>Versioning:</strong></p>
+<ul>
+<li><code>3.0.1</code> - Function added</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_modern_gamertag_suffix_for_user">xboxone_modern_gamertag_suffix_for_user</h1>
+<p>This function returns the modern gamertag suffix of a locally signed in user or a player in the current game session (e.g. <code>"#1234"</code>). If the player does not have a modern gamertag or the modern gamertag does not include a suffix, an empty string is returned.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on gamer tags, please see the Microsoft's <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview">Modern Gamertag</a> documentation.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_modern_gamertag_suffix_for_user(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>The user unique ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
+var _tag = xboxone_modern_gamertag_suffix_for_user(_user);
+show_debug_message(_tag);</code></pre>
+<p><br></p>
+<p><strong>Versioning:</strong></p>
+<ul>
+<li><code>3.0.1</code> - Function added</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_modern_gamertag_for_user">xboxone_modern_gamertag_for_user</h1>
+<p>This function returns the modern gamertag (excluding suffix) of a locally signed in user or a player in the current game session.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on gamer tags, please see the Microsoft's <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview">Modern Gamertag</a> documentation.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_modern_gamertag_for_user(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Int64</a></td>
+<td>The user unique ID</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
+var _tag = xboxone_modern_gamertag_for_user(_user);
+show_debug_message(_tag);</code></pre>
+<p><br></p>
+<p><strong>Versioning:</strong></p>
+<ul>
+<li><code>3.0.1</code> - Function added</li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_setup">xboxone_stats_setup</h1>
+<p>This function needs to be called before you can use any of the other Xbox stat functions, and simply initializes the required libraries on the system. The <code>user_id</code> argument is the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, while the <code>scid</code> and <code>title_id</code> are the unique ID's for your game on the Microsoft Partner Center.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_setup(user_id, scid, title_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>scid</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Service Configuration ID (SCID)</td>
+</tr>
+<tr>
+<td>title_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>(hex)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var user_id = xboxone_get_user(0);
+xboxone_stats_setup(user_id, "00000000-0000-0000-0000-000000000000", 0xFFFFFFFF);</code></pre>
+In the code above first we retrieve the user ID of the user with index 0 (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and use it to set up the event-based stat system.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_add_user">xboxone_stats_add_user</h1>
+<p>This function can be used to add the given user to the statistics manager. This must be done before using any of the other stats functions to automatically sync the game with the Xbox Live server and retrieve the latest values. You supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and the function will return -1 if there was an error or the <code>user_id</code> is invalid, or an async request ID if the function was successfully called.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_add_user(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, otherwise an async request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="xbox_live.html#xboxlive_achievement_message_type">xboxlive_achievement_message_type</a></td>
+<td>The constant <code>xboxlive_achievement_stat_event</code></td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"LocalUserAdded"</code>.</td>
+</tr>
+<tr>
+<td>userid</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID associated with the request.</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>0 if successful, some other value on error.</td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td><img alt="✴️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2734.png" title=":eight_pointed_black_star:" /> OPTIONAL A string with an error message</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; xboxone_get_user_count(); i++)
+{
+    user_id[i] = xboxone_get_user(i);
+    xboxone_stats_add_user(user_id[i]);
+}</code></pre>
+In the code above we are looping through all the available users (using the function <a href="base.html#xboxone_get_user_count">xboxone_get_user_count</a>) getting their user ID (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and adding them to the statistics manager.
+We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.</p>
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "LocalUserAdded")
+{
+    if (async_load[? "error"] != 0)
+    {
+        show_debug_message("Error while adding user to statistics manager");
+    }
+}</code></pre>
+The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_delete_stat">xboxone_stats_delete_stat</h1>
+<p>This function can be used to delete a stat from the stat manager for the given user ID. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, then the stat string to delete. This clears the stat value and removes it from the stat manager, meaning it will no longer be returned by the functions <a href="xbox_live.html#xboxone_stats_get_stat_names">xboxone_stats_get_stat_names</a> and <a href="xbox_live.html#xboxone_stats_get_stat">xboxone_stats_get_stat</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_delete_stat(user_id, stat_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The stat to be deleted.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, any other value otherwise)</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">for (var i = 0; i &lt; xboxone_get_user_count(); i++)
+{
+    user_id[i] = xboxone_get_user(i);
+    xboxone_stats_delete_stat(user_id[i], "highScore");
+}</code></pre>
+In the code above we are looping though all the available users (using the function <a href="base.html#xboxone_get_user_count">xboxone_get_user_count</a>) getting their user ID (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and deleting the stat <code>highScore</code> from each one of them.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_flush_user">xboxone_stats_flush_user</h1>
+<p>This function can be used to flush the stats data for the given user from the statistics manager to the live server, ensuring that the server is up to date with the current values.  To use the function, you supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and then give a priority value (0 for low priority and 1 for high priority). The function will will return -1 if there was an error or the user ID was invalid, or an async request ID if the function was successfully called.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT According to Xbox documentation, developers should be careful not to call this too often as the Xbox system will rate-limit the requests, and the GDK Extension will also automatically flush stats approximately every 5 minutes.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_flush_user(user_id, high_priority)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>high_priority</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not flush is high priority.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, otherwise an async request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="xbox_live.html#xboxlive_achievement_message_type">xboxlive_achievement_message_type</a></td>
+<td>The constant <code>xboxlive_achievement_stat_event</code></td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"StatisticUpdateComplete"</code>.</td>
+</tr>
+<tr>
+<td>userid</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID associated with the request.</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>0 if successful, some other value on error.</td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string with an error message</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; array_length(user_ids); i++)
+{
+    xboxone_stats_flush_user(user_ids[i]);
+}</code></pre>
+In the code above we are looping though an array of user ids (<code>user_ids</code>) and flushing their local data to the live server.
+We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "StatisticsUpdateComplete")
+{
+    if (async_load[? "error"] != 0)
+    {
+        show_debug_message("Error while updating user statistics");
+    }
+}</code></pre>
+The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_get_leaderboard">xboxone_stats_get_leaderboard</h1>
+<p>This function can be used to retrieve a global leaderboard with ranks for a given statistic. You supply the user ID (as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>), the stat string (as defined when you registered it as a "Featured Stat"), and then you specify a number of details about what leaderboard information you want to retrieve. Note that you can only retrieve a global leaderboard for <code>int</code> or <code>real</code> stats, but not for <code>string</code> stats.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT Stats used in global leaderboards must be registered as "Featured Stats" in the Partner Center otherwise an error will be returned. If you want local (social) leaderboards, then please see the function <a href="xbox_live.html#xboxone_stats_get_social_leaderboard">xboxone_stats_get_social_leaderboard</a>.</p>
+<p>[[Warning: IMPORTANT The user ID passed into this function should first be added to the statistics manager using the <a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a> function.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_get_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>stat</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The stat to create the global leaderboard from.</td>
+</tr>
+<tr>
+<td>num_entries</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of entries from the leaderboard to retrieve.</td>
+</tr>
+<tr>
+<td>start_rank</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The rank in the leaderboard to start from (set to <code>0</code> if <code>start_at_user</code> is set to true).</td>
+</tr>
+<tr>
+<td>start_at_user</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to start at the user ID.</td>
+</tr>
+<tr>
+<td>ascending</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> or ascending or <code>false</code> for descending order.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="xbox_live.html#xboxlive_achievement_message_type">xboxlive_achievement_message_type</a></td>
+<td>The constant <code>xboxlive_achievement_leaderboard_info</code></td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"GetLeaderboardComplete"</code>.</td>
+</tr>
+<tr>
+<td>userid</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID associated with the request.</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>0 if successful, some other value on error.</td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string with an error message <strong>[OPTIONAL]</strong></td>
+</tr>
+<tr>
+<td>displayName</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The unique ID for the leaderboard as defined on the provider dashboard.</td>
+</tr>
+<tr>
+<td>numentries</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of entries in the leaderboard that you have received.</td>
+</tr>
+<tr>
+<td>PlayerN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the player, where <strong>N</strong> is position within the received entries list.</td>
+</tr>
+<tr>
+<td>PlayeridN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The unique user ID of the player <strong>N</strong></td>
+</tr>
+<tr>
+<td>RankN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The rank of the player <strong>N</strong> within the leaderboard.</td>
+</tr>
+<tr>
+<td>ScoreN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The score of the player <strong>N</strong></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">xboxone_stats_get_leaderboard(user_id, "GlobalTime", 20, 1, false, true);</code></pre>
+In the code above we are querying a leaderboard for the stat <code>"GlobalTime"</code> with the first 20 entries starting on rank 1 in ascending order.
+We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.
+<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == achievement_leaderboard_info)
+{
+    if (async_load[? "event"] == "GetLeaderboardComplete")
+    {
+        global.numentries = async_load[? "numentries"];
+        for (var i = 0; i &lt; numentries; i++)
+        {
+            global.playername[i] = async_load[? "Player" + string(i)];
+            global.playerid[i] = async_load[? "Playerid" + string(i)];
+            global.playerrank[i] = async_load[? "Rank" + string(i)];
+            global.playerscore[i] = async_load[? "Score" + string(i)];
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct <strong>id</strong> and <strong>event</strong> and stores the information of the top player names, ids, ranks and scores in global arrays.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_get_social_leaderboard">xboxone_stats_get_social_leaderboard</h1>
+<p>This function can be used to retrieve a social leaderboard with ranks for a given statistic. You supply the user ID (as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>), the stat string (as defined when you created it using the <code>xboxone_stats_set_stat_*</code> functions), and then you specify a number of details about what leaderboard information you want to retrieve.</p>
+<p>Note that you can only retrieve a social leaderboard for int or real stats, but not for string stats, and that if you flag the <code>favourites_only</code> argument as <code>true</code>, then the results will only contain data for those friends that are marked by the user as "favorites".</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT The user ID passed into this function should first be added to the statistics manager using the <a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a> function.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Stats used in social leaderboards do not need to be registered as "Featured Stats" in the Partner Center.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_get_social_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending, favourites_only)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>stat</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The stat to create the global leaderboard from.</td>
+</tr>
+<tr>
+<td>num_entries</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of entries from the leaderboard to retrieve.</td>
+</tr>
+<tr>
+<td>start_rank</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The rank in the leaderboard to start from (set to <code>0</code> if <code>start_at_user</code> is set to true).</td>
+</tr>
+<tr>
+<td>start_at_user</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to start at the user ID.</td>
+</tr>
+<tr>
+<td>ascending</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> or ascending or <code>false</code> for descending order.</td>
+</tr>
+<tr>
+<td>favourites_only</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to show only friends that are marked as favourites.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="xbox_live.html#xboxlive_achievement_message_type">xboxlive_achievement_message_type</a></td>
+<td>The constant <code>xboxlive_achievement_leaderboard_info</code></td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"GetLeaderboardComplete"</code>.</td>
+</tr>
+<tr>
+<td>userid</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID associated with the request.</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>0 if successful, some other value on error.</td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string with an error message <strong>[OPTIONAL]</strong></td>
+</tr>
+<tr>
+<td>displayName</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The unique ID for the leaderboard as defined on the provider dashboard.</td>
+</tr>
+<tr>
+<td>numentries</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of entries in the leaderboard that you have received.</td>
+</tr>
+<tr>
+<td>PlayerN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the player, where <strong>N</strong> is position within the received entries list.</td>
+</tr>
+<tr>
+<td>PlayeridN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The unique user ID of the player <strong>N</strong></td>
+</tr>
+<tr>
+<td>RankN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The rank of the player <strong>N</strong> within the leaderboard.</td>
+</tr>
+<tr>
+<td>ScoreN</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The score of the player <strong>N</strong></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">xboxone_stats_get_social_leaderboard(user_id, "GlobalTime", 20, 1, false, true, true);</code></pre>
+In the code above we are querying a leaderboard for the stat <code>"GlobalTime"</code> with the first 20 entries starting on rank 1 in ascending order, selecting only friends marked as favourites.
+We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == achievement_leaderboard_info)
+{
+    if (async_load[? "event"] == "GetLeaderboardComplete")
+    {
+        global.numentries = async_load[? "numentries"];
+        for (var i = 0; i &lt; numentries; i++)
+        {
+            global.playername[i] = async_load[? "Player" + string(i)];
+            global.playerid[i] = async_load[? "Playerid" + string(i)];
+            global.playerrank[i] = async_load[? "Rank" + string(i)];
+            global.playerscore[i] = async_load[? "Score" + string(i)];
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct <strong>id</strong> and <strong>event</strong> and store the information of the top favourite friends player names, ids, ranks and scores in global arrays.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_get_stat">xboxone_stats_get_stat</h1>
+<p>This function can be used to retrieve a single stat value from the stat manager for the given user. You supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and then the <code>stat_name</code> as defined when you created it using one of the <code>xboxone_stats_set_stat_*</code> functions. The return value can be either a string or a real (depending on the stat being checked) or the GML constant <code>undefined</code> if the stat does not exist or there has been an error.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT The user ID passed into this function should first be added to the statistics manager using the <a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a> function.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_get_stat(user_id, stat_name)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The statistic to get.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p>(The value for the given stat) or undefined</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">if (game_over == true)
+{
+    if (xboxone_stats_get_stat(user_id, "PercentDone") &lt; 100)
+    {
+        var _val = (global.LevelsFinished / global.LevelsTotal)*100;
+        xboxone_stats_set_stat_real(user_id, "PercentDone", _val);
+    }
+}</code></pre>
+In the code above we are checking if the given user complete percentage (<code>"PercentDone"</code>) is less then 100 and if so updated it to a new value (using the <a href="xbox_live.html#xboxone_stats_set_stat_real">xboxone_stats_set_stat_real</a> function).</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_get_stat_names">xboxone_stats_get_stat_names</h1>
+<p>This function can be used to retrieve all the defined stats from the stat manager for the given user. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and the function returns an array of strings containing the statistics for the user. If an error occurs or the user has no stats, an empty array will be returned.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT The user ID passed into this function should first be added to the statistics manager using the <a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a> function.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_get_stat_names(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p>Array with all the stat names</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _stats = xboxone_stats_get_stat_names(user_id);
+for (var i = 0; i &lt; array_length(_stats); i++)
+{
+    xboxone_stats_delete_stat(user_id, _stats[i]);
+}</code></pre>
+In the code above we are getting an array of stat names (<code>_stats</code>) for a given user and looping through it deleting each stat (using the <a href="xbox_live.html#xboxone_stats_delete_stat">xboxone_stats_delete_stat</a> function).</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_remove_user">xboxone_stats_remove_user</h1>
+<p>This function can be used to remove (unregister) the given user from the statistics manager, performing a flush of the stat data to the live server. According to the Xbox documentation the game does not have to remove the user from the stats manager, as the GDK Extension will periodically flush the stats anyway.</p>
+<p>To use the function, you supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and the function will return -1 if there was an error or the user ID was invalid, or any other value if the function was successfully called.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT The user ID passed into this function should first be added to the statistics manager using the <a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a> function.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT Removing the user can return an error if the statistics that have been set on the user are invalid (such as the stat names containing non-alphanumeric characters).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you want to flush the stats data to the live server at any time without removing the user, you can use the function <a href="xbox_live.html#xboxone_stats_flush_user">xboxone_stats_flush_user</a>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_remove_user(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, any other value otherwise)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="xbox_live.html#xboxlive_achievement_message_type">xboxlive_achievement_message_type</a></td>
+<td>The constant <code>xboxlive_achievement_stat_event</code></td>
+</tr>
+<tr>
+<td>event</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string <code>"LocalUserRemoved"</code>.</td>
+</tr>
+<tr>
+<td>userid</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID associated with the request.</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>0 if successful, some other value on error.</td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string with an error message</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; array_length(user_ids); i++)
+{
+    xboxone_stats_remove_user(user_ids[i]);
+}</code></pre>
+In the code above we are looping through an array of user ids (<code>user_ids</code>) and removing them from the statistics manager.
+We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "LocalUserRemoved")
+{
+    if (async_load[? "error"] != 0)
+    {
+        show_debug_message("Error while removing user from statistics manager");
+    }
+}</code></pre>
+The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_set_stat_int">xboxone_stats_set_stat_int</h1>
+<p>This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (an <strong>integer</strong> ) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT The user ID passed into this function should first be added to the statistics manager using the <a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a> function.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When setting a stat value, any previous values will be overwritten, therefore it is up to you to determine if the stat value should be updated or not (i.e. check that the high score is actually the highest) by comparing to the current stat value with the new one before setting it.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_int(user_id, stat_name, stat_value)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The statistic to set.</td>
+</tr>
+<tr>
+<td>stat_value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The value to set the stat to.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, any other value otherwise)</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _highscore = 123;
+xboxone_stats_set_stat_int(users_ids[0], "Highscore", _highscore);</code></pre>
+In the code above we are setting the stat <code>"Highscore"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_set_stat_real">xboxone_stats_set_stat_real</h1>
+<p>This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a <strong>real</strong>) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT The user ID passed into this function should first be added to the statistics manager using the <a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a> function.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When setting the stat value, any previous values will be overwritten, therefore it is up to you to determine if the stat value should be updated or not (i.e. check that the high score is actually the highest) by comparing to the current stat value with the new one before setting it.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_real(user_id, stat_name, stat_value)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The statistic to set.</td>
+</tr>
+<tr>
+<td>stat_value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The value to set the stat to.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, any other value otherwise)</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _bestTime = 123.45;
+xboxone_stats_set_stat_real(users_ids[0], "BestTime", _bestTime);</code></pre>
+In the code above we are setting the stat <code>"BestTime"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_stats_set_stat_string">xboxone_stats_set_stat_string</h1>
+<p>This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a <strong>string</strong>) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT The user ID passed into this function should first be added to the statistics manager using the <a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a> function.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When setting the stat value, any previous values will be overwritten, therefore it is up to you to determine if the stat value should be updated or not (i.e. check that the high score is actually the highest) by comparing to the current stat value with the new one before setting it.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_string(user_id, stat_name, stat_value)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>stat_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The statistic to set.</td>
+</tr>
+<tr>
+<td>stat_value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The value to set the stat to.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 on error, any other value otherwise)</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_string(users_ids[0], "Team", "YoYo Games");</code></pre>
+In the code above we are setting the stat <code>"Team"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxlive_achievement_filter">xboxlive_achievement_filter</h1>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="xbox_live.html#xboxone_read_player_leaderboard">xboxone_read_player_leaderboard</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xboxlive_achievement_filter_all_players</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_filter_friends_only</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_filter_favorites_only</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_filter_friends_alt</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_filter_favorites_alt</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxlive_achievement_message_type">xboxlive_achievement_message_type</h1>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="xbox_live.html#xboxone_read_player_leaderboard">xboxone_read_player_leaderboard</a></li>
+<li><a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a></li>
+<li><a href="xbox_live.html#xboxone_stats_flush_user">xboxone_stats_flush_user</a></li>
+<li><a href="xbox_live.html#xboxone_stats_get_leaderboard">xboxone_stats_get_leaderboard</a></li>
+<li><a href="xbox_live.html#xboxone_stats_get_social_leaderboard">xboxone_stats_get_social_leaderboard</a></li>
+<li><a href="xbox_live.html#xboxone_stats_remove_user">xboxone_stats_remove_user</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xboxlive_achievement_our_info</code></td>
+<td>Previously <code>achievement_our_info</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_friends_info</code></td>
+<td>Previously <code>achievement_friends_info</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_leaderboard_info</code></td>
+<td>Previously <code>achievement_leaderboard_info</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_achievement_info</code></td>
+<td>Previously <code>achievement_achievement_info</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_pic_loaded</code></td>
+<td>Previously <code>achievement_pic_loaded</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_challenge_completed</code></td>
+<td>Previously <code>achievement_challenge_completed</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_challenge_completed_by_remote</code></td>
+<td>Previously <code>achievement_challenge_completed_by_remote</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_challenge_received</code></td>
+<td>Previously <code>achievement_challenge_received</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_challenge_list_received</code></td>
+<td>Previously <code>achievement_challenge_list_received</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_challenge_launched</code></td>
+<td>Previously <code>achievement_challenge_launched</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_player_info</code></td>
+<td>Previously <code>achievement_player_info</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_purchase_info</code></td>
+<td>Previously <code>achievement_purchase_info</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_msg_result</code></td>
+<td>Previously <code>achievement_msg_result</code></td>
+</tr>
+<tr>
+<td><code>xboxlive_achievement_stat_even</code></td>
+<td>Previously <code>achievement_stat_even</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_privilege">xboxone_privilege</h1>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="xbox_live.html#xboxone_check_privilege">xboxone_check_privilege</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xboxone_privilege_internet_browsing</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_social_network_sharing</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_share_kinect_content</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_video_communications</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_communications</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_user_created_content</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_multiplayer_sessions</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_sessions</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_fitness_upload</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_privilege_result">xboxone_privilege_result</h1>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="xbox_live.html#xboxone_check_privilege">xboxone_check_privilege</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xboxone_privilege_result_aborted</code></td>
+<td>The check was aborted</td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_result_banned</code></td>
+<td>The user is banned</td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_result_no_issue</code></td>
+<td>There are no privilege issues with the user</td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_result_purchase_required</code></td>
+<td>The user must purchase something additional, usually a subscription, for access</td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_result_restricted</code></td>
+<td>The user is restricted from access, usually through parental controls</td>
+</tr>
+<tr>
+<td><code>xboxone_privilege_result_unknown</code></td>
+<td>Unknown result</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="storage.html" class="btn btn-neutral float-left" title="Storage Module"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="iap.html" class="btn btn-neutral float-right" title="In-App Purchases Module">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>YoYoGames 2025</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-GDK" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="storage.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="iap.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -19,10 +19,10 @@
 
   Please look at the following sections for information on the different modules present in this library:
 
-* [Base Module](Base-Module#Base_Module) (User)
-* [Storage Module](Storage-Module#Storage_Module) (Save &amp; Load)
-* [Xbox Live Module](Xbox-Live-Module#Xbox_Live_Module) (Stats &amp; Achievements)
-* [IAP Module](IAP-Module#IAP_Module) (In-App Purchases)
+* [Base Module](base#base-module) (User)
+* [Storage Module](storage#storage-module) (Save &amp; Load)
+* [Xbox Live Module](xbox_live#xbox-live-module) (Stats &amp; Achievements)
+* [IAP Module](iap#in-app-purchases-module) (In-App Purchases)
 
 
 <br><br>

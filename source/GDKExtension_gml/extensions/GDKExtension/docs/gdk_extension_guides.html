@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Quick Start Guide (Project setup, sandboxes & configuration files) - GMEXT-GDK</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Quick Start Guide (Project setup, sandboxes \u0026 configuration files)";
+        var mkdocs_page_input_path = "gdk_extension_guides.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-GDK
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">GDK Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="building_guide.html">Building Guide (How to build the extension from source)</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Quick Start Guide (Project setup, sandboxes & configuration files)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#project-setup">Project Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sandbox-getset">Sandbox Get/Set</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#config-file">Config File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#manifest-file">Manifest File</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shell-localization-guide">Shell Localization Guide</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="api.html">GDK Extension API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="base.html">Base Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage.html">Storage Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="xbox_live.html">Xbox Live Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="iap.html">In-App Purchases Module</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-GDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Quick Start Guide (Project setup, sandboxes & configuration files)</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-GDK/edit/master/docs/gdk_extension_guides.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="quick-start-guide">Quick Start Guide</h1>
+<p>You will initially need to set up your project for the GDK Extension to work properly. This guide covers all aspects of your project that you will need to configure.</p>
+<h2 id="project-setup">Project Setup</h2>
+<p>In order to build your project using the extension you need to import it and make some changes to your project:</p>
+<ol>
+<li>Import the local package ( <strong>.yymps</strong> ) provided with the public release version.</li>
+<li>Use the 64-bit Windows runtime. To change this go into <strong>Game Options → Windows → General</strong> and enable " <strong>Use x64 Windows Runtime</strong> ".<br>
+<img alt="" src="assets/setup1.jpg" /></li>
+<li>Also make sure you enable the <strong>"Copy exe to output folder"</strong> setting: <br>
+<img alt="" src="assets/gdk_copy_to_destination.png" /></li>
+</ol>
+<blockquote>
+<p>These steps are required only for older versions of the GameMaker:</p>
+<ul>
+<li><strong>For GameMaker 2022.3 (or previous)</strong> : Also make sure you disable the subst from within the <strong>Preferences → General Settings → Compiling</strong> menu, otherwise this extension will not work:</li>
+</ul>
+<p><img alt="" src="assets/gdk_disable_subst.png" /></p>
+<ul>
+<li><strong>For GameMaker 2022.2 (or previous)</strong> : The extension comes with two <strong>.bat</strong> files: <code>post_package_step.bat</code> and <code>post_run_step.bat</code> (placed inside the extension's folder). These files need to be moved into your project's root folder, which is the same directory as your project's <strong>.yyp</strong> file:</li>
+</ul>
+<p><img alt="" src="assets/setup2.jpg" /></p>
+</blockquote>
+<p>After finishing this we'll set up the config file required for the Microsoft Store.</p>
+<h2 id="sandbox-getset">Sandbox Get/Set</h2>
+<p>When using Xbox Live features, you might need to change your PC sandboxes (see <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/test-release/tools/live-pc-sandbox-switcher">official documentation</a>) so you can test those same features. For this purpose, you can run the GDK Command Line (under <code>Start → All Apps → Microsoft GDK → Desktop VS 2018 Gaming Command Prompt</code>) and use one of the following commands:</p>
+<ul>
+<li><code>XblPCSandbox /get</code> (returns the current sandbox, default is RETAIL)</li>
+<li><code>XblPCSandbox &lt;sandbox&gt;</code> (changes the sandbox, where <em><code>&lt;sandbox&gt;</code></em> refers to your sandbox name)</li>
+<li><code>XblPCSandbox RETAIL</code> (sets the sandbox back to RETAIL)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sandbox names are case sensitive.</p>
+</div>
+<h2 id="config-file">Config File</h2>
+<p>To build and run your project using the GDK Extension, it's necessary to set up and include a <code>MicrosoftGame.Config</code> file:</p>
+<ol>
+<li>This config file can be created using Microsoft's MicrosoftGame Editor tool (for more information refer to its <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/system/overviews/microsoft-game-config/microsoftgameconfig-editor">documentation page</a>) or can be copied from the <a href="https://github.com/YoYoGames/GMEXT-GDK/tree/main/source/GDKExtension_gml">demo project</a> and edited manually.<br></li>
+</ol>
+<p><img alt="" src="assets/setup3.jpg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>ExecutableList/Executable/Name</code> property should be set to the value in <code>GameOptions → Windows → Executable Name</code>.</p>
+</div>
+<ol>
+<li>Add the <code>MicrosoftGame.Config</code> file to the Included Files of your project.</li>
+<li>Depending on the image file names specified in the <code>ShellVisuals</code> tag you will need to add those to the Included Files as well.<br></li>
+</ol>
+<p><img alt="" src="assets/setup4.jpg" /></p>
+<p>Upon finishing this setup and following the <a href="#project-setup">Project Setup</a> section above, you should be ready to run and test your project.</p>
+<h2 id="manifest-file">Manifest File</h2>
+<p>This step is not required unless you are using the event-based functions from the Xbox Live module (this requires enabling of <strong>Event-Based Stats</strong> on the Partner Center).
+  If you are using the event-based system from Xbox Live module you need to provide GameMaker with some extra information about the <strong>statistics</strong>, <strong>events</strong> and <strong>leaderboards</strong> created on you Partner Center's dashboard. For this you need to do the following:</p>
+<ol>
+<li>Log in to your <strong>Partner Center</strong> account, open your game's configuration page and go into the <strong>Xbox Services → Gameplay Settings</strong> where you can define your stats.<br></li>
+</ol>
+<p><img alt="" src="assets/setup5.jpg" /></p>
+<ol>
+<li>From here you will need to select <strong>Player stats → Stat rules</strong> the drop-down menu at the top.<br></li>
+</ol>
+<p><img alt="" src="assets/setup6.jpg" /></p>
+<ol>
+<li>On the page that opens, click on the " <strong>Download published events manifest</strong> " button.<br></li>
+</ol>
+<p><img alt="" src="assets/setup7.jpg" /></p>
+<ol>
+<li>Add the downloaded file to your project's <strong>Included Files (/datafiles)</strong> folder.</li>
+</ol>
+<p>After setting up this manifest file, you will be able to use event-based stats and leaderboards in your project.</p>
+<blockquote>
+<p>If you make any changes to your events on the Partner Center dashboard, you'll need to republish those changes and download a new <strong>manifest</strong> file.</p>
+</blockquote>
+<p><br><br></p>
+<hr />
+<h2 id="shell-localization-guide">Shell Localization Guide</h2>
+<p>This feature allows you to define the title's Shell presence. For example, Images and Names. Used during registration to surface the title in the Shell. In order to use this the user needs to make some modifications to both their <code>MicrosoftGame.Config</code> file and their project:</p>
+<ul>
+<li>In their <code>MicrosoftGame.Config</code> file, they need to:<ul>
+<li>Change the value of <code>DefaultDisplayName</code> in <code>ShellVisuals</code> to <code>"ms-resource:ApplicationDisplayName"</code></li>
+<li>Change the value of <code>Description</code> in <code>ShellVisuals</code> to <code>"ms-resource:ApplicationDescription"</code></li>
+<li>Add a section which declares which languages they want to support using standard language\region codes (this should be in the <code>Game</code> section), i.e.:</li>
+</ul>
+</li>
+</ul>
+<pre class="highlight"><code>&lt;Resources&gt;
+    &lt;Resource Language="en-us" /&gt;
+    &lt;Resource Language="en-gb" /&gt;
+    &lt;Resource Language="de-de" /&gt;
+&lt;/Resources&gt;</code></pre>
+<ul>
+<li>
+<p>In their project developers need to add some folders to included files:</p>
+<ol>
+<li>In the root of included files (i.e.: <code>datafiles</code>) they should add a <code>GDKExtensionStrings</code> folder</li>
+<li>Inside the <code>GDKExtensionStrings</code> folder they should add one for each supported language, i.e. <code>en-us</code> for American English and <code>de-de</code> for German, so for the above list of languages the directory structure would be:</li>
+</ol>
+<p><br></p>
+<pre class="highlight"><code class="language-js">GDKExtensionStrings\en-us
+GDKExtensionStrings\en-gb
+GDKExtensionStrings\de-de</code></pre>
+<p><br></p>
+<ol>
+<li>Inside the base <code>GDKExtensionStrings</code> folder they should add an XML file named <code>resources.resw</code> which will contains the fallback language info and should look like the following (where the values should be replaced with the required defaults):</li>
+</ol>
+<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;root&gt;
+    &lt;data name="ApplicationDescription"&gt;
+        &lt;value&gt;Default App Description Here&lt;/value&gt;
+    &lt;/data&gt;
+    &lt;data name="ApplicationDisplayName"&gt;
+        &lt;value&gt;Default Display Name Here&lt;/value&gt;
+    &lt;/data&gt;
+&lt;/root&gt;</code></pre>
+<ol>
+<li>Inside each of the language-specific folders they should add another <code>resources.resw</code> file with the appropriate values for that language.</li>
+</ol>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="building_guide.html" class="btn btn-neutral float-left" title="Building Guide (How to build the extension from source)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="GDK Extension API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>YoYoGames 2025</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-GDK" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="building_guide.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="api.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

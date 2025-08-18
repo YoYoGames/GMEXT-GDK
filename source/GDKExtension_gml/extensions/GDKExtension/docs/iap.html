@@ -1,0 +1,2651 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>In-App Purchases Module - GMEXT-GDK</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "In-App Purchases Module";
+        var mkdocs_page_input_path = "iap.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-GDK
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">GDK Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="building_guide.html">Building Guide (How to build the extension from source)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="gdk_extension_guides.html">Quick Start Guide (Project setup, sandboxes & configuration files)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="api.html">GDK Extension API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="base.html">Base Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="storage.html">Storage Module</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="xbox_live.html">Xbox Live Module</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">In-App Purchases Module</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#product-functions">Product Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#package-functions">Package Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-GDK</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">In-App Purchases Module</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-GDK/edit/master/docs/iap.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="in-app-purchases-module"><strong>In-App Purchases Module</strong></h1>
+<p>A Microsoft Store game can have several In-App Purchases. Inside the Partner Center these are referred to as <strong>add-ons</strong> and can be of multiple types (consumables, durables, subscriptions, DLCs). For detailed instructions on how to configure those, check the Add-ons section on the <a href="https://help.yoyogames.com/hc/en-us/articles/4411044955793">Microsoft Partner Center</a> Helpdesk page.</p>
+<p>Contents of this module can be divided into the following sections:</p>
+<h2 id="product-functions">Product Functions</h2>
+<p>The following functions are provided for working with products:</p>
+<ul>
+<li><a href="iap.html#ms_iap_acquirelicensefordurables">ms_iap_AcquireLicenseForDurables</a></li>
+<li><a href="iap.html#ms_iap_releaselicensefordurables">ms_iap_ReleaseLicenseForDurables</a></li>
+<li><a href="iap.html#ms_iap_canacquirelicenseforstoreid">ms_iap_CanAcquireLicenseForStoreId</a></li>
+<li><a href="iap.html#ms_iap_queryaddonlicenses">ms_iap_QueryAddOnLicenses</a></li>
+<li><a href="iap.html#ms_iap_queryassociatedproducts">ms_iap_QueryAssociatedProducts</a></li>
+<li><a href="iap.html#ms_iap_queryconsumablebalanceremaining">ms_iap_QueryConsumableBalanceRemaining</a></li>
+<li><a href="iap.html#ms_iap_queryentitledproducts">ms_iap_QueryEntitledProducts</a></li>
+<li><a href="iap.html#ms_iap_querygamelicense">ms_iap_QueryGameLicense</a></li>
+<li><a href="iap.html#ms_iap_queryproductforcurrentgame">ms_iap_QueryProductForCurrentGame</a></li>
+<li><a href="iap.html#ms_iap_queryproductforpackage">ms_iap_QueryProductForPackage</a></li>
+<li><a href="iap.html#ms_iap_queryproducts">ms_iap_QueryProducts</a></li>
+<li><a href="iap.html#ms_iap_reportconsumablefulfillment">ms_iap_ReportConsumableFulfillment</a></li>
+<li><a href="iap.html#ms_iap_showassociatedproductsui">ms_iap_ShowAssociatedProductsUI</a></li>
+<li><a href="iap.html#ms_iap_showproductpageui">ms_iap_ShowProductPageUI</a></li>
+<li><a href="iap.html#ms_iap_showpurchaseui">ms_iap_ShowPurchaseUI</a></li>
+<li><a href="iap.html#ms_iap_showrateandreviewui">ms_iap_ShowRateAndReviewUI</a></li>
+<li><a href="iap.html#ms_iap_showredeemtokenui">ms_iap_ShowRedeemTokenUI</a></li>
+</ul>
+<h2 id="package-functions">Package Functions</h2>
+<p>The following functions are provided for working with packages (DLCs):</p>
+<ul>
+<li><a href="iap.html#ms_iap_acquirelicenseforpackage">ms_iap_AcquireLicenseForPackage</a></li>
+<li><a href="iap.html#ms_iap_releaselicenseforpackage">ms_iap_ReleaseLicenseForPackage</a></li>
+<li><a href="iap.html#ms_iap_canacquirelicenseforpackage">ms_iap_CanAcquireLicenseForPackage</a></li>
+<li><a href="iap.html#ms_iap_downloadandinstallpackages">ms_iap_DownloadAndInstallPackages</a></li>
+<li><a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a></li>
+<li><a href="iap.html#ms_iap_mountpackage">ms_iap_MountPackage</a></li>
+<li><a href="iap.html#ms_iap_unmountpackage">ms_iap_UnmountPackage</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>The following constants (enumerations) are used as filter arguments and return values for some API queries:</p>
+<ul>
+<li><a href="iap.html#packagekind">PackageKind</a></li>
+<li><a href="iap.html#packagescope">PackageScope</a></li>
+<li><a href="iap.html#productkind">ProductKind</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>Some of the API asynchronous callback responses return data in the form of structs. This sections aims to deliver detailed information on each of the structs used within the In-App Purchases Module context.
+The following <strong>structs</strong> (structures) are used as return members of API function calls:</p>
+<ul>
+<li><a href="iap.html#addonlicensedetails">AddonLicenseDetails</a></li>
+<li><a href="iap.html#packagedetails">PackageDetails</a></li>
+<li><a href="iap.html#productdetails">ProductDetails</a></li>
+<li><a href="iap.html#price">Price</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_acquirelicensefordurables">ms_iap_AcquireLicenseForDurables</h1>
+<p>This function acquires a license for the current game's specified durable that the user is entitled to. This is only applicable to  <strong>Durable without package</strong>  add-on types. For  <strong>Durable with packages</strong> (DLC) type, use <a href="iap.html#ms_iap_acquirelicenseforpackage">ms_iap_AcquireLicenseForPackage</a> instead.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_AcquireLicenseForDurables(user_id, store_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_AcquireLicenseForDurables_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID used when acquiring the license.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _storeId = global.products[0].storeId;
+
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_AcquireLicenseForDurables_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message("License successfully acquired!");
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , providing a success message if <strong>status</strong> is true.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_acquirelicenseforpackage">ms_iap_AcquireLicenseForPackage</h1>
+<p>Acquires a license for the current game's specified DLC that the user is entitled to use. This is only applicable to  <strong>Durable with package</strong>  add-on type. For  <strong>Durable</strong>  type, use <a href="iap.html#ms_iap_acquirelicensefordurables">ms_iap_AcquireLicenseForDurables</a> instead.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_AcquireLicenseForPackage(user_id, package_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies a store package.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_AcquireLicenseForPackage_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The package ID used when acquiring the license.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _packageId = global.packages[0].packageId;
+
+requestId = ms_iap_AcquireLicenseForPackage(_userId, _storeId);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the package ID (<code>_packageId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_AcquireLicenseForPackage_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message("License for package successfully acquired!");
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , providing a success message if <strong>status</strong> is true.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_canacquirelicenseforpackage">ms_iap_CanAcquireLicenseForPackage</h1>
+<p>This function provides the ability for a game to determine if the user could acquire a license for a particular piece of content without actually acquiring that license and using up that user's concurrency slot. This cannot be used for the current base game (since it has a license already), but to determine if the user owns some DLC for that game.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_CanAcquireLicenseForPackage(user_id, package_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies a store package.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string value <code>"ms_iap_CanAcquireLicenseForPackage_result"</code>.</td>
+</tr>
+<tr>
+<td>async_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>async_status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies a store package.</td>
+</tr>
+<tr>
+<td>licensableSku</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The SKU the user would be able to license.</td>
+</tr>
+<tr>
+<td>licenseStatus</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Indicates if a user would be able to license a package:<br> 0 - The package is not licensable to the user.<br> 1 - The package is licensable to the user.<br> 2 - The product is not individually licensable.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _storeId = global.products[0].storeId;
+
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_CanAcquireLicenseForPackage_result")
+{
+    if (async_load[? "async_id"] == requestId)
+    {
+        if (async_load[? "licensableStatus"] == 1)
+        {
+            show_debug_message("The product is licensable!");
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console if the current product is licensable to the provided user.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_canacquirelicenseforstoreid">ms_iap_CanAcquireLicenseForStoreId</h1>
+<p>This function provides the ability for a game to determine if the user could acquire a license for a particular piece of content without actually acquiring that license and using up that user's concurrency slot. This is not used for the currently running game (since it has a license already), but to determine if the user owns other games from the same publisher, either to up-sell or to provide special benefits to loyal fans.</p>
+<p>For example: this could be used by a racing game to determine whether to give bonus cars to users who owned prior versions of the game. This function is also used to determine whether or not the game should show content in its in game store based on whether or not the user already owns some content.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_CanAcquireLicenseForStoreId(user_id, store_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product to check the license status.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string value <code>"ms_iap_CanAcquireLicenseForStoreId_result"</code>.</td>
+</tr>
+<tr>
+<td>async_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>async_status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product being checked.</td>
+</tr>
+<tr>
+<td>licensableSku</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The SKU the user would be able to license.</td>
+</tr>
+<tr>
+<td>licenseStatus</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Indicates if a user would be able to license a package:<br> 0 - The package is not licensable to the user.<br> 1 - The package is licensable to the user.<br> 2 - The product is not individually licensable.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _storeId = global.products[0].storeId;
+
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_CanAcquireLicenseForStoreId_result")
+{
+    if (async_load[? "async_id"] == requestId)
+    {
+        if (async_load[? "licensableStatus"] == 1)
+        {
+            show_debug_message("The product is licensable!");
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console if the current product is licensable to the provided user.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_downloadandinstallpackages">ms_iap_DownloadAndInstallPackages</h1>
+<p>Downloads and installs the specified store packages.</p>
+<p>The async completion message will only be raised when the package is actually installed (not just registered).</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_DownloadAndInstallPackages(user_id, package_ids)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>package_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An array of strings that uniquely identify the store packages.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string value <code>"ms_iap_DownloadAndInstallPackages_result"</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>package_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An array of strings that uniquely identify the store packages.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _package1 = global.package[0].packageId;
+var _package2 = global.package[1].packageId;
+var _package2 = global.package[2].packageId;
+
+requestId = ms_iap_AcquireLicenseForDurables(_userId, [_package1, _package2, _package3]);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_DownloadAndInstallPackages_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"] == 1)
+        {
+            show_debug_message(async_load[? "package_ids"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console an array with all the installed package IDs.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_enumeratepackages">ms_iap_EnumeratePackages</h1>
+<p>This function enumerates the results of a package query.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_EnumeratePackages(package_kind, scope)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>package_kind</td>
+<td><a href="iap.html#packagekind">PackageKind</a></td>
+<td>The value that indicates whether to enumerate app packages or content packages</td>
+</tr>
+<tr>
+<td>scope</td>
+<td><a href="iap.html#packagescope">PackageScope</a></td>
+<td>The scope of the installation packages</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string value <code>"ms_iap_EnumeratePackages_result"</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="iap.html#packagedetails">PackageDetails</a></td>
+<td>An array of Package Details structs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">requestId = ms_iap_EnumeratePackages(e_ms_iap_PackageKind_Content, e_ms_iap_PackageEnumerationScope_ThisOnly);</code></pre>
+In the code above first we request an enumeration of all the packages of type content (<code>e_ms_iap_PackageKind_Content</code>) and whose scope is limited to the current game (<code>e_ms_iap_PackageEnumerationScope_ThisOnly</code>). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_EnumeratePackages_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"] == 1)
+        {
+            show_debug_message(async_load[? "results"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console an array with all the <a href="iap.html#packagedetails">PackageDetails</a> structs.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_mountpackage">ms_iap_MountPackage</h1>
+<p>This function mounts the installation of specified content.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_MountPackage(package_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies the installed package on the disk. Pass in the <strong>packageIdentifier</strong> field from the <a href="iap.html#packagedetails">PackageDetails</a> struct returned from the <a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a> async callback.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string value <code>"ms_iap_MountPackage_result"</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies the installed package on disk.</td>
+</tr>
+<tr>
+<td>mount_path</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The path to the mounted installation.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _package = global.package[0].packageId;
+
+requestId = ms_iap_MountPackage(_package);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_MountPackage_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        show_debug_message("Package ID: " + async_load[? "package_id"]);
+        show_debug_message("Mount Path: " + async_load[? "mount_path"]);
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the current package's ID and its mount path on disk.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_queryaddonlicenses">ms_iap_QueryAddOnLicenses</h1>
+<p>Retrieves the licenses the user was granted for Add-ons (also known as a durable without bits) of the currently running game. It is generally recommended to use DLC, rather than add-ons, but this API exists for the few that choose to use add-ons anyways.
+Add-ons are typically content or features that require a purchase to unlock but don't require a download because they are built into the game. They do not work for games that have discs, or may ever have discs.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryAddOnLicenses(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_QueryAddOnLicenses_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>result</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="iap.html#addonlicensedetails">AddonLicenseDetails</a></td>
+<td>An array of <a href="iap.html#addonlicensedetails">AddonLicenseDetails</a> structs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+
+requestId = ms_iap_QueryAddOnLicenses(_userId);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryAddOnLicenses_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message(async_load[? "result"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console if the result of the query; an array of <a href="iap.html#addonlicensedetails">AddonLicenseDetails</a> structs.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_queryassociatedproducts">ms_iap_QueryAssociatedProducts</h1>
+<p>Gets store listing information for the products that can be purchased from within the current game. This API will only return products that can be browsed within the store including any Add-on products that do not have a store page as long as they are not expired. Any product that is hidden, expired, or taken down from the store will not be returned in the results from this API. If you need store info from a hidden, expired, or taken down product use the <a href="iap.html#ms_iap_queryproducts">ms_iap_QueryProducts</a> passing in the product's StoreID.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryAssociatedProducts(user_id, product_kinds)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>product_kinds</td>
+<td><a href="iap.html#productkind">ProductKind</a></td>
+<td>The types of product to return. For more information read the <a href="iap.html#productkind">ProductKind</a> section.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_AcquireLicenseForDurables_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="iap.html#productdetails">ProductDetails</a></td>
+<td>An array of ProductDetails structs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _product_kinds = e_ms_iap_ProductKind_Consumable;
+
+requestId = ms_iap_QueryAssociatedProducts(_userId, _product_kinds);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for consumable products (<code>_product_kinds</code>) and we call the function with both arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryAssociatedProducts_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message(async_load[? "result"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , printing to the debug console the result of the query; an array of <a href="#productdetails">Product Details</a> structs.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_queryconsumablebalanceremaining">ms_iap_QueryConsumableBalanceRemaining</h1>
+<p>This function gets the consumable balance remaining for the specified product ID.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryConsumableBalanceRemaining(user_id, store_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the consumable to retrieve the balance for.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_QueryConsumableBalanceRemaining_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the consumable to retrieve the balance for.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The remaining quantity of the consumable.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _storeId = global.products[3].storeId;
+
+requestId = ms_iap_QueryConsumableBalanceRemaining(_userId, _storeId);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to query the balance for (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryConsumableBalanceRemaining_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            var _quantity = async_load[? "quantity"];
+            show_debug_message("Amount of potions left: " + string(_quantity));
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, providing a success message with the current available quantity given that the <strong>status</strong> value is true.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_queryentitledproducts">ms_iap_QueryEntitledProducts</h1>
+<p>This function provides the store product information for all add-ons, DLC, and consumables related to the current game that the user has an entitlement to.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryEntitledProducts(user_id, product_kinds)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>product_kinds</td>
+<td><a href="iap.html#productkind">ProductKind</a></td>
+<td>The types of product to return.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_QueryEntitledProducts_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="iap.html#productdetails">ProductDetails</a></td>
+<td>An array of ProductDetails structs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _product_kinds = e_ms_iap_ProductKind_Durable;
+
+requestId = ms_iap_QueryEntitledProducts(_userId, _product_kinds);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for durable products (<code>_product_kinds</code>) and we call the function with both arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryEntitledProducts_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message(async_load[? "result"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_querygamelicense">ms_iap_QueryGameLicense</h1>
+<p>This function retrieves information about the license that was acquired to allow the app to launch.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryGameLicense(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_QueryGameLicense_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Expiration date of the license.</td>
+</tr>
+<tr>
+<td>isActive</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates whether the license is active.</td>
+</tr>
+<tr>
+<td>isTrial</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates whether the license is a trial license.</td>
+</tr>
+<tr>
+<td>isTrialOwnedByTheUser</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates whether the trial is owned by the associated user. If on PC, this will be the currently signed in user to the Windows Store App.</td>
+</tr>
+<tr>
+<td>isDiscLicense</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates whether the license is a disc license.</td>
+</tr>
+<tr>
+<td>skuStoreId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID.</td>
+</tr>
+<tr>
+<td>trialUniqueId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The unique ID for the trial.</td>
+</tr>
+<tr>
+<td>trialTimeRemainingInSeconds</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Amount of time remaining for the trial license.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+
+requestId = ms_iap_QueryGameLicense(_userId);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryGameLicense_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message(async_load[? "skuStoreId"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the <strong>skuStoreId</strong> of the current game license.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_queryproductforcurrentgame">ms_iap_QueryProductForCurrentGame</h1>
+<p>This function provides store product information for the currently running game, such as its SKUs, availabilities and other metadata.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryProductForCurrentGame(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_QueryProductForCurrentGame_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="iap.html#productdetails">ProductDetails</a></td>
+<td>An array of ProductDetails structs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+
+requestId = ms_iap_QueryProductForCurrentGame(_userId);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProductForCurrentGame_result")
+{
+    if (async_load[? "async_id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message(async_load[? "result"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_queryproductforpackage">ms_iap_QueryProductForPackage</h1>
+<p>This function retrieves store product information for the specified package.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryProductForPackage(user_id, store_id, product_kinds)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies a store package.</td>
+</tr>
+<tr>
+<td>product_kinds</td>
+<td><a href="iap.html#productkind">ProductKind</a></td>
+<td>The types of product to find.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_QueryProductForPackage_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="iap.html#productdetails">ProductDetails</a></td>
+<td>An array of ProductDetails structs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _packageId = "XXXXXXXXXXX";
+var _product_kinds = e_ms_iap_ProductKind_Consumable;
+
+requestId = ms_iap_QueryProductForPackage(_userId, _packageId, _product_kinds);</code></pre>
+In the code above first we get the user ID (<code>_userId</code>) of the activating user, we reference the package ID (<code>_packageId</code>) of the target game and afterwards we create a filter for consumable products (<code>_product_kinds</code>) finally we call the function with all those arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProductForPackage_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message(async_load[? "result"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_queryproducts">ms_iap_QueryProducts</h1>
+<p>Returns listing information for the specified products that are associated with the current game, regardless of whether the products are currently available for purchase within the current game.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryProducts(user_id, product_kinds, store_ids, action_filters)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>product_kinds</td>
+<td><a href="iap.html#productkind">ProductKind</a></td>
+<td>The types of product to return.</td>
+</tr>
+<tr>
+<td>store_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Restricts the results to the given product IDs.</td>
+</tr>
+<tr>
+<td>action_filters</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Restricts the results by some action stored in the product document. By default, this API returns all products, even if they are not purchasable, but you can restrict this to <em>"Purchase"</em> if you only want purchasable, or <em>"License"</em> if you only want licensable. Other action filters include <em>"Fulfill"</em> , <em>"Browse"</em> , <em>"Curate"</em> , <em>"Details"</em> , and <em>"Redeem"</em>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_QueryProducts_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>results</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="iap.html#productdetails">ProductDetails</a></td>
+<td>An array of ProductDetails structs.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _product_kinds = e_ms_iap_ProductKind_Consumable;
+var _action_filter = ["Purchase"];
+
+requestId = ms_iap_QueryProducts(_userId, _product_kinds, 0, _action_filter);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for consumable products (<code>_product_kinds</code>) and finally we call the function with all those arguments, providing no store ID filter but selecting only products that are available for purchase. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProducts_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message(async_load[? "result"]);
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_releaselicensefordurables">ms_iap_ReleaseLicenseForDurables</h1>
+<p>This function will release a package license assigned to this console and it is intended to be be used with products of type <strong>Durable</strong>. For  <strong>Durable with package</strong> type, use <a href="iap.html#ms_iap_releaselicenseforpackage">ms_iap_ReleaseLicenseForPackage</a> instead.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_ReleaseLicenseForDurables(store_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 if there was an error, otherwise 0)</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _storeId = global.products[0].storeId;
+
+var _error = ms_iap_ReleaseLicenseForDurables(_storeId);
+
+if (_error != 0)
+{
+    show_debug_message("There was an error trying to release the license");
+}</code></pre>
+In the code above first we get the product ID (<code>_storeId</code>) conveniently stored inside a global array and call the function with this value. The returned value (<code>_error</code>) is then checked to see if the function was successful or not.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_releaselicenseforpackage">ms_iap_ReleaseLicenseForPackage</h1>
+<p>This function will release a package license assigned to this console and it is intended to be be used with products of type <strong>Durable with package</strong> . For  <strong>Durable</strong>  type, use <a href="iap.html#ms_iap_releaselicensefordurables">ms_iap_ReleaseLicenseForDurables</a> instead.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_ReleaseLicenseForPackage(package_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(-1 if there was an error, otherwise 0)</p>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _packageId = global.packages[0].packageId;
+
+var _error = ms_iap_ReleaseLicenseForPackage(_packageId);
+
+if (_error != 0)
+{
+    show_debug_message("There was an error trying to release the license for the package!");
+}</code></pre>
+In the code above we first get the package ID (<code>_packageId</code>) conveniently stored inside a global array and call the function with this value. The returned value (<code>_error</code>) is then checked to see if the function was successful or not.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_reportconsumablefulfillment">ms_iap_ReportConsumableFulfillment</h1>
+<p>Consumes the specified quantity of a consumable. See <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/commerce/fundamentals/xstore-consumable-based-ecosystems">Consumable-based ecosystems</a> for more information on implementing and using consumable products.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_ReportConsumableFulfillment(user_id, store_id, quantity, tracking_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Store ID of the consumable add-on that you want to report as fulfilled.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of units of the consumable add-on that you want to report as fulfilled. For a Store-managed consumable (that is, a consumable where Microsoft keeps track of the balance), specify the number of units that have been consumed. For a game-managed consumable (that is, a consumable where the developer keeps track of the balance), specify 1.</td>
+</tr>
+<tr>
+<td>tracking_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A developer-supplied GUID that identifies the specific transaction that the fulfillment operation is associated with for tracking purposes.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The constant <code>"ms_iap_ReportConsumableFulfillment_result"</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the asynchronous request succeeded.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product.</td>
+</tr>
+<tr>
+<td>consumed_quantity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount of product that was consumed.</td>
+</tr>
+<tr>
+<td>available_quantity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount of product that still remains in the user's possession.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _storeId = global.products[0].storeId;
+var _trackingId = guid_generate(); // This function generates a unique identifier for tracking purposes.
+
+requestId = ms_iap_ReportConsumableFulfillment(_userId, _storeId, 10, _trackingId);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to report as consumed (note that for convenience we keep the products stored in a global variable) and finally we generate a tracking ID (<code>_trackingId</code>) required to perform the request. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_ReportConsumableFulfillment_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        if (async_load[? "status"])
+        {
+            show_debug_message("We consumed: " + string(async_load[? "consumed_quantity"]));
+            show_debug_message("We still have: " + string(async_load[? "available_quantity"]));
+        }
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console the current consumed and available quantities upon a successful task.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_showassociatedproductsui">ms_iap_ShowAssociatedProductsUI</h1>
+<p>This function will open up the Microsoft Store App and show the set of available add-ons associated with the game. This can be further filtered by product type.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowAssociatedProductsUI(user_id, store_id, product_kinds)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product.</td>
+</tr>
+<tr>
+<td>product_kinds</td>
+<td><a href="iap.html#productkind">ProductKind</a></td>
+<td>The types of product to show.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _storeId = global.gameStoreId;
+var _product_kinds = e_ms_iap_ProductKind_Consumable;
+
+ms_iap_ShowAssociatedProductsUI(_userId, _storeId, _product_kinds);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of current game (stored inside a global variable) and afterwards we create a filter for consumable products (<code>_product_kinds</code>) finally we call the function with all those arguments. The function call will bring up the Microsoft Store App overlay with the associated consumable products.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_showproductpageui">ms_iap_ShowProductPageUI</h1>
+<p>This function will open up the Store app directly to the <strong>Product Details Page</strong> (PDP) of the provided product. This allows titles that have not integrated with the purchase flow or an in-game store UI to still drive users to products related to their title and the purchase flow found on the Product Details Page.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowProductPageUI(user_id, store_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _storeId = global.products[0].storeId;
+
+ms_iap_ShowProductPageUI(_userId, _storeId);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of product we want to check and finally we call the function with both arguments. The function call will bring up the Microsoft Store App overlay directly on the <strong>Product Details Page</strong> (PDP) of the provided Product ID.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_showpurchaseui">ms_iap_ShowPurchaseUI</h1>
+<p>This function begins the purchase UI overlay for the specified product.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowPurchaseUI(user_id, store_id, name, json)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The store ID of the product.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Name of the product to purchase.</td>
+</tr>
+<tr>
+<td>json</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A JSON blob (JSON-formatted string) that is handed to the purchase flow. Allows for insertion of custom campaign IDs, so you can track how the purchase started.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _storeId = global.products[0].storeId;
+
+ms_iap_ShowPurchaseUI(_userId, _storeId, undefined, undefined);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of the product we want to purchase and finally we call the function with both arguments (providing no name/json, they are not demanding). The function call will bring up the purchase UI overlay for the specified product.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_showrateandreviewui">ms_iap_ShowRateAndReviewUI</h1>
+<p>Displays a system dialog to pop up to allow the user to provide a review for the current game or decline to do so.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the system detects a game is calling this excessively, it will hide the dialog.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowRateAndReviewUI(user_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+
+ms_iap_ShowRateAndReviewUI(_userId);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user and finally we call the function with it's value. The function call will show a system dialog pop up to allow the user to provide a review for the current game.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_showredeemtokenui">ms_iap_ShowRedeemTokenUI</h1>
+<p>This function triggers a token redemption for a given user and specified token.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowRedeemTokenUI(user_id, token, allowed_store_ids, disallow_cvs_redemption)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to use in the store context.</td>
+</tr>
+<tr>
+<td>token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The token to redeem. This value cannot be undefined, if you want to bring up the UI without providing a code to pre-populate in the UI pass in a <strong>single space</strong>.</td>
+</tr>
+<tr>
+<td>allowed_store_ids</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An array of product store IDs. This allows you to restrict the 5x5 codes to only work with specific products.</td>
+</tr>
+<tr>
+<td>disallow_cvs_redemption</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Prevents CVS (giftcard/money style 5x5s) from being redeemed.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _token = global.finalWeaponToken;
+
+ms_iap_ShowRateAndReviewUI(_userId, _token, undefined, false);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user and reference a token to be redeemed (<code>_token</code>), finally we call the function with those values, applying no restrictions whatsoever. The function call will trigger a token redemption for a given user and specified token.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="ms_iap_unmountpackage">ms_iap_UnmountPackage</h1>
+<p>This function unmounts the installation of specified content.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">ms_iap_UnmountPackage(package_id)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies the installed package on the disk. Pass in the <strong>packageIdentifier</strong> field from the <a href="iap.html#packagedetails">PackageDetails</a> struct returned from the <a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a> async callback.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(In-App Purchase Request ID)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string value <code>"ms_iap_UnmountPackage_result"</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The asynchronous request ID.</td>
+</tr>
+<tr>
+<td>package_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies the installed package on the disk.</td>
+</tr>
+<tr>
+<td>mount_path</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The path to the unmounted installation.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">var _package = global.package[0].packageId;
+
+requestId = ms_iap_UnmountPackage(_package);</code></pre>
+In the code above we first get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_UnmountPackage_result")
+{
+    if (async_load[? "id"] == requestId)
+    {
+        show_debug_message("Package ID: " + async_load[? "package_id"]);
+        show_debug_message("Finished unmount!");
+    }
+}</code></pre>
+The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the current package ID and a success message.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="packagekind">PackageKind</h1>
+<p>Package kind indicates the package type. They are used as a filter for the <a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a> function to acquire information about packages of a certain type. It is also a member of the <a href="iap.html#packagedetails">PackageDetails</a> struct which describes a store product.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="iap.html#packagedetails">PackageDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>e_ms_iap_PackageKind_Game</code></td>
+<td>The installation package contains a game.</td>
+</tr>
+<tr>
+<td><code>e_ms_iap_PackageKind_Content</code></td>
+<td>The installation package contains downloadable content.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="packagescope">PackageScope</h1>
+<p>Package scope indicates the scope of packages to be returned when installation packages are being enumerated while using the <a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a> function call.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>e_ms_iap_PackageEnumerationScope_ThisOnly</code></td>
+<td>Scope is limited to just apps or content associated with the calling process.</td>
+</tr>
+<tr>
+<td><code>e_ms_iap_PackageEnumerationScope_ThisAndRelated</code></td>
+<td>Scope includes apps or content associated with the calling process and also includes apps or content that are associated with any package the calling process has added to its RelatedProducts section of its game config file.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="productkind">ProductKind</h1>
+<p>Product kinds indicate the product type. They are used as a filter for many IAP queries to acquire information about products of a certain type. It is also a member of the <a href="iap.html#productdetails">ProductDetails</a> struct which describes a store product. The product kind is represented as a flagged constant meaning it can be combined using the <strong>bit-wise or operator</strong> to represent multiple types of product at once.</p>
+<p>As explained above the product kinds can be combined using the <strong>bit-wise</strong> or operator following the example below:
+<pre class="highlight"><code class="language-gml">var _consumableAndDurableType = e_ms_iap_ProductKind_Consumable | e_ms_iap_ProductKind_Durable;</code></pre>
+The code above will make it so the <code>_consumableAndDurableType</code> variable will filter both consumables and durables.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="iap.html#ms_iap_queryassociatedproducts">ms_iap_QueryAssociatedProducts</a></li>
+<li><a href="iap.html#ms_iap_queryentitledproducts">ms_iap_QueryEntitledProducts</a></li>
+<li><a href="iap.html#ms_iap_queryproductforpackage">ms_iap_QueryProductForPackage</a></li>
+<li><a href="iap.html#ms_iap_queryproducts">ms_iap_QueryProducts</a></li>
+<li><a href="iap.html#ms_iap_showassociatedproductsui">ms_iap_ShowAssociatedProductsUI</a></li>
+</ul>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="iap.html#productdetails">ProductDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>e_ms_iap_ProductKind_None</code></td>
+<td>Not a product type.</td>
+</tr>
+<tr>
+<td><code>e_ms_iap_ProductKind_Consumable</code></td>
+<td>A store-managed consumable product.</td>
+</tr>
+<tr>
+<td><code>e_ms_iap_ProductKind_Durable</code></td>
+<td>Durable product.</td>
+</tr>
+<tr>
+<td><code>e_ms_iap_ProductKind_Game</code></td>
+<td>A game.</td>
+</tr>
+<tr>
+<td><code>e_ms_iap_ProductKind_Pass</code></td>
+<td>A pass.</td>
+</tr>
+<tr>
+<td><code>e_ms_iap_ProductKind_UnmanagedConsumable</code></td>
+<td>A game-managed consumable product, also known as an unmanaged consumable.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="addonlicensedetails">AddonLicenseDetails</h1>
+<p>This struct contains details about an add-on license.</p>
+<p>The entity described above is a <strong>struct</strong> meaning its properties can be accessed using the <strong>dot</strong> operator much like when accessing instance variables, for example:
+<pre class="highlight"><code class="language-gml">var _addonLicenseDetails = global.addonLicenses[0];
+
+show_debug_message(_packageDetails.packageIdentifier);
+show_debug_message(_packageDetails.version);</code></pre>
+The code above will grab a package detail struct from a global variable (where they were previously store for this sample) and we are accessing the <strong>packageIdentifier</strong> and <strong>version</strong> properties of that struct.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="iap.html#ms_iap_queryaddonlicenses">ms_iap_QueryAddOnLicenses</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>skuStoreId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The SKU ID for the license.</td>
+</tr>
+<tr>
+<td>isActive</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates if the license is active.</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Expiration date of the license ( <strong>-1</strong> , if the license doesn't expire)</td>
+</tr>
+<tr>
+<td>inAppOfferToken</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The title-defined offer token that you can use to map items internally. For example: <em>"com.company.product.itemname"</em>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="packagedetails">PackageDetails</h1>
+<p>This struct contains details about an installation.</p>
+<p>The entity described above is a <strong>struct</strong> meaning its properties can be accessed using the <strong>dot</strong> operator much like when accessing instance variables, for example:
+<pre class="highlight"><code class="language-gml">var _packageDetails = global.packageDetails[0];
+
+show_debug_message(_packageDetails.packageIdentifier);
+show_debug_message(_packageDetails.version);</code></pre>
+The code above will grab a package detail struct from a global variable (where they were previously store for this sample) and we are accessing the <strong>packageIdentifier</strong> and <strong>version</strong> properties of that struct.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>packageIdentifier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string that uniquely identifies the installed package on the disk.</td>
+</tr>
+<tr>
+<td>version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A store managed consumable product.</td>
+</tr>
+<tr>
+<td>kind</td>
+<td><a href="iap.html#packagekind">PackageKind</a></td>
+<td>The value that indicates whether the package is an app package or a content package</td>
+</tr>
+<tr>
+<td>displayName</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The display name.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The description of the package.</td>
+</tr>
+<tr>
+<td>publisher</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The publisher of the package.</td>
+</tr>
+<tr>
+<td>storeId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The unique ID of the product.</td>
+</tr>
+<tr>
+<td>installing</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>The bool that indicates whether the package is currently installing.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="productdetails">ProductDetails</h1>
+<p>This struct contains details that describe a store product.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="iap.html#ms_iap_queryassociatedproducts">ms_iap_QueryAssociatedProducts</a></li>
+<li><a href="iap.html#ms_iap_queryentitledproducts">ms_iap_QueryEntitledProducts</a></li>
+<li><a href="iap.html#ms_iap_queryproductforcurrentgame">ms_iap_QueryProductForCurrentGame</a></li>
+<li><a href="iap.html#ms_iap_queryproductforpackage">ms_iap_QueryProductForPackage</a></li>
+<li><a href="iap.html#ms_iap_queryproducts">ms_iap_QueryProducts</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storeId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product ID.</td>
+</tr>
+<tr>
+<td>title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The title of the product.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A description of the store product.</td>
+</tr>
+<tr>
+<td>language</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The International Organization of Standards (ISO) identifier representing the language the title and description strings are<br> (<a href="https://msdn.microsoft.com/library/ms693062(v=vs.85).aspx">more details</a>)</td>
+</tr>
+<tr>
+<td>inAppOfferToken</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Game defined offer token that you can use to map items internally. For example: " <em>com.company.product.itemname</em> ".</td>
+</tr>
+<tr>
+<td>linkUri</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The URI to the product.</td>
+</tr>
+<tr>
+<td>productKind</td>
+<td><a href="iap.html#productkind">ProductKind</a></td>
+<td>Indicates the type of store product. For more information read the <a href="#productkind">Product Kinds</a> section.</td>
+</tr>
+<tr>
+<td>price</td>
+<td><a href="iap.html#price">Price</a></td>
+<td>The price information for the store product (read <strong>Price</strong> below)</td>
+</tr>
+<tr>
+<td>hasDigitalDownload</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates whether the store product has a digital download.</td>
+</tr>
+<tr>
+<td>isInUserCollection</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates if the product is in the user collection.</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>]</td>
+</tr>
+<tr>
+<td>images</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>Array of images associated with the product (read <strong>Image</strong> below)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="price">Price</h1>
+<p>Price details inside the product struct use their own <strong>struct</strong> with data, following the schema below:</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="iap.html#productdetails">ProductDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basePrice</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The normal non-promotional price or MSRP of the product.</td>
+</tr>
+<tr>
+<td>price</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The actual price that the user would pay if they purchased the item.</td>
+</tr>
+<tr>
+<td>recurrecePrice</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The recurrence price.</td>
+</tr>
+<tr>
+<td>currencyCode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The currency code for the price.</td>
+</tr>
+<tr>
+<td>formattedBasePrice</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The formatted basePrice that can be shown in the game's UI.</td>
+</tr>
+<tr>
+<td>formattedPrice</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The formatted price that should be used in your UI to advertise the product.</td>
+</tr>
+<tr>
+<td>formattedRecurrentPrice</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The formatted recurrence price.</td>
+</tr>
+<tr>
+<td>isOnSale</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates whether the product is on sale.</td>
+</tr>
+<tr>
+<td>saleEndData</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The end date for the sale.</td>
+</tr>
+</tbody>
+</table>
+<p>/**</p>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="xbox_live.html" class="btn btn-neutral float-left" title="Xbox Live Module"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>YoYoGames 2025</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-GDK" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="xbox_live.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
