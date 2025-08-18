@@ -30,6 +30,7 @@
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"default480x480.png","CopyToMask":64,"filePath":"datafiles","name":"default480x480.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"GMEXT-GDK.html","CopyToMask":0,"filePath":"datafiles","name":"GMEXT-GDK.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"layout.xml","CopyToMask":64,"filePath":"datafiles","name":"layout.xml","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"MicrosoftGame.Config","CopyToMask":64,"filePath":"datafiles","name":"MicrosoftGame.Config","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"SplashScreenImage.png","CopyToMask":64,"filePath":"datafiles","name":"SplashScreenImage.png","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
