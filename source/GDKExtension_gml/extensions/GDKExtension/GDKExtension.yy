@@ -80,6 +80,7 @@
         {"$GMExtensionFunction":"","%Name":"xboxone_modern_gamertag_for_user","argCount":0,"args":[2,],"documentation":"","externalName":"F_XboxOneModernGamerTagForUser","help":"xboxone_modern_gamertag_for_user(user_id)","hidden":false,"kind":1,"name":"xboxone_modern_gamertag_for_user","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"xboxone_unique_modern_gamertag_for_user","argCount":0,"args":[2,],"documentation":"","externalName":"F_XboxOneUniqueModernGamerTagForUser","help":"xboxone_unique_modern_gamertag_for_user(user_id)","hidden":false,"kind":1,"name":"xboxone_unique_modern_gamertag_for_user","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"xboxone_modern_gamertag_suffix_for_user","argCount":0,"args":[2,],"documentation":"","externalName":"F_XboxOneModernGamerTagSuffixForUser","help":"xboxone_modern_gamertag_suffix_for_user(user_id)","hidden":false,"kind":1,"name":"xboxone_modern_gamertag_suffix_for_user","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"xboxone_sprite_add_from_gamerpicture","argCount":0,"args":[2,2,2,2,],"documentation":"","externalName":"F_XboxOneSpriteAddFromGamerPicture","help":"xboxone_sprite_add_from_gamerpicture(user,size,xorigin,yorigin)","hidden":false,"kind":1,"name":"xboxone_sprite_add_from_gamerpicture","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
       ],"init":"","kind":1,"name":"","order":[
         {"name":"gdk_init","path":"extensions/GDKExtension/GDKExtension.yy",},
         {"name":"gdk_update","path":"extensions/GDKExtension/GDKExtension.yy",},
@@ -141,6 +142,7 @@
         {"name":"xboxone_get_token_and_signature","path":"extensions/GDKExtension/GDKExtension.yy",},
         {"name":"xboxone_gamertag_for_user","path":"extensions/GDKExtension/GDKExtension.yy",},
         {"name":"xboxone_update_recent_players","path":"extensions/GDKExtension/GDKExtension.yy",},
+        {"name":"xboxone_sprite_add_from_gamerpicture","path":"extensions/GDKExtension/GDKExtension.yy",},
       ],"origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":true,},
   ],
   "gradleinject":"\r\n\r\n",
@@ -196,4 +198,5 @@
   "tvosProps":false,
   "tvosSystemFrameworkEntries":[],
   "tvosThirdPartyFrameworkEntries":[],
+
 }
