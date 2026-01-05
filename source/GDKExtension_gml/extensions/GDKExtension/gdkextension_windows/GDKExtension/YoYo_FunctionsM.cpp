@@ -80,7 +80,7 @@ void F_XboxOneReputationForUser(RValue& Result, CInstance* selfinst, CInstance* 
 void F_XboxOneUserForPad(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg);
 void F_XboxOnePadCountForUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg);
 void F_XboxOneSponsorForUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg);
-void F_XboxOneSpriteAddFromGamerPicture(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg);
+YYEXPORT void F_XboxOneSpriteAddFromGamerPicture(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg);
 void F_XboxOneShowProfileCardForUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg);
 
 void F_XboxOneGenerateSessionId(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg);
@@ -1090,9 +1090,12 @@ void F_XboxOneUserIsSignedIn(RValue& Result, CInstance* selfinst, CInstance* oth
 		DebugConsoleOutput("xboxone_user_is_signed_in() - user not found\n");
 	}
 }
-/*
+
+YYEXPORT
 void F_XboxOneSpriteAddFromGamerPicture(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
 {
+	if (!g_gdk_initialised) YYError("xboxone_sprite_add_from_gamerpicture :: GDK Extension was not initialized!");
+
 	Result.kind = VALUE_REAL;
 	Result.val = -1;	
 
@@ -1180,7 +1183,7 @@ void F_XboxOneSpriteAddFromGamerPicture(RValue& Result, CInstance* selfinst, CIn
 				}
 
 				// Use standard HTTP get
-				HTTP_Get(pic_uri.c_str(), ARG_SPRITE, g_pYYRunnerInterface->ASYNCFunc_SpriteAdd, g_pYYRunnerInterface->ASYNCFunc_SpriteCleanup, ctx->pAS);
+				HTTP_Get(pic_uri.c_str(), g_pYYRunnerInterface->ASYNCFunc_SpriteAdd, g_pYYRunnerInterface->ASYNCFunc_SpriteCleanup, ctx->pAS);
 			}
 			else {
 				DebugConsoleOutput("xboxone_sprite_add_from_gamerpicture() - XblProfileGetUserProfileAsync failed (HRESULT 0x%08X)\n", (unsigned)(hr));
@@ -1207,7 +1210,7 @@ void F_XboxOneSpriteAddFromGamerPicture(RValue& Result, CInstance* selfinst, CIn
 
 	Result.val = sprite_idx;
 }
-*/
+
 static bool g_XboxProfileCardLaunching = false;
 
 void F_XboxOneShowProfileCardForUser(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
