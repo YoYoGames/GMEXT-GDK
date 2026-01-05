@@ -749,6 +749,33 @@
  * @function_end
  */
 
+
+/**
+ * @function xboxone_sprite_add_from_gamerpicture
+ * @desc With this function you can get the gamer picture for a given user.
+ * 
+ * @param {pointer} user_id The user ID to get the gamer picture for.
+ * @param {real} image_size Size of the sprite to be returned, pass 1 for 64x64, 2 for 208x208 and 3 for 424x424. Any other value defaults to 1.
+ * @param {real} x_orig Indicate the x position of the origin in the sprite.
+ * @param {real} y_orig Indicate the y position of the origin in the sprite.
+ * 
+ * @returns {real} (The sprite id, only valid after the async event)
+ * 
+ * @event image_loaded
+ * @member {string} filename The complete path to the file you requested.
+ * @member {real} id The ID of the resource that you have loaded. This will be the same as the variable that you have assigned the resource to.
+ * @member {real} status Returns a value of less than 0 for an error.
+ * 
+ * @event_end
+ * 
+ * @example
+ * ```gml
+ * current_user_sprite = xboxone_sprite_add_from_gamerpicture(user_id, 2, 0, 0);
+ * ```
+ * In the code above we request the gamer picture to be loaded as a sprite with an origin of 0, 0 and a size of 208x208.
+ * @function_end
+ */
+
 /**
  * @constant xboxlive_achievement_filter
  * @desc 

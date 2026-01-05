@@ -15,8 +15,8 @@
 
 ## API
 
-  The [GDK Extension API](gdk_extension_api#gdk-extension-api) section includes documentation on all provided functions, which are divided into separate modules. There are a set of management functions that are required for the GDK Extension to be functional, and then the various GDK Extension modules (such as Storage, Xbox Live, In-App Purchases) can be used as you wish. **** 
-  Please see [GDK Extension API](gdk_extension_api#gdk-extension-api) for details on the provided modules.
+  The [GDK Extension API](api#gdk-extension-api) section includes documentation on all provided functions, which are divided into separate modules. There are a set of management functions that are required for the GDK Extension to be functional, and then the various GDK Extension modules (such as Storage, Xbox Live, In-App Purchases) can be used as you wish. **** 
+  Please see [GDK Extension API](api#gdk-extension-api) for details on the provided modules.
 
 
 <br><br>

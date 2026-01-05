@@ -1,6 +1,7 @@
 /**
  * @module api
  * @title GDK Extension API
+ * @description   This is a collection of GameMaker functions for interacting with the GDK Extension API. This API is comprised of modules that will allow you to access multiple Xbox Live features such as profile information, stats, leaderboards, achievements, storage and Microsoft Store add-ons (also known as In-App Purchases).
  * 
  * @section Management
  * @desc Using the GDK Extension **requires** the developer to manually manage it. The following functions are provided for managing the extension:
