@@ -152,6 +152,41 @@
  * @function_end
  */
 
+
+/**
+ * @function xboxone_get_achievements(user_id,[title_id],[ach_type],[unlocked_only],[order_by],[skip_items],[max_items])
+ * @desc Tries to obtain the state of many Xbox achievements of the specified criteria in one call, if that is possible. Triggers an Async - Social event.
+ * @param {real} user_id User ID of the user to obtain the achievements of
+ * @param {real} [title_id] Title ID of the game to obtain the achievements from, defaults to the current Title ID if possible
+ * @param {real} [ach_type] Which achievement types to retrieve, defaults to All
+ * @param {bool} [unlocked_only] Whether to obtain only unlocked achievements, defaults to false
+ * @param {real} [order_by] Achievement sort type, defaults to DefaultOrder
+ * @param {real} [skip_items] How many achievements to skip, defaults to 0, so none
+ * @param {real} [max_items] How many achievements to obtain in one call, defaults to 0, so as much as possible
+ * @returns {real} This will be: `0` if the progress update was successful; `xboxone_achievement_already_unlocked` if the achievement was unlocked in a previous request; or a negative number with the error code if the request failed.
+ * 
+ * The function may return one of the following errors:
+ * 
+ * |Error|Description|
+ * |----|----|
+ * |-1|Invalid `user_id` was specified.|
+ * |-2|Xbox Live context could not be retrieved.|
+ * 
+ * [[Warning: IMPORTANT Note that the achievement system will refuse updates that are lower than the current progress value.]]
+ * 
+ * @event social
+ * @member {real} id achievement_stat_event
+ * @member {string} event The string "xboxone_get_achievements_result"
+ * @member {real} userid The user ID pointer.
+ * @member {real} error This will be: `0` if the progress update was successful; `xboxone_achievement_already_unlocked` if the achievement was unlocked in a previous request; or a negative number with the error code if the request failed.
+ * @member {bool} succeeded whether the last HRESULT value indicated a failure or not
+ * @member {real} requestid The ID of the request that fired this callback.
+ * @member {array<struct>} achievements an array of achievement information structs
+ * @event_end
+ * 
+ * @function_end
+ */
+
 /**
  * @function xboxone_check_privilege
  * @desc With this function you can check whether the given user has a privilege. If you set the `attempt_resolution` argument to `true` and the privilege isn't enabled, it will also open a system dialogue (suspending the game) to prompt the user to upgrade their account or to get the privilege in a different way as required. If the user then acquires the required privilege, the function will return `true`.
