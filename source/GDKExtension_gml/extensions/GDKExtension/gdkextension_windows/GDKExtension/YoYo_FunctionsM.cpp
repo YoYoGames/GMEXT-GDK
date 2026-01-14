@@ -17,6 +17,7 @@
 #include <string>
 #include <string.h>
 #include <XGameUI.h>
+#include <XGame.h>
 #include <xsapi-c/services_c.h>
 #include <xsapi-c/xbox_live_context_c.h>
 
@@ -2534,6 +2535,302 @@ void F_XboxOneSetAchievementProgress(RValue& Result, CInstance* selfinst, CInsta
 		return;
 	}
 
+}
+
+YYEXPORT
+void F_XboxOneGetAchievements(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+{
+	if (!g_gdk_initialised) YYError("xboxone_get_achievements :: GDK Extension was not initialized!");
+
+	Result.kind = VALUE_REAL;
+	Result.val = -1;
+
+	if (argc < 1 || !arg)
+	{
+		YYError("xboxone_get_achievements :: not enough arguments given, expected at least 1");
+		return;
+	}
+
+	HRESULT hr = S_OK;
+	uint64_t user_id = (uint64_t)YYGetInt64(arg, 0);
+	uint32_t title_id = (argc > 1 && KIND_RValue(&arg[1]) != VALUE_UNDEFINED) ? YYGetUint32(arg, 1) : 0;
+	uint32_t ach_type = (argc > 2 && KIND_RValue(&arg[2]) != VALUE_UNDEFINED) ? YYGetUint32(arg, 2) : uint32_t(XblAchievementType::All);
+	bool unlocked_only = (argc > 3 && KIND_RValue(&arg[3]) != VALUE_UNDEFINED) ? YYGetBool(arg, 3) : false;
+	uint32_t order_by = (argc > 4 && KIND_RValue(&arg[4]) != VALUE_UNDEFINED) ? YYGetUint32(arg, 4) : uint32_t(XblAchievementOrderBy::DefaultOrder);
+	uint32_t skip_items = (argc > 5 && KIND_RValue(&arg[5]) != VALUE_UNDEFINED) ? YYGetUint32(arg, 5) : 0;
+	uint32_t max_items = (argc > 6 && KIND_RValue(&arg[6]) != VALUE_UNDEFINED) ? YYGetUint32(arg, 6) : 0;
+
+	XUM_LOCK_MUTEX;
+	XUMuser* user = XUM::GetUserFromId(user_id);
+	if (!user)
+	{
+		DebugConsoleOutput("xboxone_get_achievements :: unknown user id given\n");
+		return;
+	}
+
+	// hack to force an xbox live context to be created even if there's no connection
+	bool oldconn = g_LiveConnection;
+	g_LiveConnection = true;
+	XblContextHandle xblc = user->GetXboxLiveContext();
+	g_LiveConnection = oldconn;
+	if (!xblc)
+	{
+		DebugConsoleOutput("xboxone_get_achievements :: bad xbox live context\n");
+		return;
+	}
+
+	if (title_id == 0)
+	{
+		// this call is marked as NOT time-sensitive
+		// but Microsoft samples use this in main()
+		// and like, you're not meant to spam this call every frame...
+		// so I don't see why not.
+		hr = XGameGetXboxTitleId(&title_id);
+		if (FAILED(hr) || title_id == 0)
+		{
+			// bad MicrosoftGame.Config?
+			DebugConsoleOutput("xboxone_get_achievements :: failed to obtain the title id\n");
+			Result.val = hr;
+			return;
+		}
+	}
+
+	struct ThisContext
+	{
+		XAsyncBlock async;
+		uint64_t user_id;
+		RValue arr;
+		uint32_t max_items;
+		int req_id, last_idx;
+		HRESULT last_hr;
+		// all the methods are static on purpose, this may free itself
+		static void OnNextOuter(struct XAsyncBlock* asyncBlock)
+		{
+			ThisContext* ctx = (ThisContext*)asyncBlock->context;
+			XblAchievementsResultHandle rh = nullptr;
+			HRESULT hr = XblAchievementsResultGetNextResult(asyncBlock, &rh);
+			OnResultHandle(ctx, rh, hr);
+		}
+		static void OnGetOuter(struct XAsyncBlock* asyncBlock)
+		{
+			ThisContext* ctx = (ThisContext*)asyncBlock->context;
+			XblAchievementsResultHandle rh = nullptr;
+			HRESULT hr = XblAchievementsGetAchievementsForTitleIdResult(asyncBlock, &rh);
+			OnResultHandle(ctx, rh, hr);
+		}
+		static RValue XblAchievementToRValue(const XblAchievement* a)
+		{
+			size_t n = 0;
+			RValue rv = {};
+			YYStructCreate(&rv);
+			YYStructAddString(&rv, "id", a->id);
+			YYStructAddString(&rv, "serviceConfigurationId", a->serviceConfigurationId);
+			YYStructAddString(&rv, "name", a->name);
+			RValue rv1 = {};
+			YYCreateArray(&rv1, 0);
+			for (n = 0; n < a->titleAssociationsCount; ++n)
+			{
+				RValue rv2 = {};
+				YYStructCreate(&rv2);
+				YYStructAddString(&rv2, "name", a->titleAssociations[n].name);
+				YYStructAddDouble(&rv2, "titleId", a->titleAssociations[n].titleId);
+				SET_RValue(&rv1, &rv2, nullptr, int(n));
+				FREE_RValue(&rv2);
+			}
+			YYStructAddRValue(&rv, "titleAssociations", &rv1);
+			FREE_RValue(&rv1);
+			YYStructAddDouble(&rv, "progressState", uint32_t(a->progressState));
+			RValue rvp = {};
+			YYStructCreate(&rvp);
+			{
+				RValue rvr = {};
+				YYCreateArray(&rvr, 0);
+				for (n = 0; n < a->progression.requirementsCount; ++n)
+				{
+					RValue rvrr = {};
+					YYStructCreate(&rvrr);
+					YYStructAddString(&rvrr, "id", a->progression.requirements[n].id);
+					YYStructAddString(&rvrr, "currentProgressValue", a->progression.requirements[n].currentProgressValue);
+					YYStructAddString(&rvrr, "targetProgressValue", a->progression.requirements[n].targetProgressValue);
+					SET_RValue(&rvr, &rvrr, nullptr, int(n));
+					FREE_RValue(&rvrr);
+				}
+				YYStructAddRValue(&rvp, "requirements", &rvr);
+				FREE_RValue(&rvr);
+			}
+			YYStructAddDouble(&rvp, "timeUnlocked", a->progression.timeUnlocked ? (((a->progression.timeUnlocked + .5) / 86400.0) + 25569.0) : 0.0);
+			YYStructAddRValue(&rv, "progression", &rvp);
+			FREE_RValue(&rvp);
+			{
+				RValue rvm = {};
+				YYCreateArray(&rvm);
+				for (n = 0; n < a->mediaAssetsCount; ++n)
+				{
+					RValue rvma = {};
+					YYStructCreate(&rvma);
+					YYStructAddString(&rvma, "name", a->mediaAssets[n].name);
+					YYStructAddDouble(&rvma, "mediaAssetType", uint32_t(a->mediaAssets[n].mediaAssetType));
+					YYStructAddString(&rvma, "url", a->mediaAssets[n].url);
+					SET_RValue(&rvm, &rvma, nullptr, int(n));
+					FREE_RValue(&rvma);
+				}
+				YYStructAddRValue(&rv, "mediaAssets", &rvm);
+				FREE_RValue(&rvm);
+			}
+			YYCreateArray(&rv1, 0);
+			for (n = 0; n < a->platformsAvailableOnCount; ++n)
+			{
+				RValue rv2 = {};
+				YYCreateString(&rv2, a->platformsAvailableOn[n]);
+				SET_RValue(&rv1, &rv2, nullptr, int(n));
+				FREE_RValue(&rv2);
+			}
+			YYStructAddRValue(&rv, "platformsAvailableOn", &rv1);
+			FREE_RValue(&rv1);
+			YYStructAddBool(&rv, "isSecret", a->isSecret);
+			YYStructAddString(&rv, "unlockedDescription", a->unlockedDescription);
+			YYStructAddString(&rv, "lockedDescription", a->lockedDescription);
+			YYStructAddString(&rv, "productId", a->productId);
+			YYStructAddDouble(&rv, "type", uint32_t(a->type));
+			YYStructAddDouble(&rv, "participationType", uint32_t(a->participationType));
+			{
+				RValue rv3 = {};
+				YYStructCreate(&rv3);
+				YYStructAddDouble(&rv3, "startDate", a->available.startDate ? (((a->available.startDate + .5) / 86400.0) + 25569.0) : 0.0);
+				YYStructAddDouble(&rv3, "endDate", a->available.endDate ? (((a->available.endDate + .5) / 86400.0) + 25569.0) : 0.0);
+				YYStructAddRValue(&rv, "available", &rv3);
+				FREE_RValue(&rv3);
+			}
+			RValue rvra = {};
+			YYCreateArray(&rvra, 0);
+			for (n = 0; n < a->rewardsCount; ++n)
+			{
+				RValue rvrs = {};
+				YYStructCreate(&rvrs);
+				YYStructAddString(&rvrs, "name", a->rewards[n].name);
+				YYStructAddString(&rvrs, "description", a->rewards[n].description);
+				YYStructAddString(&rvrs, "value", a->rewards[n].value);
+				YYStructAddDouble(&rvrs, "rewardType", uint32_t(a->rewards[n].rewardType));
+				YYStructAddString(&rvrs, "valueType", a->rewards[n].valueType);
+				RValue rvrsm = {};
+				rvrsm.kind = VALUE_UNDEFINED;
+				// this can be nullptr
+				if (a->rewards[n].mediaAsset)
+				{
+					YYStructCreate(&rvrsm);
+					YYStructAddString(&rvrsm, "name", a->rewards[n].mediaAsset->name);
+					YYStructAddDouble(&rvrsm, "mediaAssetType", uint32_t(a->rewards[n].mediaAsset->mediaAssetType));
+					YYStructAddString(&rvrsm, "url", a->rewards[n].mediaAsset->url);
+				}
+				YYStructAddRValue(&rvrs, "mediaAsset", &rvrsm);
+				FREE_RValue(&rvrsm);
+				SET_RValue(&rvra, &rvrs, nullptr, int(n));
+				FREE_RValue(&rvrs);
+			}
+			YYStructAddRValue(&rv, "rewards", &rvra);
+			FREE_RValue(&rvra);
+			YYStructAddInt64(&rv, "estimatedUnlockTime", a->estimatedUnlockTime);
+			YYStructAddString(&rv, "deepLink", a->deepLink);
+			YYStructAddBool(&rv, "isRevoked", a->isRevoked);
+			return rv;
+		}
+		static void OnResultHandle(ThisContext *ctx, XblAchievementsResultHandle rh, HRESULT rhhr)
+		{
+			bool hasNext = false;
+			ctx->last_hr = rhhr;
+			if (KIND_RValue(&ctx->arr) != VALUE_ARRAY)
+			{
+				YYCreateArray(&ctx->arr, 0);
+			}
+			if (rh)
+			{
+				const XblAchievement* achs = nullptr;
+				size_t numAchs = 0, n = 0;
+				HRESULT hr = S_OK;
+				hr = XblAchievementsResultHasNext(rh, &hasNext);
+				if (SUCCEEDED(hr))
+				{
+					hr = XblAchievementsResultGetAchievements(rh, &achs, &numAchs);
+					if (SUCCEEDED(hr) && achs && numAchs)
+					{
+						for (n = 0; n < numAchs; ++n)
+						{
+							RValue ach = XblAchievementToRValue(&achs[n]);
+							SET_RValue(&ctx->arr, &ach, nullptr, ctx->last_idx++);
+							FREE_RValue(&ach);
+						}
+					}
+				}
+				if (hasNext)
+				{
+					ctx->async.callback = &OnNextOuter;
+					// re-use the same value used for the first call
+					// just to be consistent here...
+					hr = XblAchievementsResultGetNextAsync(rh, ctx->max_items, &ctx->async);
+					if (FAILED(hr))
+					{
+						// uhhh, okay then
+						hasNext = false;
+					}
+				}
+				achs = nullptr;
+				numAchs = n = 0;
+				XblAchievementsResultCloseHandle(rh);
+				rh = nullptr;
+				ctx->last_hr = hr;
+			}
+			if (!hasNext)
+			{
+				// no more achievements, done here...
+				int dsmap = CreateDsMap(0);
+				DsMapAddDouble(dsmap, "id", e_achievement_stat_event);
+				DsMapAddString(dsmap, "event", "xboxone_get_achievements_result");
+				DsMapAddInt64(dsmap, "userid", ctx->user_id);
+				DsMapAddDouble(dsmap, "error", ctx->last_hr);
+				DsMapAddBool(dsmap, "succeeded", SUCCEEDED(ctx->last_hr));
+				DsMapAddRValue(dsmap, "achievements", &ctx->arr);
+				DsMapAddDouble(dsmap, "requestid", ctx->req_id);
+				CreateAsyncEventWithDSMap(dsmap, EVENT_OTHER_SOCIAL);
+				FREE_RValue(&ctx->arr);
+				YYFree(ctx);
+			}
+		}
+	};
+
+	auto ctx = static_cast<ThisContext*>(YYAlloc(sizeof(ThisContext)));
+	if (!ctx)
+	{
+		DebugConsoleOutput("xboxone_get_achievements :: failed to allocate a context for the call\n");
+		return;
+	}
+	ctx->async.queue = XUM::GetTaskQueue();
+	ctx->async.context = ctx;
+	ctx->async.callback = &ThisContext::OnGetOuter;
+	ctx->user_id = user_id;
+	ctx->arr.kind = VALUE_UNDEFINED;
+	ctx->max_items = max_items;
+	ctx->req_id = -1; // not yet assigned...
+	ctx->last_idx = 0;
+	ctx->last_hr = S_OK;
+	hr = XblAchievementsGetAchievementsForTitleIdAsync(
+		xblc,
+		user_id,
+		title_id,
+		XblAchievementType(ach_type),
+		unlocked_only,
+		XblAchievementOrderBy(order_by),
+		skip_items,
+		max_items,
+		&ctx->async);
+	if (FAILED(hr))
+	{
+		DebugConsoleOutput("xboxone_get_achievements :: call failed with an HRESULT error\n");
+		YYFree(ctx);
+		Result.val = hr;
+		return;
+	}
+	ctx->req_id = g_HTTP_ID++;
+	Result.val = ctx->req_id;
 }
 
 YYEXPORT
