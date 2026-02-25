@@ -14,9 +14,19 @@
  * @ref page.gdk_extension_guides
  * @section_end
  * 
- * @section API
- * @desc The ${module.api} section includes documentation on all provided functions, which are divided into separate modules. There are a set of management functions that are required for the GDK Extension to be functional, and then the various GDK Extension modules (such as Storage, Xbox Live, In-App Purchases) can be used as you wish. **** 
-  Please see ${module.api} for details on the provided modules.
+ * @section Management
+ * @desc Using the GDK Extension **requires** the developer to manually manage it. The following functions are provided for managing the extension:
+ * @ref function.gdk_init
+ * @ref function.gdk_update
+ * @ref function.gdk_quit
+ * @section_end
+ * 
+ * @section Modules
+ * @desc Please look at the following sections for information on the different modules present in this library:
+ * @ref module.base
+ * @ref module.storage
+ * @ref module.xbox_live
+ * @ref module.iap
  * @section_end
  * 
  * @module_end

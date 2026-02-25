@@ -5,7 +5,7 @@
   * ${page.building_guide}
   * ${page.gdk_extension_guides}
 
-* ### ${module.api}
+* ### API
 
   * ${module.base}
   * ${module.storage}

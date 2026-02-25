@@ -157,26 +157,26 @@
  * @desc   Represents an interval of time during which an achievement can be unlocked.
  * @member {Real}                                          startDate              The start date and time of the achievement time window. (date-time value or 0)
  * @member {Real}                                          endDate                The end date and time of the achievement time window. (date-time value or 0)
- * @endstruct
+ * @struct_end
  *
  * @struct XboxAchievementTitleAssociation
  * @desc   Represents the association between a title and achievements.
  * @member {String}                                        name                   The UTF-8 encoded localized name of the title.
  * @member {Real}                                          titleId                The title ID.
- * @endstruct
+ * @struct_end
  *
  * @struct XboxAchievementRequirement
  * @desc   Represents requirements for unlocking the achievement.
  * @member {String}                                        id                     The UTF-8 encoded achievement requirement ID.
  * @member {String}                                        currentProgressValue   A UTF-8 encoded value that indicates the current progress of the player towards meeting the requirement.
  * @member {String}                                        targetProgressValue    The UTF-8 encoded target progress value that the player must reach in order to meet the requirement.
- * @endstruct
+ * @struct_end
  *
  * @struct XboxAchievementProgression
  * @desc   Represents progress details about the achievement, including requirements.
- * @member {Array<Struct.XboxAchievementRequirement>}      requirements           The actions and conditions that are required to unlock the achievement.
+ * @member {Array[Struct.XboxAchievementRequirement]}      requirements           The actions and conditions that are required to unlock the achievement.
  * @member {Real}                                          timeUnlocked           The timestamp when the achievement was first unlocked. (date-time value or 0)
- * @endstruct
+ * @struct_end
  *
  * @constant XboxAchievementMediaAssetType
  * @desc   Enumeration values that indicate the media asset type associated with the achievement.
@@ -187,7 +187,7 @@
  * @member {String}                                        name                   The UTF-8 encoded name of the media asset, such as "tile01".
  * @member {Constant.XboxAchievementMediaAssetType}        mediaAssetType         The type of media asset.
  * @member {String}                                        url                    The UTF-8 encoded URL of the media asset.
- * @endstruct
+ * @struct_end
  *
  * @constant XboxAchievementRewardType
  * @desc   Enumeration values that indicate the reward type for an achievement.
@@ -201,7 +201,7 @@
  * @member {Constant.XboxAchievementRewardType}            rewardType             The reward type.
  * @member {String}                                        valueType              The UTF-8 encoded property type of the reward value string.
  * @member {Struct.XboxAchievementMediaAsset|Undefined}    mediaAsset             The media asset associated with the reward. If the reward type is gamerscore, this will be undefined. If the reward type is in_app, this will be a media asset. If the reward type is art, this may be a media asset or undefined.
- * @endstruct
+ * @struct_end
  *
  * @constant XboxAchievementProgressState
  * @desc   Enumeration values that indicate the state of a player's progress towards unlocking an achievement.
@@ -220,10 +220,10 @@
  * @member {String}                                        id                     The UTF-8 encoded achievement ID.
  * @member {String}                                        serviceConfigurationId The Service Configuration ID (SCID) that is associated with the achievement.
  * @member {String}                                        name                   The UTF-8 encoded localized achievement name.
- * @member {Array<Struct.XboxAchievementTitleAssociation>} titleAssociations      The game/app titles associated with the achievement.
+ * @member {Array[Struct.XboxAchievementTitleAssociation]} titleAssociations      The game/app titles associated with the achievement.
  * @member {Constant.XboxAchievementProgressState}         progressState          The state of a user's progress towards the earning of the achievement.
  * @member {Struct.XboxAchievementProgression}             progression            The progression object containing progress details about the achievement, including requirements.
- * @member {Array<Struct.XboxAchievementMediaAsset>}       mediaAssets            The media assets associated with the achievement, such as image IDs.
+ * @member {Array[Struct.XboxAchievementMediaAsset]}       mediaAssets            The media assets associated with the achievement, such as image IDs.
  * @member {Array<String>}                                 platformsAvailableOn   The UTF-8 encoded collection of platforms that the achievement is available on.
  * @member {Bool}                                          isSecret               Whether or not the achievement is secret.
  * @member {String}                                        unlockedDescription    The UTF-8 encoded description of the unlocked achievement.
@@ -232,11 +232,11 @@
  * @member {Constant.XboxAchievementType}                  type                   The type of achievement, such as a challenge achievement.
  * @member {Constant.XboxAchievementParticipationType}     participationType      The participation type for the achievement, such as group or individual.
  * @member {Struct.XboxAchievementTimeWindow}              available              The time window during which the achievement is available. Applies to Challenges.
- * @member {Array<Struct.XboxAchievementReward>}           rewards                The collection of rewards that the player earns when the achievement is unlocked.
+ * @member {Array[Struct.XboxAchievementReward]}           rewards                The collection of rewards that the player earns when the achievement is unlocked.
  * @member {Real}                                          estimatedUnlockTime    The estimated time that the achievement takes to be earned.
  * @member {String}                                        deepLink               A UTF-8 encoded deep link for clients that enables the title to launch at a desired starting point for the achievement.
  * @member {Bool}                                          isRevoked              A value that indicates whether or not the achievement is revoked by enforcement.
- * @endstruct
+ * @struct_end
  */
 
 /**
@@ -266,7 +266,7 @@
  * @member {real} error This will be: `0` if the progress update was successful; `xboxone_achievement_already_unlocked` if the achievement was unlocked in a previous request; or a negative number with the error code if the request failed.
  * @member {bool} succeeded whether the last HRESULT value indicated a failure or not
  * @member {real} requestID The ID of the request that fired this callback.
- * @member {array<struct.XboxAchievementInformation>} achievements an array of achievement information structs
+ * @member {array[struct.XboxAchievementInformation]} achievements an array of achievement information structs
  * @event_end
  * @example
  * ```gml
