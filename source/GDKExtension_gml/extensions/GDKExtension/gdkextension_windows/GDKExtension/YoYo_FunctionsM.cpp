@@ -2663,7 +2663,7 @@ void F_XboxOneGetAchievements(RValue& Result, CInstance* selfinst, CInstance* ot
 			FREE_RValue(&rvp);
 			{
 				RValue rvm = {};
-				YYCreateArray(&rvm);
+				YYCreateArray(&rvm, 0);
 				for (n = 0; n < a->mediaAssetsCount; ++n)
 				{
 					RValue rvma = {};
@@ -2783,14 +2783,13 @@ void F_XboxOneGetAchievements(RValue& Result, CInstance* selfinst, CInstance* ot
 			{
 				// no more achievements, done here...
 				int dsmap = CreateDsMap(0);
-				DsMapAddDouble(dsmap, "id", e_achievement_stat_event);
-				DsMapAddString(dsmap, "event", "xboxone_get_achievements_result");
-				DsMapAddInt64(dsmap, "userid", ctx->user_id);
+				DsMapAddString(dsmap, "event_type", "achievements info");
+				DsMapAddInt64(dsmap, "userID", ctx->user_id);
 				DsMapAddDouble(dsmap, "error", ctx->last_hr);
 				DsMapAddBool(dsmap, "succeeded", SUCCEEDED(ctx->last_hr));
 				DsMapAddRValue(dsmap, "achievements", &ctx->arr);
-				DsMapAddDouble(dsmap, "requestid", ctx->req_id);
-				CreateAsyncEventWithDSMap(dsmap, EVENT_OTHER_SOCIAL);
+				DsMapAddDouble(dsmap, "requestID", ctx->req_id);
+				CreateAsyncEventWithDSMap(dsmap, EVENT_OTHER_SYSTEM_EVENT);
 				FREE_RValue(&ctx->arr);
 				YYFree(ctx);
 			}

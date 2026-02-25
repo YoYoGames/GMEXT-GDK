@@ -1,17 +1,17 @@
-# GameMaker Studio 2 - GDK Extension
+# GameMaker - GDK Extension
 
-An Extension for GameMaker Studio 2 (GMS2) that gives GMS2 Windows Target support for the GDK allowing them to be released on the Microsoft Store and use XBox Live functionality (for those developers that have access through id@xbox, see [this link](https://www.xbox.com/developers/id) for more information on id@xbox).
+An Extension for GameMaker that adds Windows Target support for the GDK allowing them to be released on the Microsoft Store and use Xbox Live functionality (for those developers that have access through id@xbox, see [this link](https://www.xbox.com/developers/id) for more information on id@xbox).
 
-For more information on how to use the GDK Extension check our [tech blog](https://www.yoyogames.com/en/blog/gdk-extension) and for extra details on configuring the Partner Center check out our [zendesk article](https://help.yoyogames.com/hc/en-us/articles/4411044955793).
+For more information on how to use the GDK Extension check our [tech blog](https://gamemaker.io/en/blog/gdk-extension) and for extra details on configuring the Partner Center check out our [zendesk article](https://gamemaker.zendesk.com/hc/en-us/articles/4411044955793-Microsoft-Partner-Center-Guide-for-Windows-Store-Xbox-Developers).
 
 > [!WARNING]
-> Only Windows x64 Target is supported by the GDK. Also make sure the - ✅Copy exe to output folder - is selected from the Game Options -> Windows tab.
+> Only Windows x64 Target is supported by the GDK extension. Also make sure the - ✅Copy exe to output folder - is selected from the Game Options -> Windows tab.
 
 --- 
 
 ## Contents of this repository
 
-This repository contains the source code for the DLL that implements the GDK functionality that is exposed to GameMaker games, it is written in C++. It also contains an example GMS2 project that contains the extension definition and illustrates how to use the extension.
+This repository contains the source code for the DLL that implements the GDK functionality that is exposed to GameMaker games, it is written in C++. It also contains an example GameMaker project that contains the extension definition and illustrates how to use the extension.
 
 ---
 
@@ -26,7 +26,7 @@ This repository contains the source code for the DLL that implements the GDK fun
 > [!NOTE]
 > The repository has submodules that you should initialise. If you opt to use the release package the **modules are already included**.
 
-5. Open the Visual Studio 2022
+5. Open Visual Studio 2022
 6. Open the Solution in `<project_root>/extensions/GDKExtension/gdkextension_windows/GDKExtension.sln`
 7. Select solution platform - **Gaming.Desktop.x64**
 9. Select solution configuration - **Release** or **Debug**
