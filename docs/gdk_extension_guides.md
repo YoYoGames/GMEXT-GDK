@@ -9,13 +9,14 @@ You will initially need to set up your project for the GDK Extension to work pro
 In order to build your project using the extension you need to import it and make some changes to your project:
 
 1. Import the local package ( **.yymps** ) provided with the public release version.
-2. Use the 64-bit Windows runtime. To change this go into **Game Options → Windows → General** and enable " **Use x64 Windows Runtime** ".<br>
-![](assets/setup1.jpg) 
-3. Also make sure you enable the **"Copy exe to output folder"** setting: <br>
+2. Make sure to enable the **"Copy exe to output folder"** setting. To enable this go into **Game Options → Windows → General** and enable **Copy exe to output folder**: <br>
 ![](assets/gdk_copy_to_destination.png)
 
 > [!IMPORTANT]
-> These steps are required only for older versions of the GameMaker:
+> These steps are required only for older versions of GameMaker:
+> 
+> * **For GameMaker versions prior to 2022.8** : Make sure to use the 64-bit Windows runtime. To change this go into **Game Options → Windows → General** and enable " **Use x64 Windows Runtime** ".<br>
+![](assets/setup1.jpg)
 >
 > * **For GameMaker 2022.3 (or previous)** : Also make sure you disable the subst from within the **Preferences → General Settings → Compiling** menu, otherwise this extension will not work:
 >
@@ -29,7 +30,7 @@ After finishing this we'll set up the config file required for the Microsoft Sto
 
 ## Sandbox Get/Set
 
-  When using Xbox Live features, you might need to change your PC sandboxes (see [official documentation](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/test-release/tools/live-pc-sandbox-switcher)) so you can test those same features. For this purpose, you can run the GDK Command Line (under `Start → All Apps → Microsoft GDK → Desktop VS 2018 Gaming Command Prompt`) and use one of the following commands:
+  When using Xbox Live features, you might need to change your PC sandboxes (see [official documentation](https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/test-release/tools/live-pc-sandbox-switcher)) so you can test those same features. For this purpose, you can run the GDK Command Line (under `Start → All Apps → Microsoft GDK → Desktop VS 2022 Gaming Command Prompt`) and use one of the following commands:
 
 * `XblPCSandbox /get` (returns the current sandbox, default is RETAIL)
 * `XblPCSandbox <sandbox>` (changes the sandbox, where *`<sandbox>`* refers to your sandbox name)
