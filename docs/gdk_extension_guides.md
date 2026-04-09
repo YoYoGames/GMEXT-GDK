@@ -57,34 +57,6 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 
   Upon finishing this setup and following the [Project Setup](#project-setup) section above, you should be ready to run and test your project.
 
-## Manifest File
-
-  This step is not required unless you are using the event-based functions from the Xbox Live module (this requires enabling of **Event-Based Stats** on the Partner Center).
-  If you are using the event-based system from Xbox Live module you need to provide GameMaker with some extra information about the **statistics**, **events** and **leaderboards** created on you Partner Center's dashboard. For this you need to do the following:
-
-1. Log in to your **Partner Center** account, open your game's configuration page and go into the **Xbox Services → Gameplay Settings** where you can define your stats.<br>
-
-![](assets/setup5.jpg)
-
-2. From here you will need to select **Player stats → Stat rules** the drop-down menu at the top.<br>
-
-![](assets/setup6.jpg)
-
-3. On the page that opens, click on the " **Download published events manifest** " button.<br>
-
-![](assets/setup7.jpg)
-
-4. Add the downloaded file to your project's **Included Files (/datafiles)** folder.
-
-  After setting up this manifest file, you will be able to use event-based stats and leaderboards in your project.
-
-> [!IMPORTANT]
-> If you make any changes to your events on the Partner Center dashboard, you'll need to republish those changes and download a new **manifest** file.
-
-
-<br><br>
-
----
 
 ## Shell Localization Guide
 
