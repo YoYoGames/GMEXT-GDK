@@ -104,4 +104,4 @@ To build and run your project using the GDK Extension, it's necessary to set up 
     </root>
     ```
 
-    4. Inside each of the language-specific folders they should add another `resources.resw` file with the appropriate values for that language.
+    4. Inside each of the language-specific folders another `resources.resw` file with the appropriate values for that language.
