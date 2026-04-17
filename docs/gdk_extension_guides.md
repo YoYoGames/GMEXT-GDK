@@ -105,3 +105,54 @@ To build and run your project using the GDK Extension, it's necessary to set up 
     ```
 
     4. Inside each of the language-specific folders another `resources.resw` file with the appropriate values for that language.
+
+## Cross-platform exports
+
+If you want to export your game to both Xbox and targets supported by the GDK extension then you can do a check on the ${var.os_type} variable and initialise functionality based on the value in this variable:
+
+```gml
+switch(os_type) {
+    case os_windows:
+        // Use extension functionality
+        break;
+    case os_gdk:
+    case os_xboxseriesxs:
+        // Use Xbox runner functionality
+        break;
+    default:
+        throw "[ERROR] objSaveGroup, unsupported platform";
+}
+```
+This code checks the ${var.os_type} variable. If it holds the constant `os_windows`, a function of the GDK extension is called, otherwise a built-in function of the Xbox runner is called.
+
+### Loading and Saving
+
+|Activity|Xbox runner function|GDK function|
+|---|---|---|
+|Save single file|${function.buffer_save_async}|${function.gdk_save_buffer}|
+|Load single file|${function.buffer_load_async}|${function.gdk_load_buffer}|
+|Start multiple async|${function.buffer_async_group_begin}|${function.gdk_save_group_begin}|
+|End multiple async|${function.buffer_async_group_end}|${function.gdk_save_group_end}|
+
+[[Note: GDK functions don't have a separate `*_async` function.]]
+
+[[Important: The Xbox runner always starts the file path with `"root/"`, the GDK extension doesn't do this automatically. To load and save files on both platforms you should always add the `"root/"` part to paths.]]
+
+```gml
+// Single file
+gdk_save_buffer(buff, "root/player_save.sav", 0, 16384);        // GDK extension
+buffer_save_async(buff, "root/player_save.sav", 0, 16384);      // Xbox runner
+
+// Save group
+gdk_save_group_begin("root");
+save1 = gdk_save_buffer(buff1, "player_save1.sav", 0, 16384);   // GDK Extension
+save2 = gdk_save_buffer(buff2, "player_save2.sav", 0, 16384);
+save3 = gdk_save_buffer(buff3, "player_save3.sav", 0, 16384);
+gdk_save_group_end();
+
+buffer_async_group_begin("root");
+save1 = buffer_save_async(buff1, "player_save1.sav", 0, 16384); // Xbox runner
+save2 = buffer_save_async(buff2, "player_save2.sav", 0, 16384);
+save3 = buffer_save_async(buff3, "player_save3.sav", 0, 16384);
+buffer_async_group_end();
+```
