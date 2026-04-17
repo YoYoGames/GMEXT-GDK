@@ -108,7 +108,7 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 
 ## Cross-platform exports
 
-If you want to export your game to both Xbox and targets supported by the GDK extension then you can do a check on the ${var.os_type} variable and initialise functionality based on the value in this variable:
+If you want to export your game to both Xbox and targets supported by the GDK extension then you can do a check on the ${var.os_type} variable and use functionality based on the value in this variable:
 
 ```gml
 switch(os_type) {
