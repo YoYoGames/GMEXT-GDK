@@ -7,7 +7,7 @@
 // Inherit the parent event
 event_inherited();
 
-text = "Load";
+text = "Load (group + single)";
 requestIds = {};
 errorFlag = false;
 
@@ -20,10 +20,10 @@ onClick = function() {
 	
 	errorFlag = false;
 	
-	queue_load("single/b1");
-	queue_load("multi/b2");
-	queue_load("multi/b3");
-	queue_load("multi/b4");
+	queue_load("root/single/b1");
+	queue_load("root/multi/b2");
+	queue_load("root/multi/b3");
+	queue_load("root/multi/b4");
 }
 
 function queue_load(_filename)

@@ -40,7 +40,7 @@ onClick = function() {
 }
 
 windowsSaveGroup = function(_b2, _b3, _b4) {
-	gdk_save_group_begin("multi");
+	gdk_save_group_begin("root/multi");
 	gdk_save_buffer(_b2, "b2", 0, buffer_get_size(_b2));
 	gdk_save_buffer(_b3, "b3", 0, buffer_get_size(_b3));
 	gdk_save_buffer(_b4, "b4", 0, buffer_get_size(_b4));
@@ -48,7 +48,7 @@ windowsSaveGroup = function(_b2, _b3, _b4) {
 }
 
 xboxSaveGroup = function(_b2, _b3, _b4) {
-	buffer_async_group_begin("multi");
+	buffer_async_group_begin("root/multi");
 	buffer_save_async(_b2, "b2", 0, buffer_get_size(_b2));
 	buffer_save_async(_b3, "b3", 0, buffer_get_size(_b3));
 	buffer_save_async(_b4, "b4", 0, buffer_get_size(_b4));
