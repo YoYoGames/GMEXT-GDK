@@ -48,7 +48,7 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 ![](assets/setup3.jpg)
 
 > [!NOTE]
-> The `ExecutableList/Executable/Name` property should be set to the value in `GameOptions → Windows → Executable Name`.
+> The `ExecutableList/Executable/Name` property should be set to the value in `Game Options → Windows → Executable Name`.
 
 2. Add the `MicrosoftGame.Config` file to the Included Files of your project.
 3. Depending on the image file names specified in the `ShellVisuals` tag you will need to add those to the Included Files as well.<br>
@@ -60,9 +60,9 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 
 ## Shell Localization Guide
 
-  This feature allows you to define the title's Shell presence. For example, Images and Names. Used during registration to surface the title in the Shell. In order to use this the user needs to make some modifications to both their `MicrosoftGame.Config` file and their project:
+  This feature allows you to define the title's Shell presence. For example, Images and Names. Used during registration to surface the title in the Shell. In order to use this you need to make some modifications to both the `MicrosoftGame.Config` file and your project:
 
-  - In their `MicrosoftGame.Config` file, they need to:
+  - In the `MicrosoftGame.Config` file, the following needs to be changed:
     - Change the value of `DefaultDisplayName` in `ShellVisuals` to `"ms-resource:ApplicationDisplayName"`
     - Change the value of `Description` in `ShellVisuals` to `"ms-resource:ApplicationDescription"`
     - Add a section which declares which languages they want to support using standard language\region codes (this should be in the `Game` section), i.e.:
@@ -75,10 +75,10 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 </Resources>
 ```
 
-  - In their project developers need to add some folders to included files:
+  - In your project you then need to add some folders to included files:
   
-    1. In the root of included files (i.e.: `datafiles`) they should add a `GDKExtensionStrings` folder
-    2. Inside the `GDKExtensionStrings` folder they should add one for each supported language, i.e. `en-us` for American English and `de-de` for German, so for the above list of languages the directory structure would be:
+    1. In the root of included files (i.e.: `datafiles`) a `GDKExtensionStrings` folder
+    2. Inside the `GDKExtensionStrings` folder one subfolder for each supported language, i.e. `en-us` for American English and `de-de` for German, so for the above list of languages the directory structure would be:
 
     <br>
 
@@ -90,7 +90,7 @@ To build and run your project using the GDK Extension, it's necessary to set up 
 
     <br>
 
-    3. Inside the base `GDKExtensionStrings` folder they should add an XML file named `resources.resw` which will contains the fallback language info and should look like the following (where the values should be replaced with the required defaults):
+    3. Inside the base `GDKExtensionStrings` folder an XML file named `resources.resw` which will contain the fallback language info and should look like the following (where the values should be replaced with the required defaults):
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
