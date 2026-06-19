@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"XboxButtonLT",
   "bboxMode":0,
   "bbox_bottom":93,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"b2d871c6-81d2-4101-93fb-7ba45b42ee37","name":"b2d871c6-81d2-4101-93fb-7ba45b42ee37","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b2d871c6-81d2-4101-93fb-7ba45b42ee37","name":"b2d871c6-81d2-4101-93fb-7ba45b42ee37","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -16,6 +16,7 @@
 #include <map>
 #include <memory>
 #include <mutex>
+#include <string>
 #include <thread>
 #include <tuple>
 #include <utility>
@@ -255,7 +256,7 @@ static RValue _MS_IAP_PackageDetails_to_Struct(const XPackageDetails* details);
 static void _MS_IAP_AddStringOrUndefined(RValue* obj, const char* _pName, const char* _pString);
 static XStoreContextHandle _MS_IAP_GetStoreHandle(RValue* arg, int user_id_arg_idx, const char* func);
 static XStoreProductKind _MS_IAP_GetProductKinds(RValue* arg, int product_kinds_arg_idx, const char* func);
-static std::vector<const char*> _MS_IAP_GetArrayOfStrings(RValue* arg, int arg_idx, const char* func);
+static std::vector<std::string> _MS_IAP_GetArrayOfStrings(RValue* arg, int arg_idx, const char* func);
 static XPackageKind _MS_IAP_GetPackageKind(RValue* arg, int arg_idx, const char* func);
 static XPackageEnumerationScope _MS_IAP_GetPackageEnumerationScope(RValue* arg, int arg_idx, const char* func);
 
@@ -1166,7 +1167,11 @@ YYEXPORT void F_MS_IAP_DownloadAndInstallPackages(RValue& Result, CInstance* sel
 
 	Result.kind = VALUE_REAL;
 
-	std::vector<const char*> store_ids = _MS_IAP_GetArrayOfStrings(arg, 1, "ms_iap_DownloadAndInstallPackages");
+	std::vector<std::string> store_ids = _MS_IAP_GetArrayOfStrings(arg, 1, "ms_iap_DownloadAndInstallPackages");
+	std::vector<const char*> store_id_ptrs;
+	store_id_ptrs.reserve(store_ids.size());
+	for (const std::string& s : store_ids)
+		store_id_ptrs.push_back(s.c_str());
 
 	XStoreContextHandle store_ctx = _MS_IAP_GetStoreHandle(arg, 0, "ms_iap_DownloadAndInstallPackages");
 	if (store_ctx == NULL)
@@ -1176,7 +1181,7 @@ YYEXPORT void F_MS_IAP_DownloadAndInstallPackages(RValue& Result, CInstance* sel
 
 	DownloadAndInstallPackagesContext* ctx = new DownloadAndInstallPackagesContext(store_ctx);
 
-	HRESULT hr = XStoreDownloadAndInstallPackagesAsync(store_ctx, store_ids.data(), store_ids.size(), &(ctx->async));
+	HRESULT hr = XStoreDownloadAndInstallPackagesAsync(store_ctx, store_id_ptrs.data(), store_id_ptrs.size(), &(ctx->async));
 	if (SUCCEEDED(hr))
 	{
 		Result.val = ctx->async_id;
@@ -1850,8 +1855,18 @@ YYEXPORT void F_MS_IAP_QueryProducts(RValue& Result, CInstance* selfinst, CInsta
 		return;
 	}
 
-	std::vector<const char*> store_ids = _MS_IAP_GetArrayOfStrings(arg, 2, "ms_iap_QueryProducts");
-	std::vector<const char*> action_filters = _MS_IAP_GetArrayOfStrings(arg, 3, "ms_iap_QueryProducts");
+	std::vector<std::string> store_ids = _MS_IAP_GetArrayOfStrings(arg, 2, "ms_iap_QueryProducts");
+	std::vector<std::string> action_filters = _MS_IAP_GetArrayOfStrings(arg, 3, "ms_iap_QueryProducts");
+
+	std::vector<const char*> store_id_ptrs;
+	store_id_ptrs.reserve(store_ids.size());
+	for (const std::string& s : store_ids)
+		store_id_ptrs.push_back(s.c_str());
+
+	std::vector<const char*> action_filter_ptrs;
+	action_filter_ptrs.reserve(action_filters.size());
+	for (const std::string& s : action_filters)
+		action_filter_ptrs.push_back(s.c_str());
 
 	XStoreContextHandle store_ctx = _MS_IAP_GetStoreHandle(arg, 0, "ms_iap_QueryProducts");
 	if (store_ctx == NULL)
@@ -1868,8 +1883,8 @@ YYEXPORT void F_MS_IAP_QueryProducts(RValue& Result, CInstance* selfinst, CInsta
 	HRESULT hr = XStoreQueryProductsAsync(
 		store_ctx,
 		product_kinds,
-		store_ids.data(), store_ids.size(),
-		action_filters.data(), action_filters.size(),
+		store_id_ptrs.data(), store_id_ptrs.size(),
+		action_filter_ptrs.data(), action_filter_ptrs.size(),
 		&(ctx->async));
 
 	if (SUCCEEDED(hr))
@@ -2334,7 +2349,11 @@ YYEXPORT void F_MS_IAP_ShowRedeemTokenUI(RValue& Result, CInstance* selfinst, CI
 	Result.kind = VALUE_REAL;
 
 	const char* token = YYGetString(arg, 1);
-	std::vector<const char*> allowed_store_ids = _MS_IAP_GetArrayOfStrings(arg, 2, "ms_iap_ShowRedeemTokenUI");
+	std::vector<std::string> allowed_store_ids = _MS_IAP_GetArrayOfStrings(arg, 2, "ms_iap_ShowRedeemTokenUI");
+	std::vector<const char*> allowed_store_id_ptrs;
+	allowed_store_id_ptrs.reserve(allowed_store_ids.size());
+	for (const std::string& s : allowed_store_ids)
+		allowed_store_id_ptrs.push_back(s.c_str());
 	bool disallow_cvs_redemption = YYGetBool(arg, 3);
 
 	XStoreContextHandle store_ctx = _MS_IAP_GetStoreHandle(arg, 0, "ms_iap_ShowRedeemTokenUI");
@@ -2391,7 +2410,7 @@ YYEXPORT void F_MS_IAP_ShowRedeemTokenUI(RValue& Result, CInstance* selfinst, CI
 		CreateAsyncEventWithDSMap(dsMapIndex, EVENT_OTHER_WEB_IAP);
 	};
 
-	HRESULT hr = XStoreShowRedeemTokenUIAsync(store_ctx, token, allowed_store_ids.data(), allowed_store_ids.size(), disallow_cvs_redemption, &(ctx->async));
+	HRESULT hr = XStoreShowRedeemTokenUIAsync(store_ctx, token, allowed_store_id_ptrs.data(), allowed_store_id_ptrs.size(), disallow_cvs_redemption, &(ctx->async));
 	if (SUCCEEDED(hr))
 	{
 		Result.val = ctx->async_id;
@@ -2704,27 +2723,32 @@ static XStoreProductKind _MS_IAP_GetProductKinds(RValue *arg, int product_kinds_
 	return product_kinds_e;
 }
 
-static std::vector<const char*> _MS_IAP_GetArrayOfStrings(RValue* arg, int arg_idx, const char* func)
+static std::vector<std::string> _MS_IAP_GetArrayOfStrings(RValue* arg, int arg_idx, const char* func)
 {
 	RValue* pV = &(arg[arg_idx]);
 
-	std::vector<const char*> strings;
+	std::vector<std::string> strings;
 
 	if (KIND_RValue(pV) == VALUE_ARRAY)
 	{
 		int arraylength = YYArrayGetLength(pV);
-		RValue elem;
+		RValue elem{};
 		for (int i = 0; i < arraylength; ++i)
 		{
 			if (GET_RValue(&elem, pV, NULL, i) == false)
 				break;
-		
+
 			if (KIND_RValue(&elem) != VALUE_STRING)
 			{
-				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(pV));
+				YYError("%s argument %d [array element %d] incorrect type (%s) expecting a String", func, (arg_idx + 1), i, KIND_NAME_RValue(&elem));
 			}
 
-			strings.push_back(elem.GetString());
+			// Copy the characters into an owning std::string; the RValue returned by
+			// GET_RValue owns its string buffer and must be freed before the next
+			// iteration, so we cannot keep the raw const char* around.
+			strings.emplace_back(elem.GetString());
+			FREE_RValue(&elem);
+			elem = {};
 		}
 	}
 	else {
