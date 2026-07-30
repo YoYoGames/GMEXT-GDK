@@ -597,17 +597,9 @@ void F_XboxReadPlayerLeaderboard(RValue& Result, CInstance* selfinst, CInstance*
 	DoLeaderboardQuery(ident, player, 0, numitems, friendfilter, "xboxone_read_player_leaderboard");
 }
 
-YYEXPORT
-void F_XboxAchievementLoadLeaderboard(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+void Achievement_Load_Leaderboard(char *ident,int minindex, int maxindex,int friendfilter)
 {
-	if (!g_gdk_initialised) YYError("xboxlive_achievement_load_leaderboard :: GDK Extension was not initialized!");
-
-	const char* ident = YYGetString(arg, 0);
-	int minindex = YYGetInt32(arg, 1);
-	int maxindex = YYGetInt32(arg, 2);
-	int friendfilter = YYGetInt32(arg, 3);
-
-	DoLeaderboardQuery(ident, 0, minindex, ((maxindex - minindex) + 1), friendfilter, "xboxlive_achievement_load_leaderboard");
+	DoLeaderboardQuery(ident, 0, minindex, ((maxindex - minindex) + 1), friendfilter, "achievement_load_leaderboard");
 }
 
 void	Achievement_Load_Pic(char *id){};
