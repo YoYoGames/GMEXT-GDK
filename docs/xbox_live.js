@@ -324,7 +324,7 @@
  * 
  * The function will return 0 if the event was sent (and should be received/processed by the server) or -1 if there was an error (e.g. your events manifest file is outdated).
  * 
- * [[Note: The first two parameters for an event usually default to the `user_id` (obtained from the ${function.xboxone_get_user function) and the game's `scid` (obtained from the Microsoft Partner Center).]]
+ * [[Note: The first two parameters for an event usually default to the `user_id` (obtained from the ${function.xboxone_get_user} function) and the game's `scid` (obtained from the Microsoft Partner Center).]]
  * 
  * @param {string} event_name The name of the event to be triggered
  * @param {string} [params] One or more arguments specifying the parameters to be passed to the event as individual arguments
