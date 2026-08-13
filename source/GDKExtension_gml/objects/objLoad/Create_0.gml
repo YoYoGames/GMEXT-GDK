@@ -20,10 +20,11 @@ onClick = function() {
 	
 	errorFlag = false;
 	
-	queue_load("root/single/b1");
-	queue_load("root/multi/b2");
-	queue_load("root/multi/b3");
-	queue_load("root/multi/b4");
+	// Paths are given without the "root/" prefix, 'queue_load' adds it on GDK.
+	queue_load("single/b1");
+	queue_load("multi/b2");
+	queue_load("multi/b3");
+	queue_load("multi/b4");
 }
 
 function queue_load(_filename)
@@ -36,12 +37,14 @@ function queue_load(_filename)
 			// On Windows GDK the function used to load buffers asynchronously
 			// is 'gdk_load_buffer' it will return a requestID that can be checked
 			// during the Async Save/Load event.
-			var _requestId = gdk_load_buffer(_bufferId, _filename, 0, 10);
+			// The Xbox runner nests saves inside a "root" folder, so we prepend
+			// "root/" here (and only here) to read back what Xbox wrote.
+			var _requestId = gdk_load_buffer(_bufferId, "root/" + _filename, 0, 10);
 			break;
-			
+
 		case os_xboxseriesxs:
 			// On Xbox Series X/S the function used to load buffers asynchronously
-			// is 'gdk_load_buffer' it will return a requestID that can be checked
+			// is 'buffer_load_async' it will return a requestID that can be checked
 			// during the Async Save/Load event.
 			var _requestId = buffer_load_async(_bufferId, _filename, 0, 10);
 			break;
