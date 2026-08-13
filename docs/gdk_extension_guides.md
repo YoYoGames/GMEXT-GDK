@@ -136,21 +136,21 @@ This code checks the ${var.os_type} variable. If it holds the constant `os_windo
 
 [[Note: GDK functions don't have a separate `*_async` function.]]
 
-[[Important: The Xbox runner always starts the file path with `"root/"`, the GDK extension doesn't do this automatically. To load and save files on both platforms you should always add the `"root/"` part to paths.]]
+[[Important: The Xbox runner always starts the file path with `"root/"`, the GDK extension doesn't do this automatically. To load and save files so that they can be read on both platforms you should always add the `"root/"` part to paths on the GDK extension only (not on Xbox).]]
 
 ```gml
 // Single file
-gdk_save_buffer(buff, "root/player_save.sav", 0, 16384);        // GDK extension
-buffer_save_async(buff, "root/player_save.sav", 0, 16384);      // Xbox runner
+gdk_save_buffer(buff, "root/savegames/player_save.sav", 0, 16384);        // GDK extension
+buffer_save_async(buff, "savegames/player_save.sav", 0, 16384);      // Xbox runner
 
 // Save group
-gdk_save_group_begin("root");
+gdk_save_group_begin("root/savegames");
 save1 = gdk_save_buffer(buff1, "player_save1.sav", 0, 16384);   // GDK Extension
 save2 = gdk_save_buffer(buff2, "player_save2.sav", 0, 16384);
 save3 = gdk_save_buffer(buff3, "player_save3.sav", 0, 16384);
 gdk_save_group_end();
 
-buffer_async_group_begin("root");
+buffer_async_group_begin("savegames");
 save1 = buffer_save_async(buff1, "player_save1.sav", 0, 16384); // Xbox runner
 save2 = buffer_save_async(buff2, "player_save2.sav", 0, 16384);
 save3 = buffer_save_async(buff3, "player_save3.sav", 0, 16384);
