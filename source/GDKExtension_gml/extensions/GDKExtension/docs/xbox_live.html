@@ -105,10 +105,6 @@
 <p>The GDK extension allows your Microsoft Store game to use all features from the Xbox Live services including stats, leaderboards, achievements and rich presence. This module contains all the functions that are available to handle Xbox Live services.</p>
 <p>Xbox Live services can either be <strong>Event-Based</strong> or <strong>Title-Managed</strong> and <strong>this choice is made on the Partner Center</strong> (check the <a href="https://gamemaker.zendesk.com/hc/en-us/articles/4411044955793-Microsoft-Partner-Center-Guide-for-Windows-Store-Xbox-Developers">help article on the Partner Center</a> for more information). The functions below are grouped according to these two systems.</p>
 <h2 id="event-based-functions">Event-Based Functions</h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>IMPORTANT Using the Event-Based system requires some additional configuration detailed under the <a href="gdk_extension_guides.html#manifest-file">Manifest File</a> guide.</p>
-</div>
 <p>The following functions are provided for event-based stats/leaderboards/achievements (Microsoft recommends using these for <strong>stats</strong> and <strong>leaderboards</strong> but not <strong>achievements</strong>):</p>
 <ul>
 <li><a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a></li>
@@ -183,7 +179,8 @@
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_achievements_set_progress(user_id, achievement, progress)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_achievements_set_progress(user_id, achievement, progress)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -211,8 +208,6 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -262,20 +257,21 @@
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">requestId = xboxone_achievements_set_progress(user_id, "KilledFirstBoss", 100);</code></pre>
+<p><div class="highlight"><pre><span></span><code>requestId = xboxone_achievements_set_progress(user_id, &quot;KilledFirstBoss&quot;, 100);
+</code></pre></div>
 In the code above we're setting the <code>"KilledFirstBoss"</code> achievement as 100% complete, the function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a> event.
-<pre class="highlight"><code class="language-gml">if (async_load[? "event_type"] == "achievement result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;event_type&quot;] == &quot;achievement result&quot;)
 {
-    if (async_load[? "requestID"] == requestId)
+    if (async_load[? &quot;requestID&quot;] == requestId)
     {
-        if (async_load[? "error"] &gt;= 0)
+        if (async_load[? &quot;error&quot;] &gt;= 0)
         {
-            show_debug_message("Request succeeded");
+            show_debug_message(&quot;Request succeeded&quot;);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct <strong>event_type</strong> and <strong>requestID</strong>, and prints a debug message if the request was successful.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -309,7 +305,8 @@ The code above matches the response against the correct <strong>event_type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_get_achievement(user_id, achievement)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_get_achievement(user_id, achievement)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -332,8 +329,6 @@ The code above matches the response against the correct <strong>event_type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -398,22 +393,23 @@ The code above matches the response against the correct <strong>event_type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">requestId = xboxone_get_achievement(user_id, "KilledFirstBoss");</code></pre>
+<p><div class="highlight"><pre><span></span><code>requestId = xboxone_get_achievement(user_id, &quot;KilledFirstBoss&quot;);
+</code></pre></div>
 In the code above we're setting the <code>"KilledFirstBoss"</code> achievement as 100% complete, the function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a> event.
-<pre class="highlight"><code class="language-gml">if (async_load[? "event_type"] == "achievement info")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;event_type&quot;] == &quot;achievement info&quot;)
 {
-    if (async_load[? "requestID"] == requestId)
+    if (async_load[? &quot;requestID&quot;] == requestId)
     {
-        if (async_load[? "error"] &gt;= 0)
+        if (async_load[? &quot;error&quot;] &gt;= 0)
         {
-            show_debug_message("Request succeeded");
-            if (async_load[? "progress_state"] == 3) show_debug_message("We are almost there: " + string(async_load[? "progress"]));
-            else if (async_load[? "progress_state"] == 1) show_debug_message("We did it!!");
+            show_debug_message(&quot;Request succeeded&quot;);
+            if (async_load[? &quot;progress_state&quot;] == 3) show_debug_message(&quot;We are almost there: &quot; + string(async_load[? &quot;progress&quot;]));
+            else if (async_load[? &quot;progress_state&quot;] == 1) show_debug_message(&quot;We did it!!&quot;);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct <strong>event_type</strong> and <strong>requestID</strong>, and prints a debug message if the request was successful.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -424,7 +420,8 @@ The code above matches the response against the correct <strong>event_type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_check_privilege(user_id, privilege_id, attempt_resolution)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_check_privilege(user_id, privilege_id, attempt_resolution)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -452,8 +449,6 @@ The code above matches the response against the correct <strong>event_type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -492,10 +487,10 @@ The code above matches the response against the correct <strong>event_type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var user_one = xboxone_get_activating_user();
-xboxone_check_privilege(user_one, xboxone_privilege_multiplayer_sessions, true);</code></pre>
+<p><div class="highlight"><pre><span></span><code>var user_one = xboxone_get_activating_user();
+xboxone_check_privilege(user_one, xboxone_privilege_multiplayer_sessions, true);
+</code></pre></div>
 In the code above we are getting the ID of the user that launched the game (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and checking if they have privilege for multiplayer sessions and requesting for attempting resolution.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -505,12 +500,13 @@ In the code above we are getting the ID of the user that launched the game (usin
 <p>The function will return 0 if the event was sent (and should be received/processed by the server) or -1 if there was an error (e.g. your events manifest file is outdated).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The first two parameters for an event usually default to the <code>user_id</code> (obtained from the ${function.xboxone_get_user function) and the game's <code>scid</code> (obtained from the Microsoft Partner Center).</p>
+<p>The first two parameters for an event usually default to the <code>user_id</code> (obtained from the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and the game's <code>scid</code> (obtained from the Microsoft Partner Center).</p>
 </div>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_fire_event(event_name, params=undefined)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_fire_event(event_name, params=undefined)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -534,8 +530,6 @@ In the code above we are getting the ID of the user that launched the game (usin
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -543,10 +537,10 @@ In the code above we are getting the ID of the user that launched the game (usin
 <p>(-1 on error, 0 if the function was successful)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var uid = xboxone_get_activating_user();
-var result = xboxone_fire_event("PlayerSessionStart", uid, global.scid, 0, 42, 42);</code></pre>
+<p><div class="highlight"><pre><span></span><code>var uid = xboxone_get_activating_user();
+var result = xboxone_fire_event(&quot;PlayerSessionStart&quot;, uid, global.scid, 0, 42, 42);
+</code></pre></div>
 In the code above we are firing the <code>"PlayerSessionStart"</code> event and passing some parameters, including the player's ID and the game's SCID as the first two parameters for the specified event.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -561,7 +555,8 @@ In the code above we are firing the <code>"PlayerSessionStart"</code> event and 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_read_player_leaderboard(ident, user_id, numitems, friendfilter)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_read_player_leaderboard(ident, user_id, numitems, friendfilter)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -594,8 +589,6 @@ In the code above we are firing the <code>"PlayerSessionStart"</code> event and 
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -655,23 +648,24 @@ In the code above we are firing the <code>"PlayerSessionStart"</code> event and 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var uid = xboxone_get_activating_user();
-xboxone_read_player_leaderboard("MyLeaderboard", uid, 10, xboxlive_achievement_filter_all_players);</code></pre>
+<p><div class="highlight"><pre><span></span><code>var uid = xboxone_get_activating_user();
+xboxone_read_player_leaderboard(&quot;MyLeaderboard&quot;, uid, 10, xboxlive_achievement_filter_all_players);
+</code></pre></div>
 In the code above we are querying the leaderboard with the ID <code>"MyLeaderboard"</code> for the first 10 entries including all players.
 We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.
-<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == xboxlive_achievement_leaderboard_info)
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == xboxlive_achievement_leaderboard_info)
 {
-    global.numentries = async_load[? "numentries"];
+    global.numentries = async_load[? &quot;numentries&quot;];
     for (var i = 0; i &lt; numentries; i++)
     {
-        global.playername[i] = async_load[? "Player" + string(i)];
-        global.playerid[i] = async_load[? "Playerid" + string(i)];
-        global.playerrank[i] = async_load[? "Rank" + string(i)];
-        global.playerscore[i] = async_load[? "Score" + string(i)];
+        global.playername[i] = async_load[? &quot;Player&quot; + string(i)];
+        global.playerid[i] = async_load[? &quot;Playerid&quot; + string(i)];
+        global.playerrank[i] = async_load[? &quot;Rank&quot; + string(i)];
+        global.playerscore[i] = async_load[? &quot;Score&quot; + string(i)];
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct <strong>id</strong> and stores the information of the top player names, ids, ranks and scores in global arrays.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -690,7 +684,8 @@ When using this function you need to supply the <code>user_id</code> for the use
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_set_rich_presence(user_id, is_user_active, rich_presence_id, scid=undefined)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_set_rich_presence(user_id, is_user_active, rich_presence_id, scid=undefined)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -724,18 +719,16 @@ When using this function you need to supply the <code>user_id</code> for the use
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var user_one = xboxone_get_activating_user();
-xboxone_set_rich_presence(user_one, true, "Playing_Challenge", global.scid);</code></pre>
+<p><div class="highlight"><pre><span></span><code>var user_one = xboxone_get_activating_user();
+xboxone_set_rich_presence(user_one, true, &quot;Playing_Challenge&quot;, global.scid);
+</code></pre></div>
 In the code above we are getting the active user (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and setting its current presence string. We are providing a scid (<code>global.scid</code>), otherwise we were required to first call the function <a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a>.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -752,7 +745,8 @@ In the code above we are getting the active user (using the function <a href="ba
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_gamertag_for_user(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_gamertag_for_user(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -771,25 +765,23 @@ In the code above we are getting the active user (using the function <a href="ba
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _user = xboxone_get_activating_user();
 var _tag = xboxone_gamertag_for_user(_user);
-show_debug_message(_tag);</code></pre>
+show_debug_message(_tag);
+</code></pre></div>
 In the code above we are getting the active user (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and getting its current gamertag.</p>
 <p><br></p>
 <p><strong>Versioning:</strong></p>
 <ul>
-<li><code>3.0.1</code> - Function deprecated</li>
+<li><code>3.0.1</code> - Function deprecated
+<br></li>
 </ul>
-<p><br></p>
-<p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
@@ -802,7 +794,8 @@ In the code above we are getting the active user (using the function <a href="ba
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_unique_modern_gamertag_for_user(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_unique_modern_gamertag_for_user(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -821,24 +814,22 @@ In the code above we are getting the active user (using the function <a href="ba
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
+<div class="highlight"><pre><span></span><code>var _user = xboxone_get_activating_user();
 var _tag = xboxone_unique_modern_gamertag_for_user(_user);
-show_debug_message(_tag);</code></pre>
+show_debug_message(_tag);
+</code></pre></div>
 <p><br></p>
 <p><strong>Versioning:</strong></p>
 <ul>
-<li><code>3.0.1</code> - Function added</li>
+<li><code>3.0.1</code> - Function added
+<br></li>
 </ul>
-<p><br></p>
-<p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
@@ -851,7 +842,8 @@ show_debug_message(_tag);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_modern_gamertag_suffix_for_user(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_modern_gamertag_suffix_for_user(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -870,24 +862,22 @@ show_debug_message(_tag);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
+<div class="highlight"><pre><span></span><code>var _user = xboxone_get_activating_user();
 var _tag = xboxone_modern_gamertag_suffix_for_user(_user);
-show_debug_message(_tag);</code></pre>
+show_debug_message(_tag);
+</code></pre></div>
 <p><br></p>
 <p><strong>Versioning:</strong></p>
 <ul>
-<li><code>3.0.1</code> - Function added</li>
+<li><code>3.0.1</code> - Function added
+<br></li>
 </ul>
-<p><br></p>
-<p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
@@ -900,7 +890,8 @@ show_debug_message(_tag);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_modern_gamertag_for_user(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_modern_gamertag_for_user(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -919,24 +910,22 @@ show_debug_message(_tag);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
+<div class="highlight"><pre><span></span><code>var _user = xboxone_get_activating_user();
 var _tag = xboxone_modern_gamertag_for_user(_user);
-show_debug_message(_tag);</code></pre>
+show_debug_message(_tag);
+</code></pre></div>
 <p><br></p>
 <p><strong>Versioning:</strong></p>
 <ul>
-<li><code>3.0.1</code> - Function added</li>
+<li><code>3.0.1</code> - Function added
+<br></li>
 </ul>
-<p><br></p>
-<p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
@@ -945,7 +934,8 @@ show_debug_message(_tag);</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_setup(user_id, scid, title_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_setup(user_id, scid, title_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -974,18 +964,16 @@ show_debug_message(_tag);</code></pre>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var user_id = xboxone_get_user(0);
-xboxone_stats_setup(user_id, "00000000-0000-0000-0000-000000000000", 0xFFFFFFFF);</code></pre>
+<p><div class="highlight"><pre><span></span><code>var user_id = xboxone_get_user(0);
+xboxone_stats_setup(user_id, &quot;00000000-0000-0000-0000-000000000000&quot;, 0xFFFFFFFF);
+</code></pre></div>
 In the code above first we retrieve the user ID of the user with index 0 (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and use it to set up the event-based stat system.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -996,7 +984,8 @@ In the code above first we retrieve the user ID of the user with index 0 (using 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_add_user(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_add_user(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1014,8 +1003,6 @@ In the code above first we retrieve the user ID of the user with index 0 (using 
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1065,22 +1052,23 @@ In the code above first we retrieve the user ID of the user with index 0 (using 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; xboxone_get_user_count(); i++)
+<p><div class="highlight"><pre><span></span><code>for(var i = 0; i &lt; xboxone_get_user_count(); i++)
 {
     user_id[i] = xboxone_get_user(i);
     xboxone_stats_add_user(user_id[i]);
-}</code></pre>
+}
+</code></pre></div>
 In the code above we are looping through all the available users (using the function <a href="base.html#xboxone_get_user_count">xboxone_get_user_count</a>) getting their user ID (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and adding them to the statistics manager.
 We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "LocalUserAdded")
+<p><div class="highlight"><pre><span></span><code>if (async_load[? &quot;event&quot;] == &quot;LocalUserAdded&quot;)
 {
-    if (async_load[? "error"] != 0)
+    if (async_load[? &quot;error&quot;] != 0)
     {
-        show_debug_message("Error while adding user to statistics manager");
+        show_debug_message(&quot;Error while adding user to statistics manager&quot;);
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1090,7 +1078,8 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_delete_stat(user_id, stat_name)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_delete_stat(user_id, stat_name)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1114,8 +1103,6 @@ The code above matches the response against the correct <strong>event</strong>, 
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1123,13 +1110,13 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p>(-1 on error, any other value otherwise)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">for (var i = 0; i &lt; xboxone_get_user_count(); i++)
+<p><div class="highlight"><pre><span></span><code>for (var i = 0; i &lt; xboxone_get_user_count(); i++)
 {
     user_id[i] = xboxone_get_user(i);
-    xboxone_stats_delete_stat(user_id[i], "highScore");
-}</code></pre>
+    xboxone_stats_delete_stat(user_id[i], &quot;highScore&quot;);
+}
+</code></pre></div>
 In the code above we are looping though all the available users (using the function <a href="base.html#xboxone_get_user_count">xboxone_get_user_count</a>) getting their user ID (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and deleting the stat <code>highScore</code> from each one of them.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1144,7 +1131,8 @@ In the code above we are looping though all the available users (using the funct
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_flush_user(user_id, high_priority)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_flush_user(user_id, high_priority)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1167,8 +1155,6 @@ In the code above we are looping though all the available users (using the funct
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1218,21 +1204,22 @@ In the code above we are looping though all the available users (using the funct
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; array_length(user_ids); i++)
+<p><div class="highlight"><pre><span></span><code>for(var i = 0; i &lt; array_length(user_ids); i++)
 {
     xboxone_stats_flush_user(user_ids[i]);
-}</code></pre>
+}
+</code></pre></div>
 In the code above we are looping though an array of user ids (<code>user_ids</code>) and flushing their local data to the live server.
 We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "StatisticsUpdateComplete")
+<p><div class="highlight"><pre><span></span><code>if (async_load[? &quot;event&quot;] == &quot;StatisticsUpdateComplete&quot;)
 {
-    if (async_load[? "error"] != 0)
+    if (async_load[? &quot;error&quot;] != 0)
     {
-        show_debug_message("Error while updating user statistics");
+        show_debug_message(&quot;Error while updating user statistics&quot;);
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1248,7 +1235,8 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_get_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_get_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1291,8 +1279,6 @@ The code above matches the response against the correct <strong>event</strong>, 
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1371,25 +1357,26 @@ The code above matches the response against the correct <strong>event</strong>, 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">xboxone_stats_get_leaderboard(user_id, "GlobalTime", 20, 1, false, true);</code></pre>
+<p><div class="highlight"><pre><span></span><code>xboxone_stats_get_leaderboard(user_id, &quot;GlobalTime&quot;, 20, 1, false, true);
+</code></pre></div>
 In the code above we are querying a leaderboard for the stat <code>"GlobalTime"</code> with the first 20 entries starting on rank 1 in ascending order.
 We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.
-<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == achievement_leaderboard_info)
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == achievement_leaderboard_info)
 {
-    if (async_load[? "event"] == "GetLeaderboardComplete")
+    if (async_load[? &quot;event&quot;] == &quot;GetLeaderboardComplete&quot;)
     {
-        global.numentries = async_load[? "numentries"];
+        global.numentries = async_load[? &quot;numentries&quot;];
         for (var i = 0; i &lt; numentries; i++)
         {
-            global.playername[i] = async_load[? "Player" + string(i)];
-            global.playerid[i] = async_load[? "Playerid" + string(i)];
-            global.playerrank[i] = async_load[? "Rank" + string(i)];
-            global.playerscore[i] = async_load[? "Score" + string(i)];
+            global.playername[i] = async_load[? &quot;Player&quot; + string(i)];
+            global.playerid[i] = async_load[? &quot;Playerid&quot; + string(i)];
+            global.playerrank[i] = async_load[? &quot;Rank&quot; + string(i)];
+            global.playerscore[i] = async_load[? &quot;Score&quot; + string(i)];
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct <strong>id</strong> and <strong>event</strong> and stores the information of the top player names, ids, ranks and scores in global arrays.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1409,7 +1396,8 @@ The code above matches the response against the correct <strong>id</strong> and 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_get_social_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending, favourites_only)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_get_social_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending, favourites_only)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1458,8 +1446,6 @@ The code above matches the response against the correct <strong>id</strong> and 
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -1537,25 +1523,26 @@ The code above matches the response against the correct <strong>id</strong> and 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">xboxone_stats_get_social_leaderboard(user_id, "GlobalTime", 20, 1, false, true, true);</code></pre>
+<p><div class="highlight"><pre><span></span><code>xboxone_stats_get_social_leaderboard(user_id, &quot;GlobalTime&quot;, 20, 1, false, true, true);
+</code></pre></div>
 In the code above we are querying a leaderboard for the stat <code>"GlobalTime"</code> with the first 20 entries starting on rank 1 in ascending order, selecting only friends marked as favourites.
 We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == achievement_leaderboard_info)
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == achievement_leaderboard_info)
 {
-    if (async_load[? "event"] == "GetLeaderboardComplete")
+    if (async_load[? &quot;event&quot;] == &quot;GetLeaderboardComplete&quot;)
     {
-        global.numentries = async_load[? "numentries"];
+        global.numentries = async_load[? &quot;numentries&quot;];
         for (var i = 0; i &lt; numentries; i++)
         {
-            global.playername[i] = async_load[? "Player" + string(i)];
-            global.playerid[i] = async_load[? "Playerid" + string(i)];
-            global.playerrank[i] = async_load[? "Rank" + string(i)];
-            global.playerscore[i] = async_load[? "Score" + string(i)];
+            global.playername[i] = async_load[? &quot;Player&quot; + string(i)];
+            global.playerid[i] = async_load[? &quot;Playerid&quot; + string(i)];
+            global.playerrank[i] = async_load[? &quot;Rank&quot; + string(i)];
+            global.playerscore[i] = async_load[? &quot;Score&quot; + string(i)];
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct <strong>id</strong> and <strong>event</strong> and store the information of the top favourite friends player names, ids, ranks and scores in global arrays.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1569,7 +1556,8 @@ The code above matches the response against the correct <strong>id</strong> and 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_get_stat(user_id, stat_name)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_get_stat(user_id, stat_name)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1593,8 +1581,6 @@ The code above matches the response against the correct <strong>id</strong> and 
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1602,16 +1588,16 @@ The code above matches the response against the correct <strong>id</strong> and 
 <p>(The value for the given stat) or undefined</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">if (game_over == true)
+<p><div class="highlight"><pre><span></span><code>if (game_over == true)
 {
-    if (xboxone_stats_get_stat(user_id, "PercentDone") &lt; 100)
+    if (xboxone_stats_get_stat(user_id, &quot;PercentDone&quot;) &lt; 100)
     {
         var _val = (global.LevelsFinished / global.LevelsTotal)*100;
-        xboxone_stats_set_stat_real(user_id, "PercentDone", _val);
+        xboxone_stats_set_stat_real(user_id, &quot;PercentDone&quot;, _val);
     }
-}</code></pre>
+}
+</code></pre></div>
 In the code above we are checking if the given user complete percentage (<code>"PercentDone"</code>) is less then 100 and if so updated it to a new value (using the <a href="xbox_live.html#xboxone_stats_set_stat_real">xboxone_stats_set_stat_real</a> function).</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1625,7 +1611,8 @@ In the code above we are checking if the given user complete percentage (<code>"
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_get_stat_names(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_get_stat_names(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1644,8 +1631,6 @@ In the code above we are checking if the given user complete percentage (<code>"
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
@@ -1653,13 +1638,13 @@ In the code above we are checking if the given user complete percentage (<code>"
 <p>Array with all the stat names</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _stats = xboxone_stats_get_stat_names(user_id);
+<p><div class="highlight"><pre><span></span><code>var _stats = xboxone_stats_get_stat_names(user_id);
 for (var i = 0; i &lt; array_length(_stats); i++)
 {
     xboxone_stats_delete_stat(user_id, _stats[i]);
-}</code></pre>
+}
+</code></pre></div>
 In the code above we are getting an array of stat names (<code>_stats</code>) for a given user and looping through it deleting each stat (using the <a href="xbox_live.html#xboxone_stats_delete_stat">xboxone_stats_delete_stat</a> function).</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1683,7 +1668,8 @@ In the code above we are getting an array of stat names (<code>_stats</code>) fo
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_remove_user(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_remove_user(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1701,8 +1687,6 @@ In the code above we are getting an array of stat names (<code>_stats</code>) fo
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1752,21 +1736,22 @@ In the code above we are getting an array of stat names (<code>_stats</code>) fo
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; array_length(user_ids); i++)
+<p><div class="highlight"><pre><span></span><code>for(var i = 0; i &lt; array_length(user_ids); i++)
 {
     xboxone_stats_remove_user(user_ids[i]);
-}</code></pre>
+}
+</code></pre></div>
 In the code above we are looping through an array of user ids (<code>user_ids</code>) and removing them from the statistics manager.
 We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "LocalUserRemoved")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;event&quot;] == &quot;LocalUserRemoved&quot;)
 {
-    if (async_load[? "error"] != 0)
+    if (async_load[? &quot;error&quot;] != 0)
     {
-        show_debug_message("Error while removing user from statistics manager");
+        show_debug_message(&quot;Error while removing user from statistics manager&quot;);
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1784,7 +1769,8 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_int(user_id, stat_name, stat_value)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_set_stat_int(user_id, stat_name, stat_value)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1813,8 +1799,6 @@ The code above matches the response against the correct <strong>event</strong>, 
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1822,10 +1806,10 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p>(-1 on error, any other value otherwise)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _highscore = 123;
-xboxone_stats_set_stat_int(users_ids[0], "Highscore", _highscore);</code></pre>
+<p><div class="highlight"><pre><span></span><code>var _highscore = 123;
+xboxone_stats_set_stat_int(users_ids[0], &quot;Highscore&quot;, _highscore);
+</code></pre></div>
 In the code above we are setting the stat <code>"Highscore"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1843,7 +1827,8 @@ In the code above we are setting the stat <code>"Highscore"</code> of the select
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_real(user_id, stat_name, stat_value)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_set_stat_real(user_id, stat_name, stat_value)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1872,8 +1857,6 @@ In the code above we are setting the stat <code>"Highscore"</code> of the select
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1881,10 +1864,10 @@ In the code above we are setting the stat <code>"Highscore"</code> of the select
 <p>(-1 on error, any other value otherwise)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _bestTime = 123.45;
-xboxone_stats_set_stat_real(users_ids[0], "BestTime", _bestTime);</code></pre>
+<p><div class="highlight"><pre><span></span><code>var _bestTime = 123.45;
+xboxone_stats_set_stat_real(users_ids[0], &quot;BestTime&quot;, _bestTime);
+</code></pre></div>
 In the code above we are setting the stat <code>"BestTime"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1902,7 +1885,8 @@ In the code above we are setting the stat <code>"BestTime"</code> of the selecte
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_string(user_id, stat_name, stat_value)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_stats_set_stat_string(user_id, stat_name, stat_value)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1931,8 +1915,6 @@ In the code above we are setting the stat <code>"BestTime"</code> of the selecte
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1940,9 +1922,9 @@ In the code above we are setting the stat <code>"BestTime"</code> of the selecte
 <p>(-1 on error, any other value otherwise)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_string(users_ids[0], "Team", "YoYo Games");</code></pre>
+<p><div class="highlight"><pre><span></span><code>xboxone_stats_set_stat_string(users_ids[0], &quot;Team&quot;, &quot;YoYo Games&quot;);
+</code></pre></div>
 In the code above we are setting the stat <code>"Team"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2165,6 +2147,7 @@ In the code above we are setting the stat <code>"Team"</code> of the selected us
 </tbody>
 </table>
 <p><br></p>
+<hr />
               
             </div>
           </div><footer>

@@ -55,9 +55,13 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#config-file">Config File</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#manifest-file">Manifest File</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#shell-localization-guide">Shell Localization Guide</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cross-platform-exports">Cross-platform exports</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#loading-and-saving">Loading and Saving</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -108,15 +112,19 @@
 <p>In order to build your project using the extension you need to import it and make some changes to your project:</p>
 <ol>
 <li>Import the local package ( <strong>.yymps</strong> ) provided with the public release version.</li>
-<li>Use the 64-bit Windows runtime. To change this go into <strong>Game Options → Windows → General</strong> and enable " <strong>Use x64 Windows Runtime</strong> ".<br>
-<img alt="" src="assets/setup1.jpg" /></li>
-<li>Also make sure you enable the <strong>"Copy exe to output folder"</strong> setting: <br>
+<li>Make sure to enable the <strong>"Copy exe to output folder"</strong> setting. To enable this go into <strong>Game Options → Windows → General</strong> and enable <strong>Copy exe to output folder</strong>: <br>
 <img alt="" src="assets/gdk_copy_to_destination.png" /></li>
 </ol>
 <blockquote>
-<p>These steps are required only for older versions of the GameMaker:</p>
+<p>These steps are required only for older versions of GameMaker:</p>
 <ul>
-<li><strong>For GameMaker 2022.3 (or previous)</strong> : Also make sure you disable the subst from within the <strong>Preferences → General Settings → Compiling</strong> menu, otherwise this extension will not work:</li>
+<li>
+<p><strong>For GameMaker versions prior to 2022.8</strong> : Make sure to use the 64-bit Windows runtime. To change this go into <strong>Game Options → Windows → General</strong> and enable " <strong>Use x64 Windows Runtime</strong> ".<br>
+<img alt="" src="assets/setup1.jpg" /></p>
+</li>
+<li>
+<p><strong>For GameMaker 2022.3 (or previous)</strong> : Also make sure you disable the subst from within the <strong>Preferences → General Settings → Compiling</strong> menu, otherwise this extension will not work:</p>
+</li>
 </ul>
 <p><img alt="" src="assets/gdk_disable_subst.png" /></p>
 <ul>
@@ -126,7 +134,7 @@
 </blockquote>
 <p>After finishing this we'll set up the config file required for the Microsoft Store.</p>
 <h2 id="sandbox-getset">Sandbox Get/Set</h2>
-<p>When using Xbox Live features, you might need to change your PC sandboxes (see <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/test-release/tools/live-pc-sandbox-switcher">official documentation</a>) so you can test those same features. For this purpose, you can run the GDK Command Line (under <code>Start → All Apps → Microsoft GDK → Desktop VS 2018 Gaming Command Prompt</code>) and use one of the following commands:</p>
+<p>When using Xbox Live features, you might need to change your PC sandboxes (see <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/live/test-release/tools/live-pc-sandbox-switcher">official documentation</a>) so you can test those same features. For this purpose, you can run the GDK Command Line (under <code>Start → All Apps → Microsoft GDK → Desktop VS 2022 Gaming Command Prompt</code>) and use one of the following commands:</p>
 <ul>
 <li><code>XblPCSandbox /get</code> (returns the current sandbox, default is RETAIL)</li>
 <li><code>XblPCSandbox &lt;sandbox&gt;</code> (changes the sandbox, where <em><code>&lt;sandbox&gt;</code></em> refers to your sandbox name)</li>
@@ -139,12 +147,12 @@
 <h2 id="config-file">Config File</h2>
 <p>To build and run your project using the GDK Extension, it's necessary to set up and include a <code>MicrosoftGame.Config</code> file:</p>
 <ol>
-<li>This config file can be created using Microsoft's MicrosoftGame Editor tool (for more information refer to its <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/system/overviews/microsoft-game-config/microsoftgameconfig-editor">documentation page</a>) or can be copied from the <a href="https://github.com/YoYoGames/GMEXT-GDK/tree/main/source/GDKExtension_gml">demo project</a> and edited manually.<br></li>
+<li>This config file can be created using Microsoft's MicrosoftGame.config Editor tool (for more information refer to its <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/system/overviews/microsoft-game-config/microsoftgameconfig-editor">documentation page</a>) or can be copied from the <a href="https://github.com/YoYoGames/GMEXT-GDK/tree/main/source/GDKExtension_gml">demo project</a> and edited manually.<br></li>
 </ol>
 <p><img alt="" src="assets/setup3.jpg" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code>ExecutableList/Executable/Name</code> property should be set to the value in <code>GameOptions → Windows → Executable Name</code>.</p>
+<p>The <code>ExecutableList/Executable/Name</code> property should be set to the value in <code>Game Options → Windows → Executable Name</code>.</p>
 </div>
 <ol>
 <li>Add the <code>MicrosoftGame.Config</code> file to the Included Files of your project.</li>
@@ -152,74 +160,124 @@
 </ol>
 <p><img alt="" src="assets/setup4.jpg" /></p>
 <p>Upon finishing this setup and following the <a href="#project-setup">Project Setup</a> section above, you should be ready to run and test your project.</p>
-<h2 id="manifest-file">Manifest File</h2>
-<p>This step is not required unless you are using the event-based functions from the Xbox Live module (this requires enabling of <strong>Event-Based Stats</strong> on the Partner Center).
-  If you are using the event-based system from Xbox Live module you need to provide GameMaker with some extra information about the <strong>statistics</strong>, <strong>events</strong> and <strong>leaderboards</strong> created on you Partner Center's dashboard. For this you need to do the following:</p>
-<ol>
-<li>Log in to your <strong>Partner Center</strong> account, open your game's configuration page and go into the <strong>Xbox Services → Gameplay Settings</strong> where you can define your stats.<br></li>
-</ol>
-<p><img alt="" src="assets/setup5.jpg" /></p>
-<ol>
-<li>From here you will need to select <strong>Player stats → Stat rules</strong> the drop-down menu at the top.<br></li>
-</ol>
-<p><img alt="" src="assets/setup6.jpg" /></p>
-<ol>
-<li>On the page that opens, click on the " <strong>Download published events manifest</strong> " button.<br></li>
-</ol>
-<p><img alt="" src="assets/setup7.jpg" /></p>
-<ol>
-<li>Add the downloaded file to your project's <strong>Included Files (/datafiles)</strong> folder.</li>
-</ol>
-<p>After setting up this manifest file, you will be able to use event-based stats and leaderboards in your project.</p>
-<blockquote>
-<p>If you make any changes to your events on the Partner Center dashboard, you'll need to republish those changes and download a new <strong>manifest</strong> file.</p>
-</blockquote>
-<p><br><br></p>
-<hr />
 <h2 id="shell-localization-guide">Shell Localization Guide</h2>
-<p>This feature allows you to define the title's Shell presence. For example, Images and Names. Used during registration to surface the title in the Shell. In order to use this the user needs to make some modifications to both their <code>MicrosoftGame.Config</code> file and their project:</p>
+<p>This feature allows you to define the title's Shell presence. For example, Images and Names. Used during registration to surface the title in the Shell. In order to use this you need to make some modifications to both the <code>MicrosoftGame.Config</code> file and your project:</p>
 <ul>
-<li>In their <code>MicrosoftGame.Config</code> file, they need to:<ul>
+<li>In the <code>MicrosoftGame.Config</code> file, the following needs to be changed:<ul>
 <li>Change the value of <code>DefaultDisplayName</code> in <code>ShellVisuals</code> to <code>"ms-resource:ApplicationDisplayName"</code></li>
 <li>Change the value of <code>Description</code> in <code>ShellVisuals</code> to <code>"ms-resource:ApplicationDescription"</code></li>
 <li>Add a section which declares which languages they want to support using standard language\region codes (this should be in the <code>Game</code> section), i.e.:</li>
 </ul>
 </li>
 </ul>
-<pre class="highlight"><code>&lt;Resources&gt;
-    &lt;Resource Language="en-us" /&gt;
-    &lt;Resource Language="en-gb" /&gt;
-    &lt;Resource Language="de-de" /&gt;
-&lt;/Resources&gt;</code></pre>
+<div class="highlight"><pre><span></span><code>&lt;Resources&gt;
+    &lt;Resource Language=&quot;en-us&quot; /&gt;
+    &lt;Resource Language=&quot;en-gb&quot; /&gt;
+    &lt;Resource Language=&quot;de-de&quot; /&gt;
+&lt;/Resources&gt;
+</code></pre></div>
 <ul>
 <li>
-<p>In their project developers need to add some folders to included files:</p>
+<p>In your project you then need to add some folders to included files:</p>
 <ol>
-<li>In the root of included files (i.e.: <code>datafiles</code>) they should add a <code>GDKExtensionStrings</code> folder</li>
-<li>Inside the <code>GDKExtensionStrings</code> folder they should add one for each supported language, i.e. <code>en-us</code> for American English and <code>de-de</code> for German, so for the above list of languages the directory structure would be:</li>
+<li>In the root of included files (i.e.: <code>datafiles</code>) a <code>GDKExtensionStrings</code> folder</li>
+<li>Inside the <code>GDKExtensionStrings</code> folder one subfolder for each supported language, i.e. <code>en-us</code> for American English and <code>de-de</code> for German, so for the above list of languages the directory structure would be:</li>
 </ol>
 <p><br></p>
-<pre class="highlight"><code class="language-js">GDKExtensionStrings\en-us
-GDKExtensionStrings\en-gb
-GDKExtensionStrings\de-de</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">GDKExtensionStrings</span><span class="err">\</span><span class="nx">en</span><span class="o">-</span><span class="nx">us</span>
+<span class="nx">GDKExtensionStrings</span><span class="err">\</span><span class="nx">en</span><span class="o">-</span><span class="nx">gb</span>
+<span class="nx">GDKExtensionStrings</span><span class="err">\</span><span class="nx">de</span><span class="o">-</span><span class="nx">de</span>
+</code></pre></div>
 <p><br></p>
 <ol>
-<li>Inside the base <code>GDKExtensionStrings</code> folder they should add an XML file named <code>resources.resw</code> which will contains the fallback language info and should look like the following (where the values should be replaced with the required defaults):</li>
+<li>Inside the base <code>GDKExtensionStrings</code> folder an XML file named <code>resources.resw</code> which will contain the fallback language info and should look like the following (where the values should be replaced with the required defaults):</li>
 </ol>
-<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;root&gt;
-    &lt;data name="ApplicationDescription"&gt;
-        &lt;value&gt;Default App Description Here&lt;/value&gt;
-    &lt;/data&gt;
-    &lt;data name="ApplicationDisplayName"&gt;
-        &lt;value&gt;Default Display Name Here&lt;/value&gt;
-    &lt;/data&gt;
-&lt;/root&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;root&gt;</span>
+<span class="w">    </span><span class="nt">&lt;data</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ApplicationDescription&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;value&gt;</span>Default<span class="w"> </span>App<span class="w"> </span>Description<span class="w"> </span>Here<span class="nt">&lt;/value&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/data&gt;</span>
+<span class="w">    </span><span class="nt">&lt;data</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ApplicationDisplayName&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;value&gt;</span>Default<span class="w"> </span>Display<span class="w"> </span>Name<span class="w"> </span>Here<span class="nt">&lt;/value&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</code></pre></div>
 <ol>
-<li>Inside each of the language-specific folders they should add another <code>resources.resw</code> file with the appropriate values for that language.</li>
+<li>Inside each of the language-specific folders another <code>resources.resw</code> file with the appropriate values for that language.</li>
 </ol>
 </li>
 </ul>
+<h2 id="cross-platform-exports">Cross-platform exports</h2>
+<p>If you want to export your game to both Xbox and targets supported by the GDK extension then you can do a check on the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/OS_And_Compiler/os_type.htm">os_type</a> variable and use functionality based on the value in this variable:</p>
+<p><div class="highlight"><pre><span></span><code>switch(os_type) {
+    case os_windows:
+        // Use extension functionality
+        break;
+    case os_gdk:
+    case os_xboxseriesxs:
+        // Use Xbox runner functionality
+        break;
+    default:
+        throw &quot;[ERROR] objSaveGroup, unsupported platform&quot;;
+}
+</code></pre></div>
+This code checks the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/OS_And_Compiler/os_type.htm">os_type</a> variable. If it holds the constant <code>os_windows</code>, a function of the GDK extension is called, otherwise a built-in function of the Xbox runner is called.</p>
+<h3 id="loading-and-saving">Loading and Saving</h3>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Xbox runner function</th>
+<th>GDK function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Save single file</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/buffer_save_async.htm">buffer_save_async</a></td>
+<td><a href="storage.html#gdk_save_buffer">gdk_save_buffer</a></td>
+</tr>
+<tr>
+<td>Load single file</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/buffer_load_async.htm">buffer_load_async</a></td>
+<td><a href="storage.html#gdk_load_buffer">gdk_load_buffer</a></td>
+</tr>
+<tr>
+<td>Start multiple async</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/buffer_async_group_begin.htm">buffer_async_group_begin</a></td>
+<td><a href="storage.html#gdk_save_group_begin">gdk_save_group_begin</a></td>
+</tr>
+<tr>
+<td>End multiple async</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/buffer_async_group_end.htm">buffer_async_group_end</a></td>
+<td><a href="storage.html#gdk_save_group_end">gdk_save_group_end</a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GDK functions don't have a separate <code>*_async</code> function.</p>
+</div>
+<blockquote>
+<p>The Xbox runner always starts the file path with <code>"root/"</code>, the GDK extension doesn't do this automatically. To load and save files so that they can be read on both platforms you should always add the <code>"root/"</code> part to paths on the GDK extension only (not on Xbox).</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>// Single file
+gdk_save_buffer(buff, &quot;root/savegames/player_save.sav&quot;, 0, 16384);        // GDK extension
+buffer_save_async(buff, &quot;savegames/player_save.sav&quot;, 0, 16384);      // Xbox runner
+
+// Save group
+gdk_save_group_begin(&quot;root/savegames&quot;);
+save1 = gdk_save_buffer(buff1, &quot;player_save1.sav&quot;, 0, 16384);   // GDK Extension
+save2 = gdk_save_buffer(buff2, &quot;player_save2.sav&quot;, 0, 16384);
+save3 = gdk_save_buffer(buff3, &quot;player_save3.sav&quot;, 0, 16384);
+gdk_save_group_end();
+
+buffer_async_group_begin(&quot;savegames&quot;);
+save1 = buffer_save_async(buff1, &quot;player_save1.sav&quot;, 0, 16384); // Xbox runner
+save2 = buffer_save_async(buff2, &quot;player_save2.sav&quot;, 0, 16384);
+save3 = buffer_save_async(buff3, &quot;player_save3.sav&quot;, 0, 16384);
+buffer_async_group_end();
+</code></pre></div>
               
             </div>
           </div><footer>

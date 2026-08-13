@@ -162,7 +162,8 @@ The following <strong>structs</strong> (structures) are used as return members o
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_AcquireLicenseForDurables(user_id, store_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_AcquireLicenseForDurables(user_id, store_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -185,8 +186,6 @@ The following <strong>structs</strong> (structures) are used as return members o
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -231,23 +230,24 @@ The following <strong>structs</strong> (structures) are used as return members o
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_AcquireLicenseForDurables_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_AcquireLicenseForDurables_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message("License successfully acquired!");
+            show_debug_message(&quot;License successfully acquired!&quot;);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , providing a success message if <strong>status</strong> is true.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -258,7 +258,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_AcquireLicenseForPackage(user_id, package_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_AcquireLicenseForPackage(user_id, package_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -281,8 +282,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -327,23 +326,24 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _packageId = global.packages[0].packageId;
 
-requestId = ms_iap_AcquireLicenseForPackage(_userId, _storeId);</code></pre>
+requestId = ms_iap_AcquireLicenseForPackage(_userId, _storeId);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the package ID (<code>_packageId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_AcquireLicenseForPackage_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_AcquireLicenseForPackage_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message("License for package successfully acquired!");
+            show_debug_message(&quot;License for package successfully acquired!&quot;);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , providing a success message if <strong>status</strong> is true.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -354,7 +354,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_CanAcquireLicenseForPackage(user_id, package_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_CanAcquireLicenseForPackage(user_id, package_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -377,8 +378,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -433,23 +432,24 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_CanAcquireLicenseForPackage_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_CanAcquireLicenseForPackage_result&quot;)
 {
-    if (async_load[? "async_id"] == requestId)
+    if (async_load[? &quot;async_id&quot;] == requestId)
     {
-        if (async_load[? "licensableStatus"] == 1)
+        if (async_load[? &quot;licensableStatus&quot;] == 1)
         {
-            show_debug_message("The product is licensable!");
+            show_debug_message(&quot;The product is licensable!&quot;);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console if the current product is licensable to the provided user.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -461,7 +461,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_CanAcquireLicenseForStoreId(user_id, store_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_CanAcquireLicenseForStoreId(user_id, store_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -484,8 +485,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -540,23 +539,24 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_CanAcquireLicenseForStoreId_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_CanAcquireLicenseForStoreId_result&quot;)
 {
-    if (async_load[? "async_id"] == requestId)
+    if (async_load[? &quot;async_id&quot;] == requestId)
     {
-        if (async_load[? "licensableStatus"] == 1)
+        if (async_load[? &quot;licensableStatus&quot;] == 1)
         {
-            show_debug_message("The product is licensable!");
+            show_debug_message(&quot;The product is licensable!&quot;);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console if the current product is licensable to the provided user.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -568,7 +568,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_DownloadAndInstallPackages(user_id, package_ids)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_DownloadAndInstallPackages(user_id, package_ids)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -591,8 +592,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -637,25 +636,26 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _package1 = global.package[0].packageId;
 var _package2 = global.package[1].packageId;
 var _package2 = global.package[2].packageId;
 
-requestId = ms_iap_AcquireLicenseForDurables(_userId, [_package1, _package2, _package3]);</code></pre>
+requestId = ms_iap_AcquireLicenseForDurables(_userId, [_package1, _package2, _package3]);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_DownloadAndInstallPackages_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_DownloadAndInstallPackages_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"] == 1)
+        if (async_load[? &quot;status&quot;] == 1)
         {
-            show_debug_message(async_load[? "package_ids"]);
+            show_debug_message(async_load[? &quot;package_ids&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console an array with all the installed package IDs.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -666,7 +666,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_EnumeratePackages(package_kind, scope)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_EnumeratePackages(package_kind, scope)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -689,8 +690,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -735,20 +734,21 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">requestId = ms_iap_EnumeratePackages(e_ms_iap_PackageKind_Content, e_ms_iap_PackageEnumerationScope_ThisOnly);</code></pre>
+<p><div class="highlight"><pre><span></span><code>requestId = ms_iap_EnumeratePackages(e_ms_iap_PackageKind_Content, e_ms_iap_PackageEnumerationScope_ThisOnly);
+</code></pre></div>
 In the code above first we request an enumeration of all the packages of type content (<code>e_ms_iap_PackageKind_Content</code>) and whose scope is limited to the current game (<code>e_ms_iap_PackageEnumerationScope_ThisOnly</code>). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_EnumeratePackages_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_EnumeratePackages_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"] == 1)
+        if (async_load[? &quot;status&quot;] == 1)
         {
-            show_debug_message(async_load[? "results"]);
+            show_debug_message(async_load[? &quot;results&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console an array with all the <a href="iap.html#packagedetails">PackageDetails</a> structs.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -759,7 +759,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_MountPackage(package_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_MountPackage(package_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -777,8 +778,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -823,20 +822,21 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _package = global.package[0].packageId;
+<p><div class="highlight"><pre><span></span><code>var _package = global.package[0].packageId;
 
-requestId = ms_iap_MountPackage(_package);</code></pre>
+requestId = ms_iap_MountPackage(_package);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_MountPackage_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_MountPackage_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        show_debug_message("Package ID: " + async_load[? "package_id"]);
-        show_debug_message("Mount Path: " + async_load[? "mount_path"]);
+        show_debug_message(&quot;Package ID: &quot; + async_load[? &quot;package_id&quot;]);
+        show_debug_message(&quot;Mount Path: &quot; + async_load[? &quot;mount_path&quot;]);
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the current package's ID and its mount path on disk.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -848,7 +848,8 @@ Add-ons are typically content or features that require a purchase to unlock but 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_QueryAddOnLicenses(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_QueryAddOnLicenses(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -866,8 +867,6 @@ Add-ons are typically content or features that require a purchase to unlock but 
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -912,22 +911,23 @@ Add-ons are typically content or features that require a purchase to unlock but 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 
-requestId = ms_iap_QueryAddOnLicenses(_userId);</code></pre>
+requestId = ms_iap_QueryAddOnLicenses(_userId);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryAddOnLicenses_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryAddOnLicenses_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message(async_load[? "result"]);
+            show_debug_message(async_load[? &quot;result&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console if the result of the query; an array of <a href="iap.html#addonlicensedetails">AddonLicenseDetails</a> structs.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -938,7 +938,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_QueryAssociatedProducts(user_id, product_kinds)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_QueryAssociatedProducts(user_id, product_kinds)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -961,8 +962,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1007,23 +1006,24 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _product_kinds = e_ms_iap_ProductKind_Consumable;
 
-requestId = ms_iap_QueryAssociatedProducts(_userId, _product_kinds);</code></pre>
+requestId = ms_iap_QueryAssociatedProducts(_userId, _product_kinds);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for consumable products (<code>_product_kinds</code>) and we call the function with both arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryAssociatedProducts_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryAssociatedProducts_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message(async_load[? "result"]);
+            show_debug_message(async_load[? &quot;result&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , printing to the debug console the result of the query; an array of <a href="#productdetails">Product Details</a> structs.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1034,7 +1034,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_QueryConsumableBalanceRemaining(user_id, store_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_QueryConsumableBalanceRemaining(user_id, store_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1057,8 +1058,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1108,24 +1107,25 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _storeId = global.products[3].storeId;
 
-requestId = ms_iap_QueryConsumableBalanceRemaining(_userId, _storeId);</code></pre>
+requestId = ms_iap_QueryConsumableBalanceRemaining(_userId, _storeId);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to query the balance for (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryConsumableBalanceRemaining_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryConsumableBalanceRemaining_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            var _quantity = async_load[? "quantity"];
-            show_debug_message("Amount of potions left: " + string(_quantity));
+            var _quantity = async_load[? &quot;quantity&quot;];
+            show_debug_message(&quot;Amount of potions left: &quot; + string(_quantity));
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, providing a success message with the current available quantity given that the <strong>status</strong> value is true.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1136,7 +1136,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_QueryEntitledProducts(user_id, product_kinds)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_QueryEntitledProducts(user_id, product_kinds)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1159,8 +1160,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1205,23 +1204,24 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _product_kinds = e_ms_iap_ProductKind_Durable;
 
-requestId = ms_iap_QueryEntitledProducts(_userId, _product_kinds);</code></pre>
+requestId = ms_iap_QueryEntitledProducts(_userId, _product_kinds);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for durable products (<code>_product_kinds</code>) and we call the function with both arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryEntitledProducts_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryEntitledProducts_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message(async_load[? "result"]);
+            show_debug_message(async_load[? &quot;result&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1232,7 +1232,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_QueryGameLicense(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_QueryGameLicense(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1250,8 +1251,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1331,22 +1330,23 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 
-requestId = ms_iap_QueryGameLicense(_userId);</code></pre>
+requestId = ms_iap_QueryGameLicense(_userId);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryGameLicense_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryGameLicense_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message(async_load[? "skuStoreId"]);
+            show_debug_message(async_load[? &quot;skuStoreId&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the <strong>skuStoreId</strong> of the current game license.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1357,7 +1357,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_QueryProductForCurrentGame(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_QueryProductForCurrentGame(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1375,8 +1376,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1421,22 +1420,23 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 
-requestId = ms_iap_QueryProductForCurrentGame(_userId);</code></pre>
+requestId = ms_iap_QueryProductForCurrentGame(_userId);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProductForCurrentGame_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryProductForCurrentGame_result&quot;)
 {
-    if (async_load[? "async_id"] == requestId)
+    if (async_load[? &quot;async_id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message(async_load[? "result"]);
+            show_debug_message(async_load[? &quot;result&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1447,7 +1447,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_QueryProductForPackage(user_id, store_id, product_kinds)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_QueryProductForPackage(user_id, store_id, product_kinds)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1475,8 +1476,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1521,24 +1520,25 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
-var _packageId = "XXXXXXXXXXX";
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+var _packageId = &quot;XXXXXXXXXXX&quot;;
 var _product_kinds = e_ms_iap_ProductKind_Consumable;
 
-requestId = ms_iap_QueryProductForPackage(_userId, _packageId, _product_kinds);</code></pre>
+requestId = ms_iap_QueryProductForPackage(_userId, _packageId, _product_kinds);
+</code></pre></div>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user, we reference the package ID (<code>_packageId</code>) of the target game and afterwards we create a filter for consumable products (<code>_product_kinds</code>) finally we call the function with all those arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProductForPackage_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryProductForPackage_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message(async_load[? "result"]);
+            show_debug_message(async_load[? &quot;result&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1549,7 +1549,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_QueryProducts(user_id, product_kinds, store_ids, action_filters)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_QueryProducts(user_id, product_kinds, store_ids, action_filters)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1582,8 +1583,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1628,24 +1627,25 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _product_kinds = e_ms_iap_ProductKind_Consumable;
-var _action_filter = ["Purchase"];
+var _action_filter = [&quot;Purchase&quot;];
 
-requestId = ms_iap_QueryProducts(_userId, _product_kinds, 0, _action_filter);</code></pre>
+requestId = ms_iap_QueryProducts(_userId, _product_kinds, 0, _action_filter);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for consumable products (<code>_product_kinds</code>) and finally we call the function with all those arguments, providing no store ID filter but selecting only products that are available for purchase. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProducts_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryProducts_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message(async_load[? "result"]);
+            show_debug_message(async_load[? &quot;result&quot;]);
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1655,7 +1655,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_ReleaseLicenseForDurables(store_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_ReleaseLicenseForDurables(store_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1674,8 +1675,6 @@ The code above matches the response against the correct event <strong>type</stro
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1683,16 +1682,16 @@ The code above matches the response against the correct event <strong>type</stro
 <p>(-1 if there was an error, otherwise 0)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _storeId = global.products[0].storeId;
+<p><div class="highlight"><pre><span></span><code>var _storeId = global.products[0].storeId;
 
 var _error = ms_iap_ReleaseLicenseForDurables(_storeId);
 
 if (_error != 0)
 {
-    show_debug_message("There was an error trying to release the license");
-}</code></pre>
+    show_debug_message(&quot;There was an error trying to release the license&quot;);
+}
+</code></pre></div>
 In the code above first we get the product ID (<code>_storeId</code>) conveniently stored inside a global array and call the function with this value. The returned value (<code>_error</code>) is then checked to see if the function was successful or not.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1702,7 +1701,8 @@ In the code above first we get the product ID (<code>_storeId</code>) convenient
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_ReleaseLicenseForPackage(package_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_ReleaseLicenseForPackage(package_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1721,8 +1721,6 @@ In the code above first we get the product ID (<code>_storeId</code>) convenient
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
@@ -1730,16 +1728,16 @@ In the code above first we get the product ID (<code>_storeId</code>) convenient
 <p>(-1 if there was an error, otherwise 0)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _packageId = global.packages[0].packageId;
+<p><div class="highlight"><pre><span></span><code>var _packageId = global.packages[0].packageId;
 
 var _error = ms_iap_ReleaseLicenseForPackage(_packageId);
 
 if (_error != 0)
 {
-    show_debug_message("There was an error trying to release the license for the package!");
-}</code></pre>
+    show_debug_message(&quot;There was an error trying to release the license for the package!&quot;);
+}
+</code></pre></div>
 In the code above we first get the package ID (<code>_packageId</code>) conveniently stored inside a global array and call the function with this value. The returned value (<code>_error</code>) is then checked to see if the function was successful or not.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1750,7 +1748,8 @@ In the code above we first get the package ID (<code>_packageId</code>) convenie
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_ReportConsumableFulfillment(user_id, store_id, quantity, tracking_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_ReportConsumableFulfillment(user_id, store_id, quantity, tracking_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1783,8 +1782,6 @@ In the code above we first get the package ID (<code>_packageId</code>) convenie
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -1839,25 +1836,26 @@ In the code above we first get the package ID (<code>_packageId</code>) convenie
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 var _trackingId = guid_generate(); // This function generates a unique identifier for tracking purposes.
 
-requestId = ms_iap_ReportConsumableFulfillment(_userId, _storeId, 10, _trackingId);</code></pre>
+requestId = ms_iap_ReportConsumableFulfillment(_userId, _storeId, 10, _trackingId);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to report as consumed (note that for convenience we keep the products stored in a global variable) and finally we generate a tracking ID (<code>_trackingId</code>) required to perform the request. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_ReportConsumableFulfillment_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_ReportConsumableFulfillment_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        if (async_load[? "status"])
+        if (async_load[? &quot;status&quot;])
         {
-            show_debug_message("We consumed: " + string(async_load[? "consumed_quantity"]));
-            show_debug_message("We still have: " + string(async_load[? "available_quantity"]));
+            show_debug_message(&quot;We consumed: &quot; + string(async_load[? &quot;consumed_quantity&quot;]));
+            show_debug_message(&quot;We still have: &quot; + string(async_load[? &quot;available_quantity&quot;]));
         }
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console the current consumed and available quantities upon a successful task.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1867,7 +1865,8 @@ The code above matches the response against the correct event <strong>type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_ShowAssociatedProductsUI(user_id, store_id, product_kinds)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_ShowAssociatedProductsUI(user_id, store_id, product_kinds)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1896,21 +1895,19 @@ The code above matches the response against the correct event <strong>type</stro
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _storeId = global.gameStoreId;
 var _product_kinds = e_ms_iap_ProductKind_Consumable;
 
-ms_iap_ShowAssociatedProductsUI(_userId, _storeId, _product_kinds);</code></pre>
+ms_iap_ShowAssociatedProductsUI(_userId, _storeId, _product_kinds);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of current game (stored inside a global variable) and afterwards we create a filter for consumable products (<code>_product_kinds</code>) finally we call the function with all those arguments. The function call will bring up the Microsoft Store App overlay with the associated consumable products.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1920,7 +1917,8 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_ShowProductPageUI(user_id, store_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_ShowProductPageUI(user_id, store_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -1944,20 +1942,18 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-ms_iap_ShowProductPageUI(_userId, _storeId);</code></pre>
+ms_iap_ShowProductPageUI(_userId, _storeId);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of product we want to check and finally we call the function with both arguments. The function call will bring up the Microsoft Store App overlay directly on the <strong>Product Details Page</strong> (PDP) of the provided Product ID.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -1967,7 +1963,8 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_ShowPurchaseUI(user_id, store_id, name, json)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_ShowPurchaseUI(user_id, store_id, name, json)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -2001,20 +1998,18 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-ms_iap_ShowPurchaseUI(_userId, _storeId, undefined, undefined);</code></pre>
+ms_iap_ShowPurchaseUI(_userId, _storeId, undefined, undefined);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of the product we want to purchase and finally we call the function with both arguments (providing no name/json, they are not demanding). The function call will bring up the purchase UI overlay for the specified product.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2028,7 +2023,8 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_ShowRateAndReviewUI(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_ShowRateAndReviewUI(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -2047,19 +2043,17 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 
-ms_iap_ShowRateAndReviewUI(_userId);</code></pre>
+ms_iap_ShowRateAndReviewUI(_userId);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and finally we call the function with it's value. The function call will show a system dialog pop up to allow the user to provide a review for the current game.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2069,7 +2063,8 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_ShowRedeemTokenUI(user_id, token, allowed_store_ids, disallow_cvs_redemption)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_ShowRedeemTokenUI(user_id, token, allowed_store_ids, disallow_cvs_redemption)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -2103,20 +2098,18 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
 var _token = global.finalWeaponToken;
 
-ms_iap_ShowRateAndReviewUI(_userId, _token, undefined, false);</code></pre>
+ms_iap_ShowRateAndReviewUI(_userId, _token, undefined, false);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and reference a token to be redeemed (<code>_token</code>), finally we call the function with those values, applying no restrictions whatsoever. The function call will trigger a token redemption for a given user and specified token.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2127,7 +2120,8 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">ms_iap_UnmountPackage(package_id)</code></pre>
+<div class="highlight"><pre><span></span><code>ms_iap_UnmountPackage(package_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -2145,8 +2139,6 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -2191,20 +2183,21 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">var _package = global.package[0].packageId;
+<p><div class="highlight"><pre><span></span><code>var _package = global.package[0].packageId;
 
-requestId = ms_iap_UnmountPackage(_package);</code></pre>
+requestId = ms_iap_UnmountPackage(_package);
+</code></pre></div>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_UnmountPackage_result")
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_UnmountPackage_result&quot;)
 {
-    if (async_load[? "id"] == requestId)
+    if (async_load[? &quot;id&quot;] == requestId)
     {
-        show_debug_message("Package ID: " + async_load[? "package_id"]);
-        show_debug_message("Finished unmount!");
+        show_debug_message(&quot;Package ID: &quot; + async_load[? &quot;package_id&quot;]);
+        show_debug_message(&quot;Finished unmount!&quot;);
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the current package ID and a success message.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -2274,7 +2267,8 @@ The code above matches the response against the correct event <strong>type</stro
 <h1 id="productkind">ProductKind</h1>
 <p>Product kinds indicate the product type. They are used as a filter for many IAP queries to acquire information about products of a certain type. It is also a member of the <a href="iap.html#productdetails">ProductDetails</a> struct which describes a store product. The product kind is represented as a flagged constant meaning it can be combined using the <strong>bit-wise or operator</strong> to represent multiple types of product at once.</p>
 <p>As explained above the product kinds can be combined using the <strong>bit-wise</strong> or operator following the example below:
-<pre class="highlight"><code class="language-gml">var _consumableAndDurableType = e_ms_iap_ProductKind_Consumable | e_ms_iap_ProductKind_Durable;</code></pre>
+<div class="highlight"><pre><span></span><code>var _consumableAndDurableType = e_ms_iap_ProductKind_Consumable | e_ms_iap_ProductKind_Durable;
+</code></pre></div>
 The code above will make it so the <code>_consumableAndDurableType</code> variable will filter both consumables and durables.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
@@ -2330,10 +2324,11 @@ The code above will make it so the <code>_consumableAndDurableType</code> variab
 <h1 id="addonlicensedetails">AddonLicenseDetails</h1>
 <p>This struct contains details about an add-on license.</p>
 <p>The entity described above is a <strong>struct</strong> meaning its properties can be accessed using the <strong>dot</strong> operator much like when accessing instance variables, for example:
-<pre class="highlight"><code class="language-gml">var _addonLicenseDetails = global.addonLicenses[0];
+<div class="highlight"><pre><span></span><code>var _addonLicenseDetails = global.addonLicenses[0];
 
 show_debug_message(_packageDetails.packageIdentifier);
-show_debug_message(_packageDetails.version);</code></pre>
+show_debug_message(_packageDetails.version);
+</code></pre></div>
 The code above will grab a package detail struct from a global variable (where they were previously store for this sample) and we are accessing the <strong>packageIdentifier</strong> and <strong>version</strong> properties of that struct.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -2378,10 +2373,11 @@ The code above will grab a package detail struct from a global variable (where t
 <h1 id="packagedetails">PackageDetails</h1>
 <p>This struct contains details about an installation.</p>
 <p>The entity described above is a <strong>struct</strong> meaning its properties can be accessed using the <strong>dot</strong> operator much like when accessing instance variables, for example:
-<pre class="highlight"><code class="language-gml">var _packageDetails = global.packageDetails[0];
+<div class="highlight"><pre><span></span><code>var _packageDetails = global.packageDetails[0];
 
 show_debug_message(_packageDetails.packageIdentifier);
-show_debug_message(_packageDetails.version);</code></pre>
+show_debug_message(_packageDetails.version);
+</code></pre></div>
 The code above will grab a package detail struct from a global variable (where they were previously store for this sample) and we are accessing the <strong>packageIdentifier</strong> and <strong>version</strong> properties of that struct.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -2594,6 +2590,7 @@ The code above will grab a package detail struct from a global variable (where t
 </table>
 <p>/**</p>
 <p><br></p>
+<hr />
               
             </div>
           </div><footer>

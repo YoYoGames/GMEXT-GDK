@@ -127,7 +127,8 @@ Note that the function will load from a "default" folder, which does not need to
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">gdk_load_buffer(buffer_idx, filename, offset, size)</code></pre>
+<div class="highlight"><pre><span></span><code>gdk_load_buffer(buffer_idx, filename, offset, size)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -160,8 +161,6 @@ Note that the function will load from a "default" folder, which does not need to
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -211,21 +210,22 @@ Note that the function will load from a "default" folder, which does not need to
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">requestId = gdk_load_buffer(buff, "player_save.sav", 0, 16384);</code></pre>
+<p><div class="highlight"><pre><span></span><code>requestId = gdk_load_buffer(buff, &quot;player_save.sav&quot;, 0, 16384);
+</code></pre></div>
 In the code above we load a file into a buffer (<code>buff</code>). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a> event.
-<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == requestId)
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == requestId)
   {
-      if (async_load[? "status"] == false)
+      if (async_load[? &quot;status&quot;] == false)
       {
-          show_debug_message("Load failed!");
+          show_debug_message(&quot;Load failed!&quot;);
       }
       else
       {
-          show_debug_message("Load succeeded!");
+          show_debug_message(&quot;Load succeeded!&quot;);
       }
-  }</code></pre>
+  }
+</code></pre></div>
 The code above matches the response against the correct request <strong>id</strong>, providing a success message if <strong>status</strong> is true.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -237,7 +237,8 @@ The code above matches the response against the correct request <strong>id</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">gdk_save_buffer(buffer_idx, filename, offset, size)</code></pre>
+<div class="highlight"><pre><span></span><code>gdk_save_buffer(buffer_idx, filename, offset, size)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -270,8 +271,6 @@ The code above matches the response against the correct request <strong>id</stro
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -311,21 +310,22 @@ The code above matches the response against the correct request <strong>id</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">requestId = gdk_save_buffer(buff, "player_save.sav", 0, 16384);</code></pre>
+<p><div class="highlight"><pre><span></span><code>requestId = gdk_save_buffer(buff, &quot;player_save.sav&quot;, 0, 16384);
+</code></pre></div>
 In the code above we save a buffer (<code>buff</code>) into a file. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a> event.
-<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == requestId)
+<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == requestId)
 {
-    if (async_load[? "status"] == false)
+    if (async_load[? &quot;status&quot;] == false)
     {
-        show_debug_message("Save failed!");
+        show_debug_message(&quot;Save failed!&quot;);
     }
     else
     {
-        show_debug_message("Save succeeded!");
+        show_debug_message(&quot;Save succeeded!&quot;);
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct request <strong>id</strong>, providing a success message if <strong>status</strong> is true.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -335,7 +335,8 @@ The code above matches the response against the correct request <strong>id</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">gdk_save_group_begin(container_name)</code></pre>
+<div class="highlight"><pre><span></span><code>gdk_save_group_begin(container_name)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -354,22 +355,20 @@ The code above matches the response against the correct request <strong>id</stro
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">gdk_save_group_begin("SaveGame");
-save1 = gdk_save_buffer(buff1, "player_save1.sav", 0, 16384);
-save2 = gdk_save_buffer(buff2, "player_save2.sav", 0, 16384);
-save3 = gdk_save_buffer(buff3, "player_save3.sav", 0, 16384);
-save4 = gdk_save_buffer(buff4, "player_save4.sav", 0, 16384);
-gdk_save_group_end();</code></pre>
+<p><div class="highlight"><pre><span></span><code>gdk_save_group_begin(&quot;SaveGame&quot;);
+save1 = gdk_save_buffer(buff1, &quot;player_save1.sav&quot;, 0, 16384);
+save2 = gdk_save_buffer(buff2, &quot;player_save2.sav&quot;, 0, 16384);
+save3 = gdk_save_buffer(buff3, &quot;player_save3.sav&quot;, 0, 16384);
+save4 = gdk_save_buffer(buff4, &quot;player_save4.sav&quot;, 0, 16384);
+gdk_save_group_end();
+</code></pre></div>
 In the code above we save multiple buffers into different files using a buffer group for them. All the files will be saved inside the same <code>"SaveGame"</code> folder.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -380,10 +379,9 @@ In the code above we save multiple buffers into different files using a buffer g
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">gdk_save_group_end()</code></pre>
+<div class="highlight"><pre><span></span><code>gdk_save_group_end()
+</code></pre></div>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -423,26 +421,27 @@ In the code above we save multiple buffers into different files using a buffer g
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">gdk_save_group_begin("SaveGame");
-gdk_save_buffer(buff1, "player_save1.sav", 0, 16384);
-gdk_save_buffer(buff2, "player_save2.sav", 0, 16384);
-gdk_save_buffer(buff3, "player_save3.sav", 0, 16384);
-gdk_save_buffer(buff4, "player_save4.sav", 0, 16384);
-requestId = gdk_save_group_end();</code></pre>
+<p><div class="highlight"><pre><span></span><code>gdk_save_group_begin(&quot;SaveGame&quot;);
+gdk_save_buffer(buff1, &quot;player_save1.sav&quot;, 0, 16384);
+gdk_save_buffer(buff2, &quot;player_save2.sav&quot;, 0, 16384);
+gdk_save_buffer(buff3, &quot;player_save3.sav&quot;, 0, 16384);
+gdk_save_buffer(buff4, &quot;player_save4.sav&quot;, 0, 16384);
+requestId = gdk_save_group_end();
+</code></pre></div>
 In the code above we save multiple buffers into different files using a buffer group for them. All the files will be saved inside the same <code>"SaveGame"</code> folder. Afterwards we end the group with a <code>gdk_save_group_end()</code> call, which will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a>.</p>
-<p><pre class="highlight"><code class="language-gml">if (async_load[? "id"] == requestId)
+<p><div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == requestId)
 {
-    if (async_load[? "status"] == false)
+    if (async_load[? &quot;status&quot;] == false)
     {
-        show_debug_message("Group save failed!");
+        show_debug_message(&quot;Group save failed!&quot;);
     }
     else
     {
-        show_debug_message("Group save succeeded!");
+        show_debug_message(&quot;Group save succeeded!&quot;);
     }
-}</code></pre>
+}
+</code></pre></div>
 The code above matches the response against the correct request <strong>id</strong> , providing a success message if <strong>status</strong> is true.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -452,10 +451,9 @@ The code above matches the response against the correct request <strong>id</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_get_savedata_user()</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_get_savedata_user()
+</code></pre></div>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -464,12 +462,12 @@ The code above matches the response against the correct request <strong>id</stro
 <p>(The user ID currently being used for save data)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">if (xboxone_get_savedata_user() != user_id[0])
+<p><div class="highlight"><pre><span></span><code>if (xboxone_get_savedata_user() != user_id[0])
 {
     xboxone_set_savedata_user(user_id[0]);
-}</code></pre>
+}
+</code></pre></div>
 In the code above we check to see if the current savedata user is set to the user in the index 0 of the <code>user_id</code> array, and if not, we set it to that user id.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -479,7 +477,8 @@ In the code above we check to see if the current savedata user is set to the use
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_set_savedata_user(user_id)</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_set_savedata_user(user_id)
+</code></pre></div>
 </blockquote>
 <table>
 <thead>
@@ -498,20 +497,18 @@ In the code above we check to see if the current savedata user is set to the use
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">if (xboxone_get_savedata_user() != user_id[0])
+<p><div class="highlight"><pre><span></span><code>if (xboxone_get_savedata_user() != user_id[0])
 {
     xboxone_set_savedata_user(user_id[0]);
-}</code></pre>
+}
+</code></pre></div>
 In the code above we check to see if the current savedata user is set to the user in the index 0 of the <code>user_id</code> array, and if not, we set it to that user id.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
@@ -524,17 +521,16 @@ In the code above we check to see if the current savedata user is set to the use
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">xboxone_set_savedata_uwp_compatibility()</code></pre>
+<div class="highlight"><pre><span></span><code>xboxone_set_savedata_uwp_compatibility()
+</code></pre></div>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
 </blockquote>
 <p><br></p>
-<p><br></p>
+<hr />
               
             </div>
           </div><footer>
