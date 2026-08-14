@@ -14,7 +14,7 @@
   "copyToTargets":64,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"3.0.2",
+  "extensionVersion":"3.0.3",
   "files":[
     {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":64,"filename":"GDKExtension.dll","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"gdk_init","argCount":0,"args":[1,],"documentation":"","externalName":"","help":"gdk_init(scid)","hidden":false,"kind":1,"name":"gdk_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
