@@ -223,7 +223,7 @@
  * @member {Constant.XboxAchievementProgressState}         progressState          The state of a user's progress towards the earning of the achievement.
  * @member {Struct.XboxAchievementProgression}             progression            The progression object containing progress details about the achievement, including requirements.
  * @member {Array[Struct.XboxAchievementMediaAsset]}       mediaAssets            The media assets associated with the achievement, such as image IDs.
- * @member {Array<String>}                                 platformsAvailableOn   The UTF-8 encoded collection of platforms that the achievement is available on.
+ * @member {Array[String]}                                 platformsAvailableOn   The UTF-8 encoded collection of platforms that the achievement is available on.
  * @member {Bool}                                          isSecret               Whether or not the achievement is secret.
  * @member {String}                                        unlockedDescription    The UTF-8 encoded description of the unlocked achievement.
  * @member {String}                                        lockedDescription      The UTF-8 encoded description of the locked achievement.
