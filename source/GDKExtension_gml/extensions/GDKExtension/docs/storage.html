@@ -1,105 +1,728 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Storage Module - GMEXT-GDK</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="assets/css/gmext_style.css" rel="stylesheet" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Storage Module";
-        var mkdocs_page_input_path = "storage.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="base.html">
+      
+      
+        <link rel="next" href="xbox_live.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Storage Module - GMEXT-GDK</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> GMEXT-GDK
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+      <link rel="stylesheet" href="assets/css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>(function(){try{var w=["--gm-nav-width","--gm-toc-width"],i,v;for(i=0;i<w.length;i++){v=localStorage.getItem(w[i]);if(v)document.documentElement.style.setProperty(w[i],v)}}catch(e){}})()</script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#storage-module" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home.html">GDK Extension</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="building_guide.html">Building Guide (How to build the extension from source)</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="gdk_extension_guides.html">Quick Start Guide (Project setup, sandboxes & configuration files)</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="base.html">Base Module</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Storage Module</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#storage-functions">Storage Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#note-on-cross-platform-saves">Note on cross-platform saves</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="xbox_live.html">Xbox Live Module</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="iap.html">In-App Purchases Module</a>
-                </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="home.html" title="GMEXT-GDK" class="md-header__button md-logo" aria-label="GMEXT-GDK" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GMEXT-GDK
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Storage Module
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">GMEXT-GDK</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YoYoGames/GMEXT-GDK" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Storage Module</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-GDK/edit/master/docs/storage.md" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <p><a id="top"></a></p>
-<h1 id="storage-module"><strong>Storage Module</strong></h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="home.html" title="GMEXT-GDK" class="md-nav__button md-logo" aria-label="GMEXT-GDK" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GMEXT-GDK
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YoYoGames/GMEXT-GDK" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="home.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GDK Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="building_guide.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Guide (How to build the extension from source)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gdk_extension_guides.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start Guide (Project setup, sandboxes & configuration files)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage Module
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="storage.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#storage-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note-on-cross-platform-saves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Note on cross-platform saves
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdk_load_buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gdk_load_buffer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdk_save_buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gdk_save_buffer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdk_save_group_begin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gdk_save_group_begin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdk_save_group_end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gdk_save_group_end
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_get_savedata_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_get_savedata_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_set_savedata_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_set_savedata_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_set_savedata_uwp_compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_set_savedata_uwp_compatibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xbox_live.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xbox Live Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="iap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    In-App Purchases Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#storage-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note-on-cross-platform-saves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Note on cross-platform saves
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdk_load_buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gdk_load_buffer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdk_save_buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gdk_save_buffer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdk_save_group_begin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gdk_save_group_begin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdk_save_group_end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gdk_save_group_end
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_get_savedata_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_get_savedata_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_set_savedata_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_set_savedata_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_set_savedata_uwp_compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_set_savedata_uwp_compatibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p><a id="top"></a></p>
+<h1 id="storage-module"><strong>Storage Module</strong><a class="headerlink" href="#storage-module" title="Permanent link">&para;</a></h1>
 <p>The Storage Module provides the developer with functions to save and load data associated with a given user.</p>
-<h2 id="storage-functions">Storage Functions</h2>
+<h2 id="storage-functions">Storage Functions<a class="headerlink" href="#storage-functions" title="Permanent link">&para;</a></h2>
 <p>The following functions are provided for working with user data storage:</p>
 <ul>
 <li><a href="storage.html#gdk_load_buffer">gdk_load_buffer</a></li>
@@ -110,25 +733,25 @@
 <li><a href="storage.html#xboxone_set_savedata_user">xboxone_set_savedata_user</a></li>
 <li><a href="storage.html#xboxone_set_savedata_uwp_compatibility">xboxone_set_savedata_uwp_compatibility</a></li>
 </ul>
-<h2 id="note-on-cross-platform-saves">Note on cross-platform saves</h2>
+<h2 id="note-on-cross-platform-saves">Note on cross-platform saves<a class="headerlink" href="#note-on-cross-platform-saves" title="Permanent link">&para;</a></h2>
 <p>The Xbox runner will always insert saves inside a "root" folder at the top level, so if you need to find those saves with the GDK runner, you need to prepend save locations with "root/", e.g. if you saved "saves/save1.sav" on Xbox, you will find that file at "root/saves/save1.sav" on GDK Windows.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="gdk_load_buffer">gdk_load_buffer</h1>
+<h1 id="gdk_load_buffer">gdk_load_buffer<a class="headerlink" href="#gdk_load_buffer" title="Permanent link">&para;</a></h1>
 <p>This function is used to load data from a file that you previously saved using the <a href="storage.html#gdk_save_buffer">gdk_save_buffer</a> function. The data from the file is loaded into a buffer that you need to have created previously.
 The <code>offset</code> defines the starting position within the buffer for loading (in bytes), and the <code>size</code> is the size of the buffer area to be loaded from that offset onwards (also in bytes). You can supply a value of -1 for the <code>size</code> argument and the entire buffer will be loaded.
 Note that the function will load from a "default" folder, which does not need to be included as part of the file path you provide. This folder will be created if it doesn't exist when you save a file using <a href="storage.html#gdk_save_buffer">gdk_save_buffer</a>.</p>
-<blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
 <p>Before using this function it's required to set the workspace for storage operations using the function <a href="storage.html#xboxone_set_savedata_user">xboxone_set_savedata_user</a>.</p>
-</blockquote>
+</div>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>gdk_load_buffer(buffer_idx, filename, offset, size)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">gdk_load_buffer(buffer_idx, filename, offset, size)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -210,35 +833,32 @@ Note that the function will load from a "default" folder, which does not need to
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>requestId = gdk_load_buffer(buff, &quot;player_save.sav&quot;, 0, 16384);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">requestId = gdk_load_buffer(buff, "player_save.sav", 0, 16384);</code></pre>
 In the code above we load a file into a buffer (<code>buff</code>). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a> event.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == requestId)
+<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == requestId)
   {
-      if (async_load[? &quot;status&quot;] == false)
+      if (async_load[? "status"] == false)
       {
-          show_debug_message(&quot;Load failed!&quot;);
+          show_debug_message("Load failed!");
       }
       else
       {
-          show_debug_message(&quot;Load succeeded!&quot;);
+          show_debug_message("Load succeeded!");
       }
-  }
-</code></pre></div>
+  }</code></pre>
 The code above matches the response against the correct request <strong>id</strong>, providing a success message if <strong>status</strong> is true.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="gdk_save_buffer">gdk_save_buffer</h1>
+<h1 id="gdk_save_buffer">gdk_save_buffer<a class="headerlink" href="#gdk_save_buffer" title="Permanent link">&para;</a></h1>
 <p>With this function you can save a buffer (or a part of it) to a file, ready to be read back into memory using the <a href="storage.html#gdk_load_buffer">gdk_load_buffer</a> function. The <code>offset</code> defines the start position within the buffer to start saving from (in bytes), and the <code>size</code> is the size of the buffer area to be saved from that offset onwards (also in bytes).</p>
 <p>[[Important: Before using this function it's required to set the workspace for storage operations using the function <a href="storage.html#xboxone_set_savedata_user">xboxone_set_savedata_user</a>.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>gdk_save_buffer(buffer_idx, filename, offset, size)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">gdk_save_buffer(buffer_idx, filename, offset, size)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -310,33 +930,30 @@ The code above matches the response against the correct request <strong>id</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>requestId = gdk_save_buffer(buff, &quot;player_save.sav&quot;, 0, 16384);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">requestId = gdk_save_buffer(buff, "player_save.sav", 0, 16384);</code></pre>
 In the code above we save a buffer (<code>buff</code>) into a file. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a> event.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == requestId)
+<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == requestId)
 {
-    if (async_load[? &quot;status&quot;] == false)
+    if (async_load[? "status"] == false)
     {
-        show_debug_message(&quot;Save failed!&quot;);
+        show_debug_message("Save failed!");
     }
     else
     {
-        show_debug_message(&quot;Save succeeded!&quot;);
+        show_debug_message("Save succeeded!");
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct request <strong>id</strong>, providing a success message if <strong>status</strong> is true.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="gdk_save_group_begin">gdk_save_group_begin</h1>
+<h1 id="gdk_save_group_begin">gdk_save_group_begin<a class="headerlink" href="#gdk_save_group_begin" title="Permanent link">&para;</a></h1>
 <p>This function is called when you want to begin the saving of multiple buffers to multiple files. The <code>container_name</code> is a string and will be used as the directory name for where the files will be saved, and should be used as part of the file path when loading the files back into the IDE later (using the <a href="storage.html#gdk_load_buffer">gdk_load_buffer</a> function). This function is only for use with the <a href="storage.html#gdk_save_buffer">gdk_save_buffer</a> function and you must also end the group save by calling <a href="storage.html#gdk_save_group_end">gdk_save_group_end</a> function, otherwise the files will not be saved out.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>gdk_save_group_begin(container_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">gdk_save_group_begin(container_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -361,26 +978,24 @@ The code above matches the response against the correct request <strong>id</stro
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>gdk_save_group_begin(&quot;SaveGame&quot;);
-save1 = gdk_save_buffer(buff1, &quot;player_save1.sav&quot;, 0, 16384);
-save2 = gdk_save_buffer(buff2, &quot;player_save2.sav&quot;, 0, 16384);
-save3 = gdk_save_buffer(buff3, &quot;player_save3.sav&quot;, 0, 16384);
-save4 = gdk_save_buffer(buff4, &quot;player_save4.sav&quot;, 0, 16384);
-gdk_save_group_end();
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">gdk_save_group_begin("SaveGame");
+save1 = gdk_save_buffer(buff1, "player_save1.sav", 0, 16384);
+save2 = gdk_save_buffer(buff2, "player_save2.sav", 0, 16384);
+save3 = gdk_save_buffer(buff3, "player_save3.sav", 0, 16384);
+save4 = gdk_save_buffer(buff4, "player_save4.sav", 0, 16384);
+gdk_save_group_end();</code></pre>
 In the code above we save multiple buffers into different files using a buffer group for them. All the files will be saved inside the same <code>"SaveGame"</code> folder.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="gdk_save_group_end">gdk_save_group_end</h1>
+<h1 id="gdk_save_group_end">gdk_save_group_end<a class="headerlink" href="#gdk_save_group_end" title="Permanent link">&para;</a></h1>
 <p>This function finishes the definition of a buffer save group. You must have previously called the function <a href="storage.html#gdk_save_group_begin">gdk_save_group_begin</a> to initiate the group, then call the function <a href="storage.html#gdk_save_buffer">gdk_save_buffer</a> for each file that you wish to save out. Finally you call this function, which will start the saving of the files.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>gdk_save_group_end()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">gdk_save_group_end()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -421,38 +1036,35 @@ In the code above we save multiple buffers into different files using a buffer g
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>gdk_save_group_begin(&quot;SaveGame&quot;);
-gdk_save_buffer(buff1, &quot;player_save1.sav&quot;, 0, 16384);
-gdk_save_buffer(buff2, &quot;player_save2.sav&quot;, 0, 16384);
-gdk_save_buffer(buff3, &quot;player_save3.sav&quot;, 0, 16384);
-gdk_save_buffer(buff4, &quot;player_save4.sav&quot;, 0, 16384);
-requestId = gdk_save_group_end();
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">gdk_save_group_begin("SaveGame");
+gdk_save_buffer(buff1, "player_save1.sav", 0, 16384);
+gdk_save_buffer(buff2, "player_save2.sav", 0, 16384);
+gdk_save_buffer(buff3, "player_save3.sav", 0, 16384);
+gdk_save_buffer(buff4, "player_save4.sav", 0, 16384);
+requestId = gdk_save_group_end();</code></pre>
 In the code above we save multiple buffers into different files using a buffer group for them. All the files will be saved inside the same <code>"SaveGame"</code> folder. Afterwards we end the group with a <code>gdk_save_group_end()</code> call, which will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/lts/en/The_Asset_Editors/Object_Properties/Async_Events/Save_Load.htm">Save/Load Async Event</a>.</p>
-<p><div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == requestId)
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "id"] == requestId)
 {
-    if (async_load[? &quot;status&quot;] == false)
+    if (async_load[? "status"] == false)
     {
-        show_debug_message(&quot;Group save failed!&quot;);
+        show_debug_message("Group save failed!");
     }
     else
     {
-        show_debug_message(&quot;Group save succeeded!&quot;);
+        show_debug_message("Group save succeeded!");
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct request <strong>id</strong> , providing a success message if <strong>status</strong> is true.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_get_savedata_user">xboxone_get_savedata_user</h1>
+<h1 id="xboxone_get_savedata_user">xboxone_get_savedata_user<a class="headerlink" href="#xboxone_get_savedata_user" title="Permanent link">&para;</a></h1>
 <p>This function returns the user ID pointer (or the constant <code>pointer_null</code>) currently associated with file saving. See <a href="storage.html#xboxone_set_savedata_user">xboxone_set_savedata_user</a> for further details.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_get_savedata_user()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_get_savedata_user()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -462,23 +1074,21 @@ The code above matches the response against the correct request <strong>id</stro
 <p>(The user ID currently being used for save data)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>if (xboxone_get_savedata_user() != user_id[0])
+<p><pre class="highlight"><code class="language-gml">if (xboxone_get_savedata_user() != user_id[0])
 {
     xboxone_set_savedata_user(user_id[0]);
-}
-</code></pre></div>
+}</code></pre>
 In the code above we check to see if the current savedata user is set to the user in the index 0 of the <code>user_id</code> array, and if not, we set it to that user id.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_set_savedata_user">xboxone_set_savedata_user</h1>
+<h1 id="xboxone_set_savedata_user">xboxone_set_savedata_user<a class="headerlink" href="#xboxone_set_savedata_user" title="Permanent link">&para;</a></h1>
 <p>This function sets all future file operations operating in the save game area (i.e. all file reads and writes made using the <a href="storage.html#gdk_load_buffer">gdk_load_buffer</a> and <a href="storage.html#gdk_save_buffer">gdk_save_buffer</a> functions) to be associated with the specified user. This can be called as often as necessary to redirect save data to the appropriate user, or you can use the constant <code>pointer_null</code> to lock save/load features.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_set_savedata_user(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_set_savedata_user(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -503,17 +1113,16 @@ In the code above we check to see if the current savedata user is set to the use
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>if (xboxone_get_savedata_user() != user_id[0])
+<p><pre class="highlight"><code class="language-gml">if (xboxone_get_savedata_user() != user_id[0])
 {
     xboxone_set_savedata_user(user_id[0]);
-}
-</code></pre></div>
+}</code></pre>
 In the code above we check to see if the current savedata user is set to the user in the index 0 of the <code>user_id</code> array, and if not, we set it to that user id.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_set_savedata_uwp_compatibility">xboxone_set_savedata_uwp_compatibility</h1>
+<h1 id="xboxone_set_savedata_uwp_compatibility">xboxone_set_savedata_uwp_compatibility<a class="headerlink" href="#xboxone_set_savedata_uwp_compatibility" title="Permanent link">&para;</a></h1>
 <p><em>Added in GameMaker 2023.6</em></p>
 <p>This function enables compatibility with old UWP save files, as GDK uses a different path format from UWP. Enabling this will make the runner use the same paths as the old UWP runner, making your GDK builds compatible with save files made with the UWP runner.</p>
 <p>This should be called before the game performs any savedata related file operations.</p>
@@ -521,8 +1130,7 @@ In the code above we check to see if the current savedata user is set to the use
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_set_savedata_uwp_compatibility()
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_set_savedata_uwp_compatibility()</code></pre>
 </blockquote>
 <p><br></p>
 <p><strong>Returns:</strong></p>
@@ -531,57 +1139,73 @@ In the code above we check to see if the current savedata user is set to the use
 </blockquote>
 <p><br></p>
 <hr />
-              
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="base.html" class="btn btn-neutral float-left" title="Base Module"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="xbox_live.html" class="btn btn-neutral float-right" title="Xbox Live Module">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2026</p></p>
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/YoYoGames/GMEXT-GDK" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="base.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="xbox_live.html" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p align="center">GameMaker 2026</p>
+    </div>
+  
+  
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
-      <script src="assets/js/gmext_script.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      
+        <script src="assets/js/hljs-init.js"></script>
+      
+        <script src="assets/js/resize-columns.js"></script>
+      
+    
+  </body>
 </html>

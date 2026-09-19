@@ -1,110 +1,1521 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Xbox Live Module - GMEXT-GDK</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="assets/css/gmext_style.css" rel="stylesheet" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Xbox Live Module";
-        var mkdocs_page_input_path = "xbox_live.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="storage.html">
+      
+      
+        <link rel="next" href="iap.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Xbox Live Module - GMEXT-GDK</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> GMEXT-GDK
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+      <link rel="stylesheet" href="assets/css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>(function(){try{var w=["--gm-nav-width","--gm-toc-width"],i,v;for(i=0;i<w.length;i++){v=localStorage.getItem(w[i]);if(v)document.documentElement.style.setProperty(w[i],v)}}catch(e){}})()</script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#xbox-live-module" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home.html">GDK Extension</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="building_guide.html">Building Guide (How to build the extension from source)</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="gdk_extension_guides.html">Quick Start Guide (Project setup, sandboxes & configuration files)</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="base.html">Base Module</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="storage.html">Storage Module</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Xbox Live Module</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#event-based-functions">Event-Based Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#title-managed-functions">Title-Managed Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#general-functions">General Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="iap.html">In-App Purchases Module</a>
-                </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="home.html" title="GMEXT-GDK" class="md-header__button md-logo" aria-label="GMEXT-GDK" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GMEXT-GDK
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Xbox Live Module
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">GMEXT-GDK</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YoYoGames/GMEXT-GDK" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Xbox Live Module</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-GDK/edit/master/docs/xbox_live.md" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <p><a id="top"></a></p>
-<h1 id="xbox-live-module"><strong>Xbox Live Module</strong></h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="home.html" title="GMEXT-GDK" class="md-nav__button md-logo" aria-label="GMEXT-GDK" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GMEXT-GDK
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YoYoGames/GMEXT-GDK" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="home.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GDK Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="building_guide.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Guide (How to build the extension from source)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gdk_extension_guides.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start Guide (Project setup, sandboxes & configuration files)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xbox Live Module
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="xbox_live.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xbox Live Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#xbox-live-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xbox Live Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Xbox Live Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-based-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event-Based Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#title-managed-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Title-Managed Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_achievements_set_progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_achievements_set_progress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_get_achievement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_get_achievement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_get_achievements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_get_achievements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_check_privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_check_privilege
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_fire_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_fire_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_read_player_leaderboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_read_player_leaderboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_set_rich_presence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_set_rich_presence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_gamertag_for_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_gamertag_for_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_unique_modern_gamertag_for_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_unique_modern_gamertag_for_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_modern_gamertag_suffix_for_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_modern_gamertag_suffix_for_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_modern_gamertag_for_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_modern_gamertag_for_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_add_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_add_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_delete_stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_delete_stat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_flush_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_flush_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_get_leaderboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_get_leaderboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_get_social_leaderboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_get_social_leaderboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_get_stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_get_stat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_get_stat_names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_get_stat_names
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_remove_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_remove_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_set_stat_int" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_set_stat_int
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_set_stat_real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_set_stat_real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_set_stat_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_set_stat_string
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_sprite_add_from_gamerpicture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_sprite_add_from_gamerpicture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementmediaassettype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementMediaAssetType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementrewardtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementRewardType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementprogressstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementProgressState
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementparticipationtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementParticipationType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxlive_achievement_filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxlive_achievement_filter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxlive_achievement_message_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxlive_achievement_message_type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_privilege
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_privilege_result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_privilege_result
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementtimewindow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementTimeWindow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementtitleassociation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementTitleAssociation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementrequirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementRequirement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementprogression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementProgression
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementmediaasset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementMediaAsset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementreward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementReward
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementinformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementInformation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="iap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    In-App Purchases Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#xbox-live-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xbox Live Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Xbox Live Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-based-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event-Based Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#title-managed-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Title-Managed Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_achievements_set_progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_achievements_set_progress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_get_achievement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_get_achievement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_get_achievements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_get_achievements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_check_privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_check_privilege
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_fire_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_fire_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_read_player_leaderboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_read_player_leaderboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_set_rich_presence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_set_rich_presence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_gamertag_for_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_gamertag_for_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_unique_modern_gamertag_for_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_unique_modern_gamertag_for_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_modern_gamertag_suffix_for_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_modern_gamertag_suffix_for_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_modern_gamertag_for_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_modern_gamertag_for_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_add_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_add_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_delete_stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_delete_stat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_flush_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_flush_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_get_leaderboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_get_leaderboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_get_social_leaderboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_get_social_leaderboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_get_stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_get_stat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_get_stat_names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_get_stat_names
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_remove_user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_remove_user
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_set_stat_int" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_set_stat_int
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_set_stat_real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_set_stat_real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_stats_set_stat_string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_stats_set_stat_string
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_sprite_add_from_gamerpicture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_sprite_add_from_gamerpicture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementmediaassettype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementMediaAssetType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementrewardtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementRewardType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementprogressstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementProgressState
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementparticipationtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementParticipationType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxlive_achievement_filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxlive_achievement_filter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxlive_achievement_message_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxlive_achievement_message_type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_privilege" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_privilege
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxone_privilege_result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xboxone_privilege_result
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementtimewindow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementTimeWindow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementtitleassociation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementTitleAssociation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementrequirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementRequirement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementprogression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementProgression
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementmediaasset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementMediaAsset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementreward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementReward
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xboxachievementinformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XboxAchievementInformation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p><a id="top"></a></p>
+<h1 id="xbox-live-module"><strong>Xbox Live Module</strong><a class="headerlink" href="#xbox-live-module" title="Permanent link">&para;</a></h1>
 <p>The GDK extension allows your Microsoft Store game to use all features from the Xbox Live services including stats, leaderboards, achievements and rich presence. This module contains all the functions that are available to handle Xbox Live services.</p>
 <p>Xbox Live services can either be <strong>Event-Based</strong> or <strong>Title-Managed</strong> and <strong>this choice is made on the Partner Center</strong> (check the <a href="https://gamemaker.zendesk.com/hc/en-us/articles/4411044955793-Microsoft-Partner-Center-Guide-for-Windows-Store-Xbox-Developers">help article on the Partner Center</a> for more information). The functions below are grouped according to these two systems.</p>
-<h2 id="event-based-functions">Event-Based Functions</h2>
+<h2 id="event-based-functions">Event-Based Functions<a class="headerlink" href="#event-based-functions" title="Permanent link">&para;</a></h2>
 <p>The following functions are provided for event-based stats/leaderboards/achievements (Microsoft recommends using these for <strong>stats</strong> and <strong>leaderboards</strong> but not <strong>achievements</strong>):</p>
 <ul>
 <li><a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a></li>
@@ -112,7 +1523,7 @@
 <li><a href="xbox_live.html#xboxone_fire_event">xboxone_fire_event</a></li>
 <li><a href="xbox_live.html#xboxone_read_player_leaderboard">xboxone_read_player_leaderboard</a></li>
 </ul>
-<h2 id="title-managed-functions">Title-Managed Functions</h2>
+<h2 id="title-managed-functions">Title-Managed Functions<a class="headerlink" href="#title-managed-functions" title="Permanent link">&para;</a></h2>
 <p>The following functions are provided for title-managed stats/leaderboards/achievements (Microsoft recommends using these for <strong>achievements</strong>):</p>
 <ul>
 <li><a href="xbox_live.html#xboxone_stats_add_user">xboxone_stats_add_user</a></li>
@@ -128,8 +1539,9 @@
 <li><a href="xbox_live.html#xboxone_stats_get_social_leaderboard">xboxone_stats_get_social_leaderboard</a></li>
 <li><a href="xbox_live.html#xboxone_achievements_set_progress">xboxone_achievements_set_progress</a></li>
 <li><a href="xbox_live.html#xboxone_get_achievement">xboxone_get_achievement</a></li>
+<li><a href="xbox_live.html#xboxone_get_achievements">xboxone_get_achievements</a></li>
 </ul>
-<h2 id="general-functions">General Functions</h2>
+<h2 id="general-functions">General Functions<a class="headerlink" href="#general-functions" title="Permanent link">&para;</a></h2>
 <p>The following functions can be used regardless of whether Event-Based or Title-Managed services are used:</p>
 <ul>
 <li><a href="xbox_live.html#xboxone_set_rich_presence">xboxone_set_rich_presence</a></li>
@@ -137,20 +1549,37 @@
 <li><a href="xbox_live.html#xboxone_unique_modern_gamertag_for_user">xboxone_unique_modern_gamertag_for_user</a></li>
 <li><a href="xbox_live.html#xboxone_modern_gamertag_suffix_for_user">xboxone_modern_gamertag_suffix_for_user</a></li>
 <li><a href="xbox_live.html#xboxone_modern_gamertag_for_user">xboxone_modern_gamertag_for_user</a></li>
+<li><a href="xbox_live.html#xboxone_sprite_add_from_gamerpicture">xboxone_sprite_add_from_gamerpicture</a></li>
 </ul>
-<h2 id="constants">Constants</h2>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <p>This module includes a set of predefined constants that can be utilized for various purposes. Browse through the available constants to find values relevant to your needs and enhance the efficiency of your code.</p>
 <ul>
 <li><a href="xbox_live.html#xboxlive_achievement_filter">xboxlive_achievement_filter</a></li>
 <li><a href="xbox_live.html#xboxlive_achievement_message_type">xboxlive_achievement_message_type</a></li>
 <li><a href="xbox_live.html#xboxone_privilege">xboxone_privilege</a></li>
 <li><a href="xbox_live.html#xboxone_privilege_result">xboxone_privilege_result</a></li>
+<li><a href="xbox_live.html#xboxachievementmediaassettype">XboxAchievementMediaAssetType</a></li>
+<li><a href="xbox_live.html#xboxachievementrewardtype">XboxAchievementRewardType</a></li>
+<li><a href="xbox_live.html#xboxachievementprogressstate">XboxAchievementProgressState</a></li>
+<li><a href="xbox_live.html#xboxachievementtype">XboxAchievementType</a></li>
+<li><a href="xbox_live.html#xboxachievementparticipationtype">XboxAchievementParticipationType</a></li>
+</ul>
+<h2 id="structs">Structs<a class="headerlink" href="#structs" title="Permanent link">&para;</a></h2>
+<p>The following structs describe the achievements returned by <a href="xbox_live.html#xboxone_get_achievements">xboxone_get_achievements</a>:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementtimewindow">XboxAchievementTimeWindow</a></li>
+<li><a href="xbox_live.html#xboxachievementtitleassociation">XboxAchievementTitleAssociation</a></li>
+<li><a href="xbox_live.html#xboxachievementrequirement">XboxAchievementRequirement</a></li>
+<li><a href="xbox_live.html#xboxachievementprogression">XboxAchievementProgression</a></li>
+<li><a href="xbox_live.html#xboxachievementmediaasset">XboxAchievementMediaAsset</a></li>
+<li><a href="xbox_live.html#xboxachievementreward">XboxAchievementReward</a></li>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
 </ul>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_achievements_set_progress">xboxone_achievements_set_progress</h1>
+<h1 id="xboxone_achievements_set_progress">xboxone_achievements_set_progress<a class="headerlink" href="#xboxone_achievements_set_progress" title="Permanent link">&para;</a></h1>
 <p>This function can be used to update the progress of an achievement. You supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, a string containing the <code>achievement</code>'s numeric ID (as assigned in the Partner Center when it was created), and finally the <code>progress</code> value to set (from 0 to 100).</p>
 <p>The function may return one of the following errors:</p>
 <table>
@@ -179,8 +1608,7 @@
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_achievements_set_progress(user_id, achievement, progress)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_achievements_set_progress(user_id, achievement, progress)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -257,26 +1685,24 @@
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>requestId = xboxone_achievements_set_progress(user_id, &quot;KilledFirstBoss&quot;, 100);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">requestId = xboxone_achievements_set_progress(user_id, "KilledFirstBoss", 100);</code></pre>
 In the code above we're setting the <code>"KilledFirstBoss"</code> achievement as 100% complete, the function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a> event.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;event_type&quot;] == &quot;achievement result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "event_type"] == "achievement result")
 {
-    if (async_load[? &quot;requestID&quot;] == requestId)
+    if (async_load[? "requestID"] == requestId)
     {
-        if (async_load[? &quot;error&quot;] &gt;= 0)
+        if (async_load[? "error"] &gt;= 0)
         {
-            show_debug_message(&quot;Request succeeded&quot;);
+            show_debug_message("Request succeeded");
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct <strong>event_type</strong> and <strong>requestID</strong>, and prints a debug message if the request was successful.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_get_achievement">xboxone_get_achievement</h1>
+<h1 id="xboxone_get_achievement">xboxone_get_achievement<a class="headerlink" href="#xboxone_get_achievement" title="Permanent link">&para;</a></h1>
 <p>This function queries Xbox Live for the details of the given achievement, for the user specified.</p>
 <p>The function may return one of the following errors:</p>
 <table>
@@ -305,8 +1731,7 @@ The code above matches the response against the correct <strong>event_type</stro
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_get_achievement(user_id, achievement)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_get_achievement(user_id, achievement)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -393,35 +1818,189 @@ The code above matches the response against the correct <strong>event_type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>requestId = xboxone_get_achievement(user_id, &quot;KilledFirstBoss&quot;);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">requestId = xboxone_get_achievement(user_id, "KilledFirstBoss");</code></pre>
 In the code above we're setting the <code>"KilledFirstBoss"</code> achievement as 100% complete, the function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a> event.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;event_type&quot;] == &quot;achievement info&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "event_type"] == "achievement info")
 {
-    if (async_load[? &quot;requestID&quot;] == requestId)
+    if (async_load[? "requestID"] == requestId)
     {
-        if (async_load[? &quot;error&quot;] &gt;= 0)
+        if (async_load[? "error"] &gt;= 0)
         {
-            show_debug_message(&quot;Request succeeded&quot;);
-            if (async_load[? &quot;progress_state&quot;] == 3) show_debug_message(&quot;We are almost there: &quot; + string(async_load[? &quot;progress&quot;]));
-            else if (async_load[? &quot;progress_state&quot;] == 1) show_debug_message(&quot;We did it!!&quot;);
+            show_debug_message("Request succeeded");
+            if (async_load[? "progress_state"] == 3) show_debug_message("We are almost there: " + string(async_load[? "progress"]));
+            else if (async_load[? "progress_state"] == 1) show_debug_message("We did it!!");
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct <strong>event_type</strong> and <strong>requestID</strong>, and prints a debug message if the request was successful.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_check_privilege">xboxone_check_privilege</h1>
+<h1 id="xboxone_get_achievements">xboxone_get_achievements<a class="headerlink" href="#xboxone_get_achievements" title="Permanent link">&para;</a></h1>
+<p>Tries to obtain the state of many Xbox achievements of the specified criteria in one call, if that is possible. Triggers an Async - Social event.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_get_achievements(user_id, title_id=undefined, ach_type=undefined, unlocked_only=undefined, order_by=undefined, skip_items=undefined, max_items=undefined)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>User ID of the user to obtain the achievements of</td>
+</tr>
+<tr>
+<td>title_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Title ID of the game to obtain the achievements from, defaults to the current Title ID if possible</td>
+</tr>
+<tr>
+<td>ach_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Which achievement types to retrieve, defaults to All</td>
+</tr>
+<tr>
+<td>unlocked_only</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether to obtain only unlocked achievements, defaults to false</td>
+</tr>
+<tr>
+<td>order_by</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Achievement sort type, defaults to DefaultOrder</td>
+</tr>
+<tr>
+<td>skip_items</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>How many achievements to skip, defaults to 0, so none</td>
+</tr>
+<tr>
+<td>max_items</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>How many achievements to obtain in one call, defaults to 0, so as much as possible</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>This will be: <code>0</code> if the progress update was successful; <code>xboxone_achievement_already_unlocked</code> if the achievement was unlocked in a previous request; or a negative number with the error code if the request failed.</p>
+<p>The function may return one of the following errors:</p>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>Invalid <code>user_id</code> was specified.</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>Xbox Live context could not be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>IMPORTANT Note that the achievement system will refuse updates that are lower than the current progress value.</p>
+</div>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The string "achievements info"</td>
+</tr>
+<tr>
+<td>userID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The user ID pointer.</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>This will be: <code>0</code> if the progress update was successful; <code>xboxone_achievement_already_unlocked</code> if the achievement was unlocked in a previous request; or a negative number with the error code if the request failed.</td>
+</tr>
+<tr>
+<td>succeeded</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>whether the last HRESULT value indicated a failure or not</td>
+</tr>
+<tr>
+<td>requestID</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID of the request that fired this callback.</td>
+</tr>
+<tr>
+<td>achievements</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></td>
+<td>an array of achievement information structs</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">/// @desc Create
+user_id = xboxone_get_activating_user(); // Don't actually use this in a real game!
+req_id = xboxone_get_achievements(user_id);
+/// @desc Async - System
+if (async_load[? "event_type"] == "achievements info") {
+    var al_req_id = async_load[? "requestID"];
+    var al_user_id = async_load[? "userID"];
+    if (al_req_id == req_id &amp;&amp; al_user_id == user_id) {
+        if (async_load[? "succeeded"]) {
+            var al_achievements = async_load[? "achievements"];
+            var al_achnum = array_length(al_achievements);
+            for (var i = 0; i &lt; al_achnum; i++) {
+                var al_ach = al_achievements[i];
+                show_debug_message("Name: " + al_ach.name + ", desc: " + al_ach.lockedDescription);
+            }
+        } else {
+            // can't load achievements, tell the player
+        }
+        req_id = -1;
+    }
+}</code></pre>
+The code above requests all achievements of the current user for the current title, then prints their names and locked descriptions.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxone_check_privilege">xboxone_check_privilege<a class="headerlink" href="#xboxone_check_privilege" title="Permanent link">&para;</a></h1>
 <p>With this function you can check whether the given user has a privilege. If you set the <code>attempt_resolution</code> argument to <code>true</code> and the privilege isn't enabled, it will also open a system dialogue (suspending the game) to prompt the user to upgrade their account or to get the privilege in a different way as required. If the user then acquires the required privilege, the function will return <code>true</code>.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/System.htm">System Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_check_privilege(user_id, privilege_id, attempt_resolution)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_check_privilege(user_id, privilege_id, attempt_resolution)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -487,15 +2066,14 @@ The code above matches the response against the correct <strong>event_type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var user_one = xboxone_get_activating_user();
-xboxone_check_privilege(user_one, xboxone_privilege_multiplayer_sessions, true);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">var user_one = xboxone_get_activating_user();
+xboxone_check_privilege(user_one, xboxone_privilege_multiplayer_sessions, true);</code></pre>
 In the code above we are getting the ID of the user that launched the game (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and checking if they have privilege for multiplayer sessions and requesting for attempting resolution.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_fire_event">xboxone_fire_event</h1>
+<h1 id="xboxone_fire_event">xboxone_fire_event<a class="headerlink" href="#xboxone_fire_event" title="Permanent link">&para;</a></h1>
 <p>This function can be used to fire a stat event. The <code>event_name</code> argument is the name of the event to be fired as defined in the Partner Center console for your game, and the following additional parameters will also depend on what you have a set up for the stat.</p>
 <p>The function will return 0 if the event was sent (and should be received/processed by the server) or -1 if there was an error (e.g. your events manifest file is outdated).</p>
 <div class="admonition note">
@@ -505,8 +2083,7 @@ In the code above we are getting the ID of the user that launched the game (usin
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_fire_event(event_name, params=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_fire_event(event_name, params=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -537,15 +2114,14 @@ In the code above we are getting the ID of the user that launched the game (usin
 <p>(-1 on error, 0 if the function was successful)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var uid = xboxone_get_activating_user();
-var result = xboxone_fire_event(&quot;PlayerSessionStart&quot;, uid, global.scid, 0, 42, 42);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">var uid = xboxone_get_activating_user();
+var result = xboxone_fire_event("PlayerSessionStart", uid, global.scid, 0, 42, 42);</code></pre>
 In the code above we are firing the <code>"PlayerSessionStart"</code> event and passing some parameters, including the player's ID and the game's SCID as the first two parameters for the specified event.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_read_player_leaderboard">xboxone_read_player_leaderboard</h1>
+<h1 id="xboxone_read_player_leaderboard">xboxone_read_player_leaderboard<a class="headerlink" href="#xboxone_read_player_leaderboard" title="Permanent link">&para;</a></h1>
 <p>This function allows you to read a leaderboard starting at the specified user, regardless of the user's rank or score, and ordered by percentile rank. You supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a> and a <code>friendfilter</code> that is one of the <a href="xbox_live.html#xboxlive_achievement_filter">xboxlive_achievement_filter</a> constants.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -555,8 +2131,7 @@ In the code above we are firing the <code>"PlayerSessionStart"</code> event and 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_read_player_leaderboard(ident, user_id, numitems, friendfilter)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_read_player_leaderboard(ident, user_id, numitems, friendfilter)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -648,29 +2223,27 @@ In the code above we are firing the <code>"PlayerSessionStart"</code> event and 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var uid = xboxone_get_activating_user();
-xboxone_read_player_leaderboard(&quot;MyLeaderboard&quot;, uid, 10, xboxlive_achievement_filter_all_players);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">var uid = xboxone_get_activating_user();
+xboxone_read_player_leaderboard("MyLeaderboard", uid, 10, xboxlive_achievement_filter_all_players);</code></pre>
 In the code above we are querying the leaderboard with the ID <code>"MyLeaderboard"</code> for the first 10 entries including all players.
 We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == xboxlive_achievement_leaderboard_info)
+<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == xboxlive_achievement_leaderboard_info)
 {
-    global.numentries = async_load[? &quot;numentries&quot;];
+    global.numentries = async_load[? "numentries"];
     for (var i = 0; i &lt; numentries; i++)
     {
-        global.playername[i] = async_load[? &quot;Player&quot; + string(i)];
-        global.playerid[i] = async_load[? &quot;Playerid&quot; + string(i)];
-        global.playerrank[i] = async_load[? &quot;Rank&quot; + string(i)];
-        global.playerscore[i] = async_load[? &quot;Score&quot; + string(i)];
+        global.playername[i] = async_load[? "Player" + string(i)];
+        global.playerid[i] = async_load[? "Playerid" + string(i)];
+        global.playerrank[i] = async_load[? "Rank" + string(i)];
+        global.playerscore[i] = async_load[? "Score" + string(i)];
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct <strong>id</strong> and stores the information of the top player names, ids, ranks and scores in global arrays.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_set_rich_presence">xboxone_set_rich_presence</h1>
+<h1 id="xboxone_set_rich_presence">xboxone_set_rich_presence<a class="headerlink" href="#xboxone_set_rich_presence" title="Permanent link">&para;</a></h1>
 <p>This function is used to set the rich presence string for the given user. A Rich Presence string shows the user's in-game activity after the name of the game that the user is playing, separated by a hyphen. This string is displayed under a player's Gamertag in the "Friends &amp; Clubs" list as well as in the player's Xbox Live profile.
 When using this function you need to supply the <code>user_id</code> for the user, and then you can flag the user as currently active in the game or not (using <code>true</code>/<code>false</code>). The next argument is the <code>rich_presence_string</code> ID to show, and then finally you can (optionally) supply a <code>scid</code> string. Note that this is an optional argument -- if you have called <a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a> you don't need to pass the <code>scid</code> here.</p>
 <div class="admonition tip">
@@ -684,8 +2257,7 @@ When using this function you need to supply the <code>user_id</code> for the use
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_set_rich_presence(user_id, is_user_active, rich_presence_id, scid=undefined)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_set_rich_presence(user_id, is_user_active, rich_presence_id, scid=undefined)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -725,15 +2297,14 @@ When using this function you need to supply the <code>user_id</code> for the use
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var user_one = xboxone_get_activating_user();
-xboxone_set_rich_presence(user_one, true, &quot;Playing_Challenge&quot;, global.scid);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">var user_one = xboxone_get_activating_user();
+xboxone_set_rich_presence(user_one, true, "Playing_Challenge", global.scid);</code></pre>
 In the code above we are getting the active user (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and setting its current presence string. We are providing a scid (<code>global.scid</code>), otherwise we were required to first call the function <a href="xbox_live.html#xboxone_stats_setup">xboxone_stats_setup</a>.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_gamertag_for_user">xboxone_gamertag_for_user</h1>
+<h1 id="xboxone_gamertag_for_user">xboxone_gamertag_for_user<a class="headerlink" href="#xboxone_gamertag_for_user" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p><img alt="⛔️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/26d4.png" title=":no_entry:" /> This function was <strong>deprecated</strong> with version 3.0.1.</p>
 </blockquote>
@@ -745,8 +2316,7 @@ In the code above we are getting the active user (using the function <a href="ba
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_gamertag_for_user(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_gamertag_for_user(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -771,10 +2341,9 @@ In the code above we are getting the active user (using the function <a href="ba
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _user = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
 var _tag = xboxone_gamertag_for_user(_user);
-show_debug_message(_tag);
-</code></pre></div>
+show_debug_message(_tag);</code></pre>
 In the code above we are getting the active user (using the function <a href="base.html#xboxone_get_activating_user">xboxone_get_activating_user</a>) and getting its current gamertag.</p>
 <p><br></p>
 <p><strong>Versioning:</strong></p>
@@ -785,7 +2354,7 @@ In the code above we are getting the active user (using the function <a href="ba
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_unique_modern_gamertag_for_user">xboxone_unique_modern_gamertag_for_user</h1>
+<h1 id="xboxone_unique_modern_gamertag_for_user">xboxone_unique_modern_gamertag_for_user<a class="headerlink" href="#xboxone_unique_modern_gamertag_for_user" title="Permanent link">&para;</a></h1>
 <p>This function returns the <a href="https://learn.microsoft.com/en-us/gaming/gdk/_content/gc/live/features/identity/user-profile/gamertags/live-modern-gamertags-overview">modern gamertag</a> (including the suffix) of a locally signed in user or a player in the current game session. If the player does not have a modern gamertag, the classic gamertag is returned instead.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -794,8 +2363,7 @@ In the code above we are getting the active user (using the function <a href="ba
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_unique_modern_gamertag_for_user(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_unique_modern_gamertag_for_user(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -820,10 +2388,9 @@ In the code above we are getting the active user (using the function <a href="ba
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _user = xboxone_get_activating_user();
+<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
 var _tag = xboxone_unique_modern_gamertag_for_user(_user);
-show_debug_message(_tag);
-</code></pre></div>
+show_debug_message(_tag);</code></pre>
 <p><br></p>
 <p><strong>Versioning:</strong></p>
 <ul>
@@ -833,7 +2400,7 @@ show_debug_message(_tag);
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_modern_gamertag_suffix_for_user">xboxone_modern_gamertag_suffix_for_user</h1>
+<h1 id="xboxone_modern_gamertag_suffix_for_user">xboxone_modern_gamertag_suffix_for_user<a class="headerlink" href="#xboxone_modern_gamertag_suffix_for_user" title="Permanent link">&para;</a></h1>
 <p>This function returns the modern gamertag suffix of a locally signed in user or a player in the current game session (e.g. <code>"#1234"</code>). If the player does not have a modern gamertag or the modern gamertag does not include a suffix, an empty string is returned.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -842,8 +2409,7 @@ show_debug_message(_tag);
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_modern_gamertag_suffix_for_user(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_modern_gamertag_suffix_for_user(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -868,10 +2434,9 @@ show_debug_message(_tag);
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _user = xboxone_get_activating_user();
+<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
 var _tag = xboxone_modern_gamertag_suffix_for_user(_user);
-show_debug_message(_tag);
-</code></pre></div>
+show_debug_message(_tag);</code></pre>
 <p><br></p>
 <p><strong>Versioning:</strong></p>
 <ul>
@@ -881,7 +2446,7 @@ show_debug_message(_tag);
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_modern_gamertag_for_user">xboxone_modern_gamertag_for_user</h1>
+<h1 id="xboxone_modern_gamertag_for_user">xboxone_modern_gamertag_for_user<a class="headerlink" href="#xboxone_modern_gamertag_for_user" title="Permanent link">&para;</a></h1>
 <p>This function returns the modern gamertag (excluding suffix) of a locally signed in user or a player in the current game session.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -890,8 +2455,7 @@ show_debug_message(_tag);
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_modern_gamertag_for_user(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_modern_gamertag_for_user(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -916,10 +2480,9 @@ show_debug_message(_tag);
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<div class="highlight"><pre><span></span><code>var _user = xboxone_get_activating_user();
+<pre class="highlight"><code class="language-gml">var _user = xboxone_get_activating_user();
 var _tag = xboxone_modern_gamertag_for_user(_user);
-show_debug_message(_tag);
-</code></pre></div>
+show_debug_message(_tag);</code></pre>
 <p><br></p>
 <p><strong>Versioning:</strong></p>
 <ul>
@@ -929,13 +2492,12 @@ show_debug_message(_tag);
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_setup">xboxone_stats_setup</h1>
+<h1 id="xboxone_stats_setup">xboxone_stats_setup<a class="headerlink" href="#xboxone_stats_setup" title="Permanent link">&para;</a></h1>
 <p>This function needs to be called before you can use any of the other Xbox stat functions, and simply initializes the required libraries on the system. The <code>user_id</code> argument is the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, while the <code>scid</code> and <code>title_id</code> are the unique ID's for your game on the Microsoft Partner Center.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_setup(user_id, scid, title_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_setup(user_id, scid, title_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -970,22 +2532,20 @@ show_debug_message(_tag);
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var user_id = xboxone_get_user(0);
-xboxone_stats_setup(user_id, &quot;00000000-0000-0000-0000-000000000000&quot;, 0xFFFFFFFF);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">var user_id = xboxone_get_user(0);
+xboxone_stats_setup(user_id, "00000000-0000-0000-0000-000000000000", 0xFFFFFFFF);</code></pre>
 In the code above first we retrieve the user ID of the user with index 0 (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and use it to set up the event-based stat system.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_add_user">xboxone_stats_add_user</h1>
+<h1 id="xboxone_stats_add_user">xboxone_stats_add_user<a class="headerlink" href="#xboxone_stats_add_user" title="Permanent link">&para;</a></h1>
 <p>This function can be used to add the given user to the statistics manager. This must be done before using any of the other stats functions to automatically sync the game with the Xbox Live server and retrieve the latest values. You supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and the function will return -1 if there was an error or the <code>user_id</code> is invalid, or an async request ID if the function was successfully called.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_add_user(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_add_user(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1052,34 +2612,31 @@ In the code above first we retrieve the user ID of the user with index 0 (using 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>for(var i = 0; i &lt; xboxone_get_user_count(); i++)
+<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; xboxone_get_user_count(); i++)
 {
     user_id[i] = xboxone_get_user(i);
     xboxone_stats_add_user(user_id[i]);
-}
-</code></pre></div>
+}</code></pre>
 In the code above we are looping through all the available users (using the function <a href="base.html#xboxone_get_user_count">xboxone_get_user_count</a>) getting their user ID (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and adding them to the statistics manager.
 We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.</p>
-<p><div class="highlight"><pre><span></span><code>if (async_load[? &quot;event&quot;] == &quot;LocalUserAdded&quot;)
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "LocalUserAdded")
 {
-    if (async_load[? &quot;error&quot;] != 0)
+    if (async_load[? "error"] != 0)
     {
-        show_debug_message(&quot;Error while adding user to statistics manager&quot;);
+        show_debug_message("Error while adding user to statistics manager");
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_delete_stat">xboxone_stats_delete_stat</h1>
+<h1 id="xboxone_stats_delete_stat">xboxone_stats_delete_stat<a class="headerlink" href="#xboxone_stats_delete_stat" title="Permanent link">&para;</a></h1>
 <p>This function can be used to delete a stat from the stat manager for the given user ID. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, then the stat string to delete. This clears the stat value and removes it from the stat manager, meaning it will no longer be returned by the functions <a href="xbox_live.html#xboxone_stats_get_stat_names">xboxone_stats_get_stat_names</a> and <a href="xbox_live.html#xboxone_stats_get_stat">xboxone_stats_get_stat</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_delete_stat(user_id, stat_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_delete_stat(user_id, stat_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1110,18 +2667,17 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p>(-1 on error, any other value otherwise)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>for (var i = 0; i &lt; xboxone_get_user_count(); i++)
+<p><pre class="highlight"><code class="language-gml">for (var i = 0; i &lt; xboxone_get_user_count(); i++)
 {
     user_id[i] = xboxone_get_user(i);
-    xboxone_stats_delete_stat(user_id[i], &quot;highScore&quot;);
-}
-</code></pre></div>
+    xboxone_stats_delete_stat(user_id[i], "highScore");
+}</code></pre>
 In the code above we are looping though all the available users (using the function <a href="base.html#xboxone_get_user_count">xboxone_get_user_count</a>) getting their user ID (using the <a href="base.html#xboxone_get_user">xboxone_get_user</a> function) and deleting the stat <code>highScore</code> from each one of them.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_flush_user">xboxone_stats_flush_user</h1>
+<h1 id="xboxone_stats_flush_user">xboxone_stats_flush_user<a class="headerlink" href="#xboxone_stats_flush_user" title="Permanent link">&para;</a></h1>
 <p>This function can be used to flush the stats data for the given user from the statistics manager to the live server, ensuring that the server is up to date with the current values.  To use the function, you supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and then give a priority value (0 for low priority and 1 for high priority). The function will will return -1 if there was an error or the user ID was invalid, or an async request ID if the function was successfully called.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1131,8 +2687,7 @@ In the code above we are looping though all the available users (using the funct
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_flush_user(user_id, high_priority)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_flush_user(user_id, high_priority)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1204,27 +2759,25 @@ In the code above we are looping though all the available users (using the funct
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>for(var i = 0; i &lt; array_length(user_ids); i++)
+<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; array_length(user_ids); i++)
 {
     xboxone_stats_flush_user(user_ids[i]);
-}
-</code></pre></div>
+}</code></pre>
 In the code above we are looping though an array of user ids (<code>user_ids</code>) and flushing their local data to the live server.
 We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.</p>
-<p><div class="highlight"><pre><span></span><code>if (async_load[? &quot;event&quot;] == &quot;StatisticsUpdateComplete&quot;)
+<p><pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "StatisticsUpdateComplete")
 {
-    if (async_load[? &quot;error&quot;] != 0)
+    if (async_load[? "error"] != 0)
     {
-        show_debug_message(&quot;Error while updating user statistics&quot;);
+        show_debug_message("Error while updating user statistics");
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_get_leaderboard">xboxone_stats_get_leaderboard</h1>
+<h1 id="xboxone_stats_get_leaderboard">xboxone_stats_get_leaderboard<a class="headerlink" href="#xboxone_stats_get_leaderboard" title="Permanent link">&para;</a></h1>
 <p>This function can be used to retrieve a global leaderboard with ranks for a given statistic. You supply the user ID (as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>), the stat string (as defined when you registered it as a "Featured Stat"), and then you specify a number of details about what leaderboard information you want to retrieve. Note that you can only retrieve a global leaderboard for <code>int</code> or <code>real</code> stats, but not for <code>string</code> stats.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1235,8 +2788,7 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_get_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_get_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1357,31 +2909,29 @@ The code above matches the response against the correct <strong>event</strong>, 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>xboxone_stats_get_leaderboard(user_id, &quot;GlobalTime&quot;, 20, 1, false, true);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">xboxone_stats_get_leaderboard(user_id, "GlobalTime", 20, 1, false, true);</code></pre>
 In the code above we are querying a leaderboard for the stat <code>"GlobalTime"</code> with the first 20 entries starting on rank 1 in ascending order.
 We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a> event.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == achievement_leaderboard_info)
+<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == achievement_leaderboard_info)
 {
-    if (async_load[? &quot;event&quot;] == &quot;GetLeaderboardComplete&quot;)
+    if (async_load[? "event"] == "GetLeaderboardComplete")
     {
-        global.numentries = async_load[? &quot;numentries&quot;];
+        global.numentries = async_load[? "numentries"];
         for (var i = 0; i &lt; numentries; i++)
         {
-            global.playername[i] = async_load[? &quot;Player&quot; + string(i)];
-            global.playerid[i] = async_load[? &quot;Playerid&quot; + string(i)];
-            global.playerrank[i] = async_load[? &quot;Rank&quot; + string(i)];
-            global.playerscore[i] = async_load[? &quot;Score&quot; + string(i)];
+            global.playername[i] = async_load[? "Player" + string(i)];
+            global.playerid[i] = async_load[? "Playerid" + string(i)];
+            global.playerrank[i] = async_load[? "Rank" + string(i)];
+            global.playerscore[i] = async_load[? "Score" + string(i)];
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct <strong>id</strong> and <strong>event</strong> and stores the information of the top player names, ids, ranks and scores in global arrays.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_get_social_leaderboard">xboxone_stats_get_social_leaderboard</h1>
+<h1 id="xboxone_stats_get_social_leaderboard">xboxone_stats_get_social_leaderboard<a class="headerlink" href="#xboxone_stats_get_social_leaderboard" title="Permanent link">&para;</a></h1>
 <p>This function can be used to retrieve a social leaderboard with ranks for a given statistic. You supply the user ID (as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>), the stat string (as defined when you created it using the <code>xboxone_stats_set_stat_*</code> functions), and then you specify a number of details about what leaderboard information you want to retrieve.</p>
 <p>Note that you can only retrieve a social leaderboard for int or real stats, but not for string stats, and that if you flag the <code>favourites_only</code> argument as <code>true</code>, then the results will only contain data for those friends that are marked by the user as "favorites".</p>
 <div class="admonition warning">
@@ -1396,8 +2946,7 @@ The code above matches the response against the correct <strong>id</strong> and 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_get_social_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending, favourites_only)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_get_social_leaderboard(user_id, stat, num_entries, start_rank, start_at_user, ascending, favourites_only)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1523,31 +3072,29 @@ The code above matches the response against the correct <strong>id</strong> and 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>xboxone_stats_get_social_leaderboard(user_id, &quot;GlobalTime&quot;, 20, 1, false, true, true);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">xboxone_stats_get_social_leaderboard(user_id, "GlobalTime", 20, 1, false, true, true);</code></pre>
 In the code above we are querying a leaderboard for the stat <code>"GlobalTime"</code> with the first 20 entries starting on rank 1 in ascending order, selecting only friends marked as favourites.
 We can catch the triggered callback using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;id&quot;] == achievement_leaderboard_info)
+<pre class="highlight"><code class="language-gml">if (async_load[? "id"] == achievement_leaderboard_info)
 {
-    if (async_load[? &quot;event&quot;] == &quot;GetLeaderboardComplete&quot;)
+    if (async_load[? "event"] == "GetLeaderboardComplete")
     {
-        global.numentries = async_load[? &quot;numentries&quot;];
+        global.numentries = async_load[? "numentries"];
         for (var i = 0; i &lt; numentries; i++)
         {
-            global.playername[i] = async_load[? &quot;Player&quot; + string(i)];
-            global.playerid[i] = async_load[? &quot;Playerid&quot; + string(i)];
-            global.playerrank[i] = async_load[? &quot;Rank&quot; + string(i)];
-            global.playerscore[i] = async_load[? &quot;Score&quot; + string(i)];
+            global.playername[i] = async_load[? "Player" + string(i)];
+            global.playerid[i] = async_load[? "Playerid" + string(i)];
+            global.playerrank[i] = async_load[? "Rank" + string(i)];
+            global.playerscore[i] = async_load[? "Score" + string(i)];
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct <strong>id</strong> and <strong>event</strong> and store the information of the top favourite friends player names, ids, ranks and scores in global arrays.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_get_stat">xboxone_stats_get_stat</h1>
+<h1 id="xboxone_stats_get_stat">xboxone_stats_get_stat<a class="headerlink" href="#xboxone_stats_get_stat" title="Permanent link">&para;</a></h1>
 <p>This function can be used to retrieve a single stat value from the stat manager for the given user. You supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and then the <code>stat_name</code> as defined when you created it using one of the <code>xboxone_stats_set_stat_*</code> functions. The return value can be either a string or a real (depending on the stat being checked) or the GML constant <code>undefined</code> if the stat does not exist or there has been an error.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1556,8 +3103,7 @@ The code above matches the response against the correct <strong>id</strong> and 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_get_stat(user_id, stat_name)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_get_stat(user_id, stat_name)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1588,21 +3134,20 @@ The code above matches the response against the correct <strong>id</strong> and 
 <p>(The value for the given stat) or undefined</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>if (game_over == true)
+<p><pre class="highlight"><code class="language-gml">if (game_over == true)
 {
-    if (xboxone_stats_get_stat(user_id, &quot;PercentDone&quot;) &lt; 100)
+    if (xboxone_stats_get_stat(user_id, "PercentDone") &lt; 100)
     {
         var _val = (global.LevelsFinished / global.LevelsTotal)*100;
-        xboxone_stats_set_stat_real(user_id, &quot;PercentDone&quot;, _val);
+        xboxone_stats_set_stat_real(user_id, "PercentDone", _val);
     }
-}
-</code></pre></div>
+}</code></pre>
 In the code above we are checking if the given user complete percentage (<code>"PercentDone"</code>) is less then 100 and if so updated it to a new value (using the <a href="xbox_live.html#xboxone_stats_set_stat_real">xboxone_stats_set_stat_real</a> function).</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_get_stat_names">xboxone_stats_get_stat_names</h1>
+<h1 id="xboxone_stats_get_stat_names">xboxone_stats_get_stat_names<a class="headerlink" href="#xboxone_stats_get_stat_names" title="Permanent link">&para;</a></h1>
 <p>This function can be used to retrieve all the defined stats from the stat manager for the given user. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and the function returns an array of strings containing the statistics for the user. If an error occurs or the user has no stats, an empty array will be returned.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1611,8 +3156,7 @@ In the code above we are checking if the given user complete percentage (<code>"
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_get_stat_names(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_get_stat_names(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1638,18 +3182,17 @@ In the code above we are checking if the given user complete percentage (<code>"
 <p>Array with all the stat names</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _stats = xboxone_stats_get_stat_names(user_id);
+<p><pre class="highlight"><code class="language-gml">var _stats = xboxone_stats_get_stat_names(user_id);
 for (var i = 0; i &lt; array_length(_stats); i++)
 {
     xboxone_stats_delete_stat(user_id, _stats[i]);
-}
-</code></pre></div>
+}</code></pre>
 In the code above we are getting an array of stat names (<code>_stats</code>) for a given user and looping through it deleting each stat (using the <a href="xbox_live.html#xboxone_stats_delete_stat">xboxone_stats_delete_stat</a> function).</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_remove_user">xboxone_stats_remove_user</h1>
+<h1 id="xboxone_stats_remove_user">xboxone_stats_remove_user<a class="headerlink" href="#xboxone_stats_remove_user" title="Permanent link">&para;</a></h1>
 <p>This function can be used to remove (unregister) the given user from the statistics manager, performing a flush of the stat data to the live server. According to the Xbox documentation the game does not have to remove the user from the stats manager, as the GDK Extension will periodically flush the stats anyway.</p>
 <p>To use the function, you supply the <code>user_id</code> as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, and the function will return -1 if there was an error or the user ID was invalid, or any other value if the function was successfully called.</p>
 <div class="admonition warning">
@@ -1668,8 +3211,7 @@ In the code above we are getting an array of stat names (<code>_stats</code>) fo
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_remove_user(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_remove_user(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1736,27 +3278,25 @@ In the code above we are getting an array of stat names (<code>_stats</code>) fo
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>for(var i = 0; i &lt; array_length(user_ids); i++)
+<p><pre class="highlight"><code class="language-gml">for(var i = 0; i &lt; array_length(user_ids); i++)
 {
     xboxone_stats_remove_user(user_ids[i]);
-}
-</code></pre></div>
+}</code></pre>
 In the code above we are looping through an array of user ids (<code>user_ids</code>) and removing them from the statistics manager.
 We can catch the triggered callbacks using the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Social.htm">Social Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;event&quot;] == &quot;LocalUserRemoved&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "event"] == "LocalUserRemoved")
 {
-    if (async_load[? &quot;error&quot;] != 0)
+    if (async_load[? "error"] != 0)
     {
-        show_debug_message(&quot;Error while removing user from statistics manager&quot;);
+        show_debug_message("Error while removing user from statistics manager");
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct <strong>event</strong>, providing a failure message if <strong>error</strong> is not 0.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_set_stat_int">xboxone_stats_set_stat_int</h1>
+<h1 id="xboxone_stats_set_stat_int">xboxone_stats_set_stat_int<a class="headerlink" href="#xboxone_stats_set_stat_int" title="Permanent link">&para;</a></h1>
 <p>This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (an <strong>integer</strong> ) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1769,8 +3309,7 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_set_stat_int(user_id, stat_name, stat_value)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_int(user_id, stat_name, stat_value)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1806,15 +3345,14 @@ The code above matches the response against the correct <strong>event</strong>, 
 <p>(-1 on error, any other value otherwise)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _highscore = 123;
-xboxone_stats_set_stat_int(users_ids[0], &quot;Highscore&quot;, _highscore);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">var _highscore = 123;
+xboxone_stats_set_stat_int(users_ids[0], "Highscore", _highscore);</code></pre>
 In the code above we are setting the stat <code>"Highscore"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_set_stat_real">xboxone_stats_set_stat_real</h1>
+<h1 id="xboxone_stats_set_stat_real">xboxone_stats_set_stat_real<a class="headerlink" href="#xboxone_stats_set_stat_real" title="Permanent link">&para;</a></h1>
 <p>This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a <strong>real</strong>) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1827,8 +3365,7 @@ In the code above we are setting the stat <code>"Highscore"</code> of the select
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_set_stat_real(user_id, stat_name, stat_value)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_real(user_id, stat_name, stat_value)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1864,15 +3401,14 @@ In the code above we are setting the stat <code>"Highscore"</code> of the select
 <p>(-1 on error, any other value otherwise)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _bestTime = 123.45;
-xboxone_stats_set_stat_real(users_ids[0], &quot;BestTime&quot;, _bestTime);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">var _bestTime = 123.45;
+xboxone_stats_set_stat_real(users_ids[0], "BestTime", _bestTime);</code></pre>
 In the code above we are setting the stat <code>"BestTime"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_stats_set_stat_string">xboxone_stats_set_stat_string</h1>
+<h1 id="xboxone_stats_set_stat_string">xboxone_stats_set_stat_string<a class="headerlink" href="#xboxone_stats_set_stat_string" title="Permanent link">&para;</a></h1>
 <p>This function can be used to set the value of a stat for the given user ID. You supply the user ID as returned by the function <a href="base.html#xboxone_get_user">xboxone_get_user</a>, then the stat string to set (if the stat string does not already exist then a new stat will be created and set to the given value) and a value (a <strong>string</strong>) to set the stat to. Note that the stat name must be alphanumeric only, with no symbols or spaces.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1885,8 +3421,7 @@ In the code above we are setting the stat <code>"BestTime"</code> of the selecte
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>xboxone_stats_set_stat_string(user_id, stat_name, stat_value)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_string(user_id, stat_name, stat_value)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1922,14 +3457,152 @@ In the code above we are setting the stat <code>"BestTime"</code> of the selecte
 <p>(-1 on error, any other value otherwise)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>xboxone_stats_set_stat_string(users_ids[0], &quot;Team&quot;, &quot;YoYo Games&quot;);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">xboxone_stats_set_stat_string(users_ids[0], "Team", "YoYo Games");</code></pre>
 In the code above we are setting the stat <code>"Team"</code> of the selected user (<code>user_ids[0]</code>) to a new value, overwriting any previous recorded value.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxlive_achievement_filter">xboxlive_achievement_filter</h1>
+<h1 id="xboxone_sprite_add_from_gamerpicture">xboxone_sprite_add_from_gamerpicture<a class="headerlink" href="#xboxone_sprite_add_from_gamerpicture" title="Permanent link">&para;</a></h1>
+<p>With this function you can get the gamer picture for a given user.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Image_Loaded.htm">Image Loaded Event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">xboxone_sprite_add_from_gamerpicture(user_id, image_size, x_orig, y_orig)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Pointer</a></td>
+<td>The user ID to get the gamer picture for.</td>
+</tr>
+<tr>
+<td>image_size</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Size of the sprite to be returned, pass 1 for 64x64, 2 for 208x208 and 3 for 424x424. Any other value defaults to 1.</td>
+</tr>
+<tr>
+<td>x_orig</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Indicate the x position of the origin in the sprite.</td>
+</tr>
+<tr>
+<td>y_orig</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Indicate the y position of the origin in the sprite.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>(The sprite id, only valid after the async event)</p>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Image_Loaded.htm">Image Loaded Event</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The complete path to the file you requested.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID of the resource that you have loaded. This will be the same as the variable that you have assigned the resource to.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>Returns a value of less than 0 for an error.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Example:</strong></p>
+<p><pre class="highlight"><code class="language-gml">current_user_sprite = xboxone_sprite_add_from_gamerpicture(user_id, 2, 0, 0);</code></pre>
+In the code above we request the gamer picture to be loaded as a sprite with an origin of 0, 0 and a size of 208x208.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementmediaassettype">XboxAchievementMediaAssetType<a class="headerlink" href="#xboxachievementmediaassettype" title="Permanent link">&para;</a></h1>
+<p>Enumeration values that indicate the media asset type associated with the achievement.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementmediaasset">XboxAchievementMediaAsset</a></li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementrewardtype">XboxAchievementRewardType<a class="headerlink" href="#xboxachievementrewardtype" title="Permanent link">&para;</a></h1>
+<p>Enumeration values that indicate the reward type for an achievement.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementreward">XboxAchievementReward</a></li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementprogressstate">XboxAchievementProgressState<a class="headerlink" href="#xboxachievementprogressstate" title="Permanent link">&para;</a></h1>
+<p>Enumeration values that indicate the state of a player's progress towards unlocking an achievement.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementtype">XboxAchievementType<a class="headerlink" href="#xboxachievementtype" title="Permanent link">&para;</a></h1>
+<p>Enumeration values that indicate the achievement type.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementparticipationtype">XboxAchievementParticipationType<a class="headerlink" href="#xboxachievementparticipationtype" title="Permanent link">&para;</a></h1>
+<p>Enumeration values that indicate the participation type for an achievement.</p>
+<p>These constants are referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
+</ul>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxlive_achievement_filter">xboxlive_achievement_filter<a class="headerlink" href="#xboxlive_achievement_filter" title="Permanent link">&para;</a></h1>
 <p>These constants are referenced by the following functions:</p>
 <ul>
 <li><a href="xbox_live.html#xboxone_read_player_leaderboard">xboxone_read_player_leaderboard</a></li>
@@ -1969,7 +3642,7 @@ In the code above we are setting the stat <code>"Team"</code> of the selected us
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxlive_achievement_message_type">xboxlive_achievement_message_type</h1>
+<h1 id="xboxlive_achievement_message_type">xboxlive_achievement_message_type<a class="headerlink" href="#xboxlive_achievement_message_type" title="Permanent link">&para;</a></h1>
 <p>These constants are referenced by the following functions:</p>
 <ul>
 <li><a href="xbox_live.html#xboxone_read_player_leaderboard">xboxone_read_player_leaderboard</a></li>
@@ -2050,7 +3723,7 @@ In the code above we are setting the stat <code>"Team"</code> of the selected us
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_privilege">xboxone_privilege</h1>
+<h1 id="xboxone_privilege">xboxone_privilege<a class="headerlink" href="#xboxone_privilege" title="Permanent link">&para;</a></h1>
 <p>These constants are referenced by the following functions:</p>
 <ul>
 <li><a href="xbox_live.html#xboxone_check_privilege">xboxone_check_privilege</a></li>
@@ -2106,7 +3779,7 @@ In the code above we are setting the stat <code>"Team"</code> of the selected us
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="xboxone_privilege_result">xboxone_privilege_result</h1>
+<h1 id="xboxone_privilege_result">xboxone_privilege_result<a class="headerlink" href="#xboxone_privilege_result" title="Permanent link">&para;</a></h1>
 <p>These constants are referenced by the following functions:</p>
 <ul>
 <li><a href="xbox_live.html#xboxone_check_privilege">xboxone_check_privilege</a></li>
@@ -2148,57 +3821,413 @@ In the code above we are setting the stat <code>"Team"</code> of the selected us
 </table>
 <p><br></p>
 <hr />
-              
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementtimewindow">XboxAchievementTimeWindow<a class="headerlink" href="#xboxachievementtimewindow" title="Permanent link">&para;</a></h1>
+<p>Represents an interval of time during which an achievement can be unlocked.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startDate</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The start date and time of the achievement time window. (date-time value or 0)</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The end date and time of the achievement time window. (date-time value or 0)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementtitleassociation">XboxAchievementTitleAssociation<a class="headerlink" href="#xboxachievementtitleassociation" title="Permanent link">&para;</a></h1>
+<p>Represents the association between a title and achievements.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded localized name of the title.</td>
+</tr>
+<tr>
+<td>titleId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The title ID.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementrequirement">XboxAchievementRequirement<a class="headerlink" href="#xboxachievementrequirement" title="Permanent link">&para;</a></h1>
+<p>Represents requirements for unlocking the achievement.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementprogression">XboxAchievementProgression</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded achievement requirement ID.</td>
+</tr>
+<tr>
+<td>currentProgressValue</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A UTF-8 encoded value that indicates the current progress of the player towards meeting the requirement.</td>
+</tr>
+<tr>
+<td>targetProgressValue</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded target progress value that the player must reach in order to meet the requirement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementprogression">XboxAchievementProgression<a class="headerlink" href="#xboxachievementprogression" title="Permanent link">&para;</a></h1>
+<p>Represents progress details about the achievement, including requirements.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>requirements</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="xbox_live.html#xboxachievementrequirement">XboxAchievementRequirement</a></td>
+<td>The actions and conditions that are required to unlock the achievement.</td>
+</tr>
+<tr>
+<td>timeUnlocked</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The timestamp when the achievement was first unlocked. (date-time value or 0)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementmediaasset">XboxAchievementMediaAsset<a class="headerlink" href="#xboxachievementmediaasset" title="Permanent link">&para;</a></h1>
+<p>Represents a media asset for an achievement.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementreward">XboxAchievementReward</a></li>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded name of the media asset, such as "tile01".</td>
+</tr>
+<tr>
+<td>mediaAssetType</td>
+<td><a href="xbox_live.html#xboxachievementmediaassettype">XboxAchievementMediaAssetType</a></td>
+<td>The type of media asset.</td>
+</tr>
+<tr>
+<td>url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded URL of the media asset.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementreward">XboxAchievementReward<a class="headerlink" href="#xboxachievementreward" title="Permanent link">&para;</a></h1>
+<p>Represents a reward that is associated with the achievement.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="xbox_live.html#xboxachievementinformation">XboxAchievementInformation</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded localized reward name.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded description of the reward.</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded title-defined reward value (data type and content varies by reward type).</td>
+</tr>
+<tr>
+<td>rewardType</td>
+<td><a href="xbox_live.html#xboxachievementrewardtype">XboxAchievementRewardType</a></td>
+<td>The reward type.</td>
+</tr>
+<tr>
+<td>valueType</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded property type of the reward value string.</td>
+</tr>
+<tr>
+<td>mediaAsset</td>
+<td><a href="xbox_live.html#xboxachievementmediaasset">XboxAchievementMediaAsset</a> or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Undefined</a></td>
+<td>The media asset associated with the reward. If the reward type is gamerscore, this will be undefined. If the reward type is in_app, this will be a media asset. If the reward type is art, this may be a media asset or undefined.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="xboxachievementinformation">XboxAchievementInformation<a class="headerlink" href="#xboxachievementinformation" title="Permanent link">&para;</a></h1>
+<p>These structs are returned in an array by <a href="xbox_live.html#xboxone_get_achievements">xboxone_get_achievements</a> inside the Async event.</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="xbox_live.html#xboxone_get_achievements">xboxone_get_achievements</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded achievement ID.</td>
+</tr>
+<tr>
+<td>serviceConfigurationId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Service Configuration ID (SCID) that is associated with the achievement.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded localized achievement name.</td>
+</tr>
+<tr>
+<td>titleAssociations</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="xbox_live.html#xboxachievementtitleassociation">XboxAchievementTitleAssociation</a></td>
+<td>The game/app titles associated with the achievement.</td>
+</tr>
+<tr>
+<td>progressState</td>
+<td><a href="xbox_live.html#xboxachievementprogressstate">XboxAchievementProgressState</a></td>
+<td>The state of a user's progress towards the earning of the achievement.</td>
+</tr>
+<tr>
+<td>progression</td>
+<td><a href="xbox_live.html#xboxachievementprogression">XboxAchievementProgression</a></td>
+<td>The progression object containing progress details about the achievement, including requirements.</td>
+</tr>
+<tr>
+<td>mediaAssets</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="xbox_live.html#xboxachievementmediaasset">XboxAchievementMediaAsset</a></td>
+<td>The media assets associated with the achievement, such as image IDs.</td>
+</tr>
+<tr>
+<td>platformsAvailableOn</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded collection of platforms that the achievement is available on.</td>
+</tr>
+<tr>
+<td>isSecret</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Whether or not the achievement is secret.</td>
+</tr>
+<tr>
+<td>unlockedDescription</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded description of the unlocked achievement.</td>
+</tr>
+<tr>
+<td>lockedDescription</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded description of the locked achievement.</td>
+</tr>
+<tr>
+<td>productId</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTF-8 encoded product_id the achievement was released with. This is a globally unique identifier that may correspond to an application, downloadable content, etc.</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="xbox_live.html#xboxachievementtype">XboxAchievementType</a></td>
+<td>The type of achievement, such as a challenge achievement.</td>
+</tr>
+<tr>
+<td>participationType</td>
+<td><a href="xbox_live.html#xboxachievementparticipationtype">XboxAchievementParticipationType</a></td>
+<td>The participation type for the achievement, such as group or individual.</td>
+</tr>
+<tr>
+<td>available</td>
+<td><a href="xbox_live.html#xboxachievementtimewindow">XboxAchievementTimeWindow</a></td>
+<td>The time window during which the achievement is available. Applies to Challenges.</td>
+</tr>
+<tr>
+<td>rewards</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="xbox_live.html#xboxachievementreward">XboxAchievementReward</a></td>
+<td>The collection of rewards that the player earns when the achievement is unlocked.</td>
+</tr>
+<tr>
+<td>estimatedUnlockTime</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The estimated time that the achievement takes to be earned.</td>
+</tr>
+<tr>
+<td>deepLink</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A UTF-8 encoded deep link for clients that enables the title to launch at a desired starting point for the achievement.</td>
+</tr>
+<tr>
+<td>isRevoked</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A value that indicates whether or not the achievement is revoked by enforcement.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="storage.html" class="btn btn-neutral float-left" title="Storage Module"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="iap.html" class="btn btn-neutral float-right" title="In-App Purchases Module">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2026</p></p>
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/YoYoGames/GMEXT-GDK" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="storage.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="iap.html" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p align="center">GameMaker 2026</p>
+    </div>
+  
+  
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
-      <script src="assets/js/gmext_script.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      
+        <script src="assets/js/hljs-init.js"></script>
+      
+        <script src="assets/js/resize-columns.js"></script>
+      
+    
+  </body>
 </html>

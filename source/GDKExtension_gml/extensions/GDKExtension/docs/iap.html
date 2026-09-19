@@ -1,110 +1,1321 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>In-App Purchases Module - GMEXT-GDK</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="assets/css/gmext_style.css" rel="stylesheet" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "In-App Purchases Module";
-        var mkdocs_page_input_path = "iap.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="xbox_live.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>In-App Purchases Module - GMEXT-GDK</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> GMEXT-GDK
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+      <link rel="stylesheet" href="assets/css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>(function(){try{var w=["--gm-nav-width","--gm-toc-width"],i,v;for(i=0;i<w.length;i++){v=localStorage.getItem(w[i]);if(v)document.documentElement.style.setProperty(w[i],v)}}catch(e){}})()</script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#in-app-purchases-module" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home.html">GDK Extension</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="building_guide.html">Building Guide (How to build the extension from source)</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="gdk_extension_guides.html">Quick Start Guide (Project setup, sandboxes & configuration files)</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="base.html">Base Module</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="storage.html">Storage Module</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="xbox_live.html">Xbox Live Module</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">In-App Purchases Module</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#product-functions">Product Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#package-functions">Package Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="home.html" title="GMEXT-GDK" class="md-header__button md-logo" aria-label="GMEXT-GDK" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GMEXT-GDK
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              In-App Purchases Module
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">GMEXT-GDK</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YoYoGames/GMEXT-GDK" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">In-App Purchases Module</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-GDK/edit/master/docs/iap.md" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <p><a id="top"></a></p>
-<h1 id="in-app-purchases-module"><strong>In-App Purchases Module</strong></h1>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="home.html" title="GMEXT-GDK" class="md-nav__button md-logo" aria-label="GMEXT-GDK" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GMEXT-GDK
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YoYoGames/GMEXT-GDK" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="home.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GDK Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="building_guide.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building Guide (How to build the extension from source)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gdk_extension_guides.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start Guide (Project setup, sandboxes & configuration files)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="xbox_live.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xbox Live Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    In-App Purchases Module
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="iap.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    In-App Purchases Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#in-app-purchases-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In-App Purchases Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="In-App Purchases Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_acquirelicensefordurables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_AcquireLicenseForDurables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_acquirelicenseforpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_AcquireLicenseForPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_canacquirelicenseforpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_CanAcquireLicenseForPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_canacquirelicenseforstoreid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_CanAcquireLicenseForStoreId
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_downloadandinstallpackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_DownloadAndInstallPackages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_enumeratepackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_EnumeratePackages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_mountpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_MountPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryaddonlicenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryAddOnLicenses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryassociatedproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryAssociatedProducts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryconsumablebalanceremaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryConsumableBalanceRemaining
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryentitledproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryEntitledProducts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_querygamelicense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryGameLicense
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryproductforcurrentgame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryProductForCurrentGame
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryproductforpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryProductForPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryProducts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_releaselicensefordurables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ReleaseLicenseForDurables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_releaselicenseforpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ReleaseLicenseForPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_reportconsumablefulfillment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ReportConsumableFulfillment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showassociatedproductsui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowAssociatedProductsUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showproductpageui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowProductPageUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showpurchaseui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowPurchaseUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showrateandreviewui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowRateAndReviewUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showredeemtokenui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowRedeemTokenUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_unmountpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_UnmountPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packagekind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageKind
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packagescope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageScope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#productkind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProductKind
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addonlicensedetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AddonLicenseDetails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packagedetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageDetails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#productdetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProductDetails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#price" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Price
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#in-app-purchases-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In-App Purchases Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="In-App Purchases Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_acquirelicensefordurables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_AcquireLicenseForDurables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_acquirelicenseforpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_AcquireLicenseForPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_canacquirelicenseforpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_CanAcquireLicenseForPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_canacquirelicenseforstoreid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_CanAcquireLicenseForStoreId
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_downloadandinstallpackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_DownloadAndInstallPackages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_enumeratepackages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_EnumeratePackages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_mountpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_MountPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryaddonlicenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryAddOnLicenses
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryassociatedproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryAssociatedProducts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryconsumablebalanceremaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryConsumableBalanceRemaining
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryentitledproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryEntitledProducts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_querygamelicense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryGameLicense
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryproductforcurrentgame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryProductForCurrentGame
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryproductforpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryProductForPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_queryproducts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_QueryProducts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_releaselicensefordurables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ReleaseLicenseForDurables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_releaselicenseforpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ReleaseLicenseForPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_reportconsumablefulfillment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ReportConsumableFulfillment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showassociatedproductsui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowAssociatedProductsUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showproductpageui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowProductPageUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showpurchaseui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowPurchaseUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showrateandreviewui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowRateAndReviewUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_showredeemtokenui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_ShowRedeemTokenUI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ms_iap_unmountpackage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ms_iap_UnmountPackage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packagekind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageKind
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packagescope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageScope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#productkind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProductKind
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addonlicensedetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AddonLicenseDetails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packagedetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageDetails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#productdetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProductDetails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#price" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Price
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p><a id="top"></a></p>
+<h1 id="in-app-purchases-module"><strong>In-App Purchases Module</strong><a class="headerlink" href="#in-app-purchases-module" title="Permanent link">&para;</a></h1>
 <p>A Microsoft Store game can have several In-App Purchases. Inside the Partner Center these are referred to as <strong>add-ons</strong> and can be of multiple types (consumables, durables, subscriptions, DLCs). For detailed instructions on how to configure those, check the Add-ons section on the <a href="https://help.yoyogames.com/hc/en-us/articles/4411044955793">Microsoft Partner Center</a> Helpdesk page.</p>
 <p>Contents of this module can be divided into the following sections:</p>
-<h2 id="product-functions">Product Functions</h2>
+<h2 id="product-functions">Product Functions<a class="headerlink" href="#product-functions" title="Permanent link">&para;</a></h2>
 <p>The following functions are provided for working with products:</p>
 <ul>
 <li><a href="iap.html#ms_iap_acquirelicensefordurables">ms_iap_AcquireLicenseForDurables</a></li>
@@ -125,7 +1336,7 @@
 <li><a href="iap.html#ms_iap_showrateandreviewui">ms_iap_ShowRateAndReviewUI</a></li>
 <li><a href="iap.html#ms_iap_showredeemtokenui">ms_iap_ShowRedeemTokenUI</a></li>
 </ul>
-<h2 id="package-functions">Package Functions</h2>
+<h2 id="package-functions">Package Functions<a class="headerlink" href="#package-functions" title="Permanent link">&para;</a></h2>
 <p>The following functions are provided for working with packages (DLCs):</p>
 <ul>
 <li><a href="iap.html#ms_iap_acquirelicenseforpackage">ms_iap_AcquireLicenseForPackage</a></li>
@@ -136,14 +1347,14 @@
 <li><a href="iap.html#ms_iap_mountpackage">ms_iap_MountPackage</a></li>
 <li><a href="iap.html#ms_iap_unmountpackage">ms_iap_UnmountPackage</a></li>
 </ul>
-<h2 id="constants">Constants</h2>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <p>The following constants (enumerations) are used as filter arguments and return values for some API queries:</p>
 <ul>
 <li><a href="iap.html#packagekind">PackageKind</a></li>
 <li><a href="iap.html#packagescope">PackageScope</a></li>
 <li><a href="iap.html#productkind">ProductKind</a></li>
 </ul>
-<h2 id="structs">Structs</h2>
+<h2 id="structs">Structs<a class="headerlink" href="#structs" title="Permanent link">&para;</a></h2>
 <p>Some of the API asynchronous callback responses return data in the form of structs. This sections aims to deliver detailed information on each of the structs used within the In-App Purchases Module context.
 The following <strong>structs</strong> (structures) are used as return members of API function calls:</p>
 <ul>
@@ -151,19 +1362,19 @@ The following <strong>structs</strong> (structures) are used as return members o
 <li><a href="iap.html#packagedetails">PackageDetails</a></li>
 <li><a href="iap.html#productdetails">ProductDetails</a></li>
 <li><a href="iap.html#price">Price</a></li>
+<li><a href="iap.html#image">Image</a></li>
 </ul>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_acquirelicensefordurables">ms_iap_AcquireLicenseForDurables</h1>
+<h1 id="ms_iap_acquirelicensefordurables">ms_iap_AcquireLicenseForDurables<a class="headerlink" href="#ms_iap_acquirelicensefordurables" title="Permanent link">&para;</a></h1>
 <p>This function acquires a license for the current game's specified durable that the user is entitled to. This is only applicable to  <strong>Durable without package</strong>  add-on types. For  <strong>Durable with packages</strong> (DLC) type, use <a href="iap.html#ms_iap_acquirelicenseforpackage">ms_iap_AcquireLicenseForPackage</a> instead.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_AcquireLicenseForDurables(user_id, store_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_AcquireLicenseForDurables(user_id, store_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -230,36 +1441,33 @@ The following <strong>structs</strong> (structures) are used as return members o
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);
-</code></pre></div>
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_AcquireLicenseForDurables_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_AcquireLicenseForDurables_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(&quot;License successfully acquired!&quot;);
+            show_debug_message("License successfully acquired!");
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , providing a success message if <strong>status</strong> is true.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_acquirelicenseforpackage">ms_iap_AcquireLicenseForPackage</h1>
+<h1 id="ms_iap_acquirelicenseforpackage">ms_iap_AcquireLicenseForPackage<a class="headerlink" href="#ms_iap_acquirelicenseforpackage" title="Permanent link">&para;</a></h1>
 <p>Acquires a license for the current game's specified DLC that the user is entitled to use. This is only applicable to  <strong>Durable with package</strong>  add-on type. For  <strong>Durable</strong>  type, use <a href="iap.html#ms_iap_acquirelicensefordurables">ms_iap_AcquireLicenseForDurables</a> instead.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_AcquireLicenseForPackage(user_id, package_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_AcquireLicenseForPackage(user_id, package_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -326,36 +1534,33 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _packageId = global.packages[0].packageId;
 
-requestId = ms_iap_AcquireLicenseForPackage(_userId, _storeId);
-</code></pre></div>
+requestId = ms_iap_AcquireLicenseForPackage(_userId, _storeId);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the package ID (<code>_packageId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_AcquireLicenseForPackage_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_AcquireLicenseForPackage_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(&quot;License for package successfully acquired!&quot;);
+            show_debug_message("License for package successfully acquired!");
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , providing a success message if <strong>status</strong> is true.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_canacquirelicenseforpackage">ms_iap_CanAcquireLicenseForPackage</h1>
+<h1 id="ms_iap_canacquirelicenseforpackage">ms_iap_CanAcquireLicenseForPackage<a class="headerlink" href="#ms_iap_canacquirelicenseforpackage" title="Permanent link">&para;</a></h1>
 <p>This function provides the ability for a game to determine if the user could acquire a license for a particular piece of content without actually acquiring that license and using up that user's concurrency slot. This cannot be used for the current base game (since it has a license already), but to determine if the user owns some DLC for that game.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_CanAcquireLicenseForPackage(user_id, package_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_CanAcquireLicenseForPackage(user_id, package_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -432,37 +1637,34 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);
-</code></pre></div>
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_CanAcquireLicenseForPackage_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_CanAcquireLicenseForPackage_result")
 {
-    if (async_load[? &quot;async_id&quot;] == requestId)
+    if (async_load[? "async_id"] == requestId)
     {
-        if (async_load[? &quot;licensableStatus&quot;] == 1)
+        if (async_load[? "licensableStatus"] == 1)
         {
-            show_debug_message(&quot;The product is licensable!&quot;);
+            show_debug_message("The product is licensable!");
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console if the current product is licensable to the provided user.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_canacquirelicenseforstoreid">ms_iap_CanAcquireLicenseForStoreId</h1>
+<h1 id="ms_iap_canacquirelicenseforstoreid">ms_iap_CanAcquireLicenseForStoreId<a class="headerlink" href="#ms_iap_canacquirelicenseforstoreid" title="Permanent link">&para;</a></h1>
 <p>This function provides the ability for a game to determine if the user could acquire a license for a particular piece of content without actually acquiring that license and using up that user's concurrency slot. This is not used for the currently running game (since it has a license already), but to determine if the user owns other games from the same publisher, either to up-sell or to provide special benefits to loyal fans.</p>
 <p>For example: this could be used by a racing game to determine whether to give bonus cars to users who owned prior versions of the game. This function is also used to determine whether or not the game should show content in its in game store based on whether or not the user already owns some content.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_CanAcquireLicenseForStoreId(user_id, store_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_CanAcquireLicenseForStoreId(user_id, store_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -539,37 +1741,34 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);
-</code></pre></div>
+requestId = ms_iap_AcquireLicenseForDurables(_userId, _storeId);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to acquire the license to (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_CanAcquireLicenseForStoreId_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_CanAcquireLicenseForStoreId_result")
 {
-    if (async_load[? &quot;async_id&quot;] == requestId)
+    if (async_load[? "async_id"] == requestId)
     {
-        if (async_load[? &quot;licensableStatus&quot;] == 1)
+        if (async_load[? "licensableStatus"] == 1)
         {
-            show_debug_message(&quot;The product is licensable!&quot;);
+            show_debug_message("The product is licensable!");
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console if the current product is licensable to the provided user.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_downloadandinstallpackages">ms_iap_DownloadAndInstallPackages</h1>
+<h1 id="ms_iap_downloadandinstallpackages">ms_iap_DownloadAndInstallPackages<a class="headerlink" href="#ms_iap_downloadandinstallpackages" title="Permanent link">&para;</a></h1>
 <p>Downloads and installs the specified store packages.</p>
 <p>The async completion message will only be raised when the package is actually installed (not just registered).</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_DownloadAndInstallPackages(user_id, package_ids)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_DownloadAndInstallPackages(user_id, package_ids)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -636,38 +1835,35 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _package1 = global.package[0].packageId;
 var _package2 = global.package[1].packageId;
 var _package2 = global.package[2].packageId;
 
-requestId = ms_iap_AcquireLicenseForDurables(_userId, [_package1, _package2, _package3]);
-</code></pre></div>
+requestId = ms_iap_AcquireLicenseForDurables(_userId, [_package1, _package2, _package3]);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_DownloadAndInstallPackages_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_DownloadAndInstallPackages_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;] == 1)
+        if (async_load[? "status"] == 1)
         {
-            show_debug_message(async_load[? &quot;package_ids&quot;]);
+            show_debug_message(async_load[? "package_ids"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console an array with all the installed package IDs.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_enumeratepackages">ms_iap_EnumeratePackages</h1>
+<h1 id="ms_iap_enumeratepackages">ms_iap_EnumeratePackages<a class="headerlink" href="#ms_iap_enumeratepackages" title="Permanent link">&para;</a></h1>
 <p>This function enumerates the results of a package query.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_EnumeratePackages(package_kind, scope)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_EnumeratePackages(package_kind, scope)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -734,33 +1930,30 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>requestId = ms_iap_EnumeratePackages(e_ms_iap_PackageKind_Content, e_ms_iap_PackageEnumerationScope_ThisOnly);
-</code></pre></div>
+<p><pre class="highlight"><code class="language-gml">requestId = ms_iap_EnumeratePackages(e_ms_iap_PackageKind_Content, e_ms_iap_PackageEnumerationScope_ThisOnly);</code></pre>
 In the code above first we request an enumeration of all the packages of type content (<code>e_ms_iap_PackageKind_Content</code>) and whose scope is limited to the current game (<code>e_ms_iap_PackageEnumerationScope_ThisOnly</code>). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_EnumeratePackages_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_EnumeratePackages_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;] == 1)
+        if (async_load[? "status"] == 1)
         {
-            show_debug_message(async_load[? &quot;results&quot;]);
+            show_debug_message(async_load[? "results"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console an array with all the <a href="iap.html#packagedetails">PackageDetails</a> structs.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_mountpackage">ms_iap_MountPackage</h1>
+<h1 id="ms_iap_mountpackage">ms_iap_MountPackage<a class="headerlink" href="#ms_iap_mountpackage" title="Permanent link">&para;</a></h1>
 <p>This function mounts the installation of specified content.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_MountPackage(package_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_MountPackage(package_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -822,34 +2015,31 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _package = global.package[0].packageId;
+<p><pre class="highlight"><code class="language-gml">var _package = global.package[0].packageId;
 
-requestId = ms_iap_MountPackage(_package);
-</code></pre></div>
+requestId = ms_iap_MountPackage(_package);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_MountPackage_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_MountPackage_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        show_debug_message(&quot;Package ID: &quot; + async_load[? &quot;package_id&quot;]);
-        show_debug_message(&quot;Mount Path: &quot; + async_load[? &quot;mount_path&quot;]);
+        show_debug_message("Package ID: " + async_load[? "package_id"]);
+        show_debug_message("Mount Path: " + async_load[? "mount_path"]);
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the current package's ID and its mount path on disk.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_queryaddonlicenses">ms_iap_QueryAddOnLicenses</h1>
+<h1 id="ms_iap_queryaddonlicenses">ms_iap_QueryAddOnLicenses<a class="headerlink" href="#ms_iap_queryaddonlicenses" title="Permanent link">&para;</a></h1>
 <p>Retrieves the licenses the user was granted for Add-ons (also known as a durable without bits) of the currently running game. It is generally recommended to use DLC, rather than add-ons, but this API exists for the few that choose to use add-ons anyways.
 Add-ons are typically content or features that require a purchase to unlock but don't require a download because they are built into the game. They do not work for games that have discs, or may ever have discs.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_QueryAddOnLicenses(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryAddOnLicenses(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -911,35 +2101,32 @@ Add-ons are typically content or features that require a purchase to unlock but 
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 
-requestId = ms_iap_QueryAddOnLicenses(_userId);
-</code></pre></div>
+requestId = ms_iap_QueryAddOnLicenses(_userId);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryAddOnLicenses_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryAddOnLicenses_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(async_load[? &quot;result&quot;]);
+            show_debug_message(async_load[? "result"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console if the result of the query; an array of <a href="iap.html#addonlicensedetails">AddonLicenseDetails</a> structs.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_queryassociatedproducts">ms_iap_QueryAssociatedProducts</h1>
+<h1 id="ms_iap_queryassociatedproducts">ms_iap_QueryAssociatedProducts<a class="headerlink" href="#ms_iap_queryassociatedproducts" title="Permanent link">&para;</a></h1>
 <p>Gets store listing information for the products that can be purchased from within the current game. This API will only return products that can be browsed within the store including any Add-on products that do not have a store page as long as they are not expired. Any product that is hidden, expired, or taken down from the store will not be returned in the results from this API. If you need store info from a hidden, expired, or taken down product use the <a href="iap.html#ms_iap_queryproducts">ms_iap_QueryProducts</a> passing in the product's StoreID.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_QueryAssociatedProducts(user_id, product_kinds)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryAssociatedProducts(user_id, product_kinds)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1006,36 +2193,33 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _product_kinds = e_ms_iap_ProductKind_Consumable;
 
-requestId = ms_iap_QueryAssociatedProducts(_userId, _product_kinds);
-</code></pre></div>
+requestId = ms_iap_QueryAssociatedProducts(_userId, _product_kinds);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for consumable products (<code>_product_kinds</code>) and we call the function with both arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryAssociatedProducts_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryAssociatedProducts_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(async_load[? &quot;result&quot;]);
+            show_debug_message(async_load[? "result"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong> , printing to the debug console the result of the query; an array of <a href="#productdetails">Product Details</a> structs.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_queryconsumablebalanceremaining">ms_iap_QueryConsumableBalanceRemaining</h1>
+<h1 id="ms_iap_queryconsumablebalanceremaining">ms_iap_QueryConsumableBalanceRemaining<a class="headerlink" href="#ms_iap_queryconsumablebalanceremaining" title="Permanent link">&para;</a></h1>
 <p>This function gets the consumable balance remaining for the specified product ID.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_QueryConsumableBalanceRemaining(user_id, store_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryConsumableBalanceRemaining(user_id, store_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1107,37 +2291,34 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _storeId = global.products[3].storeId;
 
-requestId = ms_iap_QueryConsumableBalanceRemaining(_userId, _storeId);
-</code></pre></div>
+requestId = ms_iap_QueryConsumableBalanceRemaining(_userId, _storeId);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to query the balance for (note that for convenience we keep the products stored in a global variable). The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryConsumableBalanceRemaining_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryConsumableBalanceRemaining_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            var _quantity = async_load[? &quot;quantity&quot;];
-            show_debug_message(&quot;Amount of potions left: &quot; + string(_quantity));
+            var _quantity = async_load[? "quantity"];
+            show_debug_message("Amount of potions left: " + string(_quantity));
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, providing a success message with the current available quantity given that the <strong>status</strong> value is true.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_queryentitledproducts">ms_iap_QueryEntitledProducts</h1>
+<h1 id="ms_iap_queryentitledproducts">ms_iap_QueryEntitledProducts<a class="headerlink" href="#ms_iap_queryentitledproducts" title="Permanent link">&para;</a></h1>
 <p>This function provides the store product information for all add-ons, DLC, and consumables related to the current game that the user has an entitlement to.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_QueryEntitledProducts(user_id, product_kinds)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryEntitledProducts(user_id, product_kinds)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1204,36 +2385,33 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _product_kinds = e_ms_iap_ProductKind_Durable;
 
-requestId = ms_iap_QueryEntitledProducts(_userId, _product_kinds);
-</code></pre></div>
+requestId = ms_iap_QueryEntitledProducts(_userId, _product_kinds);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for durable products (<code>_product_kinds</code>) and we call the function with both arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryEntitledProducts_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryEntitledProducts_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(async_load[? &quot;result&quot;]);
+            show_debug_message(async_load[? "result"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_querygamelicense">ms_iap_QueryGameLicense</h1>
+<h1 id="ms_iap_querygamelicense">ms_iap_QueryGameLicense<a class="headerlink" href="#ms_iap_querygamelicense" title="Permanent link">&para;</a></h1>
 <p>This function retrieves information about the license that was acquired to allow the app to launch.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_QueryGameLicense(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryGameLicense(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1330,35 +2508,32 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 
-requestId = ms_iap_QueryGameLicense(_userId);
-</code></pre></div>
+requestId = ms_iap_QueryGameLicense(_userId);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryGameLicense_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryGameLicense_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(async_load[? &quot;skuStoreId&quot;]);
+            show_debug_message(async_load[? "skuStoreId"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the <strong>skuStoreId</strong> of the current game license.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_queryproductforcurrentgame">ms_iap_QueryProductForCurrentGame</h1>
+<h1 id="ms_iap_queryproductforcurrentgame">ms_iap_QueryProductForCurrentGame<a class="headerlink" href="#ms_iap_queryproductforcurrentgame" title="Permanent link">&para;</a></h1>
 <p>This function provides store product information for the currently running game, such as its SKUs, availabilities and other metadata.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_QueryProductForCurrentGame(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryProductForCurrentGame(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1420,35 +2595,32 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 
-requestId = ms_iap_QueryProductForCurrentGame(_userId);
-</code></pre></div>
+requestId = ms_iap_QueryProductForCurrentGame(_userId);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user and we call the function with it. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryProductForCurrentGame_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProductForCurrentGame_result")
 {
-    if (async_load[? &quot;async_id&quot;] == requestId)
+    if (async_load[? "async_id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(async_load[? &quot;result&quot;]);
+            show_debug_message(async_load[? "result"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_queryproductforpackage">ms_iap_QueryProductForPackage</h1>
+<h1 id="ms_iap_queryproductforpackage">ms_iap_QueryProductForPackage<a class="headerlink" href="#ms_iap_queryproductforpackage" title="Permanent link">&para;</a></h1>
 <p>This function retrieves store product information for the specified package.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_QueryProductForPackage(user_id, store_id, product_kinds)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryProductForPackage(user_id, store_id, product_kinds)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1520,37 +2692,34 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
-var _packageId = &quot;XXXXXXXXXXX&quot;;
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
+var _packageId = "XXXXXXXXXXX";
 var _product_kinds = e_ms_iap_ProductKind_Consumable;
 
-requestId = ms_iap_QueryProductForPackage(_userId, _packageId, _product_kinds);
-</code></pre></div>
+requestId = ms_iap_QueryProductForPackage(_userId, _packageId, _product_kinds);</code></pre>
 In the code above first we get the user ID (<code>_userId</code>) of the activating user, we reference the package ID (<code>_packageId</code>) of the target game and afterwards we create a filter for consumable products (<code>_product_kinds</code>) finally we call the function with all those arguments. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryProductForPackage_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProductForPackage_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(async_load[? &quot;result&quot;]);
+            show_debug_message(async_load[? "result"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_queryproducts">ms_iap_QueryProducts</h1>
+<h1 id="ms_iap_queryproducts">ms_iap_QueryProducts<a class="headerlink" href="#ms_iap_queryproducts" title="Permanent link">&para;</a></h1>
 <p>Returns listing information for the specified products that are associated with the current game, regardless of whether the products are currently available for purchase within the current game.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_QueryProducts(user_id, product_kinds, store_ids, action_filters)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_QueryProducts(user_id, product_kinds, store_ids, action_filters)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1627,36 +2796,33 @@ The code above matches the response against the correct event <strong>type</stro
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _product_kinds = e_ms_iap_ProductKind_Consumable;
-var _action_filter = [&quot;Purchase&quot;];
+var _action_filter = ["Purchase"];
 
-requestId = ms_iap_QueryProducts(_userId, _product_kinds, 0, _action_filter);
-</code></pre></div>
+requestId = ms_iap_QueryProducts(_userId, _product_kinds, 0, _action_filter);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user, afterwards we create a filter for consumable products (<code>_product_kinds</code>) and finally we call the function with all those arguments, providing no store ID filter but selecting only products that are available for purchase. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_QueryProducts_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_QueryProducts_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(async_load[? &quot;result&quot;]);
+            show_debug_message(async_load[? "result"]);
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the result of the query; an array of <a href="iap.html#productdetails">ProductDetails</a> structs.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_releaselicensefordurables">ms_iap_ReleaseLicenseForDurables</h1>
+<h1 id="ms_iap_releaselicensefordurables">ms_iap_ReleaseLicenseForDurables<a class="headerlink" href="#ms_iap_releaselicensefordurables" title="Permanent link">&para;</a></h1>
 <p>This function will release a package license assigned to this console and it is intended to be be used with products of type <strong>Durable</strong>. For  <strong>Durable with package</strong> type, use <a href="iap.html#ms_iap_releaselicenseforpackage">ms_iap_ReleaseLicenseForPackage</a> instead.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_ReleaseLicenseForDurables(store_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_ReleaseLicenseForDurables(store_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1682,27 +2848,25 @@ The code above matches the response against the correct event <strong>type</stro
 <p>(-1 if there was an error, otherwise 0)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _storeId = global.products[0].storeId;
+<p><pre class="highlight"><code class="language-gml">var _storeId = global.products[0].storeId;
 
 var _error = ms_iap_ReleaseLicenseForDurables(_storeId);
 
 if (_error != 0)
 {
-    show_debug_message(&quot;There was an error trying to release the license&quot;);
-}
-</code></pre></div>
+    show_debug_message("There was an error trying to release the license");
+}</code></pre>
 In the code above first we get the product ID (<code>_storeId</code>) conveniently stored inside a global array and call the function with this value. The returned value (<code>_error</code>) is then checked to see if the function was successful or not.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_releaselicenseforpackage">ms_iap_ReleaseLicenseForPackage</h1>
+<h1 id="ms_iap_releaselicenseforpackage">ms_iap_ReleaseLicenseForPackage<a class="headerlink" href="#ms_iap_releaselicenseforpackage" title="Permanent link">&para;</a></h1>
 <p>This function will release a package license assigned to this console and it is intended to be be used with products of type <strong>Durable with package</strong> . For  <strong>Durable</strong>  type, use <a href="iap.html#ms_iap_releaselicensefordurables">ms_iap_ReleaseLicenseForDurables</a> instead.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_ReleaseLicenseForPackage(package_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_ReleaseLicenseForPackage(package_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1728,28 +2892,26 @@ In the code above first we get the product ID (<code>_storeId</code>) convenient
 <p>(-1 if there was an error, otherwise 0)</p>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _packageId = global.packages[0].packageId;
+<p><pre class="highlight"><code class="language-gml">var _packageId = global.packages[0].packageId;
 
 var _error = ms_iap_ReleaseLicenseForPackage(_packageId);
 
 if (_error != 0)
 {
-    show_debug_message(&quot;There was an error trying to release the license for the package!&quot;);
-}
-</code></pre></div>
+    show_debug_message("There was an error trying to release the license for the package!");
+}</code></pre>
 In the code above we first get the package ID (<code>_packageId</code>) conveniently stored inside a global array and call the function with this value. The returned value (<code>_error</code>) is then checked to see if the function was successful or not.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_reportconsumablefulfillment">ms_iap_ReportConsumableFulfillment</h1>
+<h1 id="ms_iap_reportconsumablefulfillment">ms_iap_ReportConsumableFulfillment<a class="headerlink" href="#ms_iap_reportconsumablefulfillment" title="Permanent link">&para;</a></h1>
 <p>Consumes the specified quantity of a consumable. See <a href="https://docs.microsoft.com/en-us/gaming/gdk/_content/gc/commerce/fundamentals/xstore-consumable-based-ecosystems">Consumable-based ecosystems</a> for more information on implementing and using consumable products.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_ReportConsumableFulfillment(user_id, store_id, quantity, tracking_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_ReportConsumableFulfillment(user_id, store_id, quantity, tracking_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1836,37 +2998,34 @@ In the code above we first get the package ID (<code>_packageId</code>) convenie
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 var _trackingId = guid_generate(); // This function generates a unique identifier for tracking purposes.
 
-requestId = ms_iap_ReportConsumableFulfillment(_userId, _storeId, 10, _trackingId);
-</code></pre></div>
+requestId = ms_iap_ReportConsumableFulfillment(_userId, _storeId, 10, _trackingId);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and we get the store ID (<code>_storeId</code>) of the product we want to report as consumed (note that for convenience we keep the products stored in a global variable) and finally we generate a tracking ID (<code>_trackingId</code>) required to perform the request. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_ReportConsumableFulfillment_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_ReportConsumableFulfillment_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        if (async_load[? &quot;status&quot;])
+        if (async_load[? "status"])
         {
-            show_debug_message(&quot;We consumed: &quot; + string(async_load[? &quot;consumed_quantity&quot;]));
-            show_debug_message(&quot;We still have: &quot; + string(async_load[? &quot;available_quantity&quot;]));
+            show_debug_message("We consumed: " + string(async_load[? "consumed_quantity"]));
+            show_debug_message("We still have: " + string(async_load[? "available_quantity"]));
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>async_id</strong> , printing to the debug console the current consumed and available quantities upon a successful task.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_showassociatedproductsui">ms_iap_ShowAssociatedProductsUI</h1>
+<h1 id="ms_iap_showassociatedproductsui">ms_iap_ShowAssociatedProductsUI<a class="headerlink" href="#ms_iap_showassociatedproductsui" title="Permanent link">&para;</a></h1>
 <p>This function will open up the Microsoft Store App and show the set of available add-ons associated with the game. This can be further filtered by product type.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_ShowAssociatedProductsUI(user_id, store_id, product_kinds)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowAssociatedProductsUI(user_id, store_id, product_kinds)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1901,24 +3060,22 @@ The code above matches the response against the correct event <strong>type</stro
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _storeId = global.gameStoreId;
 var _product_kinds = e_ms_iap_ProductKind_Consumable;
 
-ms_iap_ShowAssociatedProductsUI(_userId, _storeId, _product_kinds);
-</code></pre></div>
+ms_iap_ShowAssociatedProductsUI(_userId, _storeId, _product_kinds);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of current game (stored inside a global variable) and afterwards we create a filter for consumable products (<code>_product_kinds</code>) finally we call the function with all those arguments. The function call will bring up the Microsoft Store App overlay with the associated consumable products.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_showproductpageui">ms_iap_ShowProductPageUI</h1>
+<h1 id="ms_iap_showproductpageui">ms_iap_ShowProductPageUI<a class="headerlink" href="#ms_iap_showproductpageui" title="Permanent link">&para;</a></h1>
 <p>This function will open up the Store app directly to the <strong>Product Details Page</strong> (PDP) of the provided product. This allows titles that have not integrated with the purchase flow or an in-game store UI to still drive users to products related to their title and the purchase flow found on the Product Details Page.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_ShowProductPageUI(user_id, store_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowProductPageUI(user_id, store_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -1948,23 +3105,21 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-ms_iap_ShowProductPageUI(_userId, _storeId);
-</code></pre></div>
+ms_iap_ShowProductPageUI(_userId, _storeId);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of product we want to check and finally we call the function with both arguments. The function call will bring up the Microsoft Store App overlay directly on the <strong>Product Details Page</strong> (PDP) of the provided Product ID.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_showpurchaseui">ms_iap_ShowPurchaseUI</h1>
+<h1 id="ms_iap_showpurchaseui">ms_iap_ShowPurchaseUI<a class="headerlink" href="#ms_iap_showpurchaseui" title="Permanent link">&para;</a></h1>
 <p>This function begins the purchase UI overlay for the specified product.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_ShowPurchaseUI(user_id, store_id, name, json)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowPurchaseUI(user_id, store_id, name, json)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2004,17 +3159,16 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _storeId = global.products[0].storeId;
 
-ms_iap_ShowPurchaseUI(_userId, _storeId, undefined, undefined);
-</code></pre></div>
+ms_iap_ShowPurchaseUI(_userId, _storeId, undefined, undefined);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user, we reference the store ID (<code>_storeId</code>) of the product we want to purchase and finally we call the function with both arguments (providing no name/json, they are not demanding). The function call will bring up the purchase UI overlay for the specified product.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_showrateandreviewui">ms_iap_ShowRateAndReviewUI</h1>
+<h1 id="ms_iap_showrateandreviewui">ms_iap_ShowRateAndReviewUI<a class="headerlink" href="#ms_iap_showrateandreviewui" title="Permanent link">&para;</a></h1>
 <p>Displays a system dialog to pop up to allow the user to provide a review for the current game or decline to do so.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2023,8 +3177,7 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_ShowRateAndReviewUI(user_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowRateAndReviewUI(user_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2049,22 +3202,20 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 
-ms_iap_ShowRateAndReviewUI(_userId);
-</code></pre></div>
+ms_iap_ShowRateAndReviewUI(_userId);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and finally we call the function with it's value. The function call will show a system dialog pop up to allow the user to provide a review for the current game.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_showredeemtokenui">ms_iap_ShowRedeemTokenUI</h1>
+<h1 id="ms_iap_showredeemtokenui">ms_iap_ShowRedeemTokenUI<a class="headerlink" href="#ms_iap_showredeemtokenui" title="Permanent link">&para;</a></h1>
 <p>This function triggers a token redemption for a given user and specified token.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_ShowRedeemTokenUI(user_id, token, allowed_store_ids, disallow_cvs_redemption)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_ShowRedeemTokenUI(user_id, token, allowed_store_ids, disallow_cvs_redemption)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2104,24 +3255,22 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </blockquote>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _userId = xboxone_get_activating_user();
+<p><pre class="highlight"><code class="language-gml">var _userId = xboxone_get_activating_user();
 var _token = global.finalWeaponToken;
 
-ms_iap_ShowRateAndReviewUI(_userId, _token, undefined, false);
-</code></pre></div>
+ms_iap_ShowRateAndReviewUI(_userId, _token, undefined, false);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and reference a token to be redeemed (<code>_token</code>), finally we call the function with those values, applying no restrictions whatsoever. The function call will trigger a token redemption for a given user and specified token.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="ms_iap_unmountpackage">ms_iap_UnmountPackage</h1>
+<h1 id="ms_iap_unmountpackage">ms_iap_UnmountPackage<a class="headerlink" href="#ms_iap_unmountpackage" title="Permanent link">&para;</a></h1>
 <p>This function unmounts the installation of specified content.</p>
 <p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<div class="highlight"><pre><span></span><code>ms_iap_UnmountPackage(package_id)
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">ms_iap_UnmountPackage(package_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -2183,26 +3332,24 @@ In the code above we first get the user ID (<code>_userId</code>) of the activat
 </table>
 <p><br></p>
 <p><strong>Example:</strong></p>
-<p><div class="highlight"><pre><span></span><code>var _package = global.package[0].packageId;
+<p><pre class="highlight"><code class="language-gml">var _package = global.package[0].packageId;
 
-requestId = ms_iap_UnmountPackage(_package);
-</code></pre></div>
+requestId = ms_iap_UnmountPackage(_package);</code></pre>
 In the code above we first get the user ID (<code>_userId</code>) of the activating user and after that we execute the function passing in an array of packages to be downloaded and installed. The function call will then return a request ID (<code>requestId</code>) that can be used inside an <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/IAP.htm">In-App Purchase Async Event</a>.
-<div class="highlight"><pre><span></span><code>if (async_load[? &quot;type&quot;] == &quot;ms_iap_UnmountPackage_result&quot;)
+<pre class="highlight"><code class="language-gml">if (async_load[? "type"] == "ms_iap_UnmountPackage_result")
 {
-    if (async_load[? &quot;id&quot;] == requestId)
+    if (async_load[? "id"] == requestId)
     {
-        show_debug_message(&quot;Package ID: &quot; + async_load[? &quot;package_id&quot;]);
-        show_debug_message(&quot;Finished unmount!&quot;);
+        show_debug_message("Package ID: " + async_load[? "package_id"]);
+        show_debug_message("Finished unmount!");
     }
-}
-</code></pre></div>
+}</code></pre>
 The code above matches the response against the correct event <strong>type</strong> and <strong>id</strong>, printing to the debug console the current package ID and a success message.</p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="packagekind">PackageKind</h1>
+<h1 id="packagekind">PackageKind<a class="headerlink" href="#packagekind" title="Permanent link">&para;</a></h1>
 <p>Package kind indicates the package type. They are used as a filter for the <a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a> function to acquire information about packages of a certain type. It is also a member of the <a href="iap.html#packagedetails">PackageDetails</a> struct which describes a store product.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
@@ -2235,7 +3382,7 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="packagescope">PackageScope</h1>
+<h1 id="packagescope">PackageScope<a class="headerlink" href="#packagescope" title="Permanent link">&para;</a></h1>
 <p>Package scope indicates the scope of packages to be returned when installation packages are being enumerated while using the <a href="iap.html#ms_iap_enumeratepackages">ms_iap_EnumeratePackages</a> function call.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
@@ -2264,11 +3411,10 @@ The code above matches the response against the correct event <strong>type</stro
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="productkind">ProductKind</h1>
+<h1 id="productkind">ProductKind<a class="headerlink" href="#productkind" title="Permanent link">&para;</a></h1>
 <p>Product kinds indicate the product type. They are used as a filter for many IAP queries to acquire information about products of a certain type. It is also a member of the <a href="iap.html#productdetails">ProductDetails</a> struct which describes a store product. The product kind is represented as a flagged constant meaning it can be combined using the <strong>bit-wise or operator</strong> to represent multiple types of product at once.</p>
 <p>As explained above the product kinds can be combined using the <strong>bit-wise</strong> or operator following the example below:
-<div class="highlight"><pre><span></span><code>var _consumableAndDurableType = e_ms_iap_ProductKind_Consumable | e_ms_iap_ProductKind_Durable;
-</code></pre></div>
+<pre class="highlight"><code class="language-gml">var _consumableAndDurableType = e_ms_iap_ProductKind_Consumable | e_ms_iap_ProductKind_Durable;</code></pre>
 The code above will make it so the <code>_consumableAndDurableType</code> variable will filter both consumables and durables.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
@@ -2321,14 +3467,13 @@ The code above will make it so the <code>_consumableAndDurableType</code> variab
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="addonlicensedetails">AddonLicenseDetails</h1>
+<h1 id="addonlicensedetails">AddonLicenseDetails<a class="headerlink" href="#addonlicensedetails" title="Permanent link">&para;</a></h1>
 <p>This struct contains details about an add-on license.</p>
 <p>The entity described above is a <strong>struct</strong> meaning its properties can be accessed using the <strong>dot</strong> operator much like when accessing instance variables, for example:
-<div class="highlight"><pre><span></span><code>var _addonLicenseDetails = global.addonLicenses[0];
+<pre class="highlight"><code class="language-gml">var _addonLicenseDetails = global.addonLicenses[0];
 
 show_debug_message(_packageDetails.packageIdentifier);
-show_debug_message(_packageDetails.version);
-</code></pre></div>
+show_debug_message(_packageDetails.version);</code></pre>
 The code above will grab a package detail struct from a global variable (where they were previously store for this sample) and we are accessing the <strong>packageIdentifier</strong> and <strong>version</strong> properties of that struct.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -2370,14 +3515,13 @@ The code above will grab a package detail struct from a global variable (where t
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="packagedetails">PackageDetails</h1>
+<h1 id="packagedetails">PackageDetails<a class="headerlink" href="#packagedetails" title="Permanent link">&para;</a></h1>
 <p>This struct contains details about an installation.</p>
 <p>The entity described above is a <strong>struct</strong> meaning its properties can be accessed using the <strong>dot</strong> operator much like when accessing instance variables, for example:
-<div class="highlight"><pre><span></span><code>var _packageDetails = global.packageDetails[0];
+<pre class="highlight"><code class="language-gml">var _packageDetails = global.packageDetails[0];
 
 show_debug_message(_packageDetails.packageIdentifier);
-show_debug_message(_packageDetails.version);
-</code></pre></div>
+show_debug_message(_packageDetails.version);</code></pre>
 The code above will grab a package detail struct from a global variable (where they were previously store for this sample) and we are accessing the <strong>packageIdentifier</strong> and <strong>version</strong> properties of that struct.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -2439,7 +3583,7 @@ The code above will grab a package detail struct from a global variable (where t
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="productdetails">ProductDetails</h1>
+<h1 id="productdetails">ProductDetails<a class="headerlink" href="#productdetails" title="Permanent link">&para;</a></h1>
 <p>This struct contains details that describe a store product.</p>
 <p>This struct is referenced by the following functions:</p>
 <ul>
@@ -2516,7 +3660,7 @@ The code above will grab a package detail struct from a global variable (where t
 </tr>
 <tr>
 <td>images</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="iap.html#image">Image</a></td>
 <td>Array of images associated with the product (read <strong>Image</strong> below)</td>
 </tr>
 </tbody>
@@ -2525,7 +3669,7 @@ The code above will grab a package detail struct from a global variable (where t
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="price">Price</h1>
+<h1 id="price">Price<a class="headerlink" href="#price" title="Permanent link">&para;</a></h1>
 <p>Price details inside the product struct use their own <strong>struct</strong> with data, following the schema below:</p>
 <p>This struct is referenced by the following structs:</p>
 <ul>
@@ -2591,54 +3735,126 @@ The code above will grab a package detail struct from a global variable (where t
 <p>/**</p>
 <p><br></p>
 <hr />
-              
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="image">Image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h1>
+<p>Image details inside the product struct use their own array of <strong>structs</strong> with data, following the schema below:</p>
+<p>The entity described above is a <strong>struct</strong> meaning its properties can be accessed using the <strong>dot</strong> operator much like when accessing instance variables, for example:
+<pre class="highlight"><code class="language-gml">var _productDetails = global.productDetails[0];
+
+show_debug_message(_productDetails.description);
+show_debug_message(_productDetails.price.basePrice);</code></pre>
+The code above will grab a product detail struct from a global variable (where they were previously store for this sample) and we are accessing the <strong>description</strong> text and <strong>basePrice</strong> (inside the price struct) **** properties of that struct.</p>
+<p>This struct is referenced by the following structs:</p>
+<ul>
+<li><a href="iap.html#productdetails">ProductDetails</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uri</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The URI to the image.</td>
+</tr>
+<tr>
+<td>height</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The height of the image.</td>
+</tr>
+<tr>
+<td>width</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The width of the image.</td>
+</tr>
+<tr>
+<td>caption</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The caption for the image.</td>
+</tr>
+<tr>
+<td>imagePurposeTag</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A string containing a tag indicating the purpose of the image.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="xbox_live.html" class="btn btn-neutral float-left" title="Xbox Live Module"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2026</p></p>
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/YoYoGames/GMEXT-GDK" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="xbox_live.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-  </span>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p align="center">GameMaker 2026</p>
+    </div>
+  
+  
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
-      <script src="assets/js/gmext_script.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      
+        <script src="assets/js/hljs-init.js"></script>
+      
+        <script src="assets/js/resize-columns.js"></script>
+      
+    
+  </body>
 </html>

@@ -29,6 +29,7 @@
  * @ref xboxone_stats_get_social_leaderboard
  * @ref xboxone_achievements_set_progress
  * @ref xboxone_get_achievement
+ * @ref xboxone_get_achievements
  * @section_end
  * 
  * @section_func General Functions
@@ -38,6 +39,7 @@
  * @ref xboxone_unique_modern_gamertag_for_user
  * @ref xboxone_modern_gamertag_suffix_for_user
  * @ref xboxone_modern_gamertag_for_user
+ * @ref xboxone_sprite_add_from_gamerpicture
  * @section_end
  * 
  * @section_const Constants
@@ -46,6 +48,12 @@
  * @ref xboxlive_achievement_message_type
  * @ref xboxone_privilege
  * @ref xboxone_privilege_result
+ * @ref XboxAchievement*
+ * @section_end
+ * 
+ * @section_struct Structs
+ * @desc The following structs describe the achievements returned by ${function.xboxone_get_achievements}:
+ * @ref XboxAchievement*
  * @section_end
  * 
  * @module_end
@@ -239,7 +247,7 @@
  */
 
 /**
- * @function xboxone_get_achievements(user_id,[title_id],[ach_type],[unlocked_only],[order_by],[skip_items],[max_items])
+ * @function xboxone_get_achievements
  * @desc Tries to obtain the state of many Xbox achievements of the specified criteria in one call, if that is possible. Triggers an Async - Social event.
  * @param {real} user_id User ID of the user to obtain the achievements of
  * @param {real} [title_id] Title ID of the game to obtain the achievements from, defaults to the current Title ID if possible

@@ -51,6 +51,7 @@
  * @ref PackageDetails
  * @ref ProductDetails
  * @ref Price
+ * @ref Image
  * @section_end
  * @module_end
  */
@@ -969,7 +970,7 @@
  * @member {bool} hasDigitalDownload Indicates whether the store product has a digital download.
  * @member {bool} isInUserCollection Indicates if the product is in the user collection.
  * @member {string} keywords ]|Keywords associated with the store product.
- * @member {array} images Array of images associated with the product (read **Image** below)
+ * @member {array[struct.Image]} images Array of images associated with the product (read **Image** below)
  * @struct_end
  */
 /**
